@@ -37,6 +37,10 @@ nav {
 
 
 .tab {
+  text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%; 
+  -moz-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -101,10 +105,6 @@ nav {
 }
 
 .chi {
-  text-size-adjust: 100%; 
-  -ms-text-size-adjust: 100%; 
-  -moz-text-size-adjust: 100%; 
-  -webkit-text-size-adjust: 100%;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
