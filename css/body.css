@@ -14,7 +14,7 @@ body {
   max-width: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
-  font-size: 130%;
+  font-size: 1.3em;
 }
 
 
@@ -36,7 +36,7 @@ nav {
 
 
 .tab {
-  font-size: 130%;
+  font-size: inherit;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
