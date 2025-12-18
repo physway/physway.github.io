@@ -15,10 +15,6 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
-  text-size-adjust: 130%; 
-  -ms-text-size-adjust: 130%; 
-  -moz-text-size-adjust: 130%; 
-  -webkit-text-size-adjust: 130%;
   
 }
 
@@ -41,10 +37,6 @@ nav {
 
 
 .tab {
-  text-size-adjust: 130%; 
-  -ms-text-size-adjust: 130%; 
-  -moz-text-size-adjust: 130%; 
-  -webkit-text-size-adjust: 130%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -95,10 +87,6 @@ nav {
 }
 
 .strbot {
-  text-size-adjust: 130%; 
-  -ms-text-size-adjust: 130%; 
-  -moz-text-size-adjust: 130%; 
-  -webkit-text-size-adjust: 130%;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -113,11 +101,6 @@ nav {
 }
 
 .chi {
-  font-size: 130%;
-  text-size-adjust: 130%; 
-  -ms-text-size-adjust: 130%; 
-  -moz-text-size-adjust: 130%; 
-  -webkit-text-size-adjust: 130%;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
