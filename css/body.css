@@ -18,6 +18,9 @@ body {
   
 }
 
+.flex {
+    display: flex;
+}
 
 .container {
   margin: 50px auto;
