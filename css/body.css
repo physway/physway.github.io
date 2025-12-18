@@ -15,17 +15,14 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
-  font-size-adjust: none;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+  
 }
 
 .flex {
     display: flex;
-	text-size-adjust: 100%; 
-    -ms-text-size-adjust: 100%; 
-    -moz-text-size-adjust: 100%; 
-    -webkit-text-size-adjust: 100%;
+	font-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 p {
