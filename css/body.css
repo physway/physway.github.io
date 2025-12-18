@@ -35,6 +35,97 @@ nav {
 }
 
 
+.tab {
+  font-size: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border: ;
+  border-radius: 9px;
+  align-content: center;
+  align-items: center;
+}
+
+.str {
+  font-size: 100%;
+  display: flex;
+  justify-content: ;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 10%;
+  
+}
+
+.strtop {
+  font-size: 100%;
+  display: flex;
+  justify-content: ;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 10%;
+  background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
+  border-radius: 9px 9px 0 0;
+    
+}
+
+.strmid {
+  font-size: 100%;
+  display: flex;
+  justify-content: ;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 10%;
+  background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
+  border-radius: 0 0 0 0;
+  
+}
+
+.strbot {
+  font-size: 100%;
+  display: flex;
+  justify-content: ;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 10%;
+  background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
+  border-radius: 0 0 9px 9px;
+  
+}
+
+.chi {
+  width: 20%;  
+  overflow: hidden;  
+  text-overflow: ellipsis;
+  padding: 9px 0;
+  
+}
+
+.chitop {
+  width: 20%;  
+  overflow: hidden;  
+  text-overflow: ellipsis;
+  padding: 9px 0;
+  white-space: ;
+}
+
+.chigap {
+  width: 0%;
+  text-align: center; 
+}
+
+
 .bor {
 border: 2px solid gray; 
 padding: 9px;
