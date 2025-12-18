@@ -104,6 +104,7 @@ nav {
 }
 
 .chi {
+  font-size: 100%;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
