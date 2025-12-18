@@ -36,7 +36,7 @@ nav {
 
 
 .tab {
-  font-size: 100%;
+  font-size: ;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -47,7 +47,7 @@ nav {
 }
 
 .str {
-  font-size: 100%;
+  font-size: ;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -60,7 +60,7 @@ nav {
 }
 
 .strtop {
-  font-size: 100%;
+  font-size: ;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -75,7 +75,7 @@ nav {
 }
 
 .strmid {
-  font-size: 100%;
+  font-size: ;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -90,7 +90,7 @@ nav {
 }
 
 .strbot {
-  font-size: 100%;
+  font-size: ;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
