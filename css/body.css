@@ -15,10 +15,7 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
-  text-size-adjust: 100%; 
-  -ms-text-size-adjust: 100%; 
-  -moz-text-size-adjust: 100%; 
-  -webkit-text-size-adjust: 100%;
+  
 }
 
 
@@ -104,7 +101,10 @@ nav {
 }
 
 .chi {
-  font-size: 100%;
+  text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%; 
+  -moz-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
