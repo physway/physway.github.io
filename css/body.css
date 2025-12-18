@@ -20,6 +20,17 @@ body {
 
 .flex {
     display: flex;
+	text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+    -moz-text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%;
+}
+
+p {
+	text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+    -moz-text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%;
 }
 
 .container {
@@ -198,10 +209,7 @@ a:link, a:visited {
 
 a { 
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
-	text-size-adjust: 100%; 
-    -ms-text-size-adjust: 100%; 
-    -moz-text-size-adjust: 100%; 
-    -webkit-text-size-adjust: 100%;
+	
    }
 
 a:hover, a:active {
