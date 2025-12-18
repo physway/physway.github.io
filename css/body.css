@@ -47,6 +47,7 @@ nav {
 }
 
 .str {
+  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -59,6 +60,7 @@ nav {
 }
 
 .strtop {
+  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -73,6 +75,7 @@ nav {
 }
 
 .strmid {
+  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -87,6 +90,7 @@ nav {
 }
 
 .strbot {
+  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -101,6 +105,7 @@ nav {
 }
 
 .chi {
+  font-size: inherit;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
@@ -109,6 +114,7 @@ nav {
 }
 
 .chitop {
+  font-size: inherit;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
