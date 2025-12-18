@@ -15,11 +15,6 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
-  font-size-adjust: none;
-	text-size-adjust: none; 
-    -ms-text-size-adjust: none; 
-    -moz-text-size-adjust: none; 
-    -webkit-text-size-adjust: none;
 }
 
 .flex {
@@ -31,13 +26,6 @@ body {
     -webkit-text-size-adjust: none;
 }
 
-p {
-	font-size-adjust: none;
-	text-size-adjust: none; 
-    -ms-text-size-adjust: none; 
-    -moz-text-size-adjust: none; 
-    -webkit-text-size-adjust: none;
-}
 
 .container {
   margin: 50px auto;
