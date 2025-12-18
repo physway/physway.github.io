@@ -113,6 +113,10 @@ nav {
 }
 
 .chi {
+  text-size-adjust: 130%; 
+  -ms-text-size-adjust: 130%; 
+  -moz-text-size-adjust: 130%; 
+  -webkit-text-size-adjust: 130%;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
