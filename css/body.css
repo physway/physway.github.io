@@ -36,7 +36,7 @@ nav {
 
 
 .tab {
-  font-size: inherit;
+  font-size: 130%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
