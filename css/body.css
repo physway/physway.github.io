@@ -15,6 +15,10 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
+  text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%; 
+  -moz-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
 }
 
 
@@ -36,7 +40,6 @@ nav {
 
 
 .tab {
-  font-size: inherit;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -47,7 +50,6 @@ nav {
 }
 
 .str {
-  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -60,7 +62,6 @@ nav {
 }
 
 .strtop {
-  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -75,7 +76,6 @@ nav {
 }
 
 .strmid {
-  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -90,7 +90,6 @@ nav {
 }
 
 .strbot {
-  font-size: inherit;
   display: flex;
   justify-content: ;
   flex-wrap: nowrap;
@@ -105,7 +104,6 @@ nav {
 }
 
 .chi {
-  font-size: inherit;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
@@ -114,7 +112,6 @@ nav {
 }
 
 .chitop {
-  font-size: inherit;
   width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
