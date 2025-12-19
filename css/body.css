@@ -62,7 +62,7 @@ nav {
 .chia {
   word-spacing: 0ch;
   display: inline-block;
-  width: 20%;  
+  max-width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
   padding: 5px 0;
