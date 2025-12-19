@@ -33,9 +33,13 @@ body {
 }
 
 
+.box{
+    @include DisabledTextSizeAdjust;
+}
+
 .exper {
     display: inline-block;
-	@include DisabledTextSizeAdjust;
+	
 }
 
 .cont {
@@ -246,13 +250,6 @@ stroke:inherit;
 }
 
 
-.box {
-  text-align: left;
-  border-radius: 5px;
-  background-color: var(--my-col); /*мешать на https://www.w3schools.com/colors/colors_mixer.asp */
-  padding: 9px;	
-  color: white;
-}
 
 .nei {
   padding: 5px 9px;
