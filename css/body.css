@@ -17,15 +17,6 @@ body {
   font-size: 130%;
 }
 
-.exper {
-    display: inline-block;
-	@include DisabledTextSizeAdjust;
-}
-
-.cont {
-	display: flex;
-    max-width: 100%;
-}
 
 /**
  * https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
@@ -40,6 +31,18 @@ body {
         height: 100%;
     }
 }
+
+
+.exper {
+    display: inline-block;
+	@include DisabledTextSizeAdjust;
+}
+
+.cont {
+	display: ;
+    max-width: ;
+}
+
 
 
 .container {
