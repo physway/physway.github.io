@@ -44,34 +44,34 @@ nav {
 }
 
 
-.wrappertop {
-  display: grid;
-  grid-template-columns: 20% 20% 20%;
-  grid-gap: ;
-  background-color: ;
-  color: #444;
-  text-align: center;
-  place-items: center;
+.wrappertopa {
   background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
   border-radius: 9px 9px 0 0;
-  justify-content: space-evenly;
+  white-space: nowrap;
+  word-spacing: -1ch;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 20% 20% 20%;
-  grid-gap: ;
-  background-color: ;
-  color: #444;
-  text-align: center;
-  place-items: center;
-  justify-content: space-evenly;
+.wrappera {
+  white-space: nowrap;
+  word-spacing: -1ch;
+  
 }
 
-.chi {
-  width: 90%;  
+
+.chia {
+  word-spacing: 0ch;
+  display: inline-block;
+  width: 20%;  
   overflow: hidden;  
   text-overflow: ellipsis;
+  padding: 5px 0;
+  text-align: center;
+  white-space: wrap;
+}
+
+.chigap {
+  display: inline-block;
+  width: 10%;  
   padding: 5px 0;
   
 }
