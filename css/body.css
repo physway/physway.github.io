@@ -41,6 +41,8 @@ nav {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 .table td {
