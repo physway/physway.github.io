@@ -23,6 +23,26 @@ body {
 }
 
 	
+.ccc {
+  width: 100%;
+    
+}
+
+.cont {
+  float: left;
+  width: calc(100%/3);
+  text-align: center;
+  white-space: wrap;
+  overflow: hidden;  
+  text-overflow: ellipsis;
+  
+}
+
+.hhh {
+  padding: 0 15%;
+    
+}
+
 
 
 .container {
