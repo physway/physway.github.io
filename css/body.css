@@ -23,6 +23,7 @@ body {
 }
 
 .cont {
+	display: flex;
     max-width: 100%;
 }
 
