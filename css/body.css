@@ -37,10 +37,6 @@ nav {
 }
 
 
-* {
-  box-sizing: border-box;
-}
-
 .table {
   width: 100%;
   border-collapse: collapse;
