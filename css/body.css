@@ -19,13 +19,28 @@ body {
 
 .exper {
     display: inline-block;
-	height: 100%;
+	@include DisabledTextSizeAdjust;
 }
 
 .cont {
 	display: flex;
     max-width: 100%;
 }
+
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
+ * https://stackoverflow.com/questions/39550403/css-displayinline-block-changes-text-size-on-mobile
+ */
+@mixin DisabledTextSizeAdjust {
+    @supports (text-size-adjust: 80%) {
+        text-size-adjust: none
+    }
+
+    @supports not (text-size-adjust: 80%) {
+        height: 100%;
+    }
+}
+
 
 .container {
   margin: 50px auto;
