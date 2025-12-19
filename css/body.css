@@ -18,30 +18,24 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: justify;
   font-size: 130%;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 
 	
 .ccc {
-  width: 100%;
+  width: ;
     
 }
 
 .cont {
-  float: ;
+  float: left;
   width: ;
   text-align: center;
   white-space: wrap;
   overflow: hidden;  
   text-overflow: ellipsis;
-  
+  margin: 9px 15%;
 }
 
-.hhh {
-  padding: 0 15%;
-    
-}
 
 .sss {
   width: 100%;
@@ -50,6 +44,7 @@ body {
   border-radius: 9px 9px 0 0;
   
 }
+
 
 
 
