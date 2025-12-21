@@ -52,49 +52,6 @@ body {
   }
 
 
-.navig {
-  margin: 10px 0;
-  font-size: 1.1em;
-  }
-
-.china {
-  float: left;
-  margin: 9px 5% 9px 0;
-  
-}
-
-.sdsd {
-  margin: 10px 0;
-  font-size: 110%;
-  }
-
-
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-}
-
-.table td {
-  padding: 1% 6%;
-  border: ;
-  text-align: center;
-}
-
-tr:nth-child(odd) {
-  background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
-  border-radius: 9px 9px 0 0;
-}
-
-.topstr {    
-  overflow: hidden;  
-  text-overflow: ellipsis;
-}
-
-
 .bor {
 border: 2px solid gray; 
 padding: 9px;
@@ -115,27 +72,6 @@ border-radius: 5px;
   
   nav > div {
     flex-basis: 50%;
-  }
-  
-  nav .ka {
-    text-align: right;
-  }
-
-  nav .sa {
-    text-align: right;
-  }
-  
-}
-
-
-@media all and (max-width: 330px) {
-  
-  nav {
-    flex-wrap: wrap;
-  }
-  
-  nav > div {
-    flex-basis: 100%;
   }
   
   nav .ka {
