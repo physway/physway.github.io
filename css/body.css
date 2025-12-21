@@ -36,6 +36,7 @@ body {
 .str {
   background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
   border-radius: 9px 9px 0 0;
+  margin: 9px 0;
 }
 
 
