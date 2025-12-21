@@ -22,21 +22,36 @@ body {
 
 	
 .tab {
-	
+ 
 }
 
-.tabce {
+.cell {
   text-align: center;
   white-space: wrap;
   overflow: hidden;  
   text-overflow: ellipsis;
-  margin: 9px 15%;
+  padding: 9px 15%;
+  
+}
+
+.strtoptop {
+  background-color: rgb(75,0,130,.15); /* Цвет фона под ссылкой */
+  border-radius: 9px 9px 0 0;
 }
 
 .str {
-  background-color: rgb(75,0,130,.07); /* Цвет фона под ссылкой */
-  border-radius: 9px 9px 0 0;
-  margin: 9px 0;
+  background-color: rgb(75,0,130,.05); /* Цвет фона под ссылкой */
+  border-radius: 0 0 0 0;
+}
+
+.strtop {
+  background-color: rgb(75,0,130,.15); /* Цвет фона под ссылкой */
+  border-radius: 0 0 0 0;
+}
+
+.strbot {
+  background-color: rgb(75,0,130,.05); /* Цвет фона под ссылкой */
+  border-radius: 0 0 9px 9px;
 }
 
 
