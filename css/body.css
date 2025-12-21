@@ -46,8 +46,6 @@ body {
 }
 
 
-
-
 .container {
   margin: 50px auto;
   font-size: 70px;
@@ -55,13 +53,16 @@ body {
 
 
 nav {
-  margin: 5% 0 0 0;
+  margin: 10px 0;
   font-size: 110%;
-  display: flex;
-  justify-content: right;
-  flex-wrap: wrap;  
-  text-align: right;
-  gap: 5%;
+  display: ;
+  justify-content: left;
+  }
+
+.china {
+  float: left;
+  margin: 9px 5% 9px 0;
+  
 }
 
 
