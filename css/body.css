@@ -42,6 +42,7 @@ body {
 .str {
   background-color: rgb(75,0,130,.05); /* Цвет фона под ссылкой */
   border-radius: 0 0 0 0;
+  padding: 9px 0;
 }
 
 .strtop {
@@ -52,6 +53,7 @@ body {
 .strbot {
   background-color: rgb(75,0,130,.05); /* Цвет фона под ссылкой */
   border-radius: 0 0 9px 9px;
+  padding: 9px 0;
 }
 
 
