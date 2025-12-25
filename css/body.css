@@ -146,22 +146,6 @@ a.na:hover, a.na:active {
 }
 
 
-a.cap {
-  text-decoration: none;
-}
-
-a.cap:link, a.cap:visited {
-  color: gray;
-}
-
-a.cap:hover, a.cap:active {
-  color: var(--my-col);
-}
-
-a.cap img {
-  border: 0;
-}
-
 .nobul {
   list-style-type: none;
 }
