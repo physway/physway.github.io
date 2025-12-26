@@ -20,7 +20,21 @@ body {
   font-size: 130%;
 }
 
-	
+
+nav {
+  text-wrap: wrap;
+  text-align: left;
+  font-size: 110%;
+  line-height: 1.5;
+  word-spacing: -1ch;
+}
+
+.nael {
+  word-spacing: 0ch;
+  padding: 0 4% 0 0;
+}
+
+
 .tab {
  
 }
