@@ -24,7 +24,8 @@ body {
   white-space: wrap;
   overflow: hidden;  
   text-overflow: ellipsis;	
-  
+  line-height: 1.5;
+
 }
 
 
