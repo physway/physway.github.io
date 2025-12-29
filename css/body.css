@@ -84,19 +84,19 @@ border-radius: 5px;
 @media all and (max-width: 650px) {
   
   nav {
-    flex-wrap: wrap;
+    flex-wrap: ;
   }
   
   nav > div {
-    flex-basis: 50%;
+    flex-basis: ;
   }
   
   nav .ka {
-    text-align: right;
+    text-align: ;
   }
 
   nav .sa {
-    text-align: right;
+    text-align: ;
   }
   
 }
