@@ -20,7 +20,7 @@ body {
 
 
 .navi {
-  text-align: center;
+  text-align: left;
   white-space: wrap;
   overflow: hidden;  
   text-overflow: ellipsis;	
