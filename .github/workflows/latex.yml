@@ -1,0 +1,57 @@
+name: Compile LaTeX with Complex 3D Asymptote
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Git Repository
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX, Asymptote, Inkscape and Xvfb 3D Drivers
+        run: |
+          sudo apt-get update
+          # Устанавливаем пакеты для LaTeX и виртуальный экран Xvfb с драйверами OpenGL
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-science texlive-lang-cyrillic cm-super asymptote texlive-bibtex-extra biber inkscape xvfb libgl1-mesa-dri
+
+      - name: Compile Document and 3D Render
+        run: |
+          # 1. Извлекаем имя репозитория (папки проекта) из переменной GitHub
+          REPO_NAME=$(basename "${{ github.repository }}")
+          echo "Имя проекта для PDF: $REPO_NAME"
+          
+          # Заходим в вашу обычную папку src
+          cd src
+          
+          # 2. Первый проход LaTeX с динамическим именем jobname
+          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
+          
+          # 3. Рендеринг сложной 3D графики Asymptote через виртуальный дисплей (xvfb-run)
+          xvfb-run -a asy -f pdf *.asy || echo "No .asy files to compile"
+          
+          # 4. Сборка библиографии по имени проекта
+          biber "$REPO_NAME" || echo "No bibliography to compile"
+          
+          # 5. Финальные проходы LaTeX для правильной верстки
+          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
+          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
+
+      - name: Commit and Push PDF and Graphics
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          
+          # Снова получаем имя проекта для этапа сохранения в Git
+          REPO_NAME=$(basename "${{ github.repository }}")
+          
+          # Добавляем скомпилированный PDF с именем папки и сгенерированные 3D-рисунки
+          git add "src/${REPO_NAME}.pdf"
+          git add src/*.pdf || echo "No generated vector graphics to add"
+          
+          git commit -m "Automated PDF ($REPO_NAME) and 3D Asymptote generation" || echo "No changes to commit"
+          git push
