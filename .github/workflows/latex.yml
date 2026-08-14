@@ -4,6 +4,8 @@ on: [push]
 
 permissions:
   contents: write
+  pages: write      # Разрешение на публикацию GitHub Pages
+  id-token: write   # Необходимый токен безопасности для деплоя
 
 jobs:
   build:
@@ -16,42 +18,70 @@ jobs:
       - name: Install LaTeX, Asymptote, Inkscape and Xvfb 3D Drivers
         run: |
           sudo apt-get update
-          # Устанавливаем пакеты для LaTeX и виртуальный экран Xvfb с драйверами OpenGL
           sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-science texlive-lang-cyrillic cm-super asymptote texlive-bibtex-extra biber inkscape xvfb libgl1-mesa-dri
 
-      - name: Compile Document and 3D Render
+      - name: Compile All Documents and 3D Render
         run: |
-          # 1. Извлекаем имя репозитория (папки проекта) из переменной GitHub
-          REPO_NAME=$(basename "${{ github.repository }}")
-          echo "Имя проекта для PDF: $REPO_NAME"
-          
-          # Заходим в вашу обычную папку src
-          cd src
-          
-          # 2. Первый проход LaTeX с динамическим именем jobname
-          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
-          
-          # 3. Рендеринг сложной 3D графики Asymptote через виртуальный дисплей (xvfb-run)
-          xvfb-run -a asy -f pdf *.asy || echo "No .asy files to compile"
-          
-          # 4. Сборка библиографии по имени проекта
-          biber "$REPO_NAME" || echo "No bibliography to compile"
-          
-          # 5. Финальные проходы LaTeX для правильной верстки
-          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
-          pdflatex -interaction=nonstopmode -shell-escape -jobname="$REPO_NAME" main.tex || true
+          # 1. Находим все файлы main.tex во всех папках репозитория
+          # И запускаем цикл по каждому найденному файлу
+          find . -name "main.tex" | while read -r MAIN_FILE_PATH; do
+            
+            # Получаем путь к текущей папке (например, ./src или ./chapter1)
+            DIR_PATH=$(dirname "$MAIN_FILE_PATH")
+            
+            # Извлекаем имя этой папки (например, src или chapter1)
+            PDF_NAME=$(basename "$DIR_PATH")
+            
+            echo "--------------------------------------------------"
+            echo "Найдена папка проекта: $DIR_PATH"
+            echo "Файл PDF будет сохранен как: $DIR_PATH/$PDF_NAME.pdf"
+            echo "--------------------------------------------------"
+            
+            # Сохраняем текущую папку, чтобы вернуться назад после компиляции
+            ROOT_DIR=$(pwd)
+            
+            # Переходим в папку с текущим документом
+            cd "$DIR_PATH"
+            
+            # 2. Первый проход LaTeX
+            pdflatex -interaction=nonstopmode -shell-escape -jobname="$PDF_NAME" main.tex || true
+            
+            # 3. Рендеринг сложной 3D графики Asymptote для этой папки
+            xvfb-run -a asy -f pdf *.asy || echo "No .asy files to compile in $DIR_PATH"
+            
+            # 4. Сборка библиографии для текущего PDF
+            biber "$PDF_NAME" || echo "No bibliography to compile in $DIR_PATH"
+            
+            # 5. Финальные проходы LaTeX для правильной верстки
+            pdflatex -interaction=nonstopmode -shell-escape -jobname="$PDF_NAME" main.tex || true
+            pdflatex -interaction=nonstopmode -shell-escape -jobname="$PDF_NAME" main.tex || true
+            
+            # Возвращаемся в корень репозитория для перехода к следующей папке
+            cd "$ROOT_DIR"
+          done
 
-      - name: Commit and Push PDF and Graphics
+      - name: Commit and Push All PDFs and Graphics
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@://github.com"
           
-          # Снова получаем имя проекта для этапа сохранения в Git
-          REPO_NAME=$(basename "${{ github.repository }}")
+          # Находим все созданные PDF-файлы и добавляем их в Git
+          # Конструкция find + git add позволяет безопасно добавить файлы из всех подпапок
+          find . -name "*.pdf" -exec git add {} +
           
-          # Добавляем скомпилированный PDF с именем папки и сгенерированные 3D-рисунки
-          git add "src/${REPO_NAME}.pdf"
-          git add src/*.pdf || echo "No generated vector graphics to add"
-          
-          git commit -m "Automated PDF ($REPO_NAME) and 3D Asymptote generation" || echo "No changes to commit"
+          git commit -m "Automated PDF generation for all project folders" || echo "No changes to commit"
           git push
+
+      # === АВТОМАТИЧЕСКОЕ ОБНОВЛЕНИЕ САЙТА GITHUB PAGES ===
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
