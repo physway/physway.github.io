@@ -1,0 +1,200 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{45
+}
+\addtocounter{section}{-1} 
+
+\section{Электроэнергия}
+
+
+Любой ток (постоянный или переменный) несет с собой энергию, называемую \emph{электроэнергией (ЭЭ).} Например, электрическая лампа функционирует за счет того, что к ней по проводам подводится ЭЭ.
+% (рис.\,\ref{fig:p170}).
+
+\emph{Производство} ЭЭ осуществляется чаще всего \emph{генераторами переменного тока} (на \emph{электростанциях}). На рис.\,\ref{fig:p170} иллюстрируется принцип действия генератора переменного тока.
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%ring
+\draw[thick,brown] (0,0) --++ (60:1.5) --++ (1.75,0) --++ (240:.5) --++ (.3,0) coordinate (ra)
+(0,0) --++ (1.75,0) coordinate (ram) --++ (60:.5) --++ (.3,0) coordinate (rb)
+;
+
+
+%lamp
+\draw[] (ra) --++ (1,0) coordinate (al) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {}
+(rb) --++ ({1+cos(60)*.5},0) coordinate (bl) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {}
+;
+
+\filldraw[lightgray,draw=black] (al) ++ (0,.1) rectangle++ (1,{-.5*sin(60)-.2});
+\draw (al) ++ (1,0) to[out=0,in=180] ++ (.75,.3) coordinate (ll) to[out=0,in=90] ++ (.5,{-.3-.5*sin(60)/2}) to[out=-90,in=0] ++ (-.5,{-.3-.5*sin(60)/2}) to[out=180,in=0] ++ (-.75,.3);
+\draw[] (al) ++ (1,-.15) to[out=0,in=200] ++ (.6,.1) coordinate (as); 
+\draw[] (bl) ++ (1,.15) to[out=0,in=160] ++ (.6,-.1) coordinate (bs); 
+\draw[orange] (as) edge[decorate,decoration={coil, amplitude=.5mm, segment length=.517mm}] %.469
+([yshift=-.05pt]bs);
+
+%light
+\def\li{1.2}
+\path (al) ++ (1,{-.5*sin(60)/2}) --++ (.6,0) coordinate (cen);
+\fill [yellow,path fading=fade out] (cen) ++ (-\li,-\li) rectangle++ ({2*\li},{2*\li});
+
+\node[above] at (ll) {Л};
+
+
+%rod
+\draw[Gray,thick] (0,0) ++ (60:.75) --++ (-2,0) coordinate (rr);
+\path ([xshift=.25cm]rr) arc [start angle=0, end angle=20, x radius={.25cm}, y radius={.5cm}] coordinate (rrr);
+\draw[->] (rrr) arc [start angle=20, end angle=340, x radius={.25cm}, y radius={.5cm}];
+\path[] (rrr) arc [start angle=20, end angle=270, x radius={.25cm}, y radius={.5cm}] node[below] {$\omega$};
+
+
+%%%
+
+
+\def\hh{.08}
+
+
+\path[spath/save=rpath] (0,2.5) sin ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},\hh) cos ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},-\hh) sin ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},-\hh) cos ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},\hh);
+
+\path[spath/save=lpath] (0,{-2.5+sin(60)*1.5}) sin ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},\hh) cos ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},-\hh) sin ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},-\hh) cos ++ ({(cos(60)*1.5cm+1.75cm-cos(60)*.5cm+.3cm)/4},\hh);
+
+
+%field
+\path[] (0,2.5) --++ (0,-.75) coordinate (alf) --++ ({(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) node[above] {$N$} --++ ({(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) coordinate (arf) --++ (0,.75) [spath/use=rpath];
+\path ({(cos(60)*1.5+1.75-cos(60)*.5+.3)},{-2.5+sin(60)*1.5+.75}) coordinate (brf) --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) node[below] {$S$} --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) coordinate (blf) --++ (0,-.75) [spath/use=lpath] --++ (0,.75);
+\filldraw[lightgray,nearly transparent] (alf) node[below left,black,opaque] {$B$} -- (arf) -- (brf) -- (blf) -- cycle;
+
+
+%magnet
+\fill[NavyBlue,semitransparent] [spath/use=rpath] --++ (0,-.75) --++ ({-(cos(60)*1.5+1.75-cos(60)*.5+.3)},0) -- (0,2.5);
+\draw[] (0,2.5) --++ (0,-.75) coordinate (alf) --++ ({(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) node[above] {$N$} --++ ({(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) coordinate (arf) --++ (0,.75) [spath/use=rpath];
+
+\fill[red,semitransparent] ({(cos(60)*1.5+1.75-cos(60)*.5+.3)},{-2.5+sin(60)*1.5+.75}) --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) node[below] {$S$} --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) --++ (0,-.75) [spath/use=lpath] --++ (0,.75);
+\draw ({(cos(60)*1.5+1.75-cos(60)*.5+.3)},{-2.5+sin(60)*1.5+.75}) coordinate (brf) --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) node[below] {$S$} --++ (-{(cos(60)*1.5+1.75-cos(60)*.5+.3)/2},0) coordinate (blf) --++ (0,-.75) [spath/use=lpath] --++ (0,.75);
+
+
+\node[right,xshift=2pt] at (ram) {Р};
+
+    
+    \end{tikzpicture}
+\caption{Схема генератора переменного тока}
+\label{fig:p170}
+\end{figure}
+
+
+Проводящая рамка~Р, подключенная к лампе~Л, вращается с \emph{постоянной} угловой скоростью~$\omega$ в однородном магнитном поле~$B$ как бы между полюсами~$N$ и~$S$ магнита. Меняющийся магнитный поток через рамку порождает ЭДС индукции в ней, которая вызывает ток в контуре из рамки и лампы.
+% \footnote{Чтобы в данном случае вместе с рамкой не крутились провода и лампа, ток передают из рамки в лампу с помощью так называемых \emph{колец} и \emph{щеток.}}. 
+В этом случае ток в рамке и лампе оказывается \emph{синусоидальным.}
+
+\emph{Передача} ЭЭ потребителям происходит по проводам под \emph{высоким} напряжением~--- \emph{высоковольтным линиям электропередачи.} То есть напряжение в линии электропередачи (ЛЭП) перед транспортировкой ЭЭ повышают.
+
+При доставке ЭЭ потребителю напряжение в ЛЭП необходимо уменьшить\footnote{Потребление электроэнергии на низком напряжении оказывается технически менее сложным и менее опасным, чем на высоком.}. Повышение (перед транспортировкой~ЭЭ) или понижение (при доставке~ЭЭ) \emph{переменного} напряжения осуществляют с помощью специальных устройств~--- \emph{трансформаторов.}  
+
+Простейший трансформатор состоит из двух обмоток (катушек), навитых на замкнутый стальной сердечник (рис.\,\ref{fig:p171}).
+
+    \begin{figure}[H]
+    \centering
+
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+%trans
+\fill[semitransparent,lightgray,even odd rule] (0,0) rectangle++ (2,2) (0.5,0.5) rectangle++ (1,1);
+
+\draw[gray] (0,0) rectangle++ (2,2);
+\draw[gray] (0.5,0.5) rectangle++ (1,1);
+
+%coil1
+\def\ab{.1}
+\def\rc{.025}
+\foreach \i in {0,...,4}{
+\draw [yshift={-6*\i*\rc cm}]
+(.5,{1.5-\ab}) 
+arc[start angle=90, end angle=-90, radius=\rc cm] 
+++ (-.5,-\rc cm)
+arc[start angle=90, end angle=270, radius=\rc cm] 
+--++ (.5,-\rc cm)
+coordinate (end)
+;
+}
+\draw (end) arc[start angle=90, end angle=-90, radius=\rc cm] coordinate (lb); 
+
+\draw (lb) ++ (0,{1-2*\ab}) to[*short,-o] ++ (-2.5,0);
+\draw (lb) ++ (-.5,0) to[*short,-o] ++ (-2,0);
+
+
+%U N
+\node at (-2,1) {$U_1$};
+\node[left] at ({-\rc},1) {$N_1$};
+
+
+% \node at (0,0) {\pgfmathparse{(1-2*\ab-2*\rc)/5/6}\pgfmathresult};
+
+
+%coil2
+\begin{scope}[xshift=1.5cm]
+\def\ab{.1}
+\def\krc{3}
+\def\rc{.025}
+\foreach \i in {0,...,2}{
+\draw [yshift={-(4+\krc*2)*\i*\rc cm}]
+(0,{1.5-\ab}) 
+arc[start angle=90, end angle=270, radius=\rc cm] 
+++ (.5,{-\krc*\rc cm})
+arc[start angle=90, end angle=-90, radius=\rc cm] 
+--++ (-.5,{-\krc*\rc cm})
+coordinate (end)
+;
+}
+\draw (end) arc[start angle=90, end angle=270, radius=\rc cm] coordinate (rb);
+
+\draw (rb) ++ (0,{1-2*\ab}) to[*short,-o] ++ (2.5,0);
+\draw (rb) ++ (.5,0) to[*short,-o] ++ (2,0);
+
+
+%U N
+\node at (2.5,1) {$U_2$};
+\node[right] at ({.5+\rc},1) {$N_2$};
+
+
+% \node at (0,0) {\pgfmathparse{(1-2*\ab-2*\rc)/3/(4+\krc*2)}\pgfmathresult};
+
+\end{scope}
+
+
+    
+    \end{circuitikz}
+\caption{Трансформатор}
+\label{fig:p171}
+\end{figure}
+
+На \emph{первичную обмотку} с числом витков~$N_1$ подают напряжение~$U_1$ от источника напряжения. На выводах \emph{вторичной обмотки} с числом витков~$N_2$ (вследствие изменения через нее магнитного потока, созданного переменным током в первичной обмотке) возникает напряжение~$U_2$. Трансформатор характеризуют \emph{коэффициентом трансформации}, равным $k=\dfrac{U_1}{U_2}=\dfrac{N_1\strut}{N_2\strut}$.  
+
+
+
+ 
+\end{document}

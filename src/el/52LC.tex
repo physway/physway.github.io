@@ -1,0 +1,110 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{43
+}
+\addtocounter{section}{-1} 
+
+\section{Свободные колебания в контуре}
+
+
+Свободные (\emph{собственные}) электромагнитные колебания, происходящие в колебательном контуре, оказываются \emph{гармоническими}. Так, \textbf{заряд конденсатора} меняется во времени по закону \emph{косинуса} (или \emph{синуса}):
+\begin{equation}
+    q=q_\text{max}\cos(\omega t + \varphi),
+\end{equation}
+где $q_\text{max}$~--- \emph{амплитуда заряда} (наибольшее значение заряда), $\omega$~--- циклическая частота (или круговая частота),
+% \footnote{Свободные колебания в контуре совершаются с так называемой собственной циклической частотой~$\omega_\text{с}$ (или с линейной частотой~$\nu_\text{с}$).}
+$\varphi$~--- начальная фаза.
+
+\textbf{Ток катушки} и \textbf{напряжение конденсатора} можно вычислять через заряд конденсатора:
+\begin{equation}
+    I=q',\quad U=\frac{q}{C},
+\end{equation}
+где $q'$~--- производная заряда по времени, $C$~--- емкость конденсатора.
+
+На рис.\,\ref{fig:p167} изображены графики колебаний заряда конденсатора и тока катушки в контуре (в одних координатных осях).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\path (.9,3) -- (.3,3)
+foreach \y in {.2,.6,...,1.2}
+{ -- (.9,{3-\y}) -- (.3,{3-\y-.2}) }
+-- (.6,{3-1.2-.2/2}) coordinate (cir)
+;
+\path (cir);
+\pgfgetlastxy{\cx}{\cy}
+
+\draw[->] (0,{\cy-.3cm}) ++ (0,-2) --++ (0,4) node[left,black] {$q,I$};
+\draw[->] (0,{\cy-.3cm}) --++ (11,0) node[below,black] {$t$};
+\node[below left] (O) at (0,{\cy-.3cm}) {$O$};
+
+\def\xmax{(3-.9-.1/2-(3-1.5-.2/2))}
+\def\er{6.2*pi}
+\draw[NavyBlue,thick,domain=0:\er,yshift={\cy-.3 cm},xscale=.5,samples=1000] plot (\x,{\xmax*cos(\x r)}) node [right,black] {$q$};
+\draw[red,thick,domain=0:\er,yshift={\cy-.3 cm},xscale=.5,samples=1000] plot (\x,{-1.5*sin(\x r)}) node [right,black] {$I$};
+% \draw[red,dashed,thick,domain=pi:4*pi,yshift={\cy-.3 cm},,xscale=.5,samples=1000] plot (\x,{\xmax*cos(\x r)});
+\path[] (pi,{\cy-.3 cm+\xmax*1cm}) --++ (0,{-\xmax}) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label={below left,inner xsep=0}:$T$] {};
+\path[] (2*pi,{\cy-.3 cm+\xmax*1cm}) --++ (0,{-\xmax}) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label={below left,inner xsep=0}:$2T$] {};
+
+
+
+% %dash
+% \draw[gray,densely dashed] (.6,{3-.9-.1/2}) --++ (5.4,0) node[above left,black] {$x_\text{max}$};
+% \draw[gray,densely dashed] (2.1,{3-1.5-.2/2}) --++ (3.9,0);
+% \draw[gray,densely dashed] (3.6,{3-2.1-.3/2}) --++ (2.4,0) node[below left,black] {$-x_\text{max}$};
+
+
+    \end{tikzpicture}
+\caption{Графики колебаний заряда и тока в контуре}
+\label{fig:p167}
+\end{figure}
+
+Ток и заряд колеблются с периодом~$T$.
+% (или с так называемой собственной частотой контура~$\nu_\text{с}$). 
+При этом нули заряда приходятся на максимумы или минимумы тока; и наоборот, нули тока соответствуют максимумам или минимумам заряда.
+
+\textbf{Период колебаний} в контуре находят так (\emph{формула Томсона}):
+\begin{equation}
+    T=2\pi\sqrt{LC},
+\end{equation}
+где $L$ и $C$~--- индуктивность катушки и емкость конденсатора. 
+
+При решении задач удобно использовать понятие полной энергии контура.
+
+\textbf{Полная энергия контура} ($W$ [Дж])~--- это сумма энергий катушки и конденсатора:
+\begin{equation}
+    W=W_L+W_C.
+\end{equation}
+%
+% Так как предполагается, что сопротивление контура равно нулю (в общем энергия )
+%
+Следующий закон обычно применяется при решении задач, сформулированных в терминах энергии.
+%
+\begin{law}
+    \textbf{Закон сохранения полной энергии контура.} Если сопротивление контура равно нулю (энергия перераспределяется только между катушкой и конденсатором), то полная энергия контура сохраняется:
+    \begin{equation}
+        W_1=W_2=\ldots,
+    \end{equation}
+    где $W_1$ и $W_2$~--- полные энергии контура в первом и втором состояниях. 
+\end{law}
+
+
+
+
+ 
+\end{document}

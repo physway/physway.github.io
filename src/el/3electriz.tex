@@ -1,0 +1,316 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{3
+}
+\addtocounter{section}{-1} 
+
+\section{Электризация}
+
+
+\textbf{Электризация}~--- это процесс, в результате которого тело (часть тела) переходит из незаряженного состояния в заряженное. Можно выделить два вида электризации.
+\begin{enumerate}
+    \item При электризации \textbf{трением} тела приобретают заряды вследствие их трения друг о друга. 
+
+    Пусть имеется два тела~--- незаряженные куски пластика~П и шерсти~Ш (рис.\,\ref{fig:p91}, слева).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rnd*360}] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{atompo/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \end{scope}}
+}
+
+\tikzset{atomne/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)},rotate={rnd*360}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\dn{.15}
+\def\de{.1}
+
+
+%%%%%%%%%%%%%%%%%%%
+%left pic
+%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[yshift=.5cm]
+
+%q
+% \node[above] at (1,2) {$q_\text{П}=0$};
+% \node[above] at (4,2) {$q_\text{Ш}=0$};
+
+
+%name
+\node[above] at (1,2) {П};
+\node[above] at (4,2) {Ш};
+
+
+%solid
+\fill[yellow, nearly transparent] (0,0) rectangle++ (2,2);
+\draw[] (0,0) rectangle++ (2,2);
+
+\fill[yellow, nearly transparent] (3,0) rectangle++ (2,2);
+\draw[] (3,0) rectangle++ (2,2);
+
+    
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,2}
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+
+%%%
+
+%atoms right
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,2}
+\pic[shift={(3.4,.4)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%
+%right pic
+%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=8cm]
+
+%name
+\node[above] at (1,2) {П};
+\node[above right] at (3,2.5) {Ш};
+
+
+%solid
+\fill[NavyBlue,nearly transparent] (0,0) rectangle++ (2,2);
+\draw[] (0,0) rectangle++ (2,2);
+
+\fill[red,nearly transparent] (2,.5) rectangle++ (2,2);
+\draw[] (2,.5) --++ (2,0) --++ (0,2) --++ (-2,0) --++ (0,-.5);
+
+
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,1}
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*0}) {atom};
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*1}) {atomne};
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*2}) {atomne};
+
+
+%%%
+
+%atoms right
+\foreach \y in {0,...,2}
+\foreach \x in {1,...,2}
+\pic[shift={(2.4,.9)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+\pic[shift={(2.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*2}) {atom};
+\pic[shift={(2.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*1}) {atompo};
+\pic[shift={(2.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*0}) {atompo};
+
+
+%vec
+\draw[->] (3,2.6) --++ (90:1);
+\draw[->] (3,.4) --++ (-90:1);
+
+
+\end{scope}
+
+
+%\Longrightarrow
+\path (6.5,1.5) node {$\Longrightarrow$};
+
+
+
+
+
+
+
+
+
+
+
+
+    \end{tikzpicture}
+\caption{Электризация трением}
+\label{fig:p91}
+\end{figure}
+\nointerlineskip
+
+    Тела~П и~Ш трут друг о друга (рис.\,\ref{fig:p91}, справа). В этом случае некоторые \emph{электроны} (синие шары), находящиеся в контактирующих слоях атомов и сравнительно слабо связанные с ядрами (красные шары) <<своего>> тела, переходят к ядрам другого тела~--- электроны стремятся к тем ядрам, с которыми они сильнее связаны. После разведения тела оказываются заряженными: тело~П, получившее электроны от тела~Ш, несет отрицательный заряд; тело~Ш, соответственно, имеет положительный заряд.
+
+    \item При электризации \textbf{влиянием} части тела заряжаются вследствие перераспределения заряженных частиц внутри тела под действием другого тела.
+
+    Пусть имеется одно незаряженное металлическое тело~М (рис.\,\ref{fig:p92}, слева).
+
+        \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rnd*360}] ([shift={(180:{\dn*1cm +\de*1cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{atompo/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \end{scope}}
+}
+
+\tikzset{atomne/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)},rotate={rnd*0}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70] ([shift={(180+rand*90:{\dn*1cm +\de*1cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70] ([shift={(rand*90:{\dn*1cm +\de*1cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\dn{.15}
+\def\de{.1}
+
+
+%%%%%%%%%%%%%%%%%%%
+%left pic
+%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[yshift=.5cm]
+
+
+%name
+\node[above] at (1,2) {М};
+
+
+%solid
+\fill[lightgray, semitransparent] (0,0) rectangle++ (2,2);
+\draw[] (0,0) rectangle++ (2,2);
+
+    
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,2}
+\pic[shift={(.4,.4)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%
+%right pic
+%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=5cm]
+
+%name
+\node[above] at (1.5,2) {З};
+\node[above] at (4,2.5) {М};
+
+
+\fill[red,nearly transparent] (3,.5) rectangle++ (1,2);
+\fill[NavyBlue,nearly transparent] (4,.5) rectangle++ (1,2);
+\draw[] (3,.5) --++ (2,0) --++ (0,2) --++ (-2,0) --++ (0,-2);
+
+
+%circ
+\shade[ball color=NavyBlue] (1.5,1.5) circle (.5);
+
+
+%%%
+
+
+%atoms right
+\foreach \y in {0,...,2}
+\foreach \x in {1,...,1}
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*\x},{0+(2-.8)/2*\y}) {atom};
+
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*2}) {atompo};
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*1}) {atompo};
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*0},{0+(2-.8)/2*0}) {atompo};
+
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*0}) {atomne};
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*1}) {atomne};
+\pic[shift={(3.4,.9)}] at ({0+(2-.8)/2*2},{0+(2-.8)/2*2}) {atomne};
+
+
+
+
+\end{scope}
+
+
+%\Longrightarrow
+\path (4,1.5) node {$\Longrightarrow$};
+
+
+    \end{tikzpicture}
+\caption{Электризация влиянием}
+\label{fig:p92}
+\end{figure}
+\nointerlineskip
+
+    К телу~М подносят слева (не касаясь!), к примеру, отрицательно заряженный шар~З и устанавливают его некотором расстоянии от тела~М (рис.\,\ref{fig:p92}, справа). Шар~З отталкивает от себя \emph{свободные} электроны (синие шары) тела~М (часть электронов в металле являются свободными~--- то есть передвигающимися по всему объему тела подобно частицам газа в сосуде). 
+    В результате в левой части тела~М протоны преобладают над электронами~--- левая часть тела заряжена положительно. Соответственно, правая часть этого тела от избытка электронов заряжена отрицательно. 
+
+    % В результате часть электронов скапливается на правой поверхности тела~М, на левой поверхности остаются нескомпенсированные положительные заряды. При этом можно сказать, что в левой части тела~М протоны преобладают над электронами~--- левая часть тела заряжена положительно. Соответственно, правая часть тела от избытка электронов заряжена отрицательно 
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

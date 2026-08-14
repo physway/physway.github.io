@@ -1,0 +1,238 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{31
+}
+\addtocounter{section}{-1} 
+
+\section{Опыт Эрстеда}
+
+% Постоянный магнит~--- не единственный источник магнитного поля. 
+Магнитными свойствами обладает также электрический ток. Обнаружить на опыте эти свойства тока и изучить их удалось в опыте Эрстеда.
+
+Схема опыта Эрстеда показана на рис.\,\ref{fig:p145}.
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\path[gray,rounded corners=1pt] (.75,1.9) --++ (0,.2) --++ (-.25,0) coordinate (a) --++ (-.25,0) --++ (0,-.2) -- cycle; 
+
+\path[gray,rounded corners=1pt] (.85,.1) --++ (0,-.2) --++ (-.35,0) coordinate (b) --++ (-.35,0) --++ (0,.2) -- cycle; 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% arrow
+\def\dc{.2}
+
+
+\path[rotate around={40:(5.5,1)}] (5.5,1) ++ (0,\dc) coordinate (ac) --++ ({3*\dc},{-\dc}) coordinate (rc) --++ ({-3*\dc},{-\dc}) coordinate (bc) --++ ({-3*\dc},{\dc}) coordinate (lc) --++ ({3*\dc},{\dc});
+
+
+\begin{scope}[even odd rule]
+\clip [] (lc) -- (ac) -- (rc) -- (bc) -- cycle (5.5,1) circle (1);     
+\fill[lightgray,semitransparent] (5.5,1) circle (1);
+\end{scope}
+\draw (5.5,1) circle (1);
+\draw[shift={(5.5,1)}] (0,1) --++ (0,-.2) (1,0) node[right] {М} --++ (-.2,0) (0,-1) --++ (0,.2) (-1,0) --++ (.2,0);
+
+
+%nee
+\fill[red,semitransparent] (lc) -- (ac) -- (bc) -- cycle;
+\fill[NavyBlue,semitransparent] (rc) -- (ac) -- (bc) -- cycle;
+\draw (ac) -- (rc) -- (bc) -- (lc) -- cycle;
+
+\node at (5.5,1) [circle,fill=,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+%cond
+\draw[] (a) --++ (0,1) 
+to[make contact={info={[black]$K$}}]++ 
+(5,0) node[above,black] {$O$} coordinate (ar);
+\draw[] (b) --++ (0,-1) --++ (5,0) node[below,black] {$O'$} coordinate (br);
+\draw[thick,brown] (br) -- (ar);
+% to[normal open switch,l=$K$,black]++ 
+
+
+%terminals
+\begin{scope}
+    \clip[] (0,2) rectangle++ (1,.2);
+    \filldraw[gray,rounded corners=1pt] (.75,1.9) --++ (0,.2) --++ (-.25,0) coordinate (a) --++ (-.25,0) --++ (0,-.2) -- cycle; 
+\end{scope}
+
+\begin{scope}
+    \clip[] (0,0) rectangle++ (1,-.2);
+    \filldraw[gray,rounded corners=1pt] (.85,.1) --++ (0,-.2) --++ (-.35,0) coordinate (b) --++ (-.35,0) --++ (0,.2) -- cycle; 
+\end{scope}
+
+
+%batt
+\begin{scope}
+    \clip[rounded corners=1mm] (0,0) rectangle++ (1,2);
+    \fill[gray,nearly transparent] (0,0) rectangle++ (1,1);
+    \fill[yellow,nearly transparent] (0,1) rectangle++ (1,1);
+\end{scope}
+\draw[rounded corners=1mm] (0,0) rectangle++ (1,2);
+
+
+
+
+
+%labels
+\node[above] at (.5,0) {$-$};
+\node[below] at (.5,2) {$+$};
+\node[left] at (0,1) {Б}; 
+
+
+
+
+
+\end{circuitikz}
+\caption{Опыт Эрстеда: тока в цепи нет}
+\label{fig:p145}
+\end{figure}
+
+
+Над магнитной стрелкой~М (стрелкой компаса) расположен провод~$OO'$, подключенный через ключ~$K$ к батарейке~Б. Если ключ разомкнут (в цепи из батарейки и проводников нет тока), то магнитная стрелка указывает на (географический) север Земли.
+
+Пусть теперь ключ в рассмотренной схеме замыкают (рис.\,\ref{fig:p146}).
+
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\path[gray,rounded corners=1pt] (.75,1.9) --++ (0,.2) --++ (-.25,0) coordinate (a) --++ (-.25,0) --++ (0,-.2) -- cycle; 
+
+\path[gray,rounded corners=1pt] (.85,.1) --++ (0,-.2) --++ (-.35,0) coordinate (b) --++ (-.35,0) --++ (0,.2) -- cycle; 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% arrow
+\def\dc{.2}
+
+
+\path[rotate around={0:(5.5,1)}] (5.5,1) ++ (0,\dc) coordinate (ac) --++ ({3*\dc},{-\dc}) coordinate (rc) --++ ({-3*\dc},{-\dc}) coordinate (bc) --++ ({-3*\dc},{\dc}) coordinate (lc) --++ ({3*\dc},{\dc});
+
+
+\begin{scope}[even odd rule]
+\clip [] (lc) -- (ac) -- (rc) -- (bc) -- cycle (5.5,1) circle (1);     
+\fill[lightgray,semitransparent] (5.5,1) circle (1);
+\end{scope}
+\draw (5.5,1) circle (1);
+\draw[shift={(5.5,1)}] (0,1) --++ (0,-.2) (1,0) node[right] {М} --++ (-.2,0) (0,-1) --++ (0,.2) (-1,0) --++ (.2,0);
+
+
+%nee
+\fill[red,semitransparent] (lc) -- (ac) -- (bc) -- cycle;
+\fill[NavyBlue,semitransparent] (rc) -- (ac) -- (bc) -- cycle;
+\draw (ac) -- (rc) -- (bc) -- (lc) -- cycle;
+
+\node at (5.5,1) [circle,fill=,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+%cond
+\draw[] (a) --++ (0,1) 
+% to[make contact={info={[black]$K$}}]++ 
+--++ (2.5,0) node[black,above] {$K$} --++ (2.5,0) node[above,black] {$O$} coordinate (ar);
+\draw[] (b) --++ (0,-1) --++ (5,0) node[below,black] {$O'$} coordinate (br);
+\draw[brown,thick] (br) -- (ar);
+% to[normal open switch,l=$K$,black]++ 
+
+
+%terminals
+\begin{scope}
+    \clip[] (0,2) rectangle++ (1,.2);
+    \filldraw[gray,rounded corners=1pt] (.75,1.9) --++ (0,.2) --++ (-.25,0) coordinate (a) --++ (-.25,0) --++ (0,-.2) -- cycle; 
+\end{scope}
+
+\begin{scope}
+    \clip[] (0,0) rectangle++ (1,-.2);
+    \filldraw[gray,rounded corners=1pt] (.85,.1) --++ (0,-.2) --++ (-.35,0) coordinate (b) --++ (-.35,0) --++ (0,.2) -- cycle; 
+\end{scope}
+
+
+%batt
+\begin{scope}
+    \clip[rounded corners=1mm] (0,0) rectangle++ (1,2);
+    \fill[gray,nearly transparent] (0,0) rectangle++ (1,1);
+    \fill[yellow,nearly transparent] (0,1) rectangle++ (1,1);
+\end{scope}
+\draw[rounded corners=1mm] (0,0) rectangle++ (1,2);
+
+
+
+
+
+%labels
+\node[above] at (.5,0) {$-$};
+\node[below] at (.5,2) {$+$};
+\node[left] at (0,1) {Б}; 
+
+
+
+
+
+\end{circuitikz}
+\caption{Опыт Эрстеда: ток в цепи есть}
+\label{fig:p146}
+\end{figure}
+
+
+Замыкание ключа~$K$ приводит к протеканию тока в цепи из батарйки~Б и проводников. При достаточно большом токе в цепи магнитная стрелка~М устанавливается \emph{перпендикулярно проводу}~$OO'$. Оказывается, отклонение магнитной стрелки вызвано действием на нее со стороны провода~$OO'$ с током (стрелка и провод с током взаимодействуют друг с другом подобно тому, как магнитная стрелка взаимодействует с постоянным магнитом). При размыкании ключа магнитная стрелка возвращается в свое начальное положение.
+
+Опыт Эрстеда показывает, что \emph{электрический ток создает в окружающем пространстве магнитное
+поле.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

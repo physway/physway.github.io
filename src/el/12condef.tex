@@ -1,0 +1,167 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{12
+}
+\addtocounter{section}{-1} 
+
+\section{Проводник в электрическом поле}
+
+
+Проводники (заряженные или незаряженные), помещенные в постоянное электрическое поле (электростатическое поле), обладают рядом общих свойств.
+\begin{enumerate}
+    \item \emph{Напряженность поля внутри проводника везде равна нулю.} 
+
+    Пусть незаряженный железный куб помещен в однородное поле (рис.\,\ref{fig:p109}).
+
+\tikzfading[name=fade right,
+left color=transparent!0,
+right color=transparent!100]
+
+\tikzfading[name=fade left,
+left color=transparent!100,
+right color=transparent!0]
+
+\begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%solid
+\fill[lightgray, semitransparent] (0,0) rectangle++ (3,3);
+\fill[NavyBlue,path fading=fade right] (0,0) rectangle++ (.5,3);
+\fill[red,path fading=fade left] (3,0) rectangle++ (-.5,3);
+\draw[] (0,0) rectangle++ (3,3);
+
+    
+%E
+% \draw[->,Green] (-2,-.9) --++ (7,0);
+% \draw[->,Green] (-2,.3) --++ (7,0);
+% \draw[->,Green] (-2,1.5) --++ (7,0);
+% \draw[->,Green] (-2,2.7) --++ (7,0);
+% \draw[->,Green] (-2,3.9) --++ (7,0);
+
+\draw[->,Green] (-2,1.5) --++ (7,0) node[right,black] {$E_\text{внеш}$};
+\draw[->,Green,yshift=1.7cm] (-2,1.5) --++ (7,0);
+\draw[->,Green,yshift=-1.7cm] (-2,1.5) --++ (7,0);
+
+%phantom centering
+\phantom{\node[left] at (-2,1.5) {$E_\text{внеш}$};}
+
+
+%E_i
+\draw[->,red,yshift=.85cm] (2.4,1.5) --++ (-1.8,0) node[midway,black,above] {$E_i$};
+\draw[->,red,yshift=-.85cm] (2.4,1.5) --++ (-1.8,0);
+
+
+%red blue
+
+
+
+    \end{tikzpicture}
+\caption{Проводник в электрическом поле}
+\label{fig:p109}
+\end{figure}
+\nointerlineskip
+
+    Действие внешнего поля~$E_\text{внеш}$ ведет к избытку свободных электронов в левой части куба. На левой поверхности куба \emph{наводятся} (\emph{индуцируются}) избыточные отрицательные заряды (синяя область); на правой поверхности куба тогда имеются избыточные положительные заряды (красная область). Наведенные на поверхностях проводника заряды создают собственное поле~$E_i$, направленное \emph{против} внешнего поля~$E_\text{внеш}$ (рис.\,\ref{fig:p109}). 
+    
+    Во всей области внутри куба поле~$E_i$ полностью компенсирует внешнее поле~$E_\text{внеш}$: результирующее (суммарное) поле~$E$ внутри проводника оказывается равным $E=E_\text{внеш}-E_i=0$. 
+
+    \item \emph{Избыточные заряды проводника располагаются лишь на его поверхности. Заряд любой области внутри проводника равен нулю.} 
+
+    \item \emph{Линии электрического поля входят в проводник (или выходят из него) перпендикулярно его поверхности.}
+
+    На рис.\,\ref{fig:p110} показана примерная картина линий результирующего поля для рассмотренного примера с проводящим кубом.
+
+\begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%solid
+\fill[lightgray, semitransparent] (0,0) rectangle++ (3,3);
+\fill[NavyBlue,path fading=fade right] (0,0) rectangle++ (.5,3);
+\fill[red,path fading=fade left] (3,0) rectangle++ (-.5,3);
+\draw[] (0,0) rectangle++ (3,3);
+
+    
+%E
+% \draw[->,Green] (-2,-.9) --++ (7,0);
+% \draw[->,Green] (-2,.3) --++ (7,0);
+% \draw[->,Green] (-2,1.5) --++ (7,0);
+% \draw[->,Green] (-2,2.7) --++ (7,0);
+% \draw[->,Green] (-2,3.9) --++ (7,0);
+
+\draw[Green] (-2,1.5) --++ (2,0);
+\draw[Green] (-2,3.2) --++ (1.95,0) arc [start angle=90, end angle=0, x radius=.3cm, y radius=.2cm];
+\draw[Green] (-2,-.2) --++ (1.95,0) arc [start angle=-90, end angle=0, x radius=.3cm, y radius=.2cm];
+
+\draw[Green] (3,1.5) --++ (2,0) node[black,right] {$E$};
+\draw[Green] (5,3.2) --++ (-1.95,0) arc [start angle=90, end angle=180, x radius=.3cm, y radius=.2cm];
+\draw[Green] (5,-.2) --++ (-1.95,0) arc [start angle=-90, end angle=-180, x radius=.3cm, y radius=.2cm];
+
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (-.85,3.2);
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (-.85,1.5);
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (-.85,-.2);
+
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (4.15,3.2);
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (4.15,1.5);
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] (4.15,-.2);
+
+
+%phantom centering
+\phantom{\node[left] at (-2,1.5) {$E$};}
+
+
+    \end{tikzpicture}
+\caption{Линии поля вокруг проводника}
+\label{fig:p110}
+\end{figure}
+\nointerlineskip
+
+    Из рисунка~\ref{fig:p110} видно, что любая линия поля вблизи куба направлена точно под прямым углом к его поверхности.
+
+    \item \emph{Все точки проводника имеют одинаковый потенциал.}
+
+    Итак, между любыми двумя точками проводника напряжение равно нулю.
+\end{enumerate}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,159 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{21
+}
+\addtocounter{section}{-1} 
+
+\section{Работа тока. Закон Джоуля"--~Ленца}
+
+
+Электрический ток несет с собой \emph{энергию} (аналогия: поток жидкости, несущий механичесую энергию). 
+% Энергия, переносимая током, может быть превращена в любую другую форму (тепло, излучение и~т.\,д.). 
+Эта энергия (\emph{электроэнергия}) возникает за счет работы электрического поля, которое <<гонит>> заряды тока по проводнику. 
+
+\textbf{Работа тока} ($A$ [Дж])~--- это работа электрического поля по передвижению зарядов тока в проводнике:
+\begin{equation}
+    A=UIt,
+\end{equation}
+где $U$ и~$I$~--- напряжение и ток проводника, $t$~--- время протекания тока.
+
+\textbf{Мощность тока} ($P$ [Вт])~--- это быстрота совершения работы тока: 
+\begin{equation}
+    P=UI.
+\end{equation}
+% Мощность, потребляемая электроприбором,~--- это и есть мощность тока в нем.
+
+\textbf{Электроэнергия}, потребленная прибором, может быть рассчитана так:
+\begin{equation}
+    W=Pt.
+\end{equation}
+
+Практически всегда возникает необходимость преобразовать электроэнергию в другой вид энергии. В связи с этим широкое применение нашли следующие устройства.
+\begin{itemize}
+    \item \emph{Электронагреватель} преобразует электроэнергию в теплоту.
+
+    \textbf{КПД электронагревателя} равен:
+    \begin{equation}
+        \eta=\frac{Q_\text{п}}{W_\text{з}},
+    \end{equation}
+    где $Q_\text{п}$~--- полезное тепло, $W_\text{з}$~--- затраченная электроэнергия.
+
+    \item \emph{Электродвигатель} преобразует электроэнергию в работу.
+
+    \textbf{КПД электродвигателя} равен:
+    \begin{equation}
+        \eta=\frac{A_\text{п}}{W_\text{з}},
+    \end{equation}
+    где $A_\text{п}$~--- полезная работа, $W_\text{з}$~--- затраченная электроэнергия.    
+\end{itemize}
+
+Пусть к батарейке подключен стальной провод (рис.\,\ref{fig:p125}).
+
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\path[] (1.9,.75) --++ (.2,0) --++ (0,-.25) coordinate (r) --++ (0,-.25) --++ (-.2,0) -- cycle; 
+
+
+%cond
+\path (r) --++ (.5,0) --++ (0,-.75) coordinate (I) --++ (0,-.75) --++ (-.6,0) coordinate (rr) ++ (-1,0) coordinate (R) ++ (-1,0) --++ (-.6,0) --++ (0,1.5) --++ (.5,0);
+\fill[red,semitransparent] ([yshift=-.25cm]rr) rectangle++ (-2,.5);
+\draw[] ([yshift=-.25cm]rr) rectangle++ (-2,.5);
+\draw (r) --++ (.5,0) --++ (0,-1.5) --++ (-.6,0) coordinate (rr) ++ (-2,0) --++ (-.6,0) --++ (0,1.5) --++ (.5,0);
+\node[below] at ([yshift=-.25cm]R) {$R$};
+
+
+%I
+\draw[->,red] ([shift={(.2,.5)}]I) --++ (0,-1) node[midway, right, black] {$I$}; 
+
+
+%terminals
+\begin{scope}
+    \clip[] (2,0) rectangle++ (.2,1);
+    \filldraw[gray,rounded corners=1pt] (1.9,.75) --++ (.2,0) --++ (0,-.25) coordinate (r) --++ (0,-.25) --++ (-.2,0) -- cycle; 
+\end{scope}
+
+\begin{scope}
+    \clip[] (0,0) rectangle++ (-.2,1);
+    \filldraw[gray,rounded corners=1pt] (.1,.85) --++ (-.2,0) --++ (0,-.35) coordinate (l) --++ (0,-.35) --++ (.2,0) -- cycle; 
+\end{scope}
+
+
+%batt
+\begin{scope}
+    \clip[rounded corners=1mm] (0,0) rectangle++ (2,1);
+    \fill[NavyBlue,nearly transparent] (0,0) rectangle++ (1,1);
+    \fill[red,nearly transparent] (1,0) rectangle++ (1,1);
+\end{scope}
+\draw[rounded corners=1mm] (0,0) rectangle++ (2,1);
+
+
+%labels
+\node[right] at (0,.5) {$-$};
+\node[left] at (2,.5) {$+$};
+\node[above] at (1,1) {Б}; 
+
+
+% %heat
+\path ([yshift=-.25cm]rr) coordinate (rec);
+% \foreach \i in {1,...,100}
+% \draw[red,opacity={1-\i/100},line width=.1pt] ([shift={(\i*.9*\pgflinewidth,-\i*.9*\pgflinewidth)}]rec) rectangle++ ({-2cm-2*\i*.9*\pgflinewidth},{.5cm+2*\i*.9*\pgflinewidth}); 
+
+
+% \fill[path fading=south,red] (rec) rectangle++ (-2,-.1);
+% \begin{scope}
+%     \clip ([shift={(.0001,0)}]rec) rectangle++ (.1,-.1);
+%     \fill[path fading=fade out,red] ([shift={(-.1,.1)}]rec) rectangle++ (.2,-.2);
+% \end{scope}
+
+
+
+\end{circuitikz}
+\caption{Опыт с батарейкой и проводом}
+\label{fig:p125}
+\end{figure}
+
+Батарейка~Б вызывает протекание тока\footnote{Направлением тока принято считать направление движения \emph{положительных} зарядов (в данном случае они как бы вытекают из <<плюса>> батарейки и втекают в ее <<минус>>.)
+}~$I$ в проводе с сопротивлением~$R$. Опыт показывает, что за время~$t$ провод \emph{нагреется}~--- в нем выделится \emph{тепло}, которое можно вычислить по \textbf{закону Джоуля"--~Ленца}:
+\begin{equation}
+    Q=I^2Rt.
+\end{equation}
+
+
+% \emph{Тепло}, выделяющееся на любом участке цепи при протекании по нему тока, можно вычислить по \textbf{закону Джоуля"--~Ленца}:
+% \begin{equation}
+    % Q=I^2Rt
+% \end{equation}
+% где $I$ и~$R$~--- ток и сопротивление участка цепи, $t$~--- время протекания тока.
+
+
+
+
+
+ 
+\end{document}

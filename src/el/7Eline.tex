@@ -1,0 +1,120 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{7
+}
+\addtocounter{section}{-1} 
+
+\section{Линии электрического поля}
+
+
+Наглядно описывать электрическое поле в пространстве принято с помощью \textbf{линий электрического поля}~--- линий, идущих вдоль векторов напряженности поля в различных точках пространства\footnote{Эти линии называют также \emph{линиями напряженности} или \emph{силовыми линиями}. Всякая линия поля изображается так, что в любой ее точке вектор напряженности направлен по касательной к линии поля.}.
+
+На рис.\,\ref{fig:p99} показаны картины линий поля \emph{точечного заряда} для двух случаев: положительный и отрицательный заряд.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%line
+\foreach \i in{0,...,11}
+\draw[Green,decoration={markings,mark=at position {1/2+3/20} with {\arrow{>}}},postaction={decorate}] (0,0) --++ ({30*\i}:2);
+
+\shade[ball color=red] (0,0) circle (.15);
+
+%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=6cm]
+
+%line
+\foreach \i in{0,...,11}
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrowreversed{>}}},postaction={decorate}] (0,0) --++ ({30*\i}:2);
+
+\shade[ball color=NavyBlue] (0,0) circle (.15);
+
+    
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Линии электрического поля точечного заряда}
+\label{fig:p99}
+\end{figure}
+
+Линии поля положительного заряда \emph{выходят из него} (рис.\,\ref{fig:p99}, слева); наоборот, линии поля отрицательного заряда \emph{входят в него} (рис.\,\ref{fig:p99}, справа).  
+
+\emph{Линии поля указывают направления векторов напряженности в пространстве. Чем больше густота линий, тем больше напряженность в данной области пространства.}
+
+На рис.\,\ref{fig:p100} показаны картины линий поля вблизи равномерно \emph{заряженной пластины} в двух случаях: положительно и отрицательно заряженная пластина.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%line
+\foreach \i in{0,...,5}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (0,{.25+\i*.5}) --++ ({180}:2);
+
+\foreach \i in{0,...,5}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (0,{.25+\i*.5}) --++ ({0}:2);
+
+
+%plane
+\draw[thick,red] (0,0) --++ (0,3);
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=6cm]
+
+%line
+\foreach \i in{0,...,5}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{<}}},postaction={decorate}] (0,{.25+\i*.5}) --++ ({180}:2);
+
+\foreach \i in{0,...,5}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{<}}},postaction={decorate}] (0,{.25+\i*.5}) --++ ({0}:2);
+
+
+%plane
+\draw[thick,NavyBlue] (0,0) --++ (0,3);
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Линии электрического поля заряженной пластины}
+\label{fig:p100}
+\end{figure}
+
+Возле каждой из пластин на рис.\,\ref{fig:p100} поле является \emph{однородным}. Из этого рисунка видно, что \emph{линии однородного поля являются параллельными прямыми одинаковой густоты.}  
+
+\emph{Линии поля не пересекаются, они всегда начинаются на положительных зарядах и заканчиваются на отрицательных.}
+
+\medskip
+
+\noindent\textbf{Задача.} Как меняется напряженность поля с удалением от точечного заряда?
+
+\smallskip
+
+\noindent\emph{Решение}. С увеличением расстояния от заряда, создающего поле, густота линий поля уменьшается (см.~рис.\,\ref{fig:p99}); значит, с удалением от заряда напряженность уменьшается.
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{8
+}
+\addtocounter{section}{-1} 
+
+\section{Потенциал}
+
+
+В общем случае электрическое поле\footnote{Электрическое поле далее предполагается \emph{постоянным}~--- то есть \emph{электростатическим}.} способно разгонять заряд, помещенный в него,~--- говорят, что заряд в таком поле имеет потенциальную энергию.
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%line
+\foreach \i in{0,...,1}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] ({\i*2},2) node [above,black] {$E$} --++ ({-90}:2);
+
+%plane
+\draw[dashed] (-.5,0) --++ (3,0) node[right,inner ysep=0] {П};
+
+
+%size
+\draw[dashed] (1.15,1) --++ (.4,0);
+\draw[<->] (1.35,1) --++ (0,-1) node[right,midway] {$h$};
+
+
+%charge
+\shade[ball color=red] (1,1) circle (.15);
+\node[above] at (1,1.15) {$q$};
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Заряд в однородном поле}
+    \label{fig:p101}
+\end{wrapfigure}
+
+
+Пусть заряд находится в однородном поле (рис.\,\ref{fig:p101}).
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% %line
+% \foreach \i in{0,...,1}
+% \draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] ({\i*2},2) node [above,black] {$E$} --++ ({-90}:2);
+
+% %plane
+% \draw[dashed] (-.25,0) --++ (2.5,0) node[right] {П};
+
+
+% %size
+% \draw[dashed] (1.15,1) --++ (.4,0);
+% \draw[<->] (1.35,1) --++ (0,-1) node[right,midway] {$h$};
+
+
+% %charge
+% \shade[ball color=red] (1,1) circle (.15);
+% \node[above] at (1,1.15) {$q$};
+
+
+%     \end{tikzpicture}
+% \caption{Заряд в однородном поле}
+% \label{fig:p101}
+% \end{figure}
+
+
+
+Положительный заряд вначале покоится и взаимодействует только с электрическим полем. Ясно, что заряд будет <<падать>> под действием этого поля вдоль его линий на воображаемую поверхность~П (поле может быть направлено в любую сторону, поэтому <<падать>> заряд может также в любую сторону). Тогда говорят, что заряд~$q$, находящийся в однородном электрическом поле~$E$ и способный <<упасть>> с высоты~$h$ под действием этого поля, обладает \textbf{потенциальной энергией} (обусловленной взаимодействием заряда с полем):
+\begin{equation}
+    \label{8poten_e1}
+    W=qEh.
+\end{equation}
+
+}
+
+Случай заряда в однородном электрическом поле напоминает ситуацию с телом, поднятым над поверхностью планеты. Как известно, потенциальная энергия тела, обусловленная притяжением тела и планеты, равна~$E_\text{п}=mgh$. Таким образом, в формуле~\eqref{8poten_e1} заряд~$q$ является аналогом массы~$m$, а напряженность~$E$ является аналогом ускорения свободного падения~$g$. 
+
+\textbf{Потенциал} ($\varphi$ [В])~--- это энергетическая характеристика электрического поля в точке пространства:
+\begin{equation}
+    \varphi=\frac{W}{q_\text{внесен}},
+\end{equation}
+где $W$~--- потенциальная энергия заряда~$q_\text{внесен}$ в электрическом поле.
+
+% Потенциал численно равен энергии, которую имел бы заряд 1~Кл в данном электрическом поле в рассматриваемой точке.
+
+\textbf{Потенциал поля точечного заряда} в вакууме
+% \footnote{В диэлектрике формула~\eqref{e31} приобретает вид: $\varphi=k\dfrac{q_\text{источника}}{\varepsilon r}$.}
+находят по формуле: 
+\begin{equation}
+    \label{8poten_e2}
+    \varphi=k\frac{q_\text{источника}}{r},
+\end{equation}
+где $r$~--- расстояние от заряда~$q_\text{источника}$ до рассматриваемой точки.
+
+В диэлектрике формула~\eqref{8poten_e2} приобретает вид: $\varphi=k\dfrac{q_\text{источника}\strut}{\varepsilon r\strut}$.
+
+Если заряд перемещается в поле из точки~1 в точку~2, то полезно ввести следующую величину. \textbf{Напряжение} ($U$ [В])~--- это \emph{разность потенциалов}:
+\begin{equation}
+    U=\varphi_1-\varphi_2=\frac{A}{q_\text{внесен}},
+\end{equation}
+где $\varphi_1$ и $\varphi_2$~--- потенциалы поля в начальной и конечной точке траектории, $A$~--- работа силы поля, действующей на перемещающийся заряд~$q_\text{внесен}$ ($A=-\Delta W$).
+
+Важно подчеркнуть, что \emph{разность потенциалов есть потенциал начальной точки минус потенциал конечной точки.}
+
+Следует отметить, что \emph{вектор напряженности поля указывает направление убывания потенциала.} Так, на рис.\,\ref{fig:p101} в точке нахождения заряда~$q$ потенциал поля больше, чем потенциал точки поверхности~П под зарядом.
+
+\textbf{Напряжение в однородном поле} равно:
+\begin{equation}
+    U=Ed,
+\end{equation}
+где $d$~--- расстояние между двумя точками \emph{вдоль линии поля}.
+
+
+ 
+\end{document}

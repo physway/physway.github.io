@@ -1,0 +1,133 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{5
+}
+\addtocounter{section}{-1} 
+
+\section{Закон Кулона. Электрическое поле}
+
+
+\begin{law}
+\textbf{Закон Кулона.} Два тела с зарядами~$q_1$ и~$q_2$, расположенные в вакууме на расстоянии~$r$, взаимодействуют друг с другом с \textbf{силой Кулона}
+\begin{equation}
+    \label{6Claw_e1}
+    F_\text{К}=k\dfrac{q_1q_2}{r^2},
+\end{equation}
+где~$k$~--- коэффициент пропорциональности (см.~cправочные таблицы). 
+\end{law}
+
+На рис.\,\ref{fig:p96} изображены два отрицательных заряда.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\shade[ball color=NavyBlue] (0,0) circle (.6);
+
+\path (0,0) ++ (0:3cm) coordinate (s);
+\shade[ball color=NavyBlue] (s) circle (.15);
+
+
+%r
+\draw[densely dashed] (0,0) --++ (90:1.5cm);
+\draw[densely dashed] (s.center) --++ (90:1.5cm);
+
+\draw[<->] (0,0) ++ (90:1.3cm) --++ (0:3cm) node[midway,above] {$r$};
+
+
+%vec
+\node at (0,0) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (0,0) --++ (180:1.2cm) node[black,above] {$F_\text{К}$};
+\node at (s) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (s.center) --++ (0:1.2cm) node[black,above] {$F_\text{К}$};
+
+%m
+\node [below,black] at (0,-.6) {$q_\text{1}$};
+\path (0,0) ++ (0:3cm) ++ (0,-.15) node[black,below] {$q_\text{2}$};
+
+
+
+    \end{tikzpicture}
+\caption{Взаимодействие двух отрицательных зарядов}
+\label{fig:p96}
+\end{figure}
+
+Заряды~$q_1$ и~$q_2$ расположены на некотором расстоянии~$r$ друг от друга\footnote{Для однородно заряженных шарообразных тел~$r$ есть расстояние между их центрами.}. Как и любые два~заряженных тела, эти заряды \emph{взаимодействуют} друг с другом. В данном случае заряд~$q_1$ отталкивается от заряда~$q_2$ с силой~$F_\text{К}$, а заряд~$q_2$~--- от заряда~$q_1$ с такой же силой~$F_\text{К}$. 
+
+Сила Кулона зависит от среды, в которой находятся заряды. Часто заряды оказываются помещенными в так называемый \emph{диэлектрик}~--- вещество, которое не проводят через себя электрические заряды (например, если соединить диэлектриком\footnote{Примерами диэлектриков являются пластик, стекло, масло и~т.\,д.} два металлических шара, несущих разноименные заряды, то перераспределения зарядов между шарами не будет). В диэлектрике формула~\eqref{6Claw_e1} приобретает вид:
+\begin{equation*}
+    F_\text{К}=k\dfrac{q_1q_2}{\varepsilon r^2},
+\end{equation*}
+где~$\varepsilon$~--- \emph{диэлектрическая проницаемость} среды (см.~cправочные таблицы). 
+
+Считают, что взаимодействие неподвижных зарядов осуществляется посредством \emph{электрического поля}~--- формы материи, окружающей заряженные тела (поле можно представлять себе как невидимое истечение из тела воображаемой жидкости и~т.\,п.). Сказанное иллюстрируется рис.\,\ref{fig:p97}: поле положительного заряда~А <<отталкивает>> положительный заряд~Б от заряда~А (и наоборот)\footnote{Скорость передачи взаимодействия между зарядами равна примерно~$3\cdot10^8$~м/с.}. 
+% заряд~Б действет своим полем на заряд~А).
+
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\def\df{4}
+\fill [red,path fading=fade out] ({-\df/2},{-\df/2}) rectangle++ (\df,\df);
+\shade[ball color=red] (0,0) circle (.6);
+
+\path (0,0) ++ (0:1.5cm) coordinate (s);
+\shade[ball color=red] (s) circle (.15);
+
+
+%vec
+\node at (s) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (s.center) --++ (0:1.2cm) node[black,above] {$F_\text{К}$};
+
+%m
+\node [below,black] at (0,-.6) {А};
+\path (0,0) ++ (0:1.5cm) ++ (0,-.15) node[black,below] {Б};
+
+
+
+    \end{tikzpicture}
+\caption{Действие поля одного заряда на другой}
+\label{fig:p97}
+\end{figure}
+
+% Скорость передачи взаимодействия между зарядами равна примерно~$3\cdot10^8$~м/с. 
+% (скорость света). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

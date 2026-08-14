@@ -1,0 +1,222 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{27
+}
+\addtocounter{section}{-1} 
+
+\section{Магнит. Магнитное поле}
+
+
+\textbf{Магнит}~--- это тело, способное притягивать железные предметы\footnote{Или предметы из сплава железа (например, из стали).}. На рис.\,\ref{fig:p134} изображен магнит, притягивающий два стальных тела. 
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%magnet
+\fill[red, semitransparent] (0,0) rectangle++ (2,1);
+\fill[NavyBlue, semitransparent] (2,0) rectangle++ (2,1);
+
+\draw (0,0) rectangle++ (4,1);
+
+
+%labels
+\node[above] at (2,1) {М};
+\node[right] at (0,.5) {$S$}; 
+\node[left] at (4,.5) {$N$}; 
+
+
+%nut
+\def\dn{.4}
+
+\path (0,.4) --++ (-{0.5*sqrt(\dn^2+\dn^2-2*\dn*\dn*cos(120))},0) coordinate (cn);
+
+\fill[even odd rule,gray] (0,.2) --++ (-150:\dn) --++ (-210:\dn) --++ (-270:\dn) --++ (-330:\dn) --++ (-390:\dn) (cn) circle ({\dn/2});
+
+\draw (0,.2) --++ (-150:\dn) --++ (-210:\dn) --++ (-270:\dn) --++ (-330:\dn) --++ (-390:\dn);
+\draw (cn) circle ({\dn/2});
+
+\node[left] at (-{sqrt(\dn^2+\dn^2-2*\dn*\dn*cos(120))},0.4) {Г}; 
+
+%washer
+\def\dw{.4}
+
+\fill[even odd rule,gray] ({4+\dw},.4) circle (\dw) ({4+\dw},.4) circle ({\dw/2});
+\draw[] ({4+\dw},.4) circle (\dw) ({4+\dw},.4) circle ({\dw/2});
+
+\node[right] at ({4+2*\dw},0.4) {Ш}; 
+
+
+
+
+    \end{tikzpicture}
+\caption{Магнит, притягивающий стальные предметы}
+\label{fig:p134}
+\end{figure}
+
+Магнит~М притягивает гайку~Г и шайбу~Ш. У всякого магнита есть \emph{два} места, вблизи которых он действует на тела наиболее сильно; это так называемые \emph{полюса} магнита. \emph{Северный полюс} магнита обозначается синим цветом и буквой~$N$, \emph{южный полюс}~--- красным
+цветом и буквой~$S$ (рис.\,\ref{fig:p134}). (Магнит, показанный на рис.\,\ref{fig:p134}, называют \emph{полосовым}; если подвесить такой магнит на нити за его середину, позволяя ему свободно вращаться, то северный $N$"=полюс магнита всегда будет поворачиваться в направлении Северного географического полюса Земли и указывать на географический север: отсюда и возникло название <<северный полюс>> магнита.)
+
+\emph{Разноименные магнитные полюсы притягиваются друг к другу, а одноименные~--- друг от друга отталкиваются} (рис.\,\ref{fig:p135}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+%1
+\draw (.6,3) --++ (-75:2) coordinate (lmn);
+\draw (.4,3) --++ (-75:2) coordinate (lms);
+\fill[red,semitransparent] (lms) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\fill[NavyBlue,semitransparent] (lmn) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\draw (lms) --++ (-.2,0) --++ (0,-.2) --++ (.6,0) --++ (0,.2) -- cycle;
+
+\draw (2.5,3) --++ (-105:2) coordinate (rms);
+\draw (2.7,3) --++ (-105:2) coordinate (rmn);
+\fill[red,semitransparent] (rms) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\fill[NavyBlue,semitransparent] (rmn) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\draw (rmn) --++ (.2,0) --++ (0,-.2) --++ (-.6,0) --++ (0,.2) -- cycle;
+
+
+%2
+\begin{scope}[xshift=4.5cm]
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+\draw ({.6+cos(75)*2.15},3) --++ (-105:2) coordinate (lms);
+\draw ({.6+cos(75)*2.15+.2},3) --++ (-105:2) coordinate (lmn);
+\fill[red,semitransparent] (lms) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\fill[NavyBlue,semitransparent] (lmn) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\draw (lms) --++ (-.2,0) --++ (0,-.2) --++ (.6,0) --++ (0,.2) -- cycle;
+
+
+\draw ({2.5-cos(75)*2.15},3) --++ (-75:2) coordinate (rms);
+\draw ({2.5-cos(75)*2.15-.2},3) --++ (-75:2) coordinate (rmn);
+\fill[red,semitransparent] (rms) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\fill[NavyBlue,semitransparent] (rmn) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\draw (rmn) --++ (-.2,0) --++ (0,-.2) --++ (.6,0) --++ (0,.2) -- cycle;
+
+    
+\end{scope}
+
+
+%3
+\begin{scope}[xshift=9cm]
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+\draw ({.6+cos(75)*2.15},3) --++ (-105:2) coordinate (lms);
+\draw ({.6+cos(75)*2.15+.2},3) --++ (-105:2) coordinate (lmn);
+\fill[NavyBlue,semitransparent] (lms) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\fill[red,semitransparent] (lmn) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\draw (lms) --++ (-.2,0) --++ (0,-.2) --++ (.6,0) --++ (0,.2) -- cycle;
+
+
+\draw ({2.5-cos(75)*2.15},3) --++ (-75:2) coordinate (rms);
+\draw ({2.5-cos(75)*2.15-.2},3) --++ (-75:2) coordinate (rmn);
+\fill[NavyBlue,semitransparent] (rms) --++ (.2,0) --++ (0,-.2) --++ (-.3,0) --++ (0,.2) -- cycle;
+\fill[red,semitransparent] (rmn) --++ (-.2,0) --++ (0,-.2) --++ (.3,0) --++ (0,.2) -- cycle;
+\draw (rmn) --++ (-.2,0) --++ (0,-.2) --++ (.6,0) --++ (0,.2) -- cycle;
+
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Притяжение и отталкивание магнитов}
+\label{fig:p135}
+\end{figure}
+
+% Так, притяжение железного (или стального) тела к магниту объясняют тем, что 
+% Железное (или стальное) тело, расположенное вблизи магнита, обязательно \emph{намагничивается}. 
+% Кстати, в ситуации на рис.\,\ref{fig:p134}, например, гайка~Г \emph{намагничивается}: справа у нее появляется северный полюс~$N$, слева~--- южный полюс~$S$.  
+
+Считают, что взаимодействие магнитов осуществляется посредством \emph{магнитного поля}~--- формы материи, окружающей магниты (поле можно представлять себе как невидимое истечение из тела воображаемой жидкости и~т.\,п.). Сказанное проиллюстрировано на рис.\,\ref{fig:p136}: поле магнита~А <<отталкивает>> магнит~Б от магнита~А (и наоборот; на рис.\,\ref{fig:p136} магниты обращены друг к другу одноименными полюсами).
+% \footnote{Скорость передачи взаимодействия между зарядами равна примерно~$3\cdot10^8$~м/с.}. 
+% заряд~Б действет своим полем на заряд~А).
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\lm{1} 
+
+\begin{scope}[even odd rule]
+\def\df{2}
+\clip (0,0) rectangle++ ({2*\lm},{\lm/2}) ({0},{\lm/4}) ++ (-\df,-\df) rectangle++ ({3*\df},{2*\df}) ({3*\lm},0) rectangle++ ({\lm},{\lm/2});
+% \clip ({0},{\lm/4}) ++ (-\df,-\df) rectangle++ ({3*\df},{2*\df});
+\fill [red,path fading=fade out] ({0},{\lm/4}) ++ (-\df,-\df) rectangle++ ({2*\df},{2*\df});
+\fill [NavyBlue,path fading=fade out] ({2*\lm},{\lm/4}) ++ (-\df,-\df) rectangle++ ({2*\df},{2*\df});
+\end{scope}
+
+
+%magnet
+\fill[red, semitransparent] (0,0) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue, semitransparent] (\lm,0) rectangle++ (\lm,{\lm/2});
+
+\draw (0,0) rectangle++ ({2*\lm},{\lm/2});
+
+\node[below] at (\lm,0) {А}; 
+
+%right magnet
+\begin{scope}[xshift={3*\lm cm}]
+\fill[NavyBlue, semitransparent] (0,0) rectangle++ (\lm,{\lm/2});
+\fill[red, semitransparent] (\lm,0) rectangle++ (\lm,{\lm/2});
+
+\draw (0,0) rectangle++ ({2*\lm},{\lm/2});
+
+\node[below] at ({\lm},0) {Б}; 
+
+\draw[->] ({2*\lm+.1},{\lm/4}) --++ (1,0);
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Действие поля одного магнита на другой}
+\label{fig:p136}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+\end{document}
