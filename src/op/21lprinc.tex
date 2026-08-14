@@ -1,0 +1,143 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{9
+}
+\addtocounter{section}{-1} 
+
+\section{Сложение световых волн}
+
+
+Свет~--- это электромагнитные \emph{волны}, поэтому распространение света можно представлять себе как поток волн. (Сказанное далее относится к волнам любой природы, речь о световых волнах идет для определенности.)
+%
+\begin{law}
+\textbf{Принцип суперпозиции волн.} При наложении волн света в некоторой точке пространства их напряженности (индукции) складываются.
+\end{law}
+%
+Имеются два важных случая сложения волн (рис.\,\ref{fig:p190}).
+
+%     \begin{figure}[H]
+%     \centering
+% \begin{asy}
+% settings.outformat="png";
+% // settings.prc=true;
+% settings.render=10;
+
+% import three;
+% import texcolors;
+% import x11colors;
+% import solids;
+
+% size(6cm,0);
+% currentprojection =
+% orthographic((5,5,2));
+
+
+% //styles
+% ///////////////////////////////////////////
+% DefaultHead3.size=new real(pen p=currentpen) {return 3mm;};
+% defaultpen(fontsize(11pt));
+% defaultpen(linewidth(0.4pt));
+% pen thick=black+2*linewidth(currentpen);
+% /////////////////////////////////////////
+
+
+% //axes
+% //draw(O--2.5X,L=Label("$x$",EndPoint,WSW));
+% //draw(O--2.3Y,L=Label("$y$",EndPoint,ESE));
+
+
+% // sin
+% real k=1;
+% real r=.5;
+% real sc=.5;
+
+% triple li(real t){return (0,t,r*sin(k*t));}
+% real tmin=-6pi,tmax=0;
+% path3 g=graph(li,tmin,tmax,operator..);
+% draw(yscale3(sc)*g,red);
+
+% triple li(real t){return (t,0,-r*sin(k*t));}
+% real tmin=0,tmax=8pi;
+% path3 g=graph(li,tmin,tmax,operator..);
+% draw(xscale3(sc)*g,red);
+
+
+% //dot
+% dot((0,-6pi*sc,0),L=Label("$S_1$",black),W,red);
+% dot((8pi*sc,0,0),L=Label("$S_2$",black),W,red);
+% dot((0,0,0),L=Label("$M$",black),E);
+
+
+% //dash
+% draw((0,0,0)--(0,-6pi*sc,0),dashed+gray);
+% draw((0,0,0)--(8pi*sc,0,0),dashed+gray);
+
+
+
+
+% \end{asy}
+% \caption{Наложения двух волн в точке пространства}
+% \label{fig:p190}
+% \end{figure}
+
+\def\sub{.417}
+\begin{figure}[H]%
+\hfill
+\adjustbox{valign=c}{\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{op/21lprinc_pic1.pdf}%
+% \caption{При $s_1=s_2$ вторая машина затратила меньше времени.}
+% \label{fig:p42sub1}
+\end{subfigure}}%
+\hfill
+\adjustbox{valign=c}{\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{op/21lprinc_pic2.pdf}%
+% \caption{При $t_1=t_2$ обе машины прошли одинаковое расстояние.}
+% \label{fig:p42sub2}
+\end{subfigure}}%
+\hfill\mbox{}
+\caption{Наложения двух волн в точке пространства}
+\label{fig:p190}
+\end{figure}
+
+
+Пусть точечные источники~$S_1$ и~$S_2$ являются \emph{когерентными} (то есть они излучают свет \emph{одинаковой частоты}\footnote{Свет одной частоты (одного цвета) называется \emph{монохроматическим} светом. Белый свет не является монохроматическим: он представляет собой смесь волн с разными частотами (эти частоты отвечают цветам от красного до фиолетового).}  и имеют \emph{постоянную разность фаз}; в данном случае разность фаз равна нулю~--- источники <<колеблются>> одинаково). Волны от этих источников накладываются друг на друга в точке~$M$.
+
+На рис.\,\ref{fig:p190} (слева) разность расстояний $\Delta = S_2M-S_1M$ (\emph{разность хода}) равна длине волны ($\Delta=\lambda$). В этом случае волны в точке~$M$ складываются \emph{в фазе}~--- в точке~$M$ достигается \emph{максимально возможная освещенность} от данных источников.
+%
+\begin{law}
+    \textbf{Условие максимума.} При наложении когерентных волн освещенность в данной точке максимальна, если разность хода равна \emph{целому} числу длин волн:
+    \begin{equation}
+        \Delta=m\lambda\quad(m=0,1,2,\ldots).
+    \end{equation}
+\end{law}
+%
+На рис.\,\ref{fig:p190} (справа) разность хода $\Delta = S_2M-S_1M$ составляет половину длины волны ($\Delta=\lambda/2$). Теперь волны в точке~$M$ складываются \emph{в противофазе}~--- в точке~$M$ достигается \emph{минимально возможная освещенность} от данных источников.
+%
+\begin{law}
+    \textbf{Условие минимума.} При наложении когерентных волн освещенность в данной точке минимальна, если разность хода равна \emph{полуцелому} числу длин волн:
+    \begin{equation}
+        \Delta=m\lambda+\frac{\lambda}{2}\quad(m=0,1,2,\ldots).
+    \end{equation}
+\end{law}
+%
+% Также можно сказать, что минимуму соответствует разность хода <<целое число длин волн плюс половина длины волны>>.
+% В той области пространства, где происходит наложение волн двух когерентных источников, наблюдается \textbf{интерференционная картина}~--- фиксированное, не зависящее от времени распределение мест максимумов и минимумов освещенности. В таком случае говорят, что волны \emph{интерферируют} друг с другом, или происходит \emph{интерференция} волн.
+%
+Если разность хода принимает какое-то иное значение, не равное целому или полуцелому числу длин волн, тогда волны, приходящие в данную точку, создают в ней колебания с некоторой промежуточной освещенностью (больше минимально возможной освещенности, но меньше максимально возможной).
+
+ 
+\end{document}

@@ -1,0 +1,219 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{15
+}
+\addtocounter{section}{-1} 
+
+\section{Фотоэффект}
+
+
+Эйнштейн в поисках объяснения результатов опытов по взаимодействию света\footnote{Здесь и далее любое электромагнитное излучение называется для краткости светом.} с веществом пришел к выводу, что \emph{свет (и электромагнитное излучение вообще) состоит из отдельных порций~--- квантов} (или, как говорят, \emph{фотонов})\footnote{Эйнштейн развил идею Планка (\emph{гипотезу Планка}), которая состоит в том, что свет излучается и поглощается отдельными порциями (квантами).}. Таким образом, стали считать, что свет~--- это поток особых частиц (фотонов), движущихся в вакууме со скоростью~$c$.
+
+\textbf{Энергия фотона} пропорциональна частоте излучения:
+\begin{equation}
+    E_\text{ф}=h\nu,
+\end{equation}
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{em/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)}]
+  \begin{scope}[transparency group,nearly transparent]
+  \begin{scope}[transparency group,semitransparent]
+  \shade[ball color=NavyBlue!70] ([shift={(0:\de cm)}]0,0) circle (\de);
+  \end{scope}
+  \begin{scope}[transparency group]
+  \shade[ball color=NavyBlue!70] ([shift={(180:{0 cm})}]0,0) circle (\de);
+  \end{scope}
+  \end{scope}
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\de cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{ph/.pic={
+  \begin{scope}[shift={({rnd*360}:.08)}]
+  \begin{scope}[transparency group,nearly transparent]
+  \begin{scope}[transparency group,semitransparent]
+  \shade[ball color=yellow!60!orange] ([shift={({90+\an}:\de cm)}]0,0) circle (\de);
+  \end{scope}
+  \begin{scope}[transparency group]
+  \shade[ball color=yellow!60!orange] ([shift={(180:{0 cm})}]0,0) circle (\de);
+  \end{scope}
+  \end{scope}
+  \shade[ball color=yellow!60!orange] ([shift={({\an-90}:{\de cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\de{.1}
+\def\an{40}
+
+
+% plates
+\fill[red,semitransparent] (0,0) rectangle++ (.1,2);
+\draw[] (0,0) rectangle++ (.1,2);
+\draw (0.05,0) node[yshift=2 cm,above] {А} to[*short,-o] ++ (0,-1.5) node[below] {$+$} coordinate (ll);
+\draw[->,vec,thick,red] (0.05,0) ++ (0,-.75) ++ (-.2,0) ++ (0,-.5) --++ (0,1) node[midway,black,left] {$I_\text{ф}$}; 
+
+\fill[NavyBlue,semitransparent] (3,0) rectangle++ (.1,2);
+\draw[] (3,0) rectangle++ (.1,2);
+\draw (3.05,0) node[yshift=2 cm,above] {К} to[*short,-o] ++ (0,-1.5) node[below] {$-$} coordinate (rr);
+\draw[<-,gray,shorten <=1.5mm,shorten >=3mm] (ll) --++ (1.5,0) node[black] {$U$};
+\draw[<-,gray,shorten <=1.5mm,shorten >=3mm] (rr) --++ (-1.5,0);
+
+
+% light
+\fill[yellow,semitransparent] (3,.4) --++ ({90+\an}:3) --++ ({\an}:{1.2*cos(\an)}) -- (3,1.6) -- cycle;
+\pic at (1.8,2.7) {ph};
+\pic at (1.9,2) {ph};
+\pic at (2.7,1.5) {ph};
+
+
+% e
+\pic at (2,1.5) {em};
+\pic at (2.7,1) {em};
+\pic at (2.4,.5) {em};
+
+
+
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Фотоэффект}
+    \label{fig:p197}
+\end{wrapfigure}
+
+\noindent где $h$~--- \emph{постоянная Планка} (см.~справочные таблицы).
+
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \tikzset{em/.pic={
+%   \begin{scope}[shift={({rnd*360}:.025)}]
+%   \begin{scope}[transparency group,nearly transparent]
+%   \begin{scope}[transparency group,semitransparent]
+%   \shade[ball color=NavyBlue!70] ([shift={(0:\de cm)}]0,0) circle (\de);
+%   \end{scope}
+%   \begin{scope}[transparency group]
+%   \shade[ball color=NavyBlue!70] ([shift={(180:{0 cm})}]0,0) circle (\de);
+%   \end{scope}
+%   \end{scope}
+%   \shade[ball color=NavyBlue!70] ([shift={(180:{\de cm})}]0,0) circle (\de);
+%   \end{scope}}
+% }
+
+% \tikzset{ph/.pic={
+%   \begin{scope}[shift={({rnd*360}:.08)}]
+%   \begin{scope}[transparency group,nearly transparent]
+%   \begin{scope}[transparency group,semitransparent]
+%   \shade[ball color=yellow!60!orange] ([shift={({90+\an}:\de cm)}]0,0) circle (\de);
+%   \end{scope}
+%   \begin{scope}[transparency group]
+%   \shade[ball color=yellow!60!orange] ([shift={(180:{0 cm})}]0,0) circle (\de);
+%   \end{scope}
+%   \end{scope}
+%   \shade[ball color=yellow!60!orange] ([shift={({\an-90}:{\de cm})}]0,0) circle (\de);
+%   \end{scope}}
+% }
+
+% \def\de{.1}
+% \def\an{40}
+
+
+% % plates
+% \fill[red,semitransparent] (0,0) rectangle++ (.1,2);
+% \draw[] (0,0) rectangle++ (.1,2);
+% \draw (0.05,0) node[yshift=2 cm,above] {А} to[*short,-o] ++ (0,-1.5) node[below] {$+$} coordinate (ll);
+% \draw[->,vec,thick,red] (0.05,0) ++ (0,-.75) ++ (-.2,0) ++ (0,-.5) --++ (0,1) node[midway,black,left] {$I_\text{ф}$}; 
+
+% \fill[NavyBlue,semitransparent] (3,0) rectangle++ (.1,2);
+% \draw[] (3,0) rectangle++ (.1,2);
+% \draw (3.05,0) node[yshift=2 cm,above] {К} to[*short,-o] ++ (0,-1.5) node[below] {$-$} coordinate (rr);
+% \draw[<-,gray,shorten <=1.5mm,shorten >=3mm] (ll) --++ (1.5,0) node[black] {$U$};
+% \draw[<-,gray,shorten <=1.5mm,shorten >=3mm] (rr) --++ (-1.5,0);
+
+
+% % light
+% \fill[yellow,semitransparent] (3,.4) --++ ({90+\an}:3) --++ ({\an}:{1.2*cos(\an)}) -- (3,1.6) -- cycle;
+% \pic at (1.8,2.7) {ph};
+% \pic at (1.9,2) {ph};
+% \pic at (2.7,1.5) {ph};
+
+
+% % e
+% \pic at (2,1.5) {em};
+% \pic at (2.7,1) {em};
+% \pic at (2.4,.5) {em};
+
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Фотоэффект}
+% \label{fig:p197}
+% \end{figure}
+
+
+\textbf{Фотоэффект}~--- это вырывание электронов из тела падающим светом. Явление фотоэффекта было иссследовано Столетовым с помощью специального устройства, основная часть которого показана на рис.\,\ref{fig:p197}. 
+
+Главная часть этого устройства состоит из двух металлических пластин~--- пластина~А (анод) и пластина~К (катод). К пластинам от батарейки подводится напряжение~$U$ (на анод подан <<плюс>>, а на катод~--- <<минус>>). В данном случае напряжение~$U$ считается положительным (его знак определяется знаком анода).
+
+При освещении катода, например, ультрафиолетовым светом его фотоны (желтые шары) выбивают с катода электроны (синие шары), которые разгоняются электрическим полем (созданным пластинами) в сторону анода. Достигшие анода выбитые электроны (\emph{фотоэлектроны}) устремляются к <<плюсу>>~--- через батарейку протекает ток~$I_\text{ф}$, называемый \emph{фототоком} (потому что его создают фотоэлектроны). 
+
+% происходит перенос отрицательного заряда с пластины~К на пластину~А, что эквивалентно протеканию тока
+
+}
+
+Три \emph{закона фотоэффекта} формулируются так.
+\begin{enumerate}
+    \item[\textbf{I.}] Число электронов, вырываемых из катода за секунду, пропорционально мощности падающего на катод излучения (при его неизменной частоте)\footnote{Мощность падающего излучения~--- это отношение суммарной энергии фотонов, попадающих на облучаемое тело, ко времени, за которое эти фотоны попали на тело.}:
+    \begin{equation}
+        N_\text{фэ}\sim P_\text{изл}.
+    \end{equation}
+    \item[\textbf{II.}] Максимальная кинетическая энергия фотоэлектронов линейно возрастает с частотой света и не зависит от мощности падающего излучения\footnote{Эту зависимость можно использовать только для качественных ответов: например, чем больше частота излучения, тем больше максимальная кинетическая энергия фотоэлектронов.}:
+    \begin{equation}
+        E_\text{к.\,max}\sim \nu.
+    \end{equation}
+    \item [\textbf{III.}] Фотоэффект наблюдается только при частотах, больших некоторой частоты~$\nu_\text{кр}$, называемой \emph{красной границей фотоэффекта} и зависящей от облучаемого вещества:
+    \begin{equation}
+        \nu>\nu_\text{кр}.
+    \end{equation}
+    
+    % Для каждого вещества существует \emph{красная граница фотоэффекта}~--- наименьшая частота света~$\nu_\text{кр}$, при которой фотоэффект ещё возможен. При $\nu < \nu_\text{кр}$ фотоэффект не наблюдается ни при какой мощности падающего света.
+   
+\end{enumerate}
+
+
+
+
+
+
+
+
+ 
+\end{document}

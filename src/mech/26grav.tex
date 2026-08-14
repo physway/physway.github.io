@@ -1,0 +1,166 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{18
+}
+\addtocounter{section}{-1} 
+
+\section{Силы тяготения и реакции}
+
+
+\begin{law}
+\textbf{Закон всемирного тяготения.} Два тела массами~$m_1$ и~$m_2$, расположенные на расстоянии~$r$, притягиваются
+друг к другу с \textbf{силой тяготения}
+\begin{equation}
+    \label{26grav_e1}
+    F_\text{т}=G\dfrac{m_1m_2}{r^2},
+\end{equation}
+где~$G$~--- \emph{гравитационная постоянная} (см.~справочные таблицы). 
+\end{law}
+
+На рис.\,\ref{fig:p35} условно изображены планета и космический корабль.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\shade[ball color=Green] (0,0) circle (.6);
+\node [left,black] at (-.6,0) {П};
+
+\path (0,0) ++ (20:3cm) node (s) {} ++ (.15,0) node[black,right] {К};
+\shade[ball color=lightgray] (s) circle (.15);
+
+%r
+\draw[densely dashed] (0,0) --++ (110:1.5cm);
+\draw[densely dashed] (s.center) --++ (110:1.5cm);
+
+\draw[<->] (0,0) ++ (110:1.3cm) --++ (20:3cm) node[midway,above] {$r$};
+
+
+%vec
+\node at (0,0) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (0,0) --++ (20:1cm) node[black,above] {$F_\text{т}$};
+\node at (s) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (s.center) --++ (200:1cm) node[black,below] {$F_\text{т}$};
+
+%m
+\node [below,black] at (0,-.6) {$m_\text{п}$};
+\path (0,0) ++ (20:3cm) ++ (0,-.15) node[black,below] {$m_\text{к}$};
+
+
+
+    \end{tikzpicture}
+\caption{Притяжение планеты и космического корабля}
+\label{fig:p35}
+\end{figure}
+
+Планета~П массой~$m_\text{п}$ и корабль~К массой~$m_\text{к}$ расположены на некотором расстоянии~$r$ друг от друга\footnote{Для однородных шарообразных тел расстояние~$r$ есть расстояние между их центрами.}. Как и любые два~тела, обладающих массой, планета и корабль \emph{взаимодействуют} друг с другом так, что планета притягивает корабль с силой~$F_\text{т}$, а корабль~--- планету с такой же силой~$F_\text{т}$. 
+
+При свободном падении у поверхности планеты все тела движутся с одинаковым ускорением~$g$. Тогда по второму закону~Ньютона
+сила, действующая на тело массы~$m$  со стороны планеты и называемая \textbf{силой тяжести}, равна:
+\begin{equation}
+    \label{26grav_e2}
+    F_\text{т}=mg.
+\end{equation}
+
+Вообще, сила тяжести и сила тяготения~--- это взаимозаменяемые термины, обозначающие одну и ту же силу \emph{гравитационного взаимодействия}. Так, силу тяжести, действующую на тело, можно называть и силой тяготения: численное значение этой силы гравитационного притяжения от этого не поменяется\footnote{Приравняв правые части формул~\eqref{26grav_e1} и~\eqref{26grav_e2}, можно получить формулу для ускорения свободного падения: $g=G\dfrac{m_\text{планеты}\strut}{r^2}$.}.
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+\draw (5,0) -- (8,0);
+
+\shade[ball color=lightgray,yshift=0] (6.5,.3) circle (.3);
+
+%vec
+\node at (6.5,-.2) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,NavyBlue,thick,vec] (6.5,-.2) --++ (0,-1) node[black,right] {$\vec P$};
+
+\node at (6.5,.2) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (6.5,.2) --++ (0,1) node[black,right] {$\vec N$};
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Шар\\ на опоре}
+    \label{fig:p36}
+\end{wrapfigure}
+
+
+
+% \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+% \draw (5,0) -- (8,0);
+
+% \shade[ball color=lightgray,yshift=0] (6.5,.3) circle (.3);
+
+% %vec
+% \node at (6.5,-.2) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+% \draw[->,NavyBlue,thick,vec] (6.5,-.2) --++ (0,-1) node[black,right] {$\vec P$};
+
+% \node at (6.5,.2) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+% \draw[->,red,thick,vec] (6.5,.2) --++ (0,1) node[black,right] {$\vec N$};
+
+
+%     \end{tikzpicture}%
+% \caption{Шар на опоре}
+% \label{fig:p36}
+% \end{figure}
+
+Пусть теперь массивный шар покоится на поверхности планеты~--- то есть, как говорят, на опоре (рис.\,\ref{fig:p36}).
+
+\textbf{Вес} ($\vec P$ [Н])~--- это сила, действующая на
+опору или подвес со стороны тела (синий вектор на рис.\,\ref{fig:p36}). \emph{Вес приложен к~опоре (подвесу)}, а не к телу.
+
+\textbf{Сила реакции} ($\vec N$ [Н])~--- это сила, приложенная к телу со стороны опоры или подвеса (красный вектор на рис.\,\ref{fig:p36}).
+
+В рассматриваемой паре тел (шар и опора) силы~$P$ и~$N$ связаны третьим законом Ньютона:
+\begin{equation}
+    P=N.
+\end{equation}
+
+}
+
+Следует отметить, что сила реакции и вес служат проявлением \emph{электромагнитного взаимодействия} тел.
+
+
+
+
+
+
+ 
+\end{document}

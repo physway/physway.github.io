@@ -1,0 +1,133 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{29
+}
+\addtocounter{section}{-1} 
+
+\section{Закон Архимеда}
+
+
+\sbox{0}{%
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%liquid
+\fill[SkyBlue,semitransparent] (0,0) --++ (0,2.5) --++ (2,0) --++ (0,-.7) --++ (1,0) --++ (0,.7) --++ (2,0) --++ (0,-2.5) -- cycle;
+
+\begin{scope}[yshift=.3cm]
+    
+\fill[yellow!70!black,semitransparent] (2,2.5) rectangle++ (1,-1);
+\draw[] (2,2.5) rectangle++ (1,-1);
+
+%forces
+\draw[->,red,thick,vec] (2.5,2) --++ (0,1) node[black,right] {$\vec F_\text{А}$};
+\node at (2.5,2) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+\draw[->,red,thick,vec] (2.5,2) --++ (0,-1) node[black,right] {$\vec F_\text{т}$};
+
+\end{scope}
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[10]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Куб на плаву}
+    \label{fig:p53}
+\end{wrapfigure}
+
+
+Некоторые тела, помещенные в жидкость\footnote{Далее считается, что среда (жидкость или газ) покоится у поверхности планеты.}, не тонут. В таких случаях сила тяжести уравновешивается какой-то другой силой, действующей на тело со стороны жидкости. Эта сила называется \emph{выталкивающей} или \emph{архимедовой} силой и действует на любое тело, погруженное в жидкость или газ целиком или частично.
+
+На рис.\,\ref{fig:p53} изображен деревянный куб, покоящийся на поверхности воды; сила тяжести равна так называемой силе~Архимеда: $F_\text{т}=F_\text{А}$. 
+
+}
+
+\begin{law}
+\textbf{Закон Архимеда.} На погружённое (возможно, частично) в жидкость или газ тело действует выталкивающая сила, равная весу среды, объём которой вытеснило тело:
+\begin{equation}
+    F_\text{А}=P_\text{выт.\,с},
+\end{equation}
+где~$P_\text{выт.\,с}$~--- вес вытесненной среды. (Силы связаны третьим законом Ньютона.)
+\end{law}
+%
+Можно заметить, что вес вытесненной среды в рассматриваемых условиях есть $P_\text{выт.\,с}=\rho_\text{с}gV_\text{выт}$; где~$\rho_\text{с}$~--- плотность среды, $V_\text{выт}$~--- вытесненный объем. Тогда сила Архимеда равна:
+\begin{equation}
+    F_\text{А}=\rho_\text{с}gV_\text{выт}.
+\end{equation}
+
+\emph{Плавание}~--- это состояние тела, при котором оно не тонет в жидкости (или газе), будучи погруженным в нее. На рис.\,\ref{fig:p54} показаны три погруженных в воду шара одинакового размера, сделанных из разных материалов.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\fill[SkyBlue,semitransparent] (0,-.27) rectangle (12,2.5);
+
+%balls
+\shade[ball color=lightgray] (3,1.25) node[xshift=-.3cm,left] {Ш$_1$} circle (.3);
+\shade[ball color=SkyBlue!70!RoyalBlue] (6,1.25) node[xshift=-.3cm,left] {Ш$_2$} circle (.3);
+\shade[ball color=yellow!40!brown] (9,1.25) node[xshift=-.3cm,left] {Ш$_3$} circle (.3);
+
+%F
+\def\w{.9}
+%легкий бетон
+\draw[->,red,thick,vec] (3,1.25) --++ (0,-1.2) node[black,right] {$\vec F_\text{т1}$};
+\draw[->,red,thick,vec] (3,1.25) --++ (0,\w) node[black,right] {$\vec F_\text{А}$};
+\node at (3,1.25) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+%water
+\draw[->,red,thick,vec] (6,1.25) --++ (0,-\w) node[black,right] {$\vec F_\text{т2}$};
+\draw[->,red,thick,vec] (6,1.25) --++ (0,\w) node[black,right] {$\vec F_\text{А}$};
+\node at (6,1.25) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+%дерево
+\draw[->,red,thick,vec] (9,1.25) --++ (0,-.7) node[black,right] {$\vec F_\text{т3}$};
+\draw[->,red,thick,vec] (9,1.25) --++ (0,\w) node[black,right] {$\vec F_\text{А}$};
+\node at (9,1.25) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+    \end{tikzpicture}
+\caption{Шары в воде}
+\label{fig:p54}
+\end{figure}
+
+На примере с шарами~Ш$_1$, Ш$_2$ и~Ш$_3$  плотностей~$\rho_1$, $\rho_2$ и~$\rho_3$ соответственно, которые вначале покоятся в жидкости плотности~$\rho_\text{с}$, можно проиллюстрировать три возможных движения тела после погружения в некоторую среду.
+
+\begin{enumerate}
+    \item Шар~Ш$_1$ сделан из бетона: $F_\text{т1}>F_\text{А}$ или $\rho_1>\rho_\text{с}$. Этот шар тонет.
+    \item В шаре~Ш$_2$ вода, обурнутая легкой тонкой пленкой: $F_\text{т2}=F_\text{А}$ или $\rho_2=\rho_\text{с}$. Этот шар остается в покое.
+    \item Шар~Ш$_3$ деревянный: $F_\text{т3}<F_\text{А}$ или $\rho_3<\rho_\text{с}$. Этот шар всплывает. Он придет в равновесие у поверхности жидкости, частично погрузившись в нее.
+    \looseness=-1
+\end{enumerate}
+
+
+\emph{Условие плавания} тела можно записать в виде неравенства: $\rho \leqslant \rho_\text{с}$, где~$\rho$~--- плотность тела.
+
+
+
+
+
+
+
+
+ 
+\end{document}

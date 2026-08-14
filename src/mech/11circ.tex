@@ -1,0 +1,105 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+%\hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{11
+}
+\addtocounter{section}{-1} 
+
+\section{Движение по окружности}
+
+
+Для начала следует рассмотреть движение по окружности или ее части~--- дуге, происходящее с \emph{постоянной величиной скорости}.
+
+Пусть имеется колесо от тележки (шину сняли), ось которого закрепили горизонтально. В некоторой точке на краю колеса оказался муравей (тело); колесо привели в равномерное вращение. На рис.\,\ref{fig:p21} показан опыт с движением этого муравья (положения тела фиксируют ежесекундно).
+
+\begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[scale=.7,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (3);
+\draw[densely dashed] (0,3) -- (0,0) node[midway,left,black] {$R$};
+\node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:$O$] {};
+
+
+%vec a
+\draw[->,red,thick,vec] (0,3) --++ (-90:1) node[black,right] {$a_\text{ц}$};
+\draw[->,red,thick,vec] (45:3) --++ (225:1) node[black,below right,inner xsep=0] {$a_\text{ц}$};
+\draw[->,red,thick,vec] (0:3) --++ (180:1) node[black,below] {$a_\text{ц}$};
+
+
+%vec v
+\draw[->,NavyBlue,thick,vec] (0,3) --++ (0:1.5) node[black,above] {$v_\text{к}$};
+\node at (0,3) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:$M_0$] {};
+
+\draw[->,NavyBlue,thick,vec] (45:3) --++ (-45:1.5) node[black,right] {$v_\text{к}$};
+\node at (45:3) [circle,fill=,inner sep=0pt,minimum size=1mm,label={[inner xsep=0]above right:$M_1$}] {};
+
+\draw[->,NavyBlue,thick,vec] (0:3) --++ (-90:1.5) node[black,right] {$v_\text{к}$};
+\node at (0:3) [circle,fill=,inner sep=0pt,minimum size=1mm,label=right:$M_2$] {};
+
+%omega 
+\draw[->,thick,vec] (-3.2,0) arc [start angle=180, end angle=160, radius=3.2] node[left] {$\omega$};
+
+
+
+    \end{tikzpicture}%
+\caption{Движение по окружности}
+\label{fig:p21}
+\end{figure}
+
+Муравей (не перемещаясь относительно колеса) последовательно проходит точки~$M_0$, $M_1$ и~$M_2$, лежащие на окружности радиусом~$R$. Тело имеет скорость~$v_\text{к}$, называемую \textbf{касательной скоростью} (или \emph{линейной скоростью}). В~данном движении модуль этой скорости сохраняется. 
+
+Вращение обычно происходит \emph{по или против часовой стрелки}. Такое движение, после которого точка оказывается в начальном положении, есть \textbf{оборот}.
+
+\textbf{Период} ($T$ [с])~--- это время, за которое тело совершает 1~\emph{оборот}. Можно видеть, что тело на рис.\,\ref{fig:p21} вернется в точку~$M_0$ через время $T=8$~с. Вот связи периода со скоростью и числом оборотов~$N$:
+\begin{equation}
+    T=\dfrac{2\pi R}{v_\text{к}}=\dfrac{\Delta t}{N}.
+\end{equation}
+
+\textbf{Частота} ($\nu$ [Гц])~--- это характеристика вращения, показывающая сколько оборотов совершает точка за одну секунду:
+\begin{equation}
+    \nu=\dfrac{1}{T}.
+\end{equation}
+
+\textbf{Угловая скорость} $\left(\omega\ \left[\dfrac{\text{рад}}{\text{с}}\right]\right)$~--- это характеристика вращения, показывающая на какой угол <<поворачивается>> \strut точка за одну~секунду. 
+Скорость~$\omega$ как~бы указывает направление вращения точки в виде изогнутой стрелки (на рис.\,\ref{fig:p21} изображена черным цветом). Формула угловой скорости:
+\begin{equation}
+    \omega=\dfrac{\varphi}{\Delta t}=2\pi\nu,
+\end{equation}
+где $\varphi$~--- угол, на который <<повернулась>> точка.
+
+Тело на рис.\,\ref{fig:p21} имеет ускорение~$a_\text{ц}$, называемое \textbf{центростремительным ускорением} (всегда направлено к центру окружности): 
+\begin{equation}
+    a_\text{ц}=\dfrac{v_\text{к}^2}{R}.
+\end{equation}
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,104 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{22
+}
+\addtocounter{section}{-1} 
+
+\section{Давление}
+
+В ряде случаев существенно то, что силы, действующие на тела, распределены по некоторой части поверхности этих тел. На рис.\,\ref{fig:p42} изображены два одинаковых бруска, покоящихся на горизонтальной поверхности.
+% \footnote{Интерактивные изображения ниже можно вращать мышью в программе Adobe Reader.}.
+
+
+\def\sub{.417}
+\begin{figure}[H]%
+\hfill
+\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{mech/30press_pic1.pdf}%
+% \caption{При $s_1=s_2$ вторая машина затратила меньше времени.}
+% \label{fig:p42sub1}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{mech/30press_pic2.pdf}%
+% \caption{При $t_1=t_2$ обе машины прошли одинаковое расстояние.}
+% \label{fig:p42sub2}
+\end{subfigure}%
+\hfill\mbox{}
+\caption{Бруски на поверхности}
+\label{fig:p42}
+\end{figure}
+
+
+Бруски~Б$_1$ и~Б$_2$ соприкасаются с опорой поверхностями площадями~$S_1$ и~$S_2$ соответственно ($S_2>S_1$). При этом, так как массы брусков одинаковы, возникают одинаковые приложенные к опоре силы (вес), обозначаемые~$\vec F$ для общего случая (рис.\,\ref{fig:p43}). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%next pic
+
+\def\sub{.417}
+\begin{figure}[H]%
+\hfill
+\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{mech/30press_pic3.pdf}%
+% \caption{При $s_1=s_2$ вторая машина затратила меньше времени.}
+% \label{fig:p42sub1}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{\sub\linewidth}
+\centering
+\includegraphics[]{mech/30press_pic4.pdf}%
+% \caption{При $t_1=t_2$ обе машины прошли одинаковое расстояние.}
+% \label{fig:p42sub2}
+\end{subfigure}%
+\hfill\mbox{}
+\caption{Силы и соответствующие площади}
+\label{fig:p43}
+\end{figure}
+
+Если поверхности опор достаточно мягкие, то на практике тела оставляют довольно заметные вмятины под собой. При тонких измерения <<погружения>> в опору брусков на рис.\,\ref{fig:p42} оказывается, что глубина, на которую <<вошел>> брусок~Б$_1$, больше соответствующей глубины для бруска~Б$_2$ (несмотря на то, что силы, приложенные к опоре со стороны каждого из брусков, одинаковы, что проиллюстрировано на рис.\,\ref{fig:p43}!).
+
+\textbf{Давление} ($P_\text{д}$ [Па])\footnote{Подпись~<<д>> необязательна и введена для того, чтобы не путать с весом, обозначаемым~$\vec P$.}~--- это характеристика <<продавливающего>> действия силы:
+\begin{equation}\label{30press_e1}
+    P_\text{д}=\frac{F_\perp}{S},
+\end{equation}
+где~$F_\perp$~--- перпендикулярная составляющая силы, действующей на поверхность площади~$S$.
+
+Также можно сказать, что давление~--- это \emph{поверхностная плотность силы}, то есть эта величина показывает, какая сила приходится на единицу площади.
+
+Возвращаясь теперь к рис.\,\ref{fig:p43}, можно видеть, что согласно формуле~\eqref{30press_e1} давления~$P_1$ и~$P_2$, создаваемые брусками~Б$_1$ и~Б$_2$ соответственно, связаны следующим соотношением: $P_1>P_2$.
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

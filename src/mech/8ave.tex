@@ -1,0 +1,94 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{8
+}
+\addtocounter{section}{-1} 
+
+\section{Средняя скорость}
+
+
+При неравномерном движении скорость\footnote{И ускорение тоже.} в общем случае может меняться. Это имеет место, например, при непредсказуемом движении муравья (рис.\,\ref{fig:p16}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+    \draw [rounded corners] (0,0)
+  \foreach \i in {1,...,6} {
+    -- ++(rnd,{rnd*.5}) node (cp) {}
+};
+    \node [circle,fill=black,inner sep=0pt,minimum size=1mm,opaque,label=right:$B$] at (cp) {};
+    \node [circle,fill,inner sep=0pt,minimum size=1mm,opaque,label=left:$A$] at (0,0) {};
+
+
+    \end{tikzpicture}
+\caption{Траектория муравья}
+\label{fig:p16}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/8ave_1}
+
+% \caption{Траектория муравья}
+% \label{fig:p16}
+% \end{figure}
+
+
+Муравей двигался по кривой траектории из пункта~$A$ в пункт~$B$ со случайно изменяющейся скоростью во времени, пройдя путь~$S_\text{общ}$ за время~$\Delta t_\text{общ}$. Если неинтересно, как тело двигалось в малые промежутки времени, то быстроту движения можно оценить по \textbf{средней скорости}:
+\begin{equation}
+    \label{8ave_e1}
+    v_\text{ср}=\dfrac{S_\text{общ}}{\Delta t_\text{общ}}.
+\end{equation}
+
+Когда что-то известно о <<частях>> траектории (например, сколько участков выделяют в движении), то формулу~\eqref{8ave_e1} можно записать так:
+\begin{equation*}
+    v_\text{ср}=\dfrac{S_\text{1}+S_\text{2}+\ldots}{t_\text{1}+t_\text{2}+\ldots},
+\end{equation*}
+где $S_\text{1},S_\text{2}$~--- пути; $t_\text{1},t_\text{2}$~--- промежутки времени соответствующих участков.
+
+Можно сказать, что средняя скорость~--- это такая скорость, которую нужно поддерживать телу, чтобы тот же путь был пройден за то же время, что и при действительном движении. 
+
+Среднюю скорость, о которой говорилось выше, называют также \emph{путевой}. Этим подчеркивается, что во внимание принимается именно \emph{путь}~--- то есть длина какой-либо траектории. Теперь следует разобрать одну простую задачу.
+
+\medskip
+
+\noindent\textbf{Задача.} Санки, двигаясь по горе, прошли в течение первой секунды движения 2~м, второй секунды~--- 6~м, третьей секунды~--- 10~м и четвертой секунды~--- 14~м. Найдите среднюю скорость за первые две секунды, за последние две секунды и за все время.
+
+\smallskip
+
+\noindent\emph{Решение}. Движение <<разбито>> на 4~участка. Для первых двух можно найти:
+\begin{equation*}
+    v_\text{ср1,2}=\dfrac{S_\text{1}+S_\text{2}}{t_\text{1}+t_\text{2}}=\dfrac{2+6}{1+1}=4\ \text{м$/$с}.
+\end{equation*}
+
+Для вторых двух и всех четырех аналогично:
+\begin{gather*}
+    v_\text{ср3,4}=\dfrac{S_\text{3}+S_\text{4}}{t_\text{3}+t_\text{4}}=\dfrac{10+14}{1+1}=12\ \text{м$/$с},\\
+    v_\text{ср1--4}=\dfrac{S_\text{1}+S_\text{2}+S_\text{3}+S_\text{4}}{t_\text{1}+t_\text{2}+t_\text{3}+t_\text{4}}=\dfrac{2+6+10+14}{1+1+1+1}=8\ \text{м$/$с}.
+\end{gather*}
+
+ 
+\end{document}

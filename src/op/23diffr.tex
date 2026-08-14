@@ -1,0 +1,175 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{11
+}
+\addtocounter{section}{-1} 
+
+\section{Дифракция света}
+
+
+\textbf{Дифракция света}~--- это огибание световыми волнами краев препятствия. (Дифракция свойственна волнам любой природы.)
+
+Пусть волна падает на экран с достаточно узкой щелью (рис.\,\ref{fig:p192}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%line
+\def\h{1.6}
+\foreach \i in{0,...,5}
+\draw[red,xshift={-.2*\i cm}] (-.2,-\h) --++ (0,{2*\h});
+
+\foreach \i in{1,...,10}
+\draw[red] (0,0) ++ (-30:{\i*.2}) arc [radius={\i*.2}, start angle=-30, end angle=30];
+
+
+%plane
+\draw[thick] (0,0.1) -- (0,\h) node[below right,inner ysep=0] {Э};
+\draw[thick] (0,-0.1) -- (0,-\h);
+
+
+%vec
+\draw[->,red] (-1.4,1.25) ++ (-1,0) --++ (1,0);
+\draw[->,red] (-1.4,-1.25) ++ (-1,0) --++ (1,0);
+
+
+    \end{tikzpicture}
+\caption{Дифракция на щели}
+\label{fig:p192}
+\end{figure}
+
+В данном случае на экран~Э слева падает \emph{плоская} волна: ее <<гребни>> выстроены вдоль параллельных линий (обозначенных красным цветом). После прохождения щели волна становится практически \emph{сферической}: <<гребни>> лежат на дугах концентрических окружностей (волна расходится)! Расходящаяся волна заходит в область предположительной тени от экрана. 
+
+% Особый интерес представляет случай падения плоской световой волны на \textbf{дифракционную решетку}~--- совокупность очень узких щелей, разделенных непрозрачными промежутками (рис.\,\ref{fig:p193}). 
+Пусть на \textbf{дифракционную решетку}~--- совокупность узких щелей, разделенных непрозрачными промежутками,~--- падает плоская волна света (рис.\,\ref{fig:p193}). 
+
+\tikzfading[name=fade out,
+inner color=transparent!50,
+outer color=transparent!100]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%grat
+\foreach \i in{0,...,3}
+\draw[thick,yshift={.7*\i cm}] (0,0.1) --++ (0,.5) coordinate (a);
+\node[below right,inner ysep=0] at (a) {Р};
+
+\foreach \i in{0,...,3}
+\draw[thick,yshift={-.7*\i cm}] (0,-0.1) --++ (0,-.5) coordinate (b);
+
+
+%d
+\draw[densely dashed] (b) --++ (.5,0) coordinate (db);
+\draw[densely dashed] ([yshift=.7 cm]b) --++ (.5,0) coordinate (da);
+\draw[densely dashed] ([xshift=-.2 cm]da) --++ (0,-.7) node[midway,right] {$d$};
+
+
+%line
+\foreach \i in{1,...,5}
+\draw[red] ([xshift={-.2*\i cm}]a) -- ([xshift={-.2*\i cm}]b);
+
+
+%plane
+\def\xs{4}
+\draw[thick,gray] ([xshift=\xs cm]a) coordinate (aa) node[below right,inner ysep=0,black] {Э} -- ([xshift=\xs cm]b) coordinate (bb);
+
+
+%rays path
+\path (a);
+\pgfgetlastxy{\ix}{\iy}
+\foreach \i in{-2,-1,...,2}
+\path[->,red] (0,0) coordinate (ce) --++ ({\xs},{\iy/3*(\i)})
+coordinate (m\i)
+;
+
+
+%m
+\node[right] at (m-2) {2};
+\node[right] at (m2) {2};
+
+\node[right] at (m-1) {1};
+\node[right] at (m1) {1};
+
+\node[right] at (m0) {$O$};
+
+
+%shade
+\begin{scope}
+    \def\rs{.4}
+    \clip (a) -- (aa) -- (bb) -- (b) -- cycle;
+    \foreach \i in{-2,-1,...,2}
+    \fill [red,path fading=fade out] (m\i) ++ ({-(\rs-abs(.1*\i))},{-(\rs-abs(.1*\i))}) rectangle++ ({2*(\rs-abs(.1*\i))},{2*(\rs-abs(.1*\i))});
+\end{scope}
+
+
+%rays
+\path (a);
+\pgfgetlastxy{\ix}{\iy}
+\foreach \i in{-2,-1,...,2}
+\draw[->,red] (0,0) coordinate (ce) --++ ({\xs},{\iy/3*(\i)})
+coordinate (m\i)
+;
+
+
+%angles
+\pic [draw,angle radius=15mm,angle eccentricity=1.2,"$\varphi_1$"] {angle = m0--ce--m1};
+\pic [draw,angle radius=25mm,angle eccentricity=1.15] {angle = m0--ce--m2};
+\pic [draw,angle radius=26mm,angle eccentricity=1.15,] {angle = m0--ce--m2};
+\coordinate (mm) at (\xs,1.1);
+\pic [angle radius=26mm,angle eccentricity=1.12,"$\varphi_2$"] {angle = m0--ce--mm};
+
+\pic [draw,angle radius=16mm,angle eccentricity=1.19,"$\varphi_1$"] {angle = m-1--ce--m0};
+\pic [draw,angle radius=27mm,angle eccentricity=1.15] {angle = m-2--ce--m0};
+\pic [draw,angle radius=28mm,angle eccentricity=1.15,] {angle = m-2--ce--m0};
+\coordinate (mm) at (\xs,-1.1);
+\pic [angle radius=28mm,angle eccentricity=1.11,"$\varphi_2$"] {angle = mm--ce--m0};
+
+
+%vec
+\draw[->,red] (-1.2,2) ++ (-1,0) --++ (1,0) node[above,black,midway] {$\lambda$};
+\draw[->,red] (-1.2,-2) ++ (-1,0) --++ (1,0);
+
+
+
+
+
+    \end{tikzpicture}
+\caption{Дифракция на решетке}
+\label{fig:p193}
+\end{figure}
+
+На решетку~Р с периодом\footnote{Период решетки есть ширина щели плюс ширина непрозрачного промежутка.}~$d$ падает плоская волна красного света с длиной волны~$\lambda$. На экране~Э за решеткой наблюдается интерференционная картина~--- чередование максимумов и минимумов интерференции (места сильной освещенности отмечены красными полукругами~--- это центральный максимум~$O$ (в центре картины), а также первые и вторые максимумы, расположенные симметрично относительно максимума~$O$ и обозначенные цифрами~1 и~2). Направления, например, на первый и второй максимумы (относительно направления на центр картины) задают углы~$\varphi_1$ и~$\varphi_2$ соответственно.  
+
+\textbf{Формула дифракционной решетки} описывает положения максимумов (с номерами~$m$) на экране:
+\begin{equation}
+    d\sin\varphi_m=m\lambda\quad(m=0,1,2,\ldots).
+\end{equation}
+
+
+
+
+
+
+
+
+ 
+\end{document}

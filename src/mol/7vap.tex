@@ -1,0 +1,179 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{44
+}
+\addtocounter{section}{-1} 
+
+\section{Пар}
+
+
+Все жидкости\footnote{А также твердые тела.} имеют способность улетучиваться. Например, количество воды в открытом стакане с течением времени, как известно, уменьшается. Частицы жидкости не исчезают бесследно~--- они образуют невидимый пар.
+
+\textbf{Пар}~--- это газ, образованный частицами жидкости, покинувшими ее. В примере с открытым стаканом с водой вылететь из жидкости с ее \emph{свободной поверхности} 
+% (то есть с границы раздела жидкости и воздуха)
+могут некоторые частицы, имеющие достаточную скорость, чтобы преодолеть силы притяжения к соседним частицам (жидкость испаряется).
+
+\textbf{Испарение}~--- это процесс превращения жидкости в пар, происходящий со свободной поверхности жидкости. \emph{Испарение любой жидкости происходит постоянно при любой температуре}.
+
+Частица пара через некоторое время может вернуться обратно в жидкость~--- пар конденсируется. \textbf{Конденсация}~--- это процесс превращения пара в жидкость. Конденсация пара есть процесс, обратный испарению жидкости.
+
+% Выпадение росы~--- пример конденсации водяного пара. 
+
+Пусть имеются два закрытых сосуда с водой и ее паром (рис.\,\ref{fig:p73}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (0,0) rectangle++ (11,-.3);  
+\draw (0,0) --++ (6,0) --++ (0,2.5) --++ (-6,0) -- cycle;
+
+%liquid
+\def\dw{.5}
+\fill[NavyBlue,nearly transparent] (0,0) ++ (0,\dw) --++ (0,-\dw) --++ (6,0) --++ (0,\dw) -- cycle;
+
+
+%mol
+\begin{scope}[transparency group,semitransparent]    
+\def\di{.08}
+\foreach \i in {1,...,30}
+  \fill[NavyBlue,shift={({2*\di},{\dw+2*\di})}] ({rnd*(6cm-4*\di cm)}, {rnd*(2cm-4*\di cm)}) circle (\di);
+
+% \fill[NavyBlue,shift={({2*\di},{\dw+2*\di})}] ({(6cm-4*\di cm)}, {(1.5cm-4*\di cm)}) circle (\di);
+
+\begin{scope}[yshift=-0.5cm]
+    
+%evap
+\fill[NavyBlue] (1.5,2) circle (\di) coordinate (e1);
+\fill[NavyBlue] (3.1,2.1) circle (\di) coordinate (e2);
+\fill[NavyBlue] (4.7,2.3) circle (\di) coordinate (e3);
+
+
+%cond
+\fill[NavyBlue] (.5,1.7) circle (\di) coordinate (c1);
+\fill[NavyBlue] (2.3,2.05) circle (\di) coordinate (c2);
+\fill[NavyBlue] (5.4,1.9) circle (\di) coordinate (c3);
+\end{scope}
+
+\end{scope}
+
+%%%arrows
+\draw[->,red,shorten <=.08cm,semithick,vec] (c1) -- (.8,.5);
+\draw[->,red,shorten <=.08cm,semithick,vec] (c2) -- (2,.5);
+\draw[->,red,shorten <=.08cm,semithick,vec] (c3) -- (5.3,.5);
+
+\draw[->,Green,shorten >=.08cm,semithick,vec] (1.1,.5) -- (e1) ;
+\draw[->,Green,shorten >=.08cm,semithick,vec] (3.4,.5) -- (e2);
+\draw[->,Green,shorten >=.08cm,semithick,vec] (4,.5) -- (e3);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=7cm]
+% \filldraw[lightgray,semitransparent] (0,0) rectangle++ (11,-.3);  
+\draw (0,0) --++ (6,0) --++ (0,2.5) --++ (-6,0) -- cycle;
+
+%liquid
+\def\dw{.5}
+\fill[NavyBlue,nearly transparent] (0,0) ++ (0,\dw) --++ (0,-\dw) --++ (6,0) --++ (0,\dw) -- cycle;
+
+
+%mol
+\begin{scope}[transparency group,semitransparent]    
+\def\di{.08}
+\foreach \i in {1,...,15}
+  \fill[NavyBlue,shift={({2*\di},{\dw+2*\di})}] ({rnd*(6cm-4*\di cm)}, {rnd*(2cm-4*\di cm)}) circle (\di);
+
+% \fill[NavyBlue,shift={({2*\di},{\dw+2*\di})}] ({(6cm-4*\di cm)}, {(1.5cm-4*\di cm)}) circle (\di);
+
+\begin{scope}[yshift=-0.5cm]
+    
+%evap
+\fill[NavyBlue] (1.5,1.7) circle (\di) coordinate (e1);
+\fill[NavyBlue] (3.1,1.8) circle (\di) coordinate (e2);
+\fill[NavyBlue] (4.7,2.3) circle (\di) coordinate (e3);
+
+
+%cond
+\fill[NavyBlue] (.5,1.9) circle (\di) coordinate (c1);
+\fill[NavyBlue] (2.3,2.05) circle (\di) coordinate (c2);
+\fill[NavyBlue] (5.4,1.9) circle (\di) coordinate (c3);
+\end{scope}
+
+\end{scope}
+
+%%%arrows
+\draw[->,red,shorten <=.08cm,semithick,vec] (c1) -- (.4,.5);
+\draw[->,red,shorten <=.08cm,semithick,vec] (c2) -- (2.5,.5);
+% \draw[->,red,shorten <=.08cm,semithick,vec] (c3) -- (5.3,.5);
+
+\draw[->,Green,shorten >=.08cm,semithick,vec] (1.1,.5) -- (e1) ;
+\draw[->,Green,shorten >=.08cm,semithick,vec] (3.8,.5) -- (e2);
+\draw[->,Green,shorten >=.08cm,semithick,vec] (5,.5) -- (e3);
+
+   
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Пары над жидкостью в сосудах}
+\label{fig:p73}
+\end{figure}
+
+Зеленые стрелки показывают процессы покидания частицей жидкости; красные стрелки показывают обратные процессы. Соответственно примерам, проиллюстрированным рисунком, можно выделить два вида паров.
+
+\begin{enumerate}
+    \item \textbf{Насыщенный} пар (рис.\,\ref{fig:p73}, слева) находится в \emph{динамическом равновесии} со своей жидкостью: число частиц вылетающих из жидкости \emph{равно} числу возвращающихся в нее за то же время. Пар \emph{не может} вместить в себя больше частиц (как бы максимально <<наполнен>> ими).
+
+    Например, насыщенным будет пар над жидкостью, которая долгое время находится в закрытом сосуде.
+
+    \item В системе из \textbf{ненасыщенного} пара (рис.\,\ref{fig:p73}, справа) и его жидкости испарение преобладает над конденсацией: число частиц вылетающих из жидкости \emph{превышает} числу возвращающихся в нее за то же время. 
+    Такой пар \emph{может} вместить в себя еще больше частиц.
+
+    К примеру, ненасыщенным можно считать пар над жидкостью, которую только что налили в сухой сосуд и закрыли.
+\end{enumerate}
+
+Давление~($P_\text{н.\,п}$) и плотность~($\rho_\text{н.\,п}$) насыщенного пара, например, воды~--- это максимальные давление и плотность, которые может иметь водяной пар при данной температуре. Эти параметры однозначно определяются \emph{только} температурой; они сведены в справочные таблицы для насыщенных паров. Учитывая сказанное, состояние пара можно приближенно описывать уравнением Менделеева"--~Клапейрона.
+ 
+% При \emph{фиксированной температуре} состояния насыщенных и ненасыщенных паров можно приближенно описывать уравнением Менделеева"--~Клапейрона. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

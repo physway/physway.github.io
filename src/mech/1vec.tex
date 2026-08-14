@@ -1,0 +1,158 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+\setcounter{section}{1}
+\addtocounter{section}{-1} 
+
+\section{Векторы}
+
+
+\textbf{Вектор}~--- это стрелка на чертеже для описания направления физической характеристики. На рис.\,\ref{fig:p1}
+вектор имеет синий цвет.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\draw[->,NavyBlue,thick,vec] (0,0) --++ (0:2cm) node[midway,above,black] {$\vec v$};
+\draw[red,arrows = {Bar[line cap=round]-Bar[line cap=round]}] (5,0) --++ (0:1cm) node[midway,above,black] {3~м$/$с};
+\path[|-|,red,thick,vec] (5,0) --++ (0:1cm) node[midway,below,black] {$m_v$};
+
+
+    \end{tikzpicture}
+\caption{Вектор и масштаб}
+\label{fig:p1}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/1vec_1}
+
+% \caption{Вектор и масштаб}
+% \label{fig:p1}
+% \end{figure}
+
+
+
+Красный элемент на рис.\,\ref{fig:p1} есть \emph{масштаб}, по которому определяется длина вектора в указанных единицах~--- то есть \textbf{величина} или \textbf{модуль вектора}. Видно, что величина данного вектора $v=6$~м$/$c. Используются также и другие единицы измерения (буквы после числа)~--- например, <<м>>, <<м$/$с$^2$>> и~т.\,д. 
+
+\textbf{Проекция вектора}~--- это <<тень>> вектора на ось координат при освещении перпендикулярно на эту ось. На рис.\,\ref{fig:p2} показаны проекции $v_x$ и $v_y$. 
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%light and stuff
+\filldraw[yellow] (0.5,3) -- (3.5,3) -- (3.5,0) -- (0.5,0) -- cycle;
+\filldraw[white] (1,1) -- (3,2) -- (3,0) -- (1,0) -- cycle;
+\draw[->,orange] (4,3) --++ (0,-1) node[midway,right,black] {Свет на $Ox$};
+
+
+%xoy
+\draw[->] (-.3,0) --++ (0:5cm) node[below,black] {$x$};
+\draw[->] (0,-.3) --++ (90:3.3cm) node[left,black] {$y$};
+\node[below left] at (0,0) {$O$};
+
+%vec
+\draw[->,thick,vec,NavyBlue] (1,1) -- (3,2) node[midway,below,black] {$\vec v$};
+
+%pro
+\path[-,thick,vec,lightgray,decoration={markings,mark=at position 1 with {\arrow{>}}},postaction={decorate}] (1,0) -- (3,0);
+\draw[-,ultra thick,vec,gray] (1,0) -- (3,0) node[midway,below,black] {$v_x$};
+
+\path[-,thick,vec,lightgray,decoration={markings,mark=at position 1 with {\arrow{>}}},postaction={decorate}] (0,1) -- (0,2);
+\draw[-,ultra thick,vec,gray] (0,1) -- (0,2) node[midway,left,black] {$v_y$};
+
+%dashed
+\draw[densely dashed] (1,1) -- (0,1); 
+\draw[densely dashed] (3,2) -- (0,2); 
+
+    \end{tikzpicture}
+\caption{Проекции вектора}
+\label{fig:p2}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/1vec_2}
+
+% \caption{Проекции вектора}
+% \label{fig:p2}
+% \end{figure}
+
+
+В общем случае проекция вектора равна длине <<тени>> со знаком
+\begin{itemize}
+    \item $+$, если <<теневая>> стрелка стоит по оси;
+    \item $-$, если <<теневая>> стрелка стоит против оси.
+\end{itemize}
+
+На рис.\,\ref{fig:p2} по обозначениям возле <<теней>> видно, что проекция не является вектором. Если приписать <<крыши>> над $v_x$ и $v_y$ и получше выделить их <<теневые наконечники>>, то окажется, что вектор~$\vec v$ разложен на \textbf{составляющие} векторы~$\vec v_x$ и~$\vec v_y$. Треугольник из этих векторов дает: $v=\sqrt{\mathstrut v_x^2+v_y^2}$.   
+
+\textbf{Сложить векторы}~--- это значит найти вектор, который совмещает в себе как бы <<действия>> этих векторов. Два сонаправленных вектора <<дают>> вектор в ту же сторону (длины складываются). Также ясно, что два противоположно направленных вектора <<дают>> вектор в сторону большего  вектора (длины вычитаются). На рис.\,\ref{fig:p3} показано, как сложить два произвольных вектора.  
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%vec
+\draw[->,NavyBlue,thick,vec] (0,0) --++ (60:2cm) node[midway,above left,black,inner xsep=0] {$\vec v_1$};
+\draw[->,NavyBlue,thick,vec] (1,0) --++ (-40:1cm) node[midway,below left,black,inner xsep=0] {$\vec v_2$};
+
+\draw[->,NavyBlue,thick,vec] (1,0) ++ ({cos(-40)},0) ++ (4,0) node (12) {} --++ (60:2cm) node[midway,above left,black,inner xsep=0] {$\vec v_1$};
+\draw[->,NavyBlue,thick,vec] (12.center) --++ (-40:1cm) node[midway,below left,black,inner xsep=0] {$\vec v_2$};
+
+
+%dash
+\draw[dashed,gray,shift={(-40:1cm)}] (1,0) ++ ({cos(-40)},0) ++ (4,0) --++ (60:2cm);
+\draw[dashed,gray] ([shift={(60:2cm)}]12.center) --++ (-40:1cm) node (n) {};
+
+
+%vec12
+\draw[->,red,thick,vec] (12.center) -- (n.center) node[right,black] {$\vec v_{12}$};
+
+%\Longrightarrow
+\path[->,thick,vec] ({1+cos(-40)},{(sin(60)*2-sin(40))/2})  --++ (4,0) node[midway] {$\Longrightarrow$};
+
+    \end{tikzpicture}
+\caption{Правило параллелограмма}
+\label{fig:p3}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/1vec_3}
+
+% \caption{Правило параллелограмма}
+% \label{fig:p3}
+% \end{figure}
+
+
+
+ 
+\end{document}

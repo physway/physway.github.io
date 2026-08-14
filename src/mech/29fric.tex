@@ -1,0 +1,166 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{21
+}
+\addtocounter{section}{-1} 
+
+\section{Сила трения}
+
+\textbf{Трение}~--- это взаимодействие соприкасающихся тел, препятствующее их относительному движению. 
+
+Возникновение трения можно объяснить следующим образом. Соприкасающиеся поверхности тел являются шероховатыми, они усеяны микроскопическими, незаметными глазу бугорками\footnote{Для наглядности на рисунке далее бугорки
+сильно преувеличены.}
+разных форм и размеров. Эти бугорки зацепляются друг за друга и мешают телам двигаться друг относительно друга.
+\looseness=-1
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\begin{scope}[rotate=30]
+
+\path[spath/save=rpath,name path=one] decorate[decoration={random steps,segment length=3pt,amplitude=1pt}] {(0,0) -- (2,0) coordinate (le) -- (3,0) coordinate (ri) -- (5,0)};
+
+%solid
+\path[lightgray,draw=black,name path=two] (le) -- (2,.5) -- (3,.5) -- (ri);
+\begin{scope}
+    \clip[] [spath/use=rpath] --++ (150:{5*cos(30)}) -- (0,0);
+    \filldraw[lightgray,draw=black] (2,-.15) -- (2,.5) -- (3,.5) -- (3,-.15) -- cycle;
+    
+\end{scope}
+
+\filldraw[lightgray,semitransparent] [spath/use=rpath] --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] [spath/use=rpath];
+
+%vec
+\draw[->,red,thick,vec] (2.5,.25) --++ (-120:2) node[black,right] {$\vec F_\text{т}$};
+\node at (2.5,.25) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:] {};
+
+\draw[->,red,thick,vec] (2.5,.25) --++ (0,{2*cos(30)}) node[black,left] {$\vec N$};
+
+\draw[->,red,thick,vec] (2.5,.25) --++ ({2*cos(60)},0) node[black,above] {$\vec F_\text{тр}$};
+
+
+\end{scope}
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[12]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Тело на наклонной плоскости}
+    \label{fig:p41}
+\end{wrapfigure}
+
+
+Пусть тело покоится на шероховатой \emph{наклонной плоскости} (рис.\,\ref{fig:p41}). 
+
+% \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+% \begin{scope}[rotate=30]
+
+% \path[spath/save=rpath,name path=one] decorate[decoration={random steps,segment length=3pt,amplitude=1pt}] {(0,0) -- (2,0) coordinate (le) -- (3,0) coordinate (ri) -- (5,0)};
+
+% %solid
+% \path[lightgray,draw=black,name path=two] (le) -- (2,.5) -- (3,.5) -- (ri);
+% \begin{scope}
+%     \clip[] [spath/use=rpath] --++ (150:{5*cos(30)}) -- (0,0);
+%     \filldraw[lightgray,draw=black] (2,-.15) -- (2,.5) -- (3,.5) -- (3,-.15) -- cycle;
+    
+% \end{scope}
+
+% \filldraw[lightgray,semitransparent] [spath/use=rpath] --++ (0,-.3) --++ (-5,0) -- cycle;
+% \draw[] [spath/use=rpath];
+
+% %vec
+% \draw[->,red,thick,vec] (2.5,.25) --++ (-120:2) node[black,right] {$\vec F_\text{т}$};
+% \node at (2.5,.25) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:] {};
+
+% \draw[->,red,thick,vec] (2.5,.25) --++ (0,{2*cos(30)}) node[black,left] {$\vec N$};
+
+% \draw[->,red,thick,vec] (2.5,.25) --++ ({2*cos(60)},0) node[black,above] {$\vec F_\text{тр}$};
+
+
+% \end{scope}
+
+
+%     \end{tikzpicture}
+% \caption{Тело на наклонной плоскости}
+% \label{fig:p41}
+% \end{figure}
+
+
+Во"=первых, тело притягивается вниз к планете силой тяжести~$\vec F_\text{т}$; во"=вторых, на тело со стороны опоры действует сила~$\vec N$, перпендикулярная плоскости (независимо от того, шероховатая поверхность или гладкая). Из рис.\,\ref{fig:p41} видно, что в данном случае сумма сил $\vec F_\text{т} + \vec N$ не может быть равна нулю; и под воздействием только этих сил тело получило бы возможность соскальзывать вниз по наклонной плоскости. Однако шероховатость опоры обусловливает еще одну силу~--- \textbf{силу трения}~$\vec F_\text{тр}$, направленную против возможного движения тела (тело <<пытается>> начать скользить, но трение удерживает его на месте). Сила трения всегда направлена вдоль
+поверхностей соприкасающихся тел и служит проявлением \emph{электромагнитного взаимодействия} тел.
+
+}
+% . ландсберг с 130
+% баканина силы трения 1973 г. №9 квант 
+
+
+Трение между телами, происходящее без жидкой или газообразной прослойки между ними, называется \textbf{сухим трением}. Принято выделять три основных вида сил такого трения\footnote{Эти силы, будучи приложенными к телу со стороны шероховатой поверхности, направлены против движения (или возможного движения) тела относительно этой поверхности.}.
+\begin{enumerate}
+    \item \textbf{Сила трения покоя} препятствует возникновению относительного движения тел:
+    \begin{equation}
+        F_\text{тр.\,п}\leqslant\mu N,
+    \end{equation}
+    где~$\mu$~--- \emph{коэффициент трения}, характеризующий шероховатость тел. 
+    
+    \emph{Пример:} тело покоится на шероховатой наклонной плоскости.
+
+    \item \textbf{Сила трения скольжения} препятствует проскальзыванию поверхностей тел:
+    \begin{equation}
+        F_\text{тр.\,с}=\mu N.
+    \end{equation}
+    
+    \emph{Пример:} тело скользит по шероховатой поверхности.
+
+    \item \textbf{Сила трения качения} препятствует перекатыванию одного тела по другому.
+
+    \emph{Пример:} тело катится по нетвердой опоре.
+\end{enumerate}
+
+Можно условно считать, что между телом, движущимся в жидкости или газе, и средой, окружающей тело, также происходит трение, которое называют \emph{сопротивлением среды}. Соответственно, против скорости тела направлена и \emph{сила сопротивления среды}, действующая на это тело.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

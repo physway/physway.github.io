@@ -1,0 +1,151 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% % from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{38
+}
+\addtocounter{section}{-1} 
+
+\section{Основные понятия молекулярной физики}
+
+
+\textbf{Молекула}~--- это наименьшая частица вещества. Например, капля воды состоит соответственно из определенных молекул~--- то есть частиц, сохраняющих химические свойства воды. Иначе, одна молекула воды~--- это наименьшее количество воды, которое можно взять. С помощью \emph{химических реакций} молекулу разлагают на еще меньшие частицы, называемые атомами. 
+Так, молекула воды~H$_2$O состоит из трех атомов (рис.\,\ref{fig:p65}; атомы изображены в виде шаров).
+
+\sbox{0}{%
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \shade[ball color=lightgray,nearly transparent,yshift=4cm] (6,.3) circle (.3);
+\shade[ball color=NavyBlue,semitransparent] (0,0) circle (.6);
+\def\angr{-90+52.25}
+\def\angl{-90-52.25}
+\shade[ball color=lightgray,semitransparent] ([shift={(\angr:.6cm)}]0,0) coordinate (r) circle (.3);
+\shade[ball color=lightgray,semitransparent] ([shift={(\angl:.6cm)}]0,0) coordinate (l) circle (.3);
+
+%descr
+\node[above] at (0,.6) {O}; 
+\node[below right,inner xsep=0] at ([shift={(\angr:.3)}]r) {H}; 
+\node[below left,inner xsep=0] at ([shift={(\angl:.3)}]l) {H}; 
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Молекула H$_2$O}
+    \label{fig:p65}
+\end{wrapfigure}
+
+\textbf{Атом}~--- это наименьшая \emph{химически неделимая} частица вещества. Так, молекулу можно разделить на атомы, из которых посредством \emph{химических превращений} можно <<собрать>> вещество.
+Но если делить сам атом, то получившиеся части не годятся для построения какого-либо вещества с точки зрения \emph{химии}.
+
+Разновидностей атомов (то есть \emph{химических элементов}) сравнительно немного~--- все они сведены в таблицу Менделеева. Например, молекула воды~H$_2$O состоит из двух атомов водорода~H и одного атома кислорода~O (рис.\,\ref{fig:p65}).   
+
+}
+\textbf{Молекулярно"=кинетическая теория (МКТ)} строения вещества основывается на трех утверждениях.
+
+\begin{enumerate}
+    \item Вещество состоит из частиц~--- молекул\footnote{Или из атомов, что далее подразумевается.}. Они расположены на расстояниях друг от друга.
+    \item Молекулы постоянно беспорядочно движутся (\emph{тепловое движение}).
+    \item Молекулы взаимодействуют друг с другом, так что они притягиваются или отталкиваются.
+\end{enumerate}
+
+На рис.\,\ref{fig:p66} изображены модели трех тел, <<собранных>> из молекул.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle++ (11,-.3);  
+\draw (0,0) --++ (11,0);
+
+%gas
+\draw (1,0) rectangle++ (2,2);
+
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.04,0.04)}] ({rnd*1.92cm}, {rnd*1.92cm}) circle (.02);
+
+  % \fill[red,shift={(1.03,0.03)}] ({0*1.94cm}, {0*1.94cm}) circle (.02);
+  % \fill[red,shift={(1.03,0.03)}] ({1.94cm}, {1.94cm}) circle (.02);
+
+\node[above] at (2,2) {Г};
+  
+%liquid
+\draw (4.5,0) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+% \foreach \i in {1,...,2400}
+%   \fill[NavyBlue,shift={(4.53,0.03)}] ({rnd*1.94cm}, {rnd*1cm}) circle (.02);
+
+\foreach \y in {0,...,15}
+\foreach \x in {0,...,28}
+  \fill[NavyBlue,shift={(4.565,0.065)}] ([shift={(360*rnd:.03*rnd)}]{\x/15}, {\y/15}) circle (.02);
+;
+
+
+\node[above] at (5.5,1.065) {Ж};
+
+% \draw (4.5,0) -- (5.5,1.065);
+
+%solid
+\foreach \y in {0,...,15}
+\foreach \x in {0,...,30}
+  \fill[brown,shift={(8,0.04)}] ([shift={(360*rnd:.009*rnd)}]{\x/15}, {\y/15}) circle (.02);
+;
+
+
+\node[above] at (9,1.04) {Т};
+
+% \draw (8,0) -- (9,1.04);
+
+
+    \end{tikzpicture}
+\caption{Модели трех тел}
+\label{fig:p66}
+\end{figure}
+
+Вещества тел~Г, Ж и~Т находятся в разных \emph{агрегатных состояниях}. Речь идет о следующих трех состояниях вещества.
+\begin{enumerate}
+    \item \textbf{Газообразное} тело~Г не имеет собственные объем и форму.
+    \item \textbf{Жидкое} тело~Ж сохраняет объем, но не форму.
+    \item \textbf{Твердое} тело~Т характеризуется собственными объемом и формой.
+\end{enumerate}
+
+Твердые тела подразделяют на \emph{кристаллические} и \emph{аморфные}. В кристаллических телах частицы вещества упорядочены в пространстве (тело~Т на рис.\,\ref{fig:p66}). В аморфных телах частицы не располагаются в определенном порядке (внутренняя структура аналогична структуре тела~Ж на рис.\,\ref{fig:p66}).
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

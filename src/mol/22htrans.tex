@@ -1,0 +1,518 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{47
+}
+\addtocounter{section}{-1} 
+
+\section{Теплопередача}
+
+
+\textbf{Теплопередача}~--- это процесс перехода внутренней энергии от более горячего тела к более холодному без совершения работы. Этот процесс также называют \emph{теплообменом}. Например, если в холодный стакан налить горячую воду, то стакан нагреется~--- произошла теплопередача от воды к стакану.   
+
+Различают три вида теплопередачи.
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% plane
+\filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] (0,0) -- (5,0);
+
+
+%solid
+\fill[lightgray] (2.5,1) rectangle++ (2,.2);
+    % red part
+    \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+    \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+%flame
+
+\begin{scope}[yshift=.1cm]
+    
+\fill[red,nearly opaque] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.5,1) 
+to [out=-45,in=90] (2.7,.5) 
+to [out=45,in=-90] (2.75,.7) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.55,1) 
+to [out=-45,in=90] (2.65,.4) 
+to [out=45,in=-90] (2.8,.55) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-110] (2.55,1) 
+to [out=-70,in=150] (2.8,.5) 
+to [out=-100,in=90] (2.8,0.3)
+to [out=-90,in=0] (2.5,0);
+
+\end{scope}
+
+\filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+    \end{tikzpicture}%
+}
+
+\nointerlineskip
+\task{%
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[6]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Теплопроводность}
+    \label{fig:p77}
+\end{wrapfigure}
+\textbf{Теплопроводность}~--- это теплообмен между контактирующими телами (или частями тела). На рис.\,\ref{fig:p77} изображен металлический стержень, помещенный одним концом в огонь.
+    
+%         \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% % plane
+% \filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+% \draw[] (0,0) -- (5,0);
+
+
+% %solid
+% \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+%     % red part
+%     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+%     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+% %flame
+
+% \begin{scope}[yshift=.1cm]
+    
+% \fill[red,nearly opaque] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.5,1) 
+% to [out=-45,in=90] (2.7,.5) 
+% to [out=45,in=-90] (2.75,.7) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.55,1) 
+% to [out=-45,in=90] (2.65,.4) 
+% to [out=45,in=-90] (2.8,.55) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-110] (2.55,1) 
+% to [out=-70,in=150] (2.8,.5) 
+% to [out=-100,in=90] (2.8,0.3)
+% to [out=-90,in=0] (2.5,0);
+
+% \end{scope}
+
+% \filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Теплопроводность}
+% \label{fig:p77}
+% \end{figure}
+
+    
+    % Ясно, что температура соседних частей стержня (рис.\,\ref{fig:p77}) будет постепенно повышаться. 
+
+    \smallskip
+    
+    <<Соприкасающиеся>> с огнем частицы стержня  (молекулы или атомы) начинают интенсивнее колебаться и сильнее <<толкают>> соседние частицы. Тепловое движение соседних частиц также увеличивается, и они в свою очередь <<раскачивают>> уже своих соседей по другую сторону. Так тепло постепенно распространяется от участка к участку.
+
+}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzfading[name=fade north,
+top color=transparent!100,
+bottom color=transparent!70]
+
+\sbox{0}{%
+        \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% plane
+\filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] (0,0) -- (5,0);
+
+
+% %solid
+% \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+%     % red part
+%     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+%     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+%water
+\draw (1.5,1.1) coordinate (w1) ++ (0,1.75) --++ (0,-1.75) --++ (2,0) --++ (0,1.75);
+
+\fill [SkyBlue,semitransparent] (w1) rectangle++ (2,1.5);
+\fill[red,path fading=fade north] (w1) rectangle++ (2,.75);
+
+\draw[->,semithick,vec,red] (2.9,1.2) 
+to [out=180,in=-120] (2.7,2.2);
+\draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.7,2.2) 
+to [out=60,in=180] (3.05,2.45)
+to [out=0,in=0] (2.9,1.2);
+
+\draw[->,semithick,vec,red] (2.1,1.2) 
+to [out=0,in=-60] (2.3,2.2);
+\draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.3,2.2) 
+to [out=120,in=0] (1.95,2.45)
+to [out=180,in=180] (2.1,1.2);
+
+
+%flame
+
+\begin{scope}[yshift=.1cm]
+    
+\fill[red,nearly opaque] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.5,1) 
+to [out=-45,in=90] (2.7,.5) 
+to [out=45,in=-90] (2.75,.7) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.55,1) 
+to [out=-45,in=90] (2.65,.4) 
+to [out=45,in=-90] (2.8,.55) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-110] (2.55,1) 
+to [out=-70,in=150] (2.8,.5) 
+to [out=-100,in=90] (2.8,0.3)
+to [out=-90,in=0] (2.5,0);
+
+\end{scope}
+
+\filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+    \end{tikzpicture}%
+}
+
+\nointerlineskip
+\task{%
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[9]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Конвекция}
+    \label{fig:p78}
+\end{wrapfigure}
+\textbf{Конвекция}~--- это теплообмен в жидкостях или газах за счет потоков вещества. На рис.\,\ref{fig:p78} изображен сосуд с водой над огнем.
+
+% \tikzfading[name=fade north,
+% top color=transparent!100,
+% bottom color=transparent!70]
+
+%             \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% % plane
+% \filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+% \draw[] (0,0) -- (5,0);
+
+
+% % %solid
+% % \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+% %     % red part
+% %     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+% %     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+% %water
+% \draw (1.5,1.1) coordinate (w1) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+% \fill [SkyBlue,semitransparent] (w1) rectangle++ (2,1.5);
+% \fill[red,path fading=fade north] (w1) rectangle++ (2,.75);
+
+% \draw[->,semithick,vec,red] (2.9,1.2) 
+% to [out=180,in=-120] (2.7,2.2);
+% \draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.7,2.2) 
+% to [out=60,in=180] (3.05,2.45)
+% to [out=0,in=0] (2.9,1.2);
+
+% \draw[->,semithick,vec,red] (2.1,1.2) 
+% to [out=0,in=-60] (2.3,2.2);
+% \draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.3,2.2) 
+% to [out=120,in=0] (1.95,2.45)
+% to [out=180,in=180] (2.1,1.2);
+
+
+% %flame
+
+% \begin{scope}[yshift=.1cm]
+    
+% \fill[red,nearly opaque] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.5,1) 
+% to [out=-45,in=90] (2.7,.5) 
+% to [out=45,in=-90] (2.75,.7) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.55,1) 
+% to [out=-45,in=90] (2.65,.4) 
+% to [out=45,in=-90] (2.8,.55) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-110] (2.55,1) 
+% to [out=-70,in=150] (2.8,.5) 
+% to [out=-100,in=90] (2.8,0.3)
+% to [out=-90,in=0] (2.5,0);
+
+% \end{scope}
+
+% \filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Конвекция}
+% \label{fig:p78}
+% \end{figure}
+
+    \smallskip
+    
+    Жидкость вблизи дна сосуда нагревается и расширяется, так что ее плотность становится меньше по сравнению с холодной жидкостью сверху. Эта менее плотная теплая жидкость под действием силы Архимеда
+    % \footnote{Точнее~--- под действием сил тяжести и Архимеда.} 
+    поднимается вверх (красные стрелки на рис.\,\ref{fig:p78}); напротив, более холодная жидкость <<тонет>>, то есть опускается вниз (синие стрелки на рис.\,\ref{fig:p78}). Таким образом вещество в сосуде перемешивается, и вся жидкость с течением времени прогревается.  
+   
+}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+\sbox{0}{%
+        \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% plane
+\filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] (0,0) -- (5,0);
+
+
+% %solid
+% \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+%     % red part
+%     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+%     \draw[] (2.5,1) rectangle++ (2,.2);
+
+%radiation
+\begin{scope}
+    \clip (4.5,0) arc [start angle=0, end angle=180, radius=2] -- cycle;
+    \fill [yellow,path fading=fade out] (.5,-2) rectangle++ (4,4);
+\end{scope}
+
+
+%flame
+
+\begin{scope}[yshift=.1cm]
+    
+\fill[red,nearly opaque] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.5,1) 
+to [out=-45,in=90] (2.7,.5) 
+to [out=45,in=-90] (2.75,.7) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.55,1) 
+to [out=-45,in=90] (2.65,.4) 
+to [out=45,in=-90] (2.8,.55) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-110] (2.55,1) 
+to [out=-70,in=150] (2.8,.5) 
+to [out=-100,in=90] (2.8,0.3)
+to [out=-90,in=0] (2.5,0);
+
+\end{scope}
+
+\filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+    \end{tikzpicture}%
+}
+
+\nointerlineskip
+\task{%
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Излучение}
+    \label{fig:p79}
+\end{wrapfigure}
+\textbf{Излучение}~--- это теплообмен посредством электромагнитных волн. На рис.\,\ref{fig:p79}~--- огонь.
+
+% \tikzfading[name=fade north,
+% top color=transparent!100,
+% bottom color=transparent!70]
+
+%             \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% % plane
+% \filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+% \draw[] (0,0) -- (5,0);
+
+
+% % %solid
+% % \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+% %     % red part
+% %     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+% %     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+% %water
+% \draw (1.5,1.1) coordinate (w1) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+% \fill [SkyBlue,semitransparent] (w1) rectangle++ (2,1.5);
+% \fill[red,path fading=fade north] (w1) rectangle++ (2,.75);
+
+% \draw[->,semithick,vec,red] (2.9,1.2) 
+% to [out=180,in=-120] (2.7,2.2);
+% \draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.7,2.2) 
+% to [out=60,in=180] (3.05,2.45)
+% to [out=0,in=0] (2.9,1.2);
+
+% \draw[->,semithick,vec,red] (2.1,1.2) 
+% to [out=0,in=-60] (2.3,2.2);
+% \draw[->,semithick,vec,NavyBlue,shorten <=.05cm,shorten >=.05cm] (2.3,2.2) 
+% to [out=120,in=0] (1.95,2.45)
+% to [out=180,in=180] (2.1,1.2);
+
+
+% %flame
+
+% \begin{scope}[yshift=.1cm]
+    
+% \fill[red,nearly opaque] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.5,1) 
+% to [out=-45,in=90] (2.7,.5) 
+% to [out=45,in=-90] (2.75,.7) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-90] (2.55,1) 
+% to [out=-45,in=90] (2.65,.4) 
+% to [out=45,in=-90] (2.8,.55) 
+% to [out=-45,in=0] (2.5,0);
+
+% \fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+% to [out=180,in=-90] (2.2,.3) 
+% to [out=90,in=-110] (2.55,1) 
+% to [out=-70,in=150] (2.8,.5) 
+% to [out=-100,in=90] (2.8,0.3)
+% to [out=-90,in=0] (2.5,0);
+
+% \end{scope}
+
+% \filldraw[] (2,0) rectangle++ (1,.1);
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Конвекция}
+% \label{fig:p78}
+% \end{figure}
+
+    \smallskip
+    
+    Атомы любого тела при ненулевой температуре (в кельвинах) вследствие теплового движения испускают так называемые \emph{электромагнитные волны}\footnotemark, то есть излучают энергию. \emph{Видимый свет}~--- это частный случай излучения (свечение огня на рис.\,\ref{fig:p79} является примером видимого излучения). Тела излучают энергию во все стороны; однако, не всякое излучение можно видеть~--- ведь большинство предметов при нормальных условиях не светятся, хотя эти предметы несомненно излучают (пример~--- горячая печь). Именно излучение <<доставляет>> энергию от Солнца к планетам~--- излучение может распространяться как в веществе, так и в \emph{вакууме}.
+   
+}
+
+}
+
+% \par\addvspace{\bigskipamount} % отступ подобно нумерованным окружениям
+
+% \footnotetext{Точнее говоря, электромагнитные волны излучают \emph{заряженные частицы}, входящие в состав атомов и совершающие вместе с ними хаотическое движение. Эти волны называют еще \emph{тепловым излучением}~--- в напоминание о том, что их источником служит тепловое движение частиц вещества.}
+
+\footnotetext{Электромагнитная волна~--- это распространение колебаний \emph{электрического} и \emph{магнитного полей}~--- особых форм материи, окружающей движущиеся \emph{заряженные частицы}. Именно такие частицы, входящие в состав атома и совершающие вместе с ними хаотическое движение, и излучают электромагнитные волны, уносящие с собой часть внутренней энергии тела.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

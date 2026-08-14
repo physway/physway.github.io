@@ -1,0 +1,209 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{43
+}
+\addtocounter{section}{-1} 
+
+\section{Изопроцессы}
+
+
+\textbf{Процесс}~--- это переход газа\footnote{Более точно, макроскопического тела.} из одного состояния в другое. Состояние газа определяется его количеством вещества~($\nu$), давлением~($P$), объёмом~($V$) и температурой~($T$); эти параметры связаны друг с другом уравнением Менделеева"--~Клапейрона. В дальнейшем подразумевается, что процессы проводят с одним и тем же газом (то есть $\nu=\mathrm{const}$).
+
+%При описании природных явлений и процессов в устройствах часто имеют дело с газом, у которого \emph{масса}~($m$) \emph{и молярная масса}~($M$) \emph{остаются неизменными}: в таком случае состояние газа определяется \emph{тремя} макроскопическими параметрами: давлением~($P$), объёмом~($V$) и температурой~($T$). В дальнейшем подразумевается, что процессы проводят с одним и тем же газом.
+
+% При описании природных явлений и процессов в технических устройствах имеют дело с самыми разнообразными процессами, происходящими с газами.
+
+\textbf{Изопроцесс}~--- это процесс, в котором значение одного из макропараметров ($P$, $V$ или $T$) остается неизменным. На рис.\,\ref{fig:p71} изображены три сосуда с одинаковыми газами, у которых поддерживаются постоянными разные параметры.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle++ (11,-.3);  
+\draw (0,0) --++ (11,0);
+
+% T=const
+
+%plunger
+\fill[lightgray] (1,1.5) rectangle++ (0.9,.15);
+\filldraw[lightgray,draw=black] (1,1.5) --++ (0.9,0) ++ (0,.15) --++ (-.9,0);
+
+\fill[lightgray] (3,1.5) rectangle++ (-0.9,.15);
+\filldraw[lightgray,draw=black] (3,1.5) --++ (-0.9,0) ++ (0,.15) --++ (.9,0);
+
+
+%temp
+\path[] (1.9,1.4) arc [start angle=180, end angle=240, radius=.1] coordinate (T) --++ (0,-.1) arc [start angle=180, end angle=360, radius={cos(60)*.1}] --++ (0,.1) arc [start angle=300, end angle=360, radius=.1] --++ (0,1) arc [start angle=0, end angle=180, radius=.1] -- cycle;
+
+\fill[red] (T) --++ (0,-.1) arc [start angle=180, end angle=360, radius={cos(60)*.1}] --++ (0,.1) arc [start angle=0, end angle=180, radius={cos(60)*.1}];
+\draw[] (1.9,1.4) arc [start angle=180, end angle=240, radius=.1] coordinate (T) --++ (0,-.1) arc [start angle=180, end angle=360, radius={cos(60)*.1}] --++ (0,.1) arc [start angle=300, end angle=360, radius=.1] --++ (0,1) arc [start angle=0, end angle=180, radius=.1] -- cycle;
+\draw[red] (T) ++ ({cos(60)*.1},0) --++ (0,.5) coordinate (Tr);
+\draw[lightgray] (Tr) --++ (0,.5);
+
+%gas
+\draw (1,0) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+\begin{scope}
+    \clip[] (1.9,1.5) --++ (0,-.1) arc [start angle=180, end angle=240, radius=.1] coordinate (T) --++ (0,-.1) arc [start angle=180, end angle=360, radius={cos(60)*.1}] --++ (0,.1) arc [start angle=300, end angle=360, radius=.1] --++ (0,.1) --++ (.9,0) --++ (0,-1.5) --++ (-2,0) --++ (0,1.5) -- cycle;
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.04,0.04)}] ({rnd*1.92cm}, {rnd*1.42cm}) circle (.02);
+\end{scope}
+
+
+\node[fill=white] at (2,.75) {$T=\mathrm{const}$};  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%V=const
+
+\begin{scope}[xshift=3.5cm]
+
+%limit
+\fill[gray] (1,1.5) ++ (0,-.2) --++ (.2,.2) --++ (-.2,0) --++ (0,-.2); 
+\draw (1,1.5) ++ (0,-.2) --++ (.2,.2);
+\fill[gray] (1,1.65) ++ (0,.2) --++ (.2,-.2) --++ (-.2,0) --++ (0,.2); 
+\draw (1,1.65) ++ (0,.2) --++ (.2,-.2);
+
+\fill[gray] (3,1.5) ++ (0,-.2) --++ (-.2,.2) --++ (.2,0) --++ (0,-.2); 
+\draw (3,1.5) ++ (0,-.2) --++ (-.2,.2);
+\fill[gray] (3,1.65) ++ (0,.2) --++ (-.2,-.2) --++ (.2,0) --++ (0,.2); 
+\draw (3,1.65) ++ (0,.2) --++ (-.2,-.2);
+
+
+%plunger
+\fill[lightgray] (1,1.5) rectangle++ (2,.15);
+\filldraw[lightgray,draw=black] (1,1.5) --++ (2,0) ++ (0,.15) --++ (-2,0);
+
+%gas
+\draw (1,0) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.04,0.04)}] ({rnd*1.92cm}, {rnd*1.42cm}) circle (.02);
+
+
+\node[fill=white] at (2,.75) {$V=\mathrm{const}$};  
+    
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%P=const
+
+\begin{scope}[xshift=7cm]
+
+%load
+\filldraw[black,rounded corners=1pt] (2,1.65) --++ (-.2,0) --++ (0,.5) --++ (.15,0) --++ (0,.1) --++ (-.1,0) --++ (0,.1) --++ (.3,0) --++ (0,-.1) --++ (-.1,0) --++ (0,-.1) --++ (.15,0) --++ (0,-.5) -- cycle;
+
+
+%plunger
+\fill[lightgray] (1,1.5) rectangle++ (2,.15);
+\filldraw[lightgray,draw=black] (1,1.5) --++ (2,0) ++ (0,.15) --++ (-2,0);
+
+%gas
+\draw (1,0) ++ (0,2) --++ (0,-2) --++ (2,0) --++ (0,2);
+
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.04,0.04)}] ({rnd*1.92cm}, {rnd*1.42cm}) circle (.02);
+
+
+\node[fill=white] at (2,.75) {$P=\mathrm{const}$};  
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Газы с разными фиксированными параметрами}
+\label{fig:p71}
+\end{figure}
+
+Трем случаям, проиллюстрированным на рисунке, соответствуют три вида изопроцессов.
+\begin{enumerate}
+    \item \textbf{Изотермический} процесс (рис.\,\ref{fig:p71}, слева) идет при постоянной температуре газа: $T=\mathrm{const}$. График\footnote{Графики зависимости одного параметра от другого в изопроцессах получены с использованием уравнения Менделеева"--~Клапейрона.} такого процесса называется \emph{изотермой}. На рис.\,\ref{fig:p72} (слева) изображены две изотермы газа с разными температурами на $PV$"=диаграмме: \emph{чем выше температура, тем дальше от начала~$O$ системы лежит соответствующая изотерма}. 
+    \item \textbf{Изохорный} процесс (рис.\,\ref{fig:p71}, посередине) идет при постоянном объеме газа: $V = \mathrm{const}$. График такого процесса~--- \emph{изохора}. На рис.\,\ref{fig:p72} (посередине) изображены две изохоры газа с разными объемами на $PT$"=диаграмме: \emph{чем больше объем, тем ближе к оси~$T$ лежит соответствующая изохора}. 
+    \item \textbf{Изобарный} процесс (рис.\,\ref{fig:p71}, справа) идет при постоянном давлении газа: $P = \mathrm{const}$. График такого процесса есть \emph{изобара}. На рис.\,\ref{fig:p72} (справа) изображены две изобары газа с разными давлениями на $VT$"=диаграмме: \emph{чем больше давление, тем ближе к оси~$T$ лежит соответствующая изобара}.
+\end{enumerate}
+
+% Графики процессов обычно изображают в $PV$-, $PT$- и $VT$"=системах (рис.\,\ref{fig:p72}). 
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%изотерма
+\draw[->] (-.3,0) --++ (0:3cm) node[below,black] {$V$};
+\draw[->] (0,-.3) --++ (90:3cm) node[left,black] {$P$};
+\node[below left] at (0,0) {$O$};
+
+\draw[red,thick,domain=.35:1.75,samples=1000] plot (\x,{1/(2*\x)}) node[right,black] {$T_1$};
+\draw[red,thick,domain=.65:1.75,samples=1000] plot (\x,{1.5/\x}) node[right,black] {$T_2>T_1$};
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%изохора
+\begin{scope}[xshift=5cm]
+\draw[->] (-.3,0) --++ (0:3cm) node[below,black] {$T$};
+\draw[->] (0,-.3) --++ (90:3cm) node[left,black] {$P$};
+\node[below left] at (0,0) {$O$};
+
+
+%red
+\draw[dashed] (0,0) --++ (60:.75cm) coordinate (v1);
+\draw[thick,red] (v1) --++ (60:2cm) node[black,right] {$V_1$};
+
+\draw[dashed] (0,0) --++ (30:.75cm) coordinate (v1);
+\draw[thick,red] (v1) --++ (30:1.5cm) node[black,right] {$V_2>V_1$};
+
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%изобара
+\begin{scope}[xshift=10cm]
+\draw[->] (-.3,0) --++ (0:3cm) node[below,black] {$T$};
+\draw[->] (0,-.3) --++ (90:3cm) node[left,black] {$V$};
+\node[below left] at (0,0) {$O$};
+
+
+%red
+\draw[dashed] (0,0) --++ (60:.75cm) coordinate (v1);
+\draw[thick,red] (v1) --++ (60:2cm) node[black,right] {$P_1$};
+
+\draw[dashed] (0,0) --++ (30:.75cm) coordinate (v1);
+\draw[thick,red] (v1) --++ (30:1.5cm) node[black,right] {$P_2>P_1$};
+
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Графики изопроцессов}
+\label{fig:p72}
+\end{figure}
+
+
+% График процесса с $T=\mathrm{const}$ называется изотермой. На рис.\,\ref{fig:p72} (слева) изображены две изотермы газа с разными температурами на $PV$"=диаграмме: \emph{чем выше температура, тем выше лежит соответствующая изотерма на $PV$"=ди\-аграмме}.
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,145 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% %from pagenumber to up
+% % \phantomsection 
+% % \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{26
+}
+\addtocounter{section}{-1} 
+
+\section{Закон Паскаля}
+
+
+Твердые тела передают производимое на них давление только в направлении действия силы. Жидкости и газы (их называют средами) ведут себя иначе; в них справедлив закон Паскаля. 
+\begin{law}
+\textbf{Закон Паскаля.} Давление, оказываемое на жидкость или газ, передается в любую точку этой
+среды без изменения по всем направлениям.
+\end{law}
+Хорошей иллюстрацией этого закона служит опыт с прибором, называемым шаром Паскаля (рис.\,\ref{fig:p47}, слева).
+
+\def\subA{.218}
+\def\subB{.220}
+\begin{figure}[H]%
+\hfill
+\adjustbox{valign=c}{\begin{subfigure}{\subA\linewidth}
+\centering
+\includegraphics[]{mech/34Pasc_pic.pdf}%
+% \caption{При $s_1=s_2$ вторая машина затратила меньше времени.}
+% \label{fig:p42sub1}
+\end{subfigure}}%
+\hfill
+\adjustbox{valign=c}{\begin{subfigure}{\subB\linewidth}
+\centering
+\begin{tikzpicture}[font=\small,line cap=round,       >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%circ
+\def\rd{1.5}
+\path[save path=\pathA] (0,0) ++ (70:\rd) coordinate (A) arc [start angle=70, end angle=49, radius=\rd] (0,0) ++ (41:\rd) arc [start angle=41, end angle=4, radius=\rd] (0,0) ++ (-4:\rd) arc [start angle=-4, end angle=-41, radius=\rd] (0,0) ++ (-49:\rd) arc [start angle=-49, end angle=-86, radius=\rd] (0,0) ++ (-94:\rd) arc [start angle=-94, end angle=-131, radius=\rd] (0,0) ++ (-139:\rd) arc [start angle=-139, end angle=-176, radius=\rd] (0,0) ++ (-184:\rd) arc [start angle=-184, end angle=-221, radius=\rd] (0,0) ++ (-229:\rd) arc [start angle=-229, end angle=-250, radius=\rd] coordinate (B);
+
+\foreach \al/\ph in {49/-4,41/4,4/-4,-4/4,-41/-4,-49/4,-86/-4,-94/4,-131/-4,-139/4,-176/-4,-184/4,-221/-4,-229/4}
+\path (0,0) ++ (\al:\rd) coordinate (A\al) --++ (\al+\ph:.1*\rd) coordinate (B\al);
+
+\fill[SkyBlue,semitransparent] (A) ++ (0,1.5) -- (A) arc [start angle=70, end angle=49, radius=\rd] -- (B49) -- (B41) -- (A41) arc [start angle=41, end angle=4, radius=\rd] -- (B4) -- (B-4) -- (A-4) arc [start angle=-4, end angle=-41, radius=\rd] -- (B-41) -- (B-49) -- (A-49) arc [start angle=-49, end angle=-86, radius=\rd] -- (B-86) -- (B-94) -- (A-94) arc [start angle=-94, end angle=-131, radius=\rd] -- (B-131) -- (B-139) -- (A-139) arc [start angle=-139, end angle=-176, radius=\rd] -- (B-176) -- (B-184) -- (A-184) arc [start angle=-184, end angle=-221, radius=\rd] -- (B-221) -- (B-229) -- (A-229) arc [start angle=-229, end angle=-250, radius=\rd] --++ (0,1.5) -- cycle;
+
+\draw (A) --++ (0,3);
+\draw (B) --++ (0,3);
+\draw [use path=\pathA];
+\foreach \al/\ph in {49/-4,41/4,4/-4,-4/4,-41/-4,-49/4,-86/-4,-94/4,-131/-4,-139/4,-176/-4,-184/4,-221/-4,-229/4}
+\draw (0,0) ++ (\al:\rd) coordinate (A\al) --++ (\al+\ph:.1*\rd) coordinate (B\al);
+
+%p
+\draw[->,red,thick,vec] (A) ++ (0,1.5) ++ ({-sin(20)*\rd-.1},.5) --++ (0,-.5);
+\draw[->,red,thick,vec] (A) ++ (0,1.5) ++ ({-sin(20)*\rd+.1},.5) node[black,above,xshift=-.1cm] {$P$} --++ (0,-.5);
+
+%p below
+\foreach \al in {45,0,-45,-90,-135,-180,-225}
+\path (0,0) ++ (\al:{\rd-.3}) node {$P$};
+
+    \end{tikzpicture}
+% \caption{При $t_1=t_2$ обе машины прошли одинаковое расстояние.}
+% \label{fig:p42sub2}
+\end{subfigure}}%
+\hfill\mbox{}
+\caption{Шар Паскаля}
+\label{fig:p47}
+\end{figure}
+
+Этот прибор состоит из полого шара с отверстиями, сообщенного с цилиндрическим сосудом, в котором может перемещаться поршень с рукояткой. Если в условиях невесомости\footnote{Закон Паскаля, однако, выполняется в любых условиях.} наполнить прибор водой и надавить на поршень, то жидкость будет выходить из всех отверстий одинаковыми струями. 
+
+На рис.\,\ref{fig:p47} (справа) показано распределение давлений в жидкости у отверстий шара~Паскаля при надавливании на жидкость сверху: внешнее давление~$P$ как бы <<добавляется>> в каждой точке среды. Так, давление атмосферы~--- огромного слоя воздуха~--- передается во все точки на любую глубину, например, открытого водоема (\emph{нормальное атмосферное давление} приближенно равно $10^5$~Па).
+
+\medskip
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\path[spath/save=rpath,yshift=.1cm,rounded corners=1mm,fill=white] (6.5,.5) --++ (45:.2) --++ (135:.2) --++ (45:.5) --++ (-45:.6) --++ (-135:.5) --++ (135:.2) --++ (-135:.2) --++ (-135:.1) --++ (135:.2) --++ (45:.1);
+
+\begin{scope}[transparency group,semitransparent]
+\fill[SkyBlue] (5.5,0) --++ (0,1) --++ (2,0) --++ (0,-1) -- cycle;
+%bottle fill
+\fill[yshift=.1cm,rounded corners=1mm,fill=white] (6.5,.5) --++ (45:.2) --++ (135:.2) --++ (45:.5) --++ (-45:.6) --++ (-135:.5) --++ (135:.2) --++ (-135:.2);
+
+\begin{scope}
+    \clip[] [spath/use=rpath];
+    \fill[SkyBlue] (5.5,0) --++ (0,.8) --++ (2,0) --++ (0,-.8) -- cycle;
+
+\end{scope}
+\end{scope}
+
+%box 
+\draw (5.5,0) --++ (0,1.5) -- (7.5,1.5) --++ (0,-1.5) -- cycle;
+
+%ground
+\filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+\draw (5,0) -- (8,0);
+
+%bottle draw
+\draw[yshift=.1cm,rounded corners=1mm,thick] (6.5,.5) --++ (45:.2) --++ (135:.2) --++ (45:.5) --++ (-45:.6) --++ (-135:.5) --++ (135:.2) --++ (-135:.2);
+
+\node[right] at (5.5,1.25) {$P_\text{в}$};
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \captionsetup{labelsep=none}
+    \caption{.\\К задаче}
+    \label{fig:p48}
+\end{wrapfigure}
+
+
+\noindent\textbf{Задача.} В закрытом сосуде в воде плавает пузырек так, как показано справа на рис.\,\ref{fig:p48}. Пузырек заполнен водой и
+воздухом. Будет ли увеличиваться масса воды в пузырьке, если увеличить
+давление воздуха~$P_\text{в}$ в сосуде? Почему?
+
+\smallskip
+
+\noindent\emph{Решение.} Масса воды в пузырьке может меняться за счет изменения объема воздуха в нем. Давление~$P_\text{в}$ приходится сверху на сухую поверхность пузырька. Это же давление передается во все точки жидкости по закону Паскаля. Таким образом, воздух в пузырьке <<обжат>> со всех сторон давлением~$P_\text{в}$, увеличение которого приведет к сжатию этого воздуха и увеличению количества воды в пузырьке. 
+
+}
+
+
+
+
+
+
+
+
+ 
+\end{document}

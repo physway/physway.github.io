@@ -1,0 +1,154 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{10
+}
+\addtocounter{section}{-1} 
+
+\section{Свободное падение}
+
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5,0) rectangle (7,-0.3);
+\draw (5,0) -- (7,0);
+
+\shade[ball color=lightgray,nearly transparent,yshift=4cm] (6,.3) circle (.3);
+\shade[ball color=lightgray,semitransparent,yshift=3cm] (6,.3) circle (.3);
+\shade[ball color=lightgray] (6,.4) circle (.3);
+
+%vec
+\node at (6,3.3) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,NavyBlue,thick,vec] (6,3.3) --++ (0,-.75) node[black,right] {$\vec v_1$};
+
+\node at (6,0.4) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,NavyBlue,thick,vec] (6,0.4) --++ (0,-1.5) node[black,right] {$\vec v_2$};
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[17]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Падение шара}
+    \label{fig:p19}
+\end{wrapfigure}
+
+\textbf{Свободным падением} называют движение, происходящее под влиянием только планеты. Влияние планеты выражается, так сказать, в стремлении всех тел падать вниз. Происходит такое движение обычно вблизи земной поверхности~--- то есть поверхность считается плоской.  
+
+Опыт с падением тяжелого шара на поверхность планеты показан на рис.\,\ref{fig:p19} (положение тела фиксируют ежесекундно).
+    
+Из рис.\,\ref{fig:p19} видно, что за каждую секунду движения скорость тела меняется на одну и ту же величину, то есть движение является равноускоренным. \textbf{Ускорение свободного падения} обозначается~$\vec g$, оно напралено вертикально вниз (или к центру планеты).
+
+В большинстве задач вблизи поверхности планеты ускорение~$\vec g$ для любого тела полагают одинаковым независимо от, например, его размеров, массы и т.\,д.
+
+Теперь можно рассмотреть полет тела, пущенного с начальной скоростью под некоторым углом к горизонту (рис.\,\ref{fig:p20}).
+
+}
+
+\begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\def\initialV{6} % initial speed
+\def\launchangle{60} % angle of launch
+\def\gravity{10} % force of gravity
+\def\yaxemax{4}
+\def\xaxemax{6}
+\coordinate (V) at ({1+\initialV*cos(\launchangle)},{1+\initialV*sin(\launchangle)});
+\coordinate (Vx) at ({1+\initialV*cos(\launchangle)},1);
+
+\coordinate [label= below left :{$O$}] (O) at (0,0);
+\coordinate (init) at (1,1) node [below left] {};
+
+%axes and patterns
+\filldraw[lightgray,semitransparent] (0,0) rectangle (5,-0.3);
+\draw[->] (0,0) -- node[left,at end] {$y$} (0,\yaxemax);
+\draw[->] (0,0) -- node[below,at end] {$x$} (\xaxemax,0);
+
+ % the lower plane is one unit below the exit, so set y = t*v_0*sin(theta) - 0.5*g*t^2 = -1, and solve for t
+\pgfmathsetmacro\timeofimpact{\initialV*sin(\launchangle)/\gravity + sqrt((\initialV*sin(\launchangle)/\gravity)^2 + 2/\gravity)}
+
+%t for ymax of plot
+\pgfmathsetmacro\tforymax{-\initialV*sin(\launchangle)/-\gravity}
+
+
+%points
+\coordinate [label= left :{$y_{\max}$}] (ymax) at (0,{1+\tforymax*\initialV*sin(\launchangle) - 0.5*\gravity*\tforymax^2});
+\coordinate [label= below :{}] (pointmax) at ({1+\tforymax*\initialV*cos(\launchangle)},{1+\tforymax*\initialV*sin(\launchangle) - 0.5*\gravity*\tforymax^2});
+
+%dashed
+\draw[-,densely dashed] (ymax) -- (pointmax);
+\draw[-,densely dashed] (0,1) node [left] {$y_0$} -- ({1+\tforymax*\initialV*cos(\launchangle)},1);
+\draw[-,densely dashed] (1,1) -- (1,0) node [above right] {$x_0$};
+
+
+
+ % domain based on calculation above
+\draw [thick,samples=100,variable=\t,domain=0:\timeofimpact] (1,1) plot ({1+\t*\initialV*cos(\launchangle)},{1+\t*\initialV*sin(\launchangle) - 0.5*\gravity*\t^2}) node [above right] {$x_{\max}$};
+
+%v
+\draw[->,NavyBlue,thick,vec] (1,1) --++ ({\launchangle}:2.5) node[left=1mm,black] {$\vec v_0$};
+\pic [draw,angle radius=10mm,angle eccentricity=1.25,"$\alpha$"] {angle = Vx--init--V};
+
+%g
+\draw[->,red,thick,vec] ({1+\timeofimpact*\initialV*cos(\launchangle)},\yaxemax) --++ ({-90}:2) node[right,midway,black] {$\vec g$};
+
+\shade[ball color=gray] (1,1) circle (1mm);
+
+
+    \end{tikzpicture}
+\caption{Полет тела}
+\label{fig:p20}
+\end{figure}
+
+В начальный момент времени тело находилось над поверхностью планеты в точке с координатами~$x_0$ и~$y_0$ и имело скорость~$\vec v_0$, направленную под углом~$\alpha$ к горизонту. Ускорение свободное падения~$\vec g$ есть красный вектор на рис.\,\ref{fig:p20}. Можно показать, что траекторией тела в системе координат~$xOy$ является парабола (черная жирная линия на рис.\,\ref{fig:p20}). Конечной точкой падения будет точка пересечения траектории с планетной поверхностью~--- то есть с осью~$Ox$. Полезно замечать характерные точки <<следа>> тела: так, точка наивысшего подъема характеризуется координатой~$y_{\max}$; а точка наибольшего удаления по горизонтали~--- координатой~$x_{\max}$. 
+
+Вот опорные уравнения для построения решений многих задач этой темы. 
+\begin{gather*}
+\left\{
+\begin{aligned}
+&x=x_0+v_{0x}t+\dfrac{g_xt^2}{2},\\
+&y=y_0+v_{0y}t+\dfrac{g_yt^2}{2}.
+\end{aligned}
+\right.
+\\
+\left\{
+\begin{aligned}
+&v_x=v_{0x}+g_xt,\\
+&v_y=v_{0y}+g_yt.
+\end{aligned}
+\right.
+\end{gather*}
+
+
+
+
+
+ 
+\end{document}

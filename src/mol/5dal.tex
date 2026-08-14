@@ -1,0 +1,156 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{42
+}
+\addtocounter{section}{-1} 
+
+\section[Закон Да́льтона]{Закон Д\'альтона}
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%gas
+\draw (0,0) rectangle++ (3,3);
+
+% buff and radius
+\def\bu{2.84}
+\def\ra{.04}
+
+\foreach \i in {1,...,50}
+  \fill[Green,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+
+\foreach \i in {1,...,50}
+  \fill[red,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[10]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Два газа в сосуде}
+    \label{fig:p69}
+\end{wrapfigure}
+
+В природе и в технике очень часто имеют дело со \emph{смесью} нескольких газов\footnote{Везде далее газы считаются идеальными.}. Например, воздух~--- это смесь азота, кислорода, аргона, углекислого газа и других газов.
+
+
+Пусть имеется смесь двух газов в сосуде (рис.\,\ref{fig:p69}).
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% %gas
+% \draw (0,0) rectangle++ (3,3);
+
+% % buff and radius
+% \def\bu{2.86}
+% \def\ra{.04}
+
+% \foreach \i in {1,...,50}
+%   \fill[Green,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+
+% \foreach \i in {1,...,50}
+%   \fill[red,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+
+%     \end{tikzpicture}
+% \caption{Два газа в сосуде}
+% \label{fig:p69}
+% \end{figure}
+
+Газы на рис.\,\ref{fig:p69} имеют одинаковую температуру. Молекулы газов для наглядности окрашены~--- можно говорить как бы о зеленом и красном газах. Их смесь оказывает на стенки давление, обозначаемое~$P_\text{зк}$. В любой смеси газов каждый из газов ведет себя независимо от других газов, то есть зеленый и красный газы в предложенном примере можно рассматривать по отдельности в данном сосуде (рис.\,\ref{fig:p70}).  
+
+}
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%gas
+\draw (0,0) rectangle++ (3,3);
+
+% buff and radius
+\def\bu{2.84}
+\def\ra{.04}
+
+\foreach \i in {1,...,50}
+  \fill[Green,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=5cm]
+    
+%gas
+\draw (0,0) rectangle++ (3,3);
+
+% buff and radius
+\def\bu{2.84}
+\def\ra{.04}
+
+\foreach \i in {1,...,50}
+  \fill[red,shift={(.08,0.08)}] ({rnd*\bu cm}, {rnd*\bu cm}) circle (\ra);
+  
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Газы по отдельности}
+\label{fig:p70}
+\end{figure}
+
+На рис.\,\ref{fig:p70} (слева) из сосуда удалены все газы кроме зеленого; оставшийся газ производит давление, обозначаемое~$P_\text{з.\,см}$ (подпись~<<см>> напоминает, что у данного газа такое же состояние, какое он имеет в смеси). Аналогично, на рис.\,\ref{fig:p70} (справа) в сосуде оставили только красный газ, производящий давление~$P_\text{к.\,см}$.
+
+\textbf{Парциальное давление}~--- это давление,  которое производил бы выбранный газ, входящий в состав смеси, если удалить остальные газы из сосуда. Таким образом, в рассматриваемой ситуации с зеленым и красным газами их давления~$P_\text{з.\,см}$ и~$P_\text{к.\,см}$~--- это парциальные давления.
+\begin{law}
+\textbf{Закон Д\'альтона.} Давление смеси газов есть
+сумма их парциальных давлений:
+\begin{equation}
+    \label{5dal_e1}
+    P_\text{см}=P_\text{1\,см}+P_\text{2\,см}+\ldots,
+\end{equation}
+где $P_\text{1\,см},P_\text{2\,см},\ldots$~--- парциальные давления первого, второго и так далее газов.  
+\end{law}
+Так, для ситуации, проиллюстрированной рисунками~\ref{fig:p69} и~\ref{fig:p70}, уравнение~\eqref{5dal_e1} дает: $P_\text{зк}=P_\text{з.\,см}+P_\text{к.\,см}$.
+
+Теперь можно разобрать стандартную задачу на смеси газов.
+
+\medskip
+
+\noindent\textbf{Задача.} Соединенные краном сосуды с газами под давлением 100 и 600~кПа имеют объемы 2~л и 3~л соответственно. Какое установится давление, если кран открыть? Температура постоянна.
+
+\smallskip
+
+\noindent\emph{Решение.} Парциальные давления дает уравнение Менделеева"--~Клапейрона:\linebreak
+$P_\text{1\,см}=\dfrac{\nu_1 RT}{V_\text{см}}=\dfrac{P_1V_1}{V_\text{см}}=40$~кПа
+% \dfrac{100\cdot10^{3}\cdot2\cdot10^{-3}}{5\cdot10^{-3}}=40$~кПа
+и 
+$P_\text{2\,см}=\dfrac{\nu_2 RT}{V_\text{см}}=\dfrac{P_2V_2\strut}{V_\text{см}\strut}=360$~кПа. Давление смеси по закону Д\'альтона равно: $P_\text{см}=P_\text{1\,см}+P_\text{2\,см}=400\strut$~кПа.
+
+
+
+
+
+
+
+ 
+\end{document}

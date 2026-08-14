@@ -1,0 +1,197 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{17
+}
+\addtocounter{section}{-1} 
+
+\section{Второй и третий законы Ньютона}
+
+
+Если результирующая сила, действующая на тело, \emph{не равна нулю}, то в ИСО\footnote{Инерциальная система отсчета.} тело движется с ускорением. На рис.\,\ref{fig:p33} показан опыт с толканием тележки.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\begin{scope}[xshift=4cm]
+    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [above,black] at (2,1) {Т};
+\draw[->,Green,thick,vec] (3,1.2) --++ (1,0) node[black,above,midway] {$\vec a_\text{т}$};
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PERSON
+  \def\W{3.6}  % ground width
+  \def\D{0.2}  % ground depth
+  \def\H{1.9}  % human height
+  \def\h{0.9}  % mass height
+  \def\w{1.0}  % mass width
+  \def\mx{0.10*\W} % mass x coordinate
+
+\begin{scope}[xshift=3.6cm]
+    
+  \coordinate (H) at (0,0.75*\H);
+  \draw[thick,fill=white] (H) circle (0.3) node[xshift=-0.3cm,left] {$\text{Н}$};
+  \draw[thick] (H)++(-120:0.3) coordinate (N) to[out=-115,in=40]++ (-130:0.36*\H) coordinate (P);
+  \draw[thick] (N)++(-115:0.03) to[out=-60,in=170] (.4,\h);
+  \draw[thick] (N)++(-115:0.03) to[out=-70,in=170] (.4,0.92*\h);
+  \draw[thick] (P) to[out=-120,in=30,looseness=1.3] (-0.35*\W,0);
+  \draw[thick] (P) to[out=-50,in=30,looseness=1.8] (-0.22*\W,0);
+
+  %F
+  % \node at (P) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+  % \draw[->,red,thick,vec] (P) --++ (-3,0) node[black,above,midway] {$\vec F_\text{тележки}$};
+      
+\end{scope}  
+
+%vec
+\node at (6,.75) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (6,.75) --++ (3,0) node[black,right] {$\vec F_\text{наблюдателя}$};
+
+
+
+    \end{tikzpicture}
+\caption{Наблюдатель толкает тележку}
+\label{fig:p33}
+\end{figure}
+
+Наблюдатель~Н действует на тележку~Т вправо силой~$\vec F_\text{наблюдателя}$. Кроме того тележка притягивается к планете вниз силой~$\vec F_\text{планеты}$ и отталкивается от поверхности вверх силой~$\vec F_\text{поверхности}$; при этом $\vec F_\text{планеты}\hm+\vec F_\text{поверхности}\hm=0$. 
+
+В этом случае\footnote{Под колесами гладкая поверхность.} на тележку действует результирующая сила, равная $\vec R_\text{т}\hm=\vec F_\text{планеты}+\vec F_\text{поверхности}+\vec F_\text{наблюдателя}=\vec F_\text{наблюдателя}\neq0$, и тележка приобретает ускорение~$\vec a_\text{т}$. Также наблюдатель заметил, что чем больше результирующая сила~$\vec R_\text{т}$~--- тем больше ускорение~$\vec a_\text{т}$, причем~$\vec R_\text{т}$ и~$\vec a_\text{т}$ сонаправлены. 
+
+Связь \emph{результирующей силы} с ускорением дает второй закон Ньютона.
+
+\begin{law}
+\textbf{Второй закон Ньютона.} Результирующая сила, действующая на тело, равна произведению массы тела на его ускорение:
+\begin{equation}
+    \vec R= m\vec a.
+\end{equation}
+\end{law}
+
+С другой стороны, наблюдатель ощущает действие на себя со стороны тележки, которая как бы <<мешает>> ему двигаться вправо (рис.\,\ref{fig:p34}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\begin{scope}[xshift=4cm]
+    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [above,black] at (2,1) {Т};
+% \draw[->,Green,thick,vec] (3,1.2) --++ (1,0) node[black,above,midway] {$\vec a_\text{т}$};
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PERSON
+  \def\W{3.6}  % ground width
+  \def\D{0.2}  % ground depth
+  \def\H{1.9}  % human height
+  \def\h{0.9}  % mass height
+  \def\w{1.0}  % mass width
+  \def\mx{0.10*\W} % mass x coordinate
+
+\begin{scope}[xshift=3.6cm]
+    
+  \coordinate (H) at (0,0.75*\H);
+  \draw[thick,fill=white] (H) circle (0.3) node[xshift=-0.3cm,left] {$\text{Н}$};
+  \draw[thick] (H)++(-120:0.3) coordinate (N) to[out=-115,in=40]++ (-130:0.36*\H) coordinate (P);
+  \draw[thick] (N)++(-115:0.03) to[out=-60,in=170] (.4,\h);
+  \draw[thick] (N)++(-115:0.03) to[out=-70,in=170] (.4,0.92*\h);
+  \draw[thick] (P) to[out=-120,in=30,looseness=1.3] (-0.35*\W,0);
+  \draw[thick] (P) to[out=-50,in=30,looseness=1.8] (-0.22*\W,0);
+
+  %F
+  % \node at (P) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+  % \draw[->,NavyBlue,thick,vec] (P) --++ (-3,0) node[black,above,midway] {$\vec F_\text{тележки}$};
+      
+\end{scope}  
+
+%vec
+\node at (6,.75) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (6,.75) --++ (3,0) node[black,right] {$\vec F_\text{наблюдателя}$};
+
+%inter Ft
+\path[name path=g] (6,.75) --++ (-3,0);
+\path[thick,name path=h] (H)++(-120:0.3) coordinate (N) to[out=-115,in=40]++ (-130:0.36*\H) coordinate (P);
+\node [name intersections={of=g and h, by=x1},circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] at (x1) {};
+\draw[->,NavyBlue,thick,vec] (x1) --++ (-3,0) node[black,above,midway] {$\vec F_\text{тележки}$};
+
+    \end{tikzpicture}
+\caption{Взаимодействие наблюдателя и тележки}
+\label{fig:p34}
+\end{figure}
+
+Действительно, и тележка в рассматриваемом опыте действует на наблюдателя (сила~$\vec F_\text{тележки}$)~--- ведь если резко <<убрать>> тележку, то наблюдатель устремится туда, куда происходит толкание, то есть вправо. (Вообще любые силы носят \emph{взаимный} характер: если тело~A действует на тело~Б, то и тело~Б действует на тело~A.) 
+
+\begin{law}
+\textbf{Третий закон Ньютона.} Два тела действуют друг на друга с силами, равными по модулю
+и противоположными по направлению (при этом обе силы лежат на одной прямой):
+\begin{equation}
+    \vec F_{1\to2}=-\vec F_{2\to1},
+\end{equation}
+где $\vec F_{1\to2}$~--- сила, действующая на второе тело со стороны первого; $\vec F_{2\to1}$~--- сила, действующая на первое тело со стороны второго.
+\end{law}
+
+Так, согласно третьему закону Ньютона: $F_\text{наблюдателя}= F_\text{тележки}$ (рис.\,\ref{fig:p34}). 
+
+
+
+
+
+
+
+ 
+\end{document}

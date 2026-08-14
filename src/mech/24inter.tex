@@ -1,0 +1,224 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{16
+}
+\addtocounter{section}{-1} 
+
+\section{Взаимодействие и сила}
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+\draw (5,0) -- (8,0);
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%person 2
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{6} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=0cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[yshift=0.3cm,above] {$\text{Н}$};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=190]++ (0.13*\W,-0.1*\H) node (rh) {}; %right hand
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ball
+\shade[ball color=lightgray] ([yshift=.3cm]rh) circle (.3) node[xshift=.3cm,right] {Ш};
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Наблюдатель\\ и шар}
+    \label{fig:p31}
+\end{wrapfigure}
+
+\textbf{Взаимодействие}~--- это взаимное действие двух тел друг на друга, приводящее к \emph{изменению их скоростей} (рис.\,\ref{fig:p31}).
+
+% \textbf{Взаимодействие}~--- это влияние двух тел друг на друга, приводящее к \emph{изменению их скоростей} (рис.\,\ref{fig:p31}).
+
+Из рис.\,\ref{fig:p31} видно, что рука наблюдателя~$\text{Н}$ действует на шар~Ш, иначе шар бы падал. С другой стороны, шар действует на руку, так как мышцы руки напряжены. Итак, в паре тел <<рука-шар>> происходит взаимодействие. (Однако изменения скоростей не наблюдаются из-за того, что каждое действие на данное тело компенсируется другим действием: действие руки на шар уравновешивается действием планеты, а действие шара на руку~--- действием мышц.)
+
+}
+% \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+% \draw (5,0) -- (8,0);
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %person 2
+% % PERSON
+% \def\W{5.2}     % ground width
+% \def\L{3.2}     % length
+% \def\T{0}    % plank thickness
+% \def\H{2.0}     % human height
+%   \def\x{6} % human position
+%   \coordinate (O) at (0,0);
+% \begin{scope}[yshift=0cm]  
+%   \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[yshift=0.3cm,above] {$\text{Н}$};
+%   \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+%   \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+%   \draw[thick] (N)++(-85:0.03) to[out=-80,in=190]++ (0.13*\W,-0.1*\H) node (rh) {}; %right hand
+%   \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+%   \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+% \end{scope}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %ball
+% \shade[ball color=lightgray] ([yshift=.3cm]rh) circle (.3) node[xshift=.3cm,right] {Ш};
+
+
+%     \end{tikzpicture}
+% \caption{Наблюдатель и шар}
+% \label{fig:p31}
+% \end{figure}
+
+
+Известны четыре типа взаимодействия в природе.
+\begin{enumerate}
+    \item \textbf{Гравитационное}: массивные тела взаимно притягивают друг друга.
+
+    \emph{Пример:} планета и ее спутник.
+    \item \textbf{Электромагнитное}: влияния между зарядами и/или магнитами.
+    
+    \emph{Пример:} два магнита.
+    \item \textbf{Сильное}: влияния, <<удерживающие>> части атомного ядра.
+
+    \emph{Пример:} протон и нейтрон.
+    \item \textbf{Слабое}: влияния между любыми\footnote{Кроме фотонов.} элементарными частицами.  
+
+    \emph{Пример:} нейтрон и электрон.
+\end{enumerate}
+
+
+% \sbox{0}{%
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+% \draw (5,0) -- (8,0);
+
+% \shade[ball color=lightgray,yshift=3cm] (6,.3) circle (.3);
+
+% %vec
+% \node at (6,3.3) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+% \draw[->,red,thick,vec] (6,3.3) --++ (0,-1) node[black,right] {$\vec F_\text{планеты}$};
+
+% \node at (6,3.3) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+% \draw[->,red,thick,vec] (6,3.3) --++ (0,.75) node[black,right] {$\vec F_\text{воздуха}$};
+
+% \draw[->,NavyBlue,thick,vec] (5.5,3.8) --++ (0,-1) node[black,left,midway] {$\vec v$};
+
+%     \end{tikzpicture}%
+% }
+
+% {%
+% \setlength\intextsep{0pt}
+% \begin{wrapfigure}[]{r}{\wd0}
+%     \centering
+%     \usebox{0}%
+%     \caption{Падение легкого шара}
+%     \label{fig:p32}
+% \end{wrapfigure}
+
+\textbf{Сила} ($\vec F$ [Н])~--- это характеристика действия, показывающая, как велико воздействие на тело.
+
+На рис.\,\ref{fig:p32} показан легкий шар в состоянии падения. 
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5,0) rectangle (8,-0.3);
+\draw (5,0) -- (8,0);
+
+\shade[ball color=lightgray,yshift=1.5cm] (6,.3) circle (.3);
+
+%vec
+\node at (6,1.8) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (6,1.8) --++ (0,-1) node[black,right] {$\vec F_\text{планеты}$};
+
+\node at (6,1.8) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (6,1.8) --++ (0,.75) node[black,right] {$\vec F_\text{воздуха}$};
+
+\draw[->,NavyBlue,thick,vec] (5.5,2.3) --++ (0,-1) node[black,left,midway] {$\vec v$};
+
+    \end{tikzpicture}%
+\caption{Падение легкого шара}
+\label{fig:p32}
+\end{figure}
+
+Силы, действующие на шар со стороны воздуха и планеты, обозначены красными векторами~$\vec F_\text{воздуха}$ и~$\vec F_\text{планеты}$ соответственно. 
+
+\begin{law}
+\textbf{Принцип суперпозиции сил.} Если на тело действуют силы~$\vec F_1, \vec F_2,\ldots,$ то их можно заменить одной силой 
+\begin{equation}
+\vec R\hm=\vec F_1+\vec F_2+\ldots
+\end{equation}
+\end{law}
+
+Силу~$\vec R$ называют \textbf{результирующей} силой или \emph{равнодействующей} сил. Так, для шара на рис.\,\ref{fig:p32} результирующая сила равна: $\vec R_\text{ш}= \vec F_\text{воздуха}\hm+\vec F_\text{планеты}$. Из рис.\,\ref{fig:p32} также можно видеть, что $F_\text{воздуха}< F_\text{планеты}$, значит~--- эта <<суммарная>> сила~$\vec R_\text{ш}$
+направлена вниз.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

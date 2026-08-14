@@ -1,0 +1,134 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{4} 
+\addtocounter{section}{-1} 
+
+\section{Основные понятия кинематики}
+
+
+\textbf{Материальная точка}~--- это тело, размеры которого можно не учитывать. Все остальные значимые физические свойства у таких тел присутствуют.
+
+Так, описывая движение муравья, удаляющегося на расстояние в несколько метров от начальной точки, можно представлять себе просто движущуюся точку. Такой случай (вид сверху) показан на рис.\,\ref{fig:p6}.
+
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\draw[->,gray] (0,0) -- (4,0) node[above] {$x$};
+\draw[->,gray] (0,0) node[left] {$O$} -- (0,2) node[left] {$y$};
+\node at (1,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=above right:$M$] {};
+
+
+\draw[dashed,thick] (0,0) node [below] {$A$} -- (2,0) node [below] {$B$} arc [start angle=-90, end angle=0, radius=2] coordinate (c) node [right] {$C$};
+\draw[->,red,thick,vec] (0,0) to (c);
+
+
+    \end{tikzpicture}
+\caption{Движение материальной точки}
+\label{fig:p6}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/4main_1}
+
+% \caption{Движение материальной точки}
+% \label{fig:p6}
+% \end{figure}
+
+
+На рис.\,\ref{fig:p6} муравей~$M$ (тело) двигался из точки~$A$ в точку $C$, пройдя точку~$B$, вдоль штриховой линии~--- \textbf{траектории}.
+
+\textbf{Координаты} ($x,y$ [м]) тела показывают местонахождение тела. Например, точке~$A$ соответствуют $x_A=0$~м и $y_A=0$~м; точке~$B$~--- $x_B>0$~м и $y_B=0$~м.
+
+\textbf{Путь} ($S$ [м])~--- это длина траектории (следа), по которой двигалось тело. В предыдущем примере путь есть длина кривой~$ABC$. 
+
+\textbf{Перемещение} ($\vec r$ [м])\footnote{Строго говоря, $\Delta \vec r$.}~--- это вектор, соединяющий начальное и конечное положения тела. Красный вектор
+% ~$\overrightarrow{AC\rule{0pt}{9pt}}$
+на рис.\,\ref{fig:p6} есть перемещение муравья.
+
+\textbf{Время} ($t$ [с])~--- это длительность процесса. Можно сказать, что время~--- это неотъемлемая форма мышления наблюдателя.
+
+Теперь нужно сказать о двух  важных характеристиках движения.
+\begin{itemize}
+    \item \textbf{Скорость} $\left(\vec v\ \left[\dfrac{\text{м}}{\text{с}}\right]\right)$~--- это характеристика движения, показывающая перемещение \strut тела за одну~секунду. Этот вектор всегда направлен по касательной к соответствующей траектории. Скорость~$\vec v$ как бы указывает, \emph{куда сдвинется тело через малый промежуток времени}.
+    \item \textbf{Ускорение} $\left(\vec a\ \left[\dfrac{\text{м}}{\text{с}^2}\right]\right)$~--- это характеристика движения, показывающая, на сколько \strut изменяется скорость тела за одну~секунду. Ускорение~$\vec a$ как бы указывает, \emph{куда стремится конец вектора}~$\vec v$.
+\end{itemize}
+
+Тот же муравей снова двигается по той же самой траектории, причем на прямом участке разгоняется, а на закругленном~--- движется в одном темпе. На рис.\,\ref{fig:p7} показаны векторы~$\vec v$ и~$\vec a$ в различных положениях тела~$M_1$ и~$M_2$. 
+
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%traj
+\draw[dashed] (0,0) node [left] {} -- (2,0) node [above] {} arc [start angle=-90, end angle=0, radius=2] coordinate (b) node [right] {};
+
+
+%%%vec
+%v
+\draw[->,thick,vec,NavyBlue] (1,0) -- (2,0) node[below,black] {$\vec v_1$};
+\path[dashed] (0,0) node [left] {} -- (2,0) node [above] {} arc [start angle=-90, end angle=-45, radius=2] coordinate (bc);
+\draw[->,thick,vec,NavyBlue] (bc) --++ (45:1.5) node[right,black] {$\vec v_2$};
+
+%a
+\draw[->,thick,vec,red] (1,.2) -- (1.8,.2) node[midway,above,black] {$\vec a_1$};
+\draw[->,thick,vec,red] ([shift=(135:.2)]bc) --++ (135:{0.8*2.25}) node[midway,above right,black,inner ysep=0] {$\vec a_2$};
+
+%points
+\node at (1,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:$M_1$] {};
+\path[dashed] (0,0) node [left] {} -- (2,0) node [above] {} arc [start angle=-90, end angle=-45, radius=2] coordinate (bc) node [circle,fill=black,inner sep=0pt,minimum size=1mm,label={[inner xsep=0]below right:$M_2$}] {};
+
+
+
+    \end{tikzpicture}
+\caption{Скорости и ускорения точки}
+\label{fig:p7}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/4main_2}
+
+% \caption{Скорости и ускорения точки}
+% \label{fig:p7}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,134 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{27
+}
+\addtocounter{section}{-1} 
+
+\section{Гидравлический пресс}
+
+
+\textbf{Гидравлический пресс}~--- это устройство, состоящее из двух сосудов, закрытых поршнями и соединенных трубкой. В сосудах между поршнями находится жидкость (рис.\,\ref{fig:p49}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle ({5+sqrt(2)+1},-0.3);
+\draw (0,0) -- ({5+sqrt(2)+1},0);
+
+% \filldraw[lightgray,draw=black] ({5/3-.5},0) rectangle++ (1,.5);
+
+%water
+\fill[SkyBlue, semitransparent] (1,2) -- (1,0) -- ({5+sqrt(2)},0) -- ({5+sqrt(2)},2) -- (5,2) -- (5,.3) -- (2,.3) -- (2,2) -- cycle;
+
+%hypress
+\draw (1,2.7) -- (1,0) -- ({5+sqrt(2)},0) -- ({5+sqrt(2)},2.7);
+\draw (2,2.7) -- (2,.3) -- (5,.3) -- (5,2.7);
+
+%plunger 
+\filldraw[lightgray,draw=black] (1,2) rectangle++ (1,.3);
+\filldraw[lightgray,draw=black] (5,2) rectangle++ ({sqrt(2)},.3);
+
+%vec
+\draw[->,red,thick,vec] (1.5,2.15) --++ (0,{-.6}) node[black,below] {$\vec F_\text{л}$};
+\node at (1.5,2.15) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+\draw[->,red,thick,vec] ({5+sqrt(2)/2},2.15) --++ (0,{-1.2}) node[black,below] {$\vec F_\text{п}$};
+\node at ({5+sqrt(2)/2},2.15) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+%S
+\node at (1.5,2.3) [above] {$S_\text{л}$};
+\node at ({5+sqrt(2)/2},2.3) [above] {$S_\text{п}$};
+
+
+    \end{tikzpicture}
+\caption{Гидравлический пресс}
+\label{fig:p49}
+\end{figure}
+
+
+% Пусть площадь малого поршня равна~$S_1$, а большого~--- $S_2$. Если надавить на малый поршень с силой~$F1$, то под ним в жидкости возникнет давление $P_1$.
+
+Пусть гидравлический пресс установлен на горизонтальной опоре, а высоты столбов жидкости в сосудах одинаковы. Если, например, к левому поршню площадью~$S_\text{л}$ приложена некоторая сила~$\vec F_\text{л}$, направленная вниз, то под ним в жидкости возникнет давление~$P_\text{л}$. Это давление будет передано согласно закону Паскаля в любую точку жидкости, в том числе~--- под правый поршень (давление~$P_\text{п}$). Для равновесия всей системы необходимо, чтобы и на правый поршень площадью~$S_\text{п}$ действовала некоторая сила~$\vec F_\text{п}$, направленная так же вниз. Вот связь давлений в гидравлическом прессе:
+\begin{equation}\label{35hypress_e1}
+    P_\text{л}=P_\text{п},
+\end{equation}
+где~$P_\text{л}$ и~$P_\text{п}$~--- давления под левым и правым поршнем соответственно.
+
+Так, в примере на рис.\,\ref{fig:p49}, если считать площади поршней неодинаковыми ($S_\text{п}>S_\text{л}$), с учетом определения давления и формулы~\eqref{35hypress_e1} силы~$F_\text{л}$ и~$F_\text{п}$ связаны следующим соотношением: $F_\text{п}>F_\text{л}$.
+
+Формулу~\eqref{35hypress_e1} используют при решении многих обычных задач этой темы. 
+
+\medskip
+
+\sbox{0}{%
+    \begin{tikzpicture}[xscale=.9,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0.5,0) rectangle (5.5,-0.3);
+\draw (0.5,0) -- (5.5,0);
+
+% \filldraw[lightgray,draw=black] ({5/3-.5},0) rectangle++ (1,.5);
+
+%water
+\fill[SkyBlue, semitransparent] (1,1) -- (1,0) -- (5,0) -- (5,1) -- (3,1) -- (3,.3) -- (2,.3) -- (2,1) -- cycle;
+
+%hypress
+\draw (1,1.5) -- (1,0) -- (5,0) -- (5,1.5);
+\draw (2,1.5) -- (2,.3) -- (3,.3) -- (3,1.5);
+
+%plunger 
+\filldraw[lightgray,draw=black] (1,1) rectangle++ (1,.3);
+\filldraw[lightgray,draw=black] (3,1) rectangle++ (2,.3);
+
+%A B
+\node at (1,1.15) [left] {$A$};
+\node at ({5},1.15) [right] {$B$};
+
+%load
+\filldraw[black,rounded corners=1pt] (1.5,1.3) --++ (-.2,0) --++ (0,.5) --++ (.15,0) --++ (0,.1) --++ (-.1,0) --++ (0,.1) --++ (.3,0) --++ (0,-.1) --++ (-.1,0) --++ (0,-.1) --++ (.15,0) --++ (0,-.5) -- cycle;
+
+% \draw[red] (1.5,1.3) --++ (0,-1)
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{К задаче}
+    \label{fig:p50}
+\end{wrapfigure}
+
+\noindent\textbf{Задача.} Два сообщающихся сосуда с различными поперечными сечениями (рис.\,\ref{fig:p50}) наполнены водой. Площадь поперечного сечения у узкого сосуда в 100~раз
+меньше, чем у широкого. На поршень~$A$ поставили гирю
+весом 10~Н. Какой груз надо положить на поршень~$B$,
+чтобы оба груза находились в равновесии? (Весом поршней и трением пренебречь.)
+
+}
+
+\smallskip
+
+\noindent\emph{Решение.} Удобно (на первых порах~--- обязательно) начать с <<уравнения гидравлического пресса>>~\eqref{35hypress_e1}: в данном случае $P_A=P_B$. Далее можно опираться на это уравнение: с учетом определения давления $\dfrac{F_A\strut}{S_A}=\dfrac{F_B\strut}{S_B}$. Ясно, что в последнем равенстве известна сила~$F_A=10$~Н, известно и соотношение площадей~$\dfrac{S_B}{S_A}=100$ (поршень~$A$ узкий). Значит из этого уравнения можно выражать и вычислять силу~$F_B$, требуемую для покоя жидкости: $F_B=\dfrac{S_B}{S_A}\cdot F_A=100\cdot 10=1000$~Н. Теперь осталось вычислить массу на поршне~$B$ (интуитивно понимая, что сила обусловлена тяжестью груза): $m_B=\dfrac{F_B\strut}{g}=\dfrac{1000\strut}{10}=100$~кг.
+
+
+
+
+ 
+\end{document}

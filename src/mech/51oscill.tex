@@ -1,0 +1,167 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{35
+}
+\addtocounter{section}{-1} 
+
+\section{Механические колебания}
+
+\textbf{Механические колебания}~--- это движение тела, повторяющееся во времени около положения равновесия (далее для краткости~--- \emph{колебания}).
+
+\textbf{Одно полное колебание}~--- это такое движение, после которого тело первый раз \emph{оказывается в начальном положении, имея в нем те же скорость и ускорение} (рассматриваются \emph{незатухающие} колебания). \emph{Период} ($T$ [с]) есть время одного полного колебания\footnote{Связи величин в колебаниях аналогичны связям одноименных величин, описывающих движение по окружности: например, $\nu=\dfrac{1}{T}$ или $\omega=2\pi\nu$.}. 
+
+% Число полных колебаний тела за одну секунду показывает величина, называемая \emph{частотой} ($\nu$ [Гц]): $\nu=\dfrac{1\strut}{T\strut}$.
+
+На рис.\,\ref{fig:p60} показаны несколько положений колеблющегося на пружине шара и график его движения (положение тела фиксируют ежесекундно).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%left pic
+%0 sec
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (1.2,.3);  
+\draw (0,3) --++ (1.2,0);
+
+\begin{scope}[nearly transparent]    
+
+\draw (.3,3)
+foreach \y in {.1,.3,...,.6}
+{ -- (.9,{3-\y}) -- (.3,{3-\y-.1}) }
+-- (.6,{3-.6-.1/2}) coordinate (cir)
+;
+
+\shade[ball color=lightgray] ([yshift=-.3cm]cir) coordinate (C) circle (.3);
+
+\end{scope}
+
+\node[below] at ([yshift=-.3cm]C) {$t=0$~с};
+
+
+%1 sec
+
+\begin{scope}[xshift=1.5cm]
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (1.2,.3);  
+\draw (0,3) --++ (1.2,0);
+
+\begin{scope}[semitransparent]
+
+\draw (.3,3)
+foreach \y in {.2,.6,...,1.2}
+{ -- (.9,{3-\y}) -- (.3,{3-\y-.2}) }
+-- (.6,{3-1.2-.2/2}) coordinate (cir)
+;
+
+\shade[ball color=lightgray] ([yshift=-.3cm]cir) coordinate (C) circle (.3);
+
+\end{scope}
+
+\node[below] at ([yshift=-.3cm]C) {$t=1$~с};
+\end{scope}
+
+%2 sec
+
+\begin{scope}[xshift=3cm]
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (1.2,.3);  
+\draw (0,3) --++ (1.2,0);
+
+\draw (.3,3)
+foreach \y in {.3,.9,...,1.8}
+{ -- (.9,{3-\y}) -- (.3,{3-\y-.3}) }
+-- (.6,{3-1.8-.3/2}) coordinate (cir)
+;
+
+\shade[ball color=lightgray] ([yshift=-.3cm]cir) coordinate (C) circle (.3);
+
+\node[below] at ([yshift=-.3cm]C) {$t=2$~с};
+
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% right pic
+
+\begin{scope}[xshift=6cm]
+
+\path (.9,3) -- (.3,3)
+foreach \y in {.2,.6,...,1.2}
+{ -- (.9,{3-\y}) -- (.3,{3-\y-.2}) }
+-- (.6,{3-1.2-.2/2}) coordinate (cir)
+;
+\path (cir);
+\pgfgetlastxy{\cx}{\cy}
+
+\draw[->] (0,{\cy-.3cm}) ++ (0,-1.5) --++ (0,3) node[left,black] {$x$};
+\draw[->] (0,{\cy-.3cm}) --++ (7,0) node[below,black] {$t$};
+\node[below left] (O) at (0,{\cy-.3cm}) {$O$};
+
+\def\xmax{(3-.9-.1/2-(3-1.5-.2/2))}
+\draw[red,thick,domain=0:pi,yshift={\cy-.3 cm},xscale=.5,samples=1000] plot (\x,{\xmax*cos(\x r)});
+\draw[red,dashed,thick,domain=pi:4*pi,yshift={\cy-.3 cm},,xscale=.5,samples=1000] plot (\x,{\xmax*cos(\x r)});
+\draw[densely dashed] (pi,{\cy-.3 cm+\xmax*1cm}) --++ (0,{-\xmax}) node[below] {$T$};
+
+
+\end{scope}
+
+%dash
+\draw[gray,densely dashed] (.6,{3-.9-.1/2}) --++ (5.4,0) node[above left,black] {$x_\text{max}$};
+\draw[gray,densely dashed] (2.1,{3-1.5-.2/2}) --++ (3.9,0);
+\draw[gray,densely dashed] (3.6,{3-2.1-.3/2}) --++ (2.4,0) node[below left,black] {$-x_\text{max}$};
+
+
+    \end{tikzpicture}
+\caption{Колебания шара}
+\label{fig:p60}
+\end{figure}
+
+Система тел (рис.\,\ref{fig:p60}, слева) находится вблизи планеты, трения нет. Покоящийся массивный шар, смещенный вверх от положения равновесия на величину~$x_\text{max}$, при $t\hm=0$~с начинает разгон вниз из координаты~$x_\text{max}$. К моменту времени $t=1$~с разгон окончен, и шар оказывается в положении равновесия~$x=0$; с этого момента начинается торможение двигающегося вниз шара.
+В момент $t=2$~с шар останавливается в координате~$-x_\text{max}$; далее характер движения шара подобен уже рассмотренному процессу, но перемещается шар теперь вверх. 
+
+На диаграмме~$x(t)$ (рис.\,\ref{fig:p60}, справа) сплошной линией показан график изменения координаты тела в рассмотренном промежутке времени; штриховая линия описывает зависимость~$x(t)$ при б\'ольших значениях~$t$. На графике отмечено время~$T$, при котором тело возвращается в начальное положение: \emph{за время~$T$ (период) тело проходит путь в четыре}~$x_\text{max}$ \emph{(четыре амплитуды)}.
+
+При точных построениях 
+(и малых деформациях пружины)  
+форма графика на рис.\,\ref{fig:p60} (справа) указывает, что шар совершает гармонические колебания.
+
+\textbf{Гармонические колебания}~--- это колебания, при которых координата тела меняется во времени по закону \emph{косинуса} (или \emph{синуса}):
+\begin{equation}
+    x=x_\text{max}\cos(\omega t+\varphi),
+\end{equation}
+где~$x_\text{max}$~--- \emph{амплитуда колебаний}, то есть наибольшее отклонение от положения равновесия (наибольшее значение координаты); $(\omega t+\varphi)$~--- \emph{фаза} колебания; $\omega$~--- \emph{циклическая частота} (или \emph{круговая частота}); $\varphi$~--- \emph{начальная фаза}\footnote{Циклическая частота есть скорость изменения фазы. Фаза и циклическая частота измеряются в рад и рад$/$с соответственно (рад или радиан~--- единица измерения угла: $180^\circ=\pi~\text{рад}$).}.
+
+К проекциям скорости и ускорения тела при колебаниях можно перейти через производные по времени (пример для проекций на ось~$Ox$): 
+\begin{equation}
+    v_x=x',\quad a_x=v_x'.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,170 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{31
+}
+\addtocounter{section}{-1} 
+
+\section{Работа. Простые механизмы}
+
+\textbf{Работа} ($A$ [Дж])~--- это характеристика <<разгоняющего>> действия силы:
+\begin{equation}
+    A=Fr\cos\alpha,
+\end{equation}
+где~$r$~--- перемещение точки приложения силы (cтрого говоря, $\Delta r$), $\alpha$~--- угол между векторами силы и перемещения. (Если направление силы в процессе движения меняется, но угол~$\alpha$ на малых перемещениях остается постоянным, то работа равна: $A=FS\cos\alpha$, где $S$~--- путь точки приложения силы.)
+
+\textbf{Мощность} ($N$ [Вт])~--- это быстрота совершения работы:
+\begin{equation}
+    N=\frac{A}{t}.
+\end{equation}
+%
+% Например, при свободном падении тяжелого шара из состояния покоя у поверхности планеты сила тяжести, приложенная к нему, совершает положительную работу, что ведет к увеличению скорости шара.
+
+\textbf{Простым механизмом} называют механическое устройство для преобразования силы. На рис.\,\ref{fig:p56} представлены примеры таких механизмов.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (0,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- ({9-cos(45)*.5},0) --++ (45:.2) coordinate (P) arc [start angle=-135, end angle=-90, radius=.3]
+% \filldraw[lightgray,semitransparent] (0,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- ({10-cos(45)*.5},0) --++ (45:.5) coordinate (P) --++ (0,{-cos(45)*.5-.3}) -- (0,-.3) -- cycle;
+% \draw (0,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- ({10-cos(45)*.5},0) --++ (45:.5) --++ (0,{-cos(45)*.5-.3});
+\filldraw[lightgray,semitransparent] (0,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- ({10-cos(60)*3},0) --++ (60:3) coordinate (P) --++ (0,{-.3/cos(60)}) -- ({10-cos(60)*3+.3*tan(60/2)},-.3) -- (0,-.3) -- cycle;
+\draw (0,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- ({10-cos(60)*3},0) --++ (60:3) coordinate (P) --++ (0,{-.3/cos(60)});
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%plane pic
+
+%calc center of cube
+\path[name path=g] (7,{sin(45)*.5+.1+.3}) --++ (-7,0);
+\path[name path=dc] (1,0) --++ (75:1);
+\path[name intersections={of=g and dc, by=int}] (int) coordinate (ccube) {};
+\filldraw[lightgray,draw=black,rotate around={30:(1,0)}] let \p1 = ($ (int) - (1,0) $) in (1,0) rectangle++ ({sqrt(2)*sqrt(\x1^2+\y1^2)},{sqrt(2)*sqrt(\x1^2+\y1^2)});
+
+%plane
+\fill[brown,semitransparent] (1,0) --++ (30:2.5) --++ (0,-1.25) -- cycle;
+\draw (1,0) --++ (30:2.5) node [black,above] {П} --++ (0,-1.25) -- cycle;
+\filldraw[lightgray,draw=black,rotate around={30:(1,0)}] let \p1 = ($ (int) - (1,0) $) in (1,0) rectangle++ ({sqrt(2)*sqrt(\x1^2+\y1^2)},{sqrt(2)*sqrt(\x1^2+\y1^2)}); % calculated above (solid)
+% \filldraw[lightgray,draw=black,rotate around={30:(1,0)}] (1,0) rectangle++ (1,.5);
+
+\draw[->,red,thick,vec] (ccube) coordinate (F)--++ (-90:2.2) node[black,right,inner ysep=0] {$\vec F_\text{т}$};
+\pgfgetlastxy{\ix}{\iy}
+\draw[->,Green,thick,vec] (ccube) coordinate (F)--++ (30:1.1) node[black,above] {$\vec F$};
+\node[] at (F) [circle,fill=Green,inner sep=0pt,minimum size=1mm,label=] {};
+
+%lever
+\fill[brown,semitransparent] (4,{sin(45)*.5}) rectangle (7,{sin(45)*.5+.1});
+\draw[] (4,{sin(45)*.5}) rectangle (7,{sin(45)*.5+.1});
+\node [black,above] at (5.5,{sin(45)*.5+.1}) {Р};
+
+\shade[ball color=lightgray] (7,{sin(45)*.5+.1+.3}) coordinate (C) circle (.3);
+\path (C);
+\pgfgetlastxy{\cx}{\cy}
+
+\draw[->,red,thick,vec] (C) coordinate (F) -- (7,\iy) node[black,right,inner ysep=0] {$\vec F_\text{т}$};
+\node[] at (F) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+\draw[->,Green,thick,vec] let \p1 = ($ (C) - (7,\iy) $) in (4,{sin(45)*.5+.05}) coordinate (F)--++ (0,{-\y1/2}) node[black,right] {$\vec F$};
+\node[] at (F) [circle,fill=Green,inner sep=0pt,minimum size=1mm,label=] {};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% pulley
+
+\fill[brown,semitransparent] (P) --++ (-90:.3) arc [start angle=-90, end angle=240, radius=.3] -- cycle;
+\draw[] (P) ++ (-90:.3) arc [start angle=-90, end angle=240, radius=.3];
+\node[] at (P) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=] {};
+\node[above] at ([yshift=.3cm]P) {Б$_\text{н}$};
+
+%thread
+\path (P);
+\pgfgetlastxy{\px}{\py}
+\draw[] (P) ++ (150:.3) ++ ({150+90}:.5) coordinate (F) --++ ({150+90-180}:.5) arc [start angle=-210, end angle=-360, radius=.3] -- ({\px+.3cm},{\cy+.3cm});
+
+%solid
+\shade[ball color=lightgray] ({\px+.3cm},{\cy}) coordinate (C) circle (.3);
+
+
+%F
+\draw[->,Green,thick,vec] let \p1 = ($ (C) - (7,\iy) $) in (F) --++ ({150+90}:\y1) node[black,left] {$\vec F$};
+\node[] at (F) [circle,fill=Green,inner sep=0pt,minimum size=1mm,label=] {};
+
+\draw[->,red,thick,vec] (C) -- ({\px+.3cm},{\iy}) node[black,right,inner ysep=0] {$\vec F_\text{т}$};
+\node[] at (C) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% movable pulley 
+\def\dpul{13.6} % 3rd pulley coord for equal distance
+\filldraw[lightgray,semitransparent] (\dpul,4) rectangle (15,4.3);
+\draw (\dpul,4.3) --++ (0,-.3) -- (15,4);
+
+%circle pulley
+\fill[brown,semitransparent] (\dpul,\py) coordinate (P) circle (.3);
+\draw[] (P)  circle (.3);
+\node[] at (P) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=] {};
+\node[right] at ([xshift=.3cm]P) {Б$_\text{п}$};
+
+
+%thread
+\path (P);
+\pgfgetlastxy{\px}{\py}
+\draw[] (P) ++ (180:.3) ++ ({90}:.5) coordinate (F) --++ ({-90}:.5) arc [start angle=180, end angle=360, radius=.3] -- ({\dpul+.3},4);
+\draw (P) -- ({\px},{\cy+.3});
+
+%solid
+\shade[ball color=lightgray] ({\px},{\cy}) coordinate (C) circle (.3);
+
+%F
+\draw[->,Green,thick,vec] let \p1 = ($ (C) - (7,\iy) $) in (F) --++ ({90}:{\y1/2}) node[black,left,inner ysep=0] {$\vec F$};
+\node[] at (F) [circle,fill=Green,inner sep=0pt,minimum size=1mm,label=] {};
+
+\draw[->,red,thick,vec] (C) -- ({\px},{\iy}) node[black,right,inner ysep=0] {$\vec F_\text{т}$};
+\node[] at (C) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+
+    \end{tikzpicture}
+\caption{Простые механизмы}
+\label{fig:p56}
+\end{figure}
+
+Простые механизмы (обозначены светло"=коричневым цветом) используются для совершения \emph{полезного процесса} (в данном случае подъема массивных куба и шаров). Зеленый вектор~$\vec F$~--- сила, приложенная к механизму\footnote{В случае \emph{наклонной плоскости} силу прикладывают к телу, установленному на нее.} (\emph{затраченная сила}); красный вектор~$\vec F_\text{т}$~--- сила тяжести, действующая на груз. 
+% (остальные силы, действующие на тела, не указаны).
+% Вот основные виды простых механизмов.  
+\begin{enumerate}
+    \item Гладкая закрепленная \textbf{наклонная плоскость}~П позволяет получить выигрыш в силе: $F<F_\text{т}$. Меняется также направление необходимого усилия.
+    \item Невесомый \textbf{рычаг}~Р~--- это твердое тело, способное вращаться вокруг неподвижной точки в одной плоскости. Он также позволяет получить выигрыш в силе: $F<F_\text{т}$. Направление необходимого усилия меняется.
+    \item Гладкий \textbf{неподвижный блок}~Б$_\text{н}$~--- колесо с желобом~--- с пропущенной по желобу нитью выигрыша в силе не дает ($F=F_\text{т}$), но этот блок позволяет изменить направление прикладываемого усилия.
+    \item Невесомый \textbf{подвижный блок}~Б$_\text{п}$~--- колесо с желобом, способное перемещаться в своей плоскости,~--- с помощью двух нитей в наиболее выгодном положении (рис.\,\ref{fig:p56}, справа) дает выигрыш в силе ($F<F_\text{т}$).
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

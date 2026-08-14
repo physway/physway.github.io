@@ -1,0 +1,195 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+% номер секции вручную
+\setcounter{section}{37
+}
+\addtocounter{section}{-1} 
+
+\section{Механическая волна}
+
+
+\textbf{Механическая волна}~--- это распространение колебаний частиц в упругой среде (твёрдой, жидкой или газообразной). Выделяют два вида волн.
+\begin{enumerate}
+    \item \textbf{Поперечная}: частицы среды колеблются \emph{перпендикулярно} направлению распространения волны (распространяется только в \emph{твердых средах}). Такая волна показана на рис.\,\ref{fig:p62}; направление колебаний слоев (вертикальных рядов частиц) перпендикулярно \emph{скорости волны}~$\vec v$.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%lambda
+\draw[densely dashed,gray] ({360/4.5 pt},{.3*cos(360)}) --++ (0,.4) coordinate (l1);
+\draw[densely dashed,gray] ({720/4.5 pt},{.3*cos(360)}) --++ (0,.4) coordinate (l2);
+
+\draw[<->,gray] ([yshift=-.2cm]l1) --++ ({360/4.5 pt},0) node[midway,below,black] {$\lambda$};
+
+%v
+\draw[->,vec,thick,NavyBlue] ({1440/4.5 pt},{(-36/4.5*4pt)-.3cm}) ++ (0,-0.4) ++ (-1,0) --++ (1,0) node[midway,above,black] {$\vec v$};
+
+\foreach \y in {0,1,2,3,4}{
+    \foreach \x in {0,36,...,1440}
+    {
+    \shade[ball color=orange,yshift={-36/4.5*\y pt}] ({\x/4.5 pt},{.3*cos(\x)}) circle (.05);
+    }
+}
+
+    \end{tikzpicture}
+\caption{Поперечная волна}
+\label{fig:p62}
+\end{figure}
+\nointerlineskip
+\item \textbf{Продольная}: частицы среды колеблются \emph{параллельно} направлению распространения волны. Такая волна показана на рис.\,\ref{fig:p63}; направление колебаний слоев (вертикальных рядов частиц) параллельно скорости волны~$\vec v$.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%lambda
+\draw[densely dashed,gray] ({360/4.5 pt},0) --++ (0,.5) coordinate (l1);
+\draw[densely dashed,gray] ({720/4.5 pt},0) --++ (0,.5) coordinate (l2);
+
+\draw[<->,gray] ([yshift=-.2cm]l1) --++ ({360/4.5 pt},0) node[midway,above,black] {$\lambda$};
+
+%v
+\draw[->,vec,thick,NavyBlue] ({1440/4.5 pt},{(-36/4.5*4pt)-.3cm}) ++ (0,-0.4) ++ (-1,0) --++ (1,0) node[midway,above,black] {$\vec v$};
+
+
+\foreach \z in {0,1,2,3}{
+\foreach \y in {0,1,2,3,4}{
+    \foreach \x in {0,36,54,...,144}
+    {
+    \begin{scope}[xshift={2*180pt/4.5*\z}]
+    \shade[ball color=orange,yshift={-36/4.5*\y pt}] ({(180pt/4.5-180pt/4.5*cos(\x))},0) circle (.05);
+    \end{scope}
+    }
+}
+}
+
+\foreach \z in {0,1,2,3}{
+\foreach \y in {0,1,2,3,4}{
+    \foreach \x in {23,157}
+    {
+    \begin{scope}[xshift={2*180pt/4.5*\z}]
+    \shade[ball color=orange,yshift={-36/4.5*\y pt}] ({(180pt/4.5-180pt/4.5*cos(\x))},0) circle (.05);
+    \end{scope}
+    }
+}
+}
+
+%last seris
+\foreach \y in {0,1,2,3,4}{
+    \foreach \x in {180}
+    {
+    \begin{scope}[xshift={2*180pt/4.5*3}]
+    \shade[ball color=orange,yshift={-36/4.5*\y pt}] ({(180pt/4.5-180pt/4.5*cos(\x))},0) circle (.05);
+    \end{scope}
+    }
+}
+
+
+    \end{tikzpicture}
+\caption{Продольная волна}
+\label{fig:p63}
+\end{figure}
+\end{enumerate}
+\nointerlineskip
+
+\textbf{Длина волны} ($\lambda$ [м])~--- это расстояние, на которое распространяется волна за период колебаний:
+\begin{equation}
+    \lambda=vT.
+\end{equation}
+Длина волны~$\lambda$ в поперечной волне равна расстоянию между \emph{соседними} горбами или впадинами (рис.\,\ref{fig:p62}). В продольной волне~$\lambda$ есть расстояние также между \emph{соседними} сжатиями или разрежениями (рис.\,\ref{fig:p63}). 
+% (Вообще говоря, длиной волны называется расстояние (вдоль направления распространения волны, указываемого скоростью волны~$\vec v$) между двумя ближайшими частицами среды, колеблющимися в одинаковой фазе (то есть частицы имеют одинаковые положения, скорости и ускорения вдоль направления их колебаний.)
+
+\textbf{Звук}~--- это механическая волна в диапазоне частот от 20~Гц до 20~кГц. Ниже этого диапазона лежит область \emph{инфразвука}, выше~--- область \emph{ультразвука}.
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5,2.5) rectangle (5.3,0.5);
+\draw (5,2.5) -- (5,0.5);
+
+% А
+\draw [dashed,orange] (3,2) sin (4,2.1) node[above,black] {А} cos (5,2);
+\draw [dashed,orange] (3,2) -- (5,2);
+\draw [orange,thick] (3,2) sin (4,1.9) cos (5,2);
+
+\node at (3,2) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+\node at (5,2) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+% Б
+\begin{scope}[yshift=-1cm]
+\draw [thick,orange] (4,2) sin (4.5,2.2) cos (5,2);
+\draw [dashed,orange] (4,2) -- (5,2);
+\draw [orange,dashed] (4,2) sin (4.5,1.8) node[below,black] {Б} cos (5,2);
+
+\node at (4,2) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+\node at (5,2) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+\end{scope}
+
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[17]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Струны}
+    \label{fig:p64}
+\end{wrapfigure}
+
+Вот основные характеристики звука.
+\begin{itemize}
+    \item \textbf{Громкость} звука определяется \emph{амплитудой} колебаний. Так, при колебаниях струн (рис.\,\ref{fig:p64}) громкость струны~Б  больше, чем громкость струны~А (что видно по <<размаху>>).
+    \item \textbf{Высота} звука определяется \emph{частотой} колебаний. Например, в опыте на рис.\,\ref{fig:p64} при различии только в длинах струн звук струны~Б кажется выше, чем звук струны~А.
+    % звук струны~Б кажется выше, чем звук струны~Б (при различии только в их длинах, что обнаружено на опыте).
+\end{itemize}
+
+}
+
+\emph{Скорость звука} в твердых телах больше, чем в жидкостях, а в жидкостях~--- больше, чем в газах. Следует отметить, что \emph{частота} звука при переходе из одной среды в другую не меняется и определяется частотой источника звука. Сказанное относится к любым механическим волнам. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}
