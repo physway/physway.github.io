@@ -1,0 +1,209 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Полупроводник}
+
+
+\textbf{Полупроводник}~--- это тело, которое по своей способности проводить ток занимает промежуточное положение между проводниками и диэлектриками. 
+
+Удельное сопротивление полупроводника убывает
+с ростом температуры: при довольно \emph{низкой температуре} полупроводник ведет себя как \emph{диэлектрик}, а при
+\emph{высокой}~--- как достаточно хороший \emph{проводник}. 
+
+% занимающее промежуточное положение по способности проводить ток 
+
+% которое при одних условиях является проводником, а при других~--- диэлектриком. 
+
+На рис.\,\ref{fig:p128} представлена структура полупроводника на примере кремния (Si).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=lightgray] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(90:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(270:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\def\dn{.2}
+\def\de{.1}
+
+
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,4}
+\pic[] at ({\x},{\y}) {atom};
+
+
+    \end{tikzpicture}
+\caption{Структура полупроводника}
+\label{fig:p128}
+\end{figure}
+
+При довольно низкой температуре каждый атом (группа из одного серого и четырех прикрепленных к нему синих шаров) кремния связан с четырьмя соседними атомами с помощью своих четырех \emph{валентных электронов}\footnote{Валентными называют электроны, наиболее удаленные от ядра атома.} (синие шары). Валентные электроны могут переходить (<<перескакивать>>) от одного атома к другому~--- атомы могут обмениваться своими валентными электронами (переходы этих электронов носят непредсказуемый характер).
+
+% , которые объединяются в пары с валентыми электронами <<соседей>>.
+
+При нагревании полупроводника тепловые колебания его частиц становятся более интенсивными, и некоторые валентные электроны могут <<оторваться>> от своих атомов (рис.\,\ref{fig:p129}). 
+
+% На  показано появление свободных электронов при повышении температуры полупроводника.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=lightgray] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(90:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70,rotate={rand*10}] ([shift={(270:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+
+
+
+
+\def\dn{.2}
+\def\de{.1}
+
+
+%y0
+\foreach \y in {0}
+\foreach \x in {0,1,3,4}
+\pic[] at ({\x},{\y}) {atom};
+
+
+%y1
+\foreach \y in {1}
+\foreach \x in {0,1,2,3}
+\pic[] at ({\x},{\y}) {atom};
+
+
+%y2
+\foreach \y in {2}
+\foreach \x in {0,2,3,4}
+\pic[] at ({\x},{\y}) {atom};
+
+
+%%%%%%%%%%%%%%%%%%
+%below
+
+\begin{scope}[shift={({rnd*360}:.05)}]
+\path[rotate around={rand*10:(2,0)}] ([shift={(0:{\dn cm})}]2,0) coordinate (be) circle (\de);
+\begin{scope}[]
+    \clip[] (be) ++ (10:\de) arc (10:350:{\de cm}) --++ (0,-\dn) --++ ({-2*\dn-\de},0) --++ (0,{2*\dn+\de}) --++ ({2*\dn+\de},0) -- cycle;
+    \clip[] (2,0) circle (\dn);
+    \shade[ball color=lightgray] (2,0) circle (\dn);
+\end{scope}
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(2,0)}] ([shift={(90:{\dn cm})}]2,0) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(2,0)}] ([shift={(180:{\dn cm})}]2,0) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(2,0)}] ([shift={(270:{\dn cm})}]2,0) circle (\de);
+
+\end{scope}
+\draw[->,shorten >={\de cm},NavyBlue] ([shift={(0:\de)}]be) to[out=0,in=-90] (2.5,.5);
+\shade[ball color=NavyBlue!70] (2.5,.5) circle (\de);
+\draw[red,thick] (be) circle (\de);
+
+
+%%%%%%%%%%%%%%%%%%
+%right
+
+\begin{scope}[shift={({rnd*360}:.05)}]
+\path[rotate around={rand*10:(4,1)}] ([shift={(90:{\dn cm})}]4,1) coordinate (be) circle (\de);
+\begin{scope}[]
+    \clip[] (be) ++ (100:\de) arc (100:440:{\de cm}) --++ (\dn,0) --++ (0,{-2*\dn-2*\de}) --++ ({-2*\dn-\de},0) --++ (0,{2*\dn}) -- cycle;
+    \clip[] (4,1) circle (\dn);
+    \shade[ball color=lightgray] (4,1) circle (\dn);
+\end{scope}
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(4,1)}] ([shift={(0:{\dn cm})}]4,1) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(4,1)}] ([shift={(180:{\dn cm})}]4,1) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(4,1)}] ([shift={(270:{\dn cm})}]4,1) circle (\de);
+
+\end{scope}
+\draw[->,shorten >={\de cm},NavyBlue] ([shift={(90:\de)}]be) to[out=90,in=0] (3.5,1.5);
+\shade[ball color=NavyBlue!70] (3.5,1.5) circle (\de);
+\draw[red,thick] (be) circle (\de);
+
+
+%%%%%%%%%%%%%%%%%%
+%left
+
+\begin{scope}[shift={({rnd*360}:.05)}]
+\path[rotate around={rand*10:(1,2)}] ([shift={(-90:{\dn cm})}]1,2) coordinate (be) circle (\de);
+\begin{scope}[]
+    \clip[] (be) ++ (-80:\de) arc (-80:260:{\de cm}) --++ ({-\dn-\de},0) --++ (0,{2*\dn+\de}) --++ ({2*\dn+2*\de},0) --++ (0,{-2*\dn}) -- cycle;
+    \clip[] (1,2) circle (\dn);
+    \shade[ball color=lightgray] (1,2) circle (\dn);
+\end{scope}
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(1,2)}] ([shift={(0:{\dn cm})}]1,2) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(1,2)}] ([shift={(180:{\dn cm})}]1,2) circle (\de);
+\shade[ball color=NavyBlue!70,rotate around={rand*10:(1,2)}] ([shift={(90:{\dn cm})}]1,2) circle (\de);
+
+\end{scope}
+\draw[->,shorten >={\de cm},NavyBlue] ([shift={(-90:\de)}]be) to[out=-90,in=180] (1.5,1.5);
+\shade[ball color=NavyBlue!70] (1.5,1.5) circle (\de);
+\draw[red,thick] (be) circle (\de);
+
+
+
+    \end{tikzpicture}
+\caption{Появление свободных электронов (и дырок)}
+\label{fig:p129}
+\end{figure}
+
+
+Электроны, покинувшие свои атомы, становятся \emph{свободными} (их называют \emph{электронами проводимости}). Покидание атома электроном сопровождается образованием вакантного места с недостающим электроном~--- \emph{дырки} (красная окружность). Дырку можно рассматривать как \emph{положительный} заряд.
+
+% Если внести полупроводник (со свободными электронами и дырками) в электрическое поле~$E$, то в полупроводнике появится ток, вызванный упорядоченным движением свободных электронов и дырок: свободные электроны перемещаются против линий поля~$E$, а дырки~--- в направлении линий поля~$E$ (направленное движение дырок вызвано перескоками валентных электронов в направлении против поля).  
+
+Если подключить полупроводник (со свободными электронами и дырками) к источнику тока, то в полупроводнике появится ток, вызванный упорядоченным движением свободных электронов и дырок: свободные электроны перемещаются к <<плюсу>> источника, а дырки~--- к <<минусу>> источника.
+
+В рассмотренном примере свободные электроны и дырки образуются за счет <<отрывов>> валентных электронов от атомов, из которых построен \emph{весь} (чистый) полупроводник.
+% (\emph{чистый} полупроводник). 
+Это~--- полупроводник с \emph{собственной проводимостью}\footnote{Проводимость~--- это способность тела проводить ток.}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

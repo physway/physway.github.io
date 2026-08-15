@@ -1,0 +1,344 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{\emph{p}--\emph{n}-Переход}
+
+
+$p$--$n$-\emph{Переход}~--- это место соприкосновения $p$- и $n$-полупроводников (рис.\,\ref{fig:p132}).
+
+% На рис.\,\ref{fig:p132} изображен контакт $p$- и $n$-полупроводников.
+
+\tikzfading[name=fade right,
+left color=transparent!0,
+right color=transparent!100]
+
+\tikzfading[name=fade left,
+left color=transparent!100,
+right color=transparent!0]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{el/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=NavyBlue!70] (0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\tikzset{pp/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \draw[red,thick] (0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\tikzset{em/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \begin{scope}[transparency group,nearly transparent]
+  \begin{scope}[transparency group,semitransparent]
+  \shade[ball color=NavyBlue!70] ([shift={(180:\de cm)}]0,0) circle (\de);
+  \end{scope}
+  \begin{scope}[transparency group]
+  \shade[ball color=NavyBlue!70] ([shift={(180:{0 cm})}]0,0) circle (\de);
+  \end{scope}
+  \end{scope}
+  \shade[ball color=NavyBlue!70] ([shift={(0:{\de cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\def\dn{.2}
+\def\de{.1}
+
+
+\def\sr{3.5}
+%p n
+\fill[orange, nearly transparent] (0,0) rectangle++ (\sr,2);
+\fill[Green, nearly transparent] (\sr,0) rectangle++ (\sr,2);
+
+
+% border charges
+\fill[red,path fading=fade right] (\sr,0) rectangle++ (.5,2);
+\fill[NavyBlue,path fading=fade left] (\sr,0) rectangle++ (-.5,2);
+
+
+% border
+\draw[gray] (\sr,0) --++ (0,2);
+\draw (0,0) rectangle++ (2*\sr,2);
+
+
+%%%%%%%%%%%%%%%%%%%
+% p solid 
+\foreach \y in {0}
+\foreach \x in {0,...,5}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+\foreach \y in {1}
+\foreach \x in {0,1,3,4,5}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+\foreach \y in {2}
+\foreach \x in {0,1,2,3,5}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+\foreach \y in {3}
+\foreach \x in {1,...,5}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+%
+\foreach \y in {1}
+\foreach \x in {2}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+\foreach \y in {2}
+\foreach \x in {4}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+\foreach \y in {3}
+\foreach \x in {0}
+\pic[shift={(.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+% n solid 
+\foreach \y in {0}
+\foreach \x in {0,...,3,5}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+\foreach \y in {1}
+\foreach \x in {1,2,3,4,5}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+\foreach \y in {2}
+\foreach \x in {0,...,5}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+\foreach \y in {3}
+\foreach \x in {0,1,3,4,5}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {el};
+
+%
+\foreach \y in {0}
+\foreach \x in {4}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+\foreach \y in {1}
+\foreach \x in {0}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+\foreach \y in {3}
+\foreach \x in {2}
+\pic[shift={(4.3,.3)}] at ({0+(3-.6)/5*\x},{0+(2-.6)/3*\y}) {pp};
+
+
+
+
+
+%labels
+\node[anchor=south west,inner xsep=0] at (0,2) {$p$-полупроводник};
+\node[anchor=south east,inner xsep=0] at (2*\sr,2) {$n$-полупроводник};
+
+
+
+    \end{tikzpicture}
+\caption{$p$--$n$-Переход}
+\label{fig:p132}
+\end{figure}
+
+
+При образовании контакта между $p$- и $n$-полупроводниками свободные электроны (синие шары), совершая тепловое движение, проникают из $n$"=области в $p$"=область, а дырки (красные окружности)~--- из $p$"=области в $n$"=область (свободные электроны и дырки стремятся <<смешаться>> друг с другом, подобно тому как стремятся смешаться две жидкости, налитые в один сосуд).
+
+В результате этого в пограничном слое $n$"=полупроводника имеется недостаток электронов~--- этот слой оказывается заряженным \emph{положительно} (красная область). Пограничный слой же $p$"=полупроводника становится заряженным \emph{отрицательно} (синяя область) вследствие ухода из него дырок и прихода в него электронов. Заряженные пограничные слои образуют так называемый \emph{запирающий слой} (красно"=синяя область): граница $p$--$n$"=структуры находится как бы в <<конденсаторе>>, внутреннее поле которого (запирающее поле) препятствует дальнейшему переходу свободных электронов и дырок через границу. 
+
+Пусть $p$--$n$-структура подключена к источнику тока так, что <<плюс>> источника подан на $p$-полупроводник, а <<минус>>~--- на $n$"=полупроводник (рис.\,\ref{fig:p133}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{circuitikz}[font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\tikzset{el/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=NavyBlue!70] (0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\tikzset{pp/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \draw[red,thick] (0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\tikzset{em/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)}]
+  \begin{scope}[transparency group,nearly transparent]
+  \begin{scope}[transparency group,semitransparent]
+  \shade[ball color=NavyBlue!70] ([shift={(0:\de cm)}]0,0) circle (\de);
+  \end{scope}
+  \begin{scope}[transparency group]
+  \shade[ball color=NavyBlue!70] ([shift={(180:{0 cm})}]0,0) circle (\de);
+  \end{scope}
+  \end{scope}
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\de cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\tikzset{ppm/.pic={
+  \begin{scope}[shift={({rnd*360}:.025)}]
+  \begin{scope}[transparency group,nearly transparent]
+  \begin{scope}[transparency group,semitransparent]
+  \draw[red,thick] ([shift={(180:\de cm)}]0,0) circle (\de);
+  \end{scope}
+  \begin{scope}[transparency group]
+  \draw[red,thick] ([shift={(0:{0 cm})}]0,0) circle (\de);
+  \end{scope}
+  \end{scope}
+  \draw[red,thick] ([shift={(0:{\de cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+
+\def\dn{.2}
+\def\de{.1}
+
+
+\def\sr{3.5}
+%p n
+\fill[orange, nearly transparent] (0,0) rectangle++ (\sr,2);
+\fill[Green, nearly transparent] (\sr,0) rectangle++ (\sr,2);
+
+
+% border charges
+\fill[red,path fading=fade right] (\sr,0) rectangle++ (.25,2);
+\fill[NavyBlue,path fading=fade left] (\sr,0) rectangle++ (-.25,2);
+
+
+% border
+\draw[gray] (\sr,0) --++ (0,2);
+\draw (0,0) rectangle++ (2*\sr,2);
+
+
+%%%%%%%%%%%%%%%%%%%
+% p solid 
+\foreach \y in {0}
+\foreach \x in {0,...,5}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+\foreach \y in {1}
+\foreach \x in {0,1,3,4,5}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+\foreach \y in {2}
+\foreach \x in {0,1,2,3,5}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+\foreach \y in {3}
+\foreach \x in {1,...,5}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+%
+\foreach \y in {1}
+\foreach \x in {2}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+\foreach \y in {2}
+\foreach \x in {4}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+\foreach \y in {3}
+\foreach \x in {0}
+\pic[shift={(.3,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+% n solid 
+\foreach \y in {0}
+\foreach \x in {0,...,3,5}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+\foreach \y in {1}
+\foreach \x in {1,2,3,4,5}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+\foreach \y in {2}
+\foreach \x in {0,...,5}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+\foreach \y in {3}
+\foreach \x in {0,1,3,4,5}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {em};
+
+%
+\foreach \y in {0}
+\foreach \x in {4}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+\foreach \y in {1}
+\foreach \x in {0}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+\foreach \y in {3}
+\foreach \x in {2}
+\pic[shift={(4.05,.3)}] at ({0+(3.25-.6)/5*\x},{0+(2-.6)/3*\y}) {ppm};
+
+
+%labels
+\node[anchor=south west,inner xsep=0] at (0,2) {$p$-полупроводник};
+\node[anchor=south east,inner xsep=0] at (2*\sr,2) {$n$-полупроводник};
+
+
+%E
+\draw (0,1) to[*short,*-o] ++ (-1,0) node[above] {$+$};
+\draw (7,1) to[*short,*-o] ++ (1,0) node[above] {$-$};
+
+% \node at (0,.9) [circle,draw,inner sep=0pt,minimum size=1mm,label=below:$M_1$] {};
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \end{circuitikz}
+\caption{Прямое включение $p$--$n$-перехода}
+\label{fig:p133}
+\end{figure}
+
+Внешнее электрическое поле, создаваемое заряженными выводами источника (<<$+$>> и <<$-$>>) внутри структуры, направлено \emph{против} запирающего поля: на рис.\,\ref{fig:p133} внешнее поле вблизи границы направлено вправо, а запирающее поле~--- влево. Переходы основных носителей заряда (свободных электронов в $n$"=полупроводнике и дырок в $p$"=полупроводнике) через границу облегчаются: внешнее поле <<помогает>> свободным электронам и дыркам преодолеть запирающий слой (они массово перемещаются через границу контакта: свободные электроны устремляются к <<плюсу>> источника, а дырки~--- к его <<минусу>>). В этом случае сопротивление $p$--$n$"=перехода мал\'о, и \emph{ток через переход оказывается большим} (источник практически замкнут \emph{накоротко}). 
+
+Показанный на рис.\,\ref{fig:p133} способ подключения $p$--$n$"=перехода к источнику называется \emph{прямым включением} $p$--$n$"=перехода. При \emph{обратном включении} $p$--$n$"=переход подключается наоборот: $p$"=область соединяется с <<минусом>> источника, $n$"=область~--- с <<плюсом>> (тогда \emph{ток через переход пренебрежимо мал}). 
+
+
+
+
+
+ 
+\end{document}

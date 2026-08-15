@@ -1,0 +1,154 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Диэлектрик}
+
+
+\textbf{Диэлектрик}~--- это тело, \emph{не} способное проводить через себя электрические заряды. Например, если металлическое \emph{заряженное} тело~А соединить диэлектриком с металлическим \emph{незаряженным} телом~Б, то заряд тела~А \emph{не} перераспределится между этими двумя телами.
+
+В диэлектрике (в отличие от проводника) \emph{нет свободных зарядов}. Заряженные частицы (электроны и ядра) в диэлектрике являются \emph{связанными}~--- электроны при этом могут перемещаться лишь внутри молекулы тела (рис.\,\ref{fig:p113}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rnd*360}] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{atompo/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \end{scope}}
+}
+
+\tikzset{atomne/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)},rotate={rnd*360}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\dn{.15}
+\def\de{.1}
+
+
+%solid
+\fill[yellow,nearly transparent] (0,0) rectangle++ (4,2);
+\draw[] (0,0) rectangle++ (4,2);
+
+
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,5}
+\pic[shift={(.4,.4)}] at ({0+(4-.8)/5*\x},{0+(2-.8)/2*\y}) {atom};
+
+
+
+    \end{tikzpicture}
+\caption{Диэлектрик}
+\label{fig:p113}
+\end{figure}
+
+Соответствующие электроны (синие шары) и ядра (красные шары) сцеплены друг с другом (если диэлектрик жидкий или газообразный, то его молекулы <<носят с собой>> свои ядра и электроны)\footnote{В особых случаях электрон может <<оторваться>> от своего ядра~--- так происходит, например, при электризации диэлектрика трением.}.
+
+Пусть диэлектрик помещен в однородное электрическое поле (рис.\,\ref{fig:p114}).
+
+\tikzfading[name=fade right,
+left color=transparent!0,
+right color=transparent!100]
+
+\tikzfading[name=fade left,
+left color=transparent!100,
+right color=transparent!0]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0.05,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rand*30}] ([shift={(180:{\dn cm})}]0.05,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{atompo/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \end{scope}}
+}
+
+\tikzset{atomne/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)},rotate={rnd*360}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\dn{.15}
+\def\de{.1}
+
+
+%solid
+\fill[yellow,nearly transparent] (0,0) rectangle++ (4,2);
+\fill[NavyBlue,path fading=fade right] (0,0) rectangle++ (.5,2);
+\fill[red,path fading=fade left] (4,0) rectangle++ (-.5,2);
+\draw[] (0,0) rectangle++ (4,2);
+
+
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,5}
+\pic[shift={(.4,.4)}] at ({0+(4-.8)/5*\x},{0+(2-.8)/2*\y}) {atom};
+
+%E
+\draw[->,Green] (-2,2.5) --++ (8,0) node [right,black] {$E_\text{в}$};
+\draw[->,Green] (-2,-.5) --++ (8,0) node [right,black] {$E_\text{в}$};
+
+
+%phantom
+\phantom{\node[left] at (-2,2.5) {$E_\text{в}$};}
+\phantom{\node[left] at (-2,-.5) {$E_\text{в}$};}
+
+
+    \end{tikzpicture}
+\caption{Диэлектрик в электрическом поле}
+\label{fig:p114}
+\end{figure}
+
+Внешенее поле~$E_\text{в}$ <<разворачивает>> молекулы диэлектрика так, что на одной поверхности тела (левая поверхность~--- синяя область) оказываются преимущественно отрицательные заряды ~--- электроны, а на другой поверхности (правая поверхность~--- красная область) оказываются в основном положительные заряды~--- ядра. Это происходит вследствие действия силы Кулона на электроны со стороны поля: на рис.\,\ref{fig:p114} эта сила <<тянет>> электроны влево.  
+
+Избыточные \emph{наведенные} заряды на поверхностях диэлектрика (см.~рис.\,\ref{fig:p114}) создают внутри тела собственное поле~$E_i$, направленное \emph{против} внешнего поля~$E_\text{в}$. Поле~$E_i$ ослабляет поле~$E_\text{в}$ внутри диэлектрика (при этом $E_i<E_\text{в}$). Результирующее (суммарное) поле~$E$ внутри тела равно $E=E_\text{в}-E_i>0$. 
+
+\textbf{Диэлектрическая проницаемость} ($\varepsilon$)~--- это характеристика тела, показывающая во сколько раз уменьшается поле в нем по сравнению с вакуумом:
+\begin{equation}
+    \varepsilon=\frac{E_\text{в}}{E},
+\end{equation}
+где $E_\text{в}$~--- поле в вакууме, $E$~--- поле в данном теле ($E<E_\text{в}$).
+
+
+ 
+\end{document}

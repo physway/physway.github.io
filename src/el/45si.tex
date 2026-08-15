@@ -1,0 +1,138 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Катушка. Самоиндукция}
+
+
+% Опыт показывает, что магнитный поток через контур, создаваемый током в этом контуре, пропорционален силе этого тока: $\Phi\sim I$.  
+% \textbf{Индуктивность} ($L$ [Гн])~--- это характеристика катушки\footnote{Более точно, контура.}, показывающая ее способность создавать магнитное поле:
+% \begin{equation}
+%     L=\frac{\Phi_L}{I},
+% \end{equation}
+% где $\Phi_L$~--- магнитный поток через катушку, создаваемый током $I$ в катушке.
+
+\textbf{Магнитный поток катушки}, создаваемый током в ней и пронизывающий ее, равен:
+\begin{equation}
+    \Phi_L=LI,
+\end{equation}
+где $L$~--- \emph{индуктивность} катушки\footnote{Индуктивность~--- это характеристика катушки (контура), показывающая ее способность создавать магнитное поле. В общем случае индуктивность катушки определяется так: $L=\dfrac{\mu\mu_0N^2S}{l}$, где $\mu$~--- магнитная проницаемость вещества внутри катушки, $\mu_0$~--- магнитная постоянная, $N$~--- число витков катушки, $S$~--- площадь поперечного сечения катушки, $l$~--- длина катушки.}, $I$~--- ток в катушке.
+
+
+% Например, из двух катушек одинаковых размеров с равными токами внутри себя создает более сильное поле та катушка, у которой индуктивность больше. 
+
+Говорят, что индуктивность~--- это способность катушки накапливать энергию магнитного поля.
+
+\textbf{Энергия катушки} рассчитывается по формуле:
+\begin{equation}
+    W_L=\frac{LI^2}{2}.
+\end{equation}
+
+\textbf{Самоиндукция}~--- это явление возникновения ЭДС в контуре (катушке) при изменении силы тока в этом же самом контуре (катушке). Схема опыта по обнаружению явления самоиндукции показана на рис.\,\ref{fig:p164} (слева).
+
+
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\draw (0,0) to[*battery1,l={$\mathscr{E},r$},invert,name=E] ++ (2.5,0) to[make contact={info={[black]$K$}}] ++ (2.5,0) --++ (0,-2.5) --++ (-.4,0) coordinate (l);
+\draw[line cap=butt] (l) to[*L=,l_=$L$,mirror] ++ (-2.1,0) coordinate (ll);
+\draw (ll) to[*lamp,l_=Л] ++ (-2.5,0) --++ (0,2.5);
+
+
+%%%%
+%%%%
+% right pic
+\begin{scope}[xshift=7cm]
+    
+\draw (0,0) to[*battery1,l={$\mathscr{E},r$},invert,name=E] ++ (2.5,0) --++ (1.25,0) node[above] {$K$} --++ (1.25,0) --++ (0,-2.5) --++ (-.4,0) coordinate (l);
+\draw[line cap=butt] (l) to[*L=,l_=$L$,mirror] ++ (-2.1,0) coordinate (ll);
+\draw (ll) to[*lamp,l_=Л] ++ (-2.5,0) --++ (0,2.5);
+
+\def\sl{7.5*\pgflinewidth}
+\def\bl{15*\pgflinewidth}
+\def\di{2.5*\pgflinewidth}
+\draw[shift={(4.5,-2.5)},gray,thick] (0,0) ++ (-\di,\sl) --++ (0,{-2*\sl}) ++ ({2*\di},{\sl}) ++ (0,\bl) --++ (0,{-2*\bl}) ++ (-\di,{2*\bl}) 
+% node[fill,circle,minimum size=1mm,inner sep=0] {}
+node[above,black] {$\mathscr E_{si}$}
+;
+\end{scope}
+
+
+%\Longrightarrow
+\path (6,-1.25) node {$\Longrightarrow$};
+
+
+\end{circuitikz}
+\caption{К опыту по обнаружению явления самоиндукции}
+\label{fig:p164}
+\end{figure}
+
+Имеется цепь, состоящая из последовательно соединенных катушки индуктивности~$L$ и лампы~Л, подключенных к батарейке~$\mathscr E,r$ через ключ~$K$. При разомкнутом ключе тока в цепи нет, лампа не горит. 
+
+Пусть теперь ключ в рассмотренной схеме замыкают (рис.\,\ref{fig:p164}, справа).
+
+%     \begin{figure}[H]
+%     \centering
+% \begin{circuitikz}[circuit ee IEC,font=\small,thin,
+%     line cap=round,line join=round,
+% >={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+% vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%     \ctikzset{bipoles/americaninductor/coils=3}
+
+% %%%%
+% %%%%
+% % right pic
+
+% \draw (0,0) to[*battery1,l={$\mathscr{E},r$},invert,name=E] ++ (2.5,0) --++ (1.25,0) node[above] {$K$} --++ (1.25,0) --++ (0,-2.5) --++ (-.4,0) to[*L=,l_=$L$,mirror] ++ (-2.1,0) to[*lamp,l_=Л] ++ (-2.5,0) --++ (0,2.5);
+
+% \def\sl{7.5*\pgflinewidth}
+% \def\bl{15*\pgflinewidth}
+% \def\di{2.5*\pgflinewidth}
+% \draw[shift={(4.5,-2.5)},gray,thick] (0,0) ++ (-\di,\sl) --++ (0,{-2*\sl}) ++ ({2*\di},{\sl}) ++ (0,\bl) --++ (0,{-2*\bl}) ++ (-\di,{2*\bl}) 
+% % node[fill,circle,minimum size=1mm,inner sep=0] {}
+% node[above,black] {$\mathscr E_{si}$}
+% ;
+
+
+% \end{circuitikz}
+% \caption{Схема к опыту (самоиндукция): сразу после замыкания ключа}
+% \label{fig:p165}
+% \end{figure}
+
+\emph{Сразу после} замыкания ключа~$K$ тока в цепи \emph{нет.} Это объясняется тем, что в катушке возникает \emph{ЭДС самоиндукции~$\mathscr E_{si}$, препятствующая изменению тока через катушку}\footnote{Говорят, что ток в катушке не может измениться \emph{скачком.}} (постоянный ток в цепи устанавливается спустя некоторое время~--- соответственно, лампа загорается \emph{постепенно}).
+
+\textbf{ЭДС самоиндукции} в катушке при изменении тока в ней находится по формуле:
+\begin{equation}
+    \mathscr E_{si}=-L\frac{\Delta I}{\Delta t}=-LI'.
+\end{equation}
+
+ЭДС индукции будет возникать в катушке при любом способе изменения магнитного потока катушки (по закону электромагнитной индукции Фарадея): $\mathscr E_{i}=-\dfrac{\Delta \Phi_L\strut}{\Delta t\strut}=-\Phi_L'$.
+
+
+
+
+
+
+ 
+\end{document}

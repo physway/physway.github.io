@@ -1,0 +1,246 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Электромагнитные колебания}
+
+
+\textbf{Электромагнитные колебания}~--- это периодические изменения заряда, тока и напряжения в электрической цепи. Изучение электромагнитных колебаний удобно начинать с рассмотрения процессов в \emph{колебательном контуре}~--- замкнутой цепи из конденсатора и катушки.  
+
+Пусть \emph{заряженный} конденсатор замыкают на катушку (рис.\,\ref{fig:p165}, слева).
+
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+% 1 pic
+
+\path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+% \path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (cc);
+% \fill[yellow] (cc)
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% -- cycle
+% ;
+
+%C
+\path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+\fill[yellow] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl);
+\draw[line cap=butt] (cl) to[*L,mirror,fill=yellow] ++ (-2.5,0) coordinate (cr);
+\draw (cr) --++ (0,-1.5);
+\node[below] at (c.south) {$q_\text{max}$};
+\node[left] at (c.north west) {$+$};
+\node[right] at (c.north east) {$-$};
+
+
+% 2 pic
+\begin{scope}[xshift=3.5cm]
+
+\path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+\path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (ll);
+\fill[yellow,semitransparent] (ll)
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+-- cycle
+;
+
+%C
+\path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+\fill[yellow,semitransparent] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl);
+\draw[line cap=butt] (cl) to[*L,mirror,name=l] ++ (-2.5,0) coordinate (cr);
+\draw (cr) --++ (0,-1.5);
+\node[below] at (c.south) {$q$};
+\node[left] at (c.north west) {$+$};
+\node[right] at (c.north east) {$-$};
+
+\node[above] at ([xshift=-.0cm]l.north) {
+\tikz\draw[->,red] (0,0) ++ (-.5,0) --++ (1,0) node[midway,above,black,shift={(0,9*\pgflinewidth)},inner sep=0] {$I$};
+}
+;
+
+\end{scope}
+
+
+% 3 pic
+\begin{scope}[xshift=7cm]
+
+\path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+\path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (ll);
+\fill[yellow] (ll)
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+-- cycle
+;
+
+%C
+% \path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+% \fill[yellow,semitransparent] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl);
+\draw[line cap=butt] (cl) to[*L,mirror,name=l] ++ (-2.5,0) coordinate (cr); 
+\draw (cr) --++ (0,-1.5);
+\node[below] at (c.south) {};
+\node[left] at (c.north west) {};
+\node[right] at (c.north east) {};
+
+\node[above] at ([xshift=-.0cm]l.north) {
+\tikz\draw[->,red] (0,0) ++ (-.5,0) --++ (1,0) node[midway,above,black,,shift={(0,9*\pgflinewidth)},inner sep=0] {$I_\text{max}$};
+};
+
+\end{scope}
+
+
+
+
+\end{circuitikz}
+\caption{Электромагнитные колебания в колебательном контуре}
+\label{fig:p165}
+\end{figure}
+
+
+Сразу после замыкания цепи начинаются электромагнитные колебания~--- периодические изменения заряда на конденсаторе и тока в катушке (это \emph{свободные} колебания; они совершаются только за счет энергии, запасенной в контуре~--- внешних воздействий нет). Период колебаний обозначается через~$T$. При $t=0$ (рис.\,\ref{fig:p165}, слева) конденсатор с начальным зарядо~$q_\text{max}$ начинает разряжаться, ток в катушке равен нулю (ток в ней не может измениться скачком). При $0<t<T/4$ (рис.\,\ref{fig:p165}, посередине) конденсатор с зарядом~$q$ (при этом $q<q_\text{max}$) разряжается, ток~$I$ в катушке нарастает. При $T/4$ (рис.\,\ref{fig:p165}, справа) конденсатор \emph{разряжен}, ток в катушке достиг максимального значения~$I_\text{max}$.
+
+Теперь конденсатор начинает \emph{перезаряжаться} (рис.\,\ref{fig:p166}, слева).
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+% 2 pic
+\begin{scope}[xshift=3.5cm]
+
+\path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+\path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (ll);
+\fill[yellow,semitransparent] (ll)
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+arc (0:180:{13.65*\pgflinewidth})
+-- cycle
+;
+
+%C
+\path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+\fill[yellow,semitransparent] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl);
+\draw[line cap=butt] (cl) to[*L,mirror,name=l] ++ (-2.5,0) coordinate (cr); 
+\draw (cr) --++ (0,-1.5);
+\node[below] at (c.south) {$q$};
+\node[left] at (c.north west) {$-$};
+\node[right] at (c.north east) {$+$};
+
+\node[above] at ([xshift=-.0cm]l.north) {
+\tikz\draw[->,red] (0,0) ++ (-.5,0) --++ (1,0) node[midway,above,black,shift={(0,9*\pgflinewidth)},inner sep=0] {$I$};
+}
+;
+
+\end{scope}
+
+
+% 3 pic
+\begin{scope}[xshift=7cm]
+
+\path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+% \path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (cc);
+% \fill[yellow] (cc)
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% -- cycle
+% ;
+
+%C
+\path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+\fill[yellow] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl); 
+\draw[line cap=butt] (cl) to[*L,mirror,fill=yellow] ++ (-2.5,0) coordinate (cr); 
+\draw (cr) --++ (0,-1.5);
+\node[below] at (c.south) {$q_\text{max}$};
+\node[left] at (c.north west) {$-$};
+\node[right] at (c.north east) {$+$};
+
+\end{scope}
+
+
+
+
+\end{circuitikz}
+\caption{Электромагнитные колебания в колебательном контуре}
+\label{fig:p166}
+\end{figure}
+
+
+При $T/4<t<T/2$ (рис.\,\ref{fig:p166}, слева) на обкладках конденсатора появляются заряды противоположного знака по сравнению с теми, что были вначале; ток в катушке убывает. При $t=T/2$ (рис.\,\ref{fig:p166}, справа) конденсатор перезарядился~--- его заряд снова равен~$q_\text{max}$ (однако полярность другая); тока в катушке нет. 
+
+При $T/2<t<T$ процессы в колебательном контуре повторяются, но идут в обратном направлении (<<обратно>> заряженный конденсатор разряжается; в катушке нарастает ток в противоположном направлении по сравнению с тем, что было при $0<t<T/2$).
+
+Желтым цветом обозначено сосредоточение \emph{энергии} в колебательном контуре при колебаниях~--- элементы как бы обмениваются энергией между собой.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

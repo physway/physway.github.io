@@ -1,0 +1,456 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Правило Ленца}
+
+
+Как известно, магнит, вдвигаемый в проводящий контур\footnote{Или выдвигаемый из проводящего контура (роль магнита может выполнять также проводник с током~--- например, катушка с током).}, вызывает протекание индукционного тока в контуре (рис.\,\ref{fig:p163}).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\makeatletter
+
+\pgfkeys{/pgf/decoration/.cd,
+         start color/.store in =\startcolor,
+         end color/.store in   =\endcolor
+}
+
+\pgfdeclaredecoration{width and color change}{initial}{
+ \state{initial}[width=0pt, next state=line, persistent precomputation={%
+   \pgfmathdivide{50}{\pgfdecoratedpathlength}%
+   \let\increment=\pgfmathresult%
+   \def\x{0}%
+ }]{}
+ \state{line}[width=.5pt,   persistent postcomputation={%
+     \pgfmathadd@{\x}{\increment}%
+     \let\x=\pgfmathresult%
+   }]{%
+   \pgfsetlinewidth{\x/150*0.035pt+\pgflinewidth}%
+   \pgfsetarrows{-}%
+   \pgfpathmoveto{\pgfpointorigin}%
+   \pgfpathlineto{\pgfqpoint{.75pt}{0pt}}%
+   \pgfsetstrokecolor{\endcolor!\x!\startcolor}%
+   \pgfusepath{stroke}%
+ }
+ \state{final}{%
+   \pgfsetlinewidth{\pgflinewidth}%
+   \pgfpathmoveto{\pgfpointorigin}%
+   \color{\endcolor!\x!\startcolor}%
+   \pgfusepath{stroke}% 
+ }
+}
+
+\makeatother
+
+
+\tikzfading[name=fade out,
+inner color=transparent!0,
+outer color=transparent!100]
+
+    \begin{figure}[H]
+    \centering
+
+\begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+\def\lm{1} 
+\def\xr{.25}
+
+
+%lines left
+%1
+\begin{scope}[red!50!white]
+    
+\def\ds{.4}
+\draw[yshift=.75cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\ds*1cm}, y radius={\ds*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw[yshift=.75cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\ds*1cm}, y radius={\ds*1cm+.05cm}]
+coordinate (e1)
+;
+
+
+%2
+\def\df{.9}
+\draw[yshift=.5cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\df*1cm}, y radius={\df*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw[yshift=.5cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\df*1cm}, y radius={\df*1cm+.05cm}]
+coordinate (e1)
+;
+
+
+%3
+\def\dg{1.5}
+\draw[yshift=.25cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\dg*1cm}, y radius={\dg*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw[yshift=.25cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\dg*1cm}, y radius={\dg*1cm+.05cm}]
+coordinate (e1)
+;
+\end{scope}
+
+
+%reverse
+\begin{scope}[yscale=-1,red!50!white]
+
+%1
+\def\ds{.4}
+\draw[yshift=.75cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\ds*1cm}, y radius={\ds*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw [yshift=.75cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\ds*1cm}, y radius={\ds*1cm+.05cm}]
+coordinate (e1)
+;
+
+
+%2
+\def\df{.9}
+\draw[yshift=.5cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\df*1cm}, y radius={\df*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw [yshift=.5cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\df*1cm}, y radius={\df*1cm+.05cm}]
+coordinate (e1)
+;
+
+
+%3
+\def\dg{1.5}
+\draw[yshift=.25cm] (0.25,0) 
+arc [start angle=-90, end angle=-180, x radius={\dg*1cm}, y radius={\dg*1cm-.02cm}]
+coordinate (e1)
+;
+
+\draw [yshift=.25cm,->] (e1)
+arc [start angle=-180, end angle=-225, x radius={\dg*1cm}, y radius={\dg*1cm+.05cm}]
+coordinate (e1)
+;
+
+
+\draw[->] (.25,0) --++ (-1,0);
+
+\end{scope}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ring
+\begin{scope}[even odd rule]
+\clip[] 
+({-3*\pgflinewidth},{-1cm-2*\pgflinewidth}) rectangle++ ({.5cm+5*\pgflinewidth},{2cm+4*\pgflinewidth})
+%
+({-3*\pgflinewidth+.25cm},{-.25cm}) rectangle++ ({.5cm},{.5cm});
+
+    
+\draw[line width=.4pt, decoration={width and color change,start color=brown, end color=brown}, decorate,name path=ell] (0.5,{0})
+arc [start angle={0}, end angle={180}, x radius={\xr*1cm}, y radius=1cm] 
+% % arc [start angle=270, end angle=180, x radius=.5cm, y radius=1cm] 
+;
+
+\draw[line width=.4pt, decoration={width and color change,start color=brown, end color=brown}, decorate] (0.5,{0})
+% % arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+arc [start angle=360, end angle=180, x radius={\xr*1cm}, y radius=1cm] 
+;
+
+\end{scope}
+
+
+%arrows
+\path[red,->] (-0.2,0)
+% arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+arc [start angle=180, end angle=170, x radius={\xr*1cm}, y radius=1cm] coordinate (a) 
+;
+
+\draw[red,->] (a)
+% arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+arc [start angle=170, end angle=100, x radius={\xr*1cm}, y radius=1cm] node[black,above right,shift={(-.18,-.07)}] {$I_i$}
+;
+
+
+% cond
+\path[name path=ell] (0.5,{0})
+arc [start angle={0}, end angle={180}, x radius={\xr*1cm}, y radius=1cm] 
+% arc [start angle=270, end angle=180, x radius=.5cm, y radius=1cm] 
+% [
+%     postaction=decorate,
+%     decoration={
+%       name=markings,
+%       mark={
+%         at position {2/3} with
+%         \draw[gray,thick,rotate=180] 
+%         (.05,0) ++ (0,.2) node[black,left] {$\mathscr E_i$} --++ (0,-.4) 
+%         (-.05,0) ++ (0,.1) --++ (0,-.2);
+%       }
+%     }
+%   ]
+;
+
+\node[below] at (.25,-1) {К};
+
+% \node[battery1shape] at (0,0) {};
+
+\path[name path=rec] ({-3*\pgflinewidth+.25cm},{-.25cm}) rectangle++ ({.5cm},{.5cm});
+
+\draw [name intersections={of=ell and rec, by=x}]
+(x) --++ (1,0) coordinate (al) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {}
+([yshift=-.5cm]x) --++ (1,0) coordinate (bl) node[circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {}
+;
+
+%lamp
+\filldraw[lightgray,draw=black] (al) ++ (0,.1) rectangle++ (1,-.7);
+\draw (al) ++ (1,0) to[out=0,in=180] ++ (.75,.3) coordinate (ll) to[out=0,in=90] ++ (.5,-.55) to[out=-90,in=0] ++ (-.5,-.55) to[out=180,in=0] ++ (-.75,.3);
+\draw[] (al) ++ (1,-.15) to[out=0,in=200] ++ (.6,.1) coordinate (as); 
+\draw[] (bl) ++ (1,.15) to[out=0,in=160] ++ (.6,-.1) coordinate (bs); 
+\draw[orange] (as) edge[decorate,decoration={coil, amplitude=.5mm, segment length=.469mm}] ([yshift=-.05pt]bs);
+
+%light
+\def\li{1.2}
+\fill [yellow,path fading=fade out] (as) ++ (0,-.2) ++ (-\li,-\li) rectangle++ ({2*\li},{2*\li});
+% \draw (as) ++ (0,-.2) --++ (-1,0);
+
+\node[above] at (ll) {Л};
+
+
+\def\lm{1} 
+\def\xs{-5}
+
+%magnet
+\begin{scope}[xshift=\xs cm,even odd rule,gray]
+\def\dg{1.1} % должно сходиться с \dg в %3 линии
+\clip[] ({-\dg*1cm-\pgflinewidth},{{-2.52*1cm-4*\pgflinewidth}}) rectangle++ ({2*\lm*1cm+\dg*1cm+\dg*1cm+2*\pgflinewidth},{2*2.52*1cm+8*\pgflinewidth})
+(0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+;
+%lines
+%1
+\def\ds{.2}
+\draw[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.19cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+
+%2
+\def\df{.5}
+\draw[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\df*1cm}, y radius=.9cm]
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm]
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\df*1cm}, y radius=.7cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.42cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\draw[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\dg*1cm}, y radius=1.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.8cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+
+
+\draw[->] ({2*\lm},0) --++ (1,0);
+
+%%%%%
+%%%%%
+
+
+%reverslines
+\begin{scope}[yscale=-1]
+%1
+\def\ds{.2}
+\draw[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.19cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+
+%2
+\def\df{.5}
+\draw[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\df*1cm}, y radius=.9cm]
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm]
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\df*1cm}, y radius=.7cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.42cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\draw[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=45, x radius={1cm+\dg*1cm}, y radius=1.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=45, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=270, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.8cm] (e1) 
+arc [start angle=-90, end angle=0, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+
+\end{scope}
+\end{scope}
+
+
+%solid
+\fill[red, semitransparent] (\xs,-.25) rectangle++ (\lm,{\lm/2}) node[above,black,opaque] {М};
+\fill[NavyBlue, semitransparent] ({\xs+\lm},-.25) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (\xs,0) {$S$}; 
+\node[left] at ({\xs+2*\lm},0) {$N$}; 
+
+\draw (\xs,-.25) rectangle++ ({2*\lm},{\lm/2});
+
+\draw[NavyBlue,vec,thick,->] ({\xs+\lm},-.45) ++ (-.5,0) --++ (1,0) node[black,below,midway] {$\vec v$};
+
+
+
+    
+    \end{tikzpicture}
+\caption{Линии внешнего и собственного магнитных полей}
+\label{fig:p163}
+\end{figure}
+
+
+Магнит~М вдвигают в контур, образованный кольцевым проводником~К и лампой~Л. Изменение количества линий так называемого \emph{внешнего} магнитного поля (поля магнита) через контур приводит к появлению индукционного тока~$I_i$ в контуре (линии внешнего поля изображены серым цветом). Так как ток порождает вокруг себя магнитное поле, то контур <<создает>> свое \emph{собственное} магнитное поле (линии собственного поля изображены светло"=красным цветом). 
+
+Магнитный поток внешнего поля через контур называют \emph{внешним магнитным потоком.} Магнитный поток собственного поля через контур называется соответственно \emph{собственным магнитным потоком.} %
+\begin{law}
+    \textbf{Правило Ленца.} Индукционный ток имеет такое направление, что собственный магнитный поток \emph{препятствует изменению} внешнего магнитного потока.
+\end{law}
+
+Вот удобное правило для решения задач: контур <<стремится создать>> свое поле так, что число его линий \emph{<<препятствует>> изменению числа линий внешнего поля через него (компенсирует это изменение).} Иными словами, контур <<стремится создать>> свое поле таким образом, чтобы \emph{общее количество линий} (и внешнего и собственного) полей через него оставалось \emph{неизменным.}
+
+Так, в ситуации на рис.\,\ref{fig:p163} число линий внешнего поля (серых линий) через контур увеличивается. Проводящий контур <<создает>> свои линии поля (светло"=красные линии) так, что они <<препятствуют>> изменению числа серых линий через контур: в данном случае линии собственного поля направлены против линий внешнего поля.
+
+Магнит, приближающийся (или удаляющийся) к \emph{проводящему} контуру, действует на контур с некоторой силой 
+% (между магнитом и проводящим контуром в этом случае действуют силы Ампера). 
+(магнит и контур взаимодействуют друг с другом подобно тому, как взаимодействуют два магнита). 
+\emph{Контур всегда стремится отклоняться в сторону движения магнита.} Например, в рассмотренном опыте (рис.\,\ref{fig:p163}) сила, действующая на контур со стороны магнита, направлена вправо (если бы контур был подвешен на нити, он бы отклонялся вправо).  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

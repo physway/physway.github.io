@@ -1,0 +1,167 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+ 
+
+ 
+
+ 
+   
+
+\section{Магнитное поле прямого провода с током}
+
+
+Пусть имеется прямой провод, через который протекает электрический ток. На рис.\,\ref{fig:p147} показана картина линий магнитного поля вокруг провода.
+
+
+\makeatletter
+
+\pgfkeys{/pgf/decoration/.cd,
+         start color/.store in =\startcolor,
+         end color/.store in   =\endcolor
+}
+
+\pgfdeclaredecoration{width and color change}{initial}{
+ \state{initial}[width=0pt, next state=line, persistent precomputation={%
+   \pgfmathdivide{50}{\pgfdecoratedpathlength}%
+   \let\increment=\pgfmathresult%
+   \def\x{0}%
+ }]{}
+ \state{line}[width=.5pt,   persistent postcomputation={%
+     \pgfmathadd@{\x}{\increment}%
+     \let\x=\pgfmathresult%
+   }]{%
+   \pgfsetlinewidth{\x/150*0.035pt+\pgflinewidth}%
+   \pgfsetarrows{-}%
+   \pgfpathmoveto{\pgfpointorigin}%
+   \pgfpathlineto{\pgfqpoint{.75pt}{0pt}}%
+   \pgfsetstrokecolor{\endcolor!\x!\startcolor}%
+   \pgfusepath{stroke}%
+ }
+ \state{final}{%
+   \pgfsetlinewidth{\pgflinewidth}%
+   \pgfpathmoveto{\pgfpointorigin}%
+   \color{\endcolor!\x!\startcolor}%
+   \pgfusepath{stroke}% 
+ }
+}
+
+\makeatother
+
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\draw[thick,brown] (-1.5,0) coordinate (I) -- (6,0);
+
+
+%lines
+% \foreach \i in {1,2,...,89}{
+% \draw[] (0,1) 
+% arc [start angle={90*1cm-\i*1cm}, end angle={270*1cm-\i*1cm}, x radius=.5cm, y radius=1cm] 
+% % arc [start angle=270, end angle=450, x radius=.5cm, y radius=1cm] 
+% ;
+% }
+
+\def\xr{.25}
+\begin{scope}[]
+    
+\foreach \i in {0,1,2,3,4}{
+\draw[xshift={\i*1cm},line width=.4pt, decoration={width and color change,start color=gray, end color=gray}, decorate] (0.5,{.7pt})               arc [start angle={2}, end angle={179}, x radius={\xr*1cm}, y radius=1cm] 
+% arc [start angle=270, end angle=180, x radius=.5cm, y radius=1cm] 
+;
+
+\draw[xshift={\i*1cm},line width=.4pt, decoration={width and color change,start color=gray, end color=gray}, decorate] (0.5,{-.7pt})
+% arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+arc [start angle=358, end angle=181, x radius={\xr*1cm}, y radius=1cm] 
+;
+
+%arrows
+\draw[gray,xshift={\i*1cm},->,thin,>={Stealth[bend,inset=0pt,round,length=3.5mm, angle'=20]}] (0.25,{1cm-.5*\pgflinewidth})
+% arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+arc [start angle=90, end angle=150, x radius={\xr*1cm+.4\pgflinewidth}, y radius=1cm] 
+;
+
+
+}
+
+\end{scope}
+
+% %arrows
+% \draw[red,xshift={1cm},->] (0.25,{.7pt+1cm})
+% % arc [start angle={90}, end angle={180}, x radius=.5cm, y radius=1cm] 
+% arc [start angle=90, end angle=180, x radius={\xr*1cm}, y radius=1cm] 
+% ;
+
+
+%I
+\draw[->,red] ([shift={(0,.2)}]I) --++ (1,0) node[midway, above, black] {$I$}; 
+
+% \draw[red] (0,0) --++ (-1.5,0);
+% \draw[red] (6,0) --++ (-1.5,0);
+
+    
+    \end{tikzpicture}
+\caption{Линии магнитного поля прямого провода с током}
+\label{fig:p147}
+\end{figure}
+
+
+Линии поля прямого провода с током являются окружностями. Центры этих окружностей лежат на проводе, при этом окружности лежат в плоскостях, перпендикулярных проводу (см.~рис.\,\ref{fig:p147}).
+
+% Удобно использовать термин <<ближайшая сторона линии>>. Так, по ближайшим сторонам линий на рис.\,\ref{fig:p147}  
+
+Через любую точку пространства вне провода можно провести соответствующую линию (в форме окружности) его магнитного поля. С удалением от провода густота линий поля убывает (убывает индукция магнитного поля).
+
+Для определения направления линий магнитного поля прямого тока можно пользоваться следующим правилом.
+%
+\begin{law}
+    \textbf{Правило правой руки.} Если большой палец правой руки расположить так, чтобы он указывал направление тока в проводе, то остальные согнутые пальцы (охватывающие провод) укажут направление линий магнитного поля, создаваемого этим током.
+\end{law}
+%
+Рисунок~\ref{fig:p148} иллюстрирует применение этого правила.  
+
+    \begin{figure}[H]
+    \centering
+\includegraphics[]{el/36wire_pic.pdf}%
+\caption{Правило правой руки}
+\label{fig:p148}
+\end{figure}
+
+
+Сопоставляя рисунки~\ref{fig:p147} и~\ref{fig:p148}, можно видеть, что согнутые пальцы на рис.\,\ref{fig:p148} указывают направление линий магнитного поля вокруг провода.
+
+\medskip
+
+\noindent\textbf{Задача.} Два одинаковых изолированных тонких провода с противоположно направленными равными токами плотно вставлены в узкую пластиковую трубку. Что можно сказать о магнитном поле вокруг трубки? 
+
+\smallskip
+
+\noindent\emph{Решение.} 
+% Одинаковые токи характеризуются одинаковыми картинами линий магнитного поля. 
+С помощью правила правой руки можно убедиться, что поля токов компенсируют друг друга~--- магнитное поле вокруг трубки отсутствует.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

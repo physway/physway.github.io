@@ -1,0 +1,108 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Закон Ома}
+
+
+% Как известно, для того чтобы через проводник (резистор) протекал ток, к нему (к его концам) нужно, как говорят, приложить напряжение.
+
+\begin{law}
+    \textbf{Закон Ома.} Сила тока через проводник\footnote{Проводником также считается система соединенных между собой проводников (\emph{блок} проводников); предполагается, что такой блок, как и один проводник, имеет два вывода (конца).} прямо пропорциональна напряжению на этом проводнике и обратно пропорциональна его сопротивлению:
+    \begin{equation}
+        I=\frac{U}{R}.
+    \end{equation}
+\end{law}
+%
+Разобраться с законом Ома помогает аналогия с жидкостью (рис.\,\ref{fig:p122}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\db{1}
+%wat
+\fill [SkyBlue,semitransparent] (0,0) rectangle++ (\db,1);
+
+%parab
+\draw[line width=.1cm,SkyBlue] ([yshift=.5\pgflinewidth]{\db+1},0) parabola ++ (1,-.25) coordinate (Ic);
+
+%R
+\filldraw[orange!50!brown,draw=black] (\db,0) rectangle++ (1,.1);
+
+%bulbs
+\draw (0,0) --++ (\db,0) --++ (0,1.5) ++ (-\db,0) --++ (0,-1.5);
+
+%names
+\node[above left] at (\db,0) {$U$};
+\node[above] at ({\db+.5},.1) {$R$};
+\node[right] at (Ic) {$I$};
+
+
+    \end{tikzpicture}
+\caption{Аналогия к закону Ома}
+\label{fig:p122}
+\end{figure}
+
+В сосуде с жидкостью имеется у дна отверстие, в которое вставлена трубка. Давление (аналог напряжения~$U$), создаваемое жидкостью у отверстия, вызывает протекание жидкости по трубке (аналог резистора сопротивлением~$R$). В результате из трубки выливается жидкость с некоторой быстротой вытекания (аналог силы тока~$I$). 
+
+Меняя параметры системы на рис.\,\ref{fig:p122}, то есть давление~($U$) у дна и размер отверстия и трубки ($R$), можно получать различную быстроту вытекания ($I$) жидкости и убеждаться в справедливости закона Ома.
+
+% Таким образом, чем выше уровень жидкости (чем больше$U$) в сосуде и чем шире трубка (см.~рис.\,\ref{fig:p122}), тем быстрее выливается жидкость из трубки. 
+
+Закон Ома справедлив для металлов и электролитов. Зависимость силы тока от напряжения (\emph{вольт"=амперная характеристика} или \emph{ВАХ}), например, медного провода изображается прямой линией на $IU$"=диаграмме (рис.\,\ref{fig:p123}).  
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%E
+\draw[->] (-.3,0) --++ (0:4cm) node[below,black] {$U$};
+\draw[->] (0,-.3) --++ (90:3cm) node[left,black] {$I$};
+\node[below left] at (0,0) {$O$};
+
+
+\draw[red,thick] (0,0) --++ (35:3) node[right,black] {};
+
+
+    \end{tikzpicture}
+\caption{ВАХ металлического проводника}
+\label{fig:p123}
+\end{figure}
+
+% \medskip
+
+\noindent\textbf{Задача.} Каким должно быть напряжение на концах участка цепи, чтобы сила тока в проводнике равнялась 1~А, если при напряжении 3~В сила тока в этом же проводнике равна 0,5~А.
+
+\smallskip
+
+\noindent\emph{Решение}. Если нет специальных оговорок, то сопротивление~$R$ проводника есть величина постоянная. Пусть $U_1=3$~В, $I_1=0{,}5$~А и $I_2=1$~А. Тогда:
+\begin{equation*}
+    R=\frac{U_1}{I_1}=\frac{3}{0{,}5}=6~\text{Ом}.
+\end{equation*}
+
+Искомое напряжение равно:
+\begin{equation*}
+    U_2=I_2R=1\cdot6=6~\text{В}.
+\end{equation*}
+
+
+
+ 
+\end{document}

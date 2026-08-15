@@ -1,0 +1,187 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Сложение магнитных полей}
+
+
+Магнитное поле, создаваемое несколькими магнитами, можно рассматривать как наложение полей, создаваемых каждым магнитом в отдельности.
+%
+\begin{law}
+\textbf{Принцип суперпозиции магнитных полей.} Если магниты $\text{М}_1, \text{М}_2,\ldots$ по отдельности создают в данной точке поля $\vec B_1,\vec B_2,\ldots,$ то вместе они создают в данной точке поле
+\begin{equation}
+    \label{34Bprinc_e1}
+    \vec B=\vec B_1+\vec B_2+\ldots
+\end{equation}
+\end{law}
+%
+Этот принцип можно проиллюстрировать для случая двух магнитов (рис.\,\ref{fig:p142}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\lm{1} 
+
+
+%magnet
+\fill[red, semitransparent] (0,0) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue, semitransparent] (\lm,0) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.25) {$S$}; 
+\node[left] at (2,.25) {$N$}; 
+
+\draw (0,0) rectangle++ ({2*\lm},{\lm/2});
+
+\node[below] at (\lm,0) {$\text{М}_1$}; 
+
+%right magnet
+\begin{scope}[xshift={2.5*\lm cm},yshift=-{\lm/2*1cm}]
+\fill[NavyBlue, semitransparent] (0,0) rectangle++ ({\lm/2},-\lm);
+\fill[red, semitransparent] (0,-\lm) coordinate (mb) rectangle++ ({\lm/2},-\lm);
+
+\node[above] at (.25,-2) {$S$}; 
+\node[below] at (.25,.) {$N$}; 
+
+\draw (0,0) rectangle++ ({\lm/2},{-2*\lm});
+
+\node[left] at (mb) {$\text{М}_2$}; 
+
+\end{scope}
+
+
+% point
+\draw[gray,->] ({2.75*\lm},{\lm/4}) coordinate (p) --++ (1,0) node[black,below] {$\vec B_1$};
+\draw[gray,->] (p) --++ (0,1) node[black,left] {$\vec B_2$};
+
+\draw[dashed,gray] (p) ++ (0,1) --++ (1,0) coordinate (b) --++ (0,-1);
+
+\draw[thick,vec,gray,->] (p) -- (b) node[black,right] {$\vec B$};
+    
+\node at (p) [circle,fill=,inner sep=0pt,minimum size=1mm,label={below left,inner xsep=0:$A$}] {};
+    
+    
+    \end{tikzpicture}
+\caption{Принцип суперпозиции магнитных полей}
+\label{fig:p142}
+\end{figure}
+
+Магнит~$\text{М}_1$ создает в точке~$A$ поле~$\vec B_1$, а магнит~$\text{М}_2$ в этой же точке создает поле~$\vec B_2$. Согласно вышеуказанному принципу вместе они создают в точке~$A$ поле~$\vec B=\vec B_1+\vec B_2$ (рис.\,\ref{fig:p142}). 
+
+\emph{Индукции магнитных полей в общем случае складываются векторно.}
+
+\medskip
+
+\noindent\textbf{Задача.} Два одинаковых магнита~$\text{М}_1,\text{М}_2$ расположены так, что их оси лежат на одной прямой~$OO'$; магниты обращены друг к другу одноименными полюсами (рис.\,\ref{fig:p143}). Чему равен модуль результирующего вектора магнитной индукции в точке~$A$, лежащей на прямой~$OO'$ и равноудаленной от обоих магнитов? 
+% Как будет вести себя магнитная стрелка помещенная в точку~$A$?  
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\lm{1} 
+
+
+%magnet
+\fill[red, semitransparent] (0,0) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue, semitransparent] (\lm,0) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.25) {$S$}; 
+\node[left] at (2,.25) {$N$}; 
+
+\draw (0,0) rectangle++ ({2*\lm},{\lm/2});
+
+\node[below] at (\lm,0) {$\text{М}_1$}; 
+
+%right magnet
+\begin{scope}[xshift={4*\lm cm}]
+\fill[NavyBlue, semitransparent] (0,0) rectangle++ (\lm,{\lm/2});
+\fill[red, semitransparent] (\lm,0) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.25) {$N$}; 
+\node[left] at (2,.25) {$S$}; 
+
+\draw (0,0) rectangle++ ({2*\lm},{\lm/2});
+
+\node[below] at (\lm,0) {$\text{М}_2$}; 
+
+\end{scope}
+
+
+%dashed
+\draw[gray,dashed] (0,{\lm/4}) --++ (-1,0) node[black,left] {$O$};
+\draw[gray,dashed] ({6*\lm},{\lm/4}) --++ (1,0) node[black,right] {$O'$};
+\draw[gray,dashed] ({2*\lm},{\lm/4}) --++ ({2*\lm},0);
+
+
+% point
+\node at ({3*\lm},{.25*\lm}) [circle,fill=,inner sep=0pt,minimum size=1mm,label={above,inner xsep=0:$A$}] {};
+
+    
+    \end{tikzpicture}
+\caption{К задаче}
+\label{fig:p143}
+\end{figure}
+
+\noindent\emph{Решение.} Так как точка~$A$ одинаково удалена от одноименных полюсов магнитов~$\text{М}_1$ и~$\text{М}_2$ (или густота собственных магнитных линий каждого магнита в этой точке одинакова), то соответствующие магнитные индукции~$\vec B_1$ и~$\vec B_2$, создаваемые этими магнитами в данной точке, одинаковы по величине (рис.\,\ref{fig:p144}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\lm{1} 
+
+
+%dashed
+\draw[gray,dashed] ({4*\lm},{\lm/4}) --++ ({-4*\lm},0) node[black,left] {$O$} ++ ({4*\lm},0) --++ ({4*\lm},0) node[black,right] {$O'$};
+
+
+%vec
+\draw[thick,vec,gray,->] ({4*\lm},{.25*\lm}) --++ (1,0) node[black,above] {$\vec B_1$};
+\draw[thick,vec,gray,->] ({4*\lm},{.25*\lm}) --++ (-1,0) node[black,above] {$\vec B_2$};
+
+
+% point
+\node at ({4*\lm},{.25*\lm}) [circle,fill=,inner sep=0pt,minimum size=1mm,label={above,inner xsep=0:$A$}] {};
+
+    
+    \end{tikzpicture}
+\caption{К задаче}
+\label{fig:p144}
+\end{figure}
+
+Так как векторы~$\vec B_1$ и~$\vec B_2$ равны по модулю и противоположны по направлению, то результирующий вектор~$\vec B$, вычисляемый по формуле~\eqref{34Bprinc_e1}, равен нулю: $\vec B=\vec B_1+\vec B_2=0$. Соответственно, модуль вектора~$\vec B$ равен нулю.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

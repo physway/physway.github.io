@@ -1,0 +1,130 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Соединения конденсаторов}
+
+
+Конденсаторы соединяют друг с другом двумя способами. 
+\begin{enumerate}
+    \item \textbf{Последовательное соединение:} конец каждого конденсатора соединяется с началом следующего за ним конденсатора (рис.\,\ref{fig:p116}, слева). \emph{Провод\,\footnote{Провод на \emph{электрических схемах} изображается просто линией.}, соединяющий конец одного конденсатора с началом другого, не соединяется с каким"=то еще устройством.}
+    
+
+%         \begin{figure}[H]
+%     \centering
+% \begin{circuitikz}[font=\small,thin,
+%     line cap=round,line join=round,
+% >={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+% vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+%     \ctikzset{bipoles/americaninductor/coils=3}
+
+%     \draw[yshift=-.6cm] (0,1) to[C=$C_1$] ++ (2,0) to[C=$C_2$] ++ (2,0);
+
+%     % \begin{scope}[xshift=7cm]
+%     % \draw (0,1) to[C=$C_1$] ++ (2,0) --++ (0,-.6) coordinate (r) --++ (0,-.6) to[C=$C_2$] ++ (-2,0) --++ (0,.6) coordinate (l) --++ (0,.6);
+%     % \draw (l) --++ (-1,0) (r) --++ (1,0);
+%     % \node[circ] at (l) {};
+%     % \node[circ] at (r) {};
+%     % \end{scope}
+    
+% \end{circuitikz}
+% \caption{Последовательное соединение двух конденсаторов}
+% \label{fig:p116}
+% \end{figure}
+% \nointerlineskip
+
+    % <<Последовательные конденсаторы>> \emph{соединены строго одним проводом}\footnote{Провод на \emph{электрических схемах} изображается просто линией.}  
+    % (этот провод не соединяется с каким"=то еще устройством). 
+
+    Вот свойства последовательного соединения.
+    \begin{itemize}
+        \item Заряд блока конденсаторов\footnote{Блок конденсаторов~--- это группа соединенных между собой конденсаторов (блок имеет два вывода, или конца). Такой блок можно рассматривать как один сложный конденсатор.} и заряды конденсаторов равны:
+        \begin{equation}
+            q=q_1=q_2=\ldots
+        \end{equation}
+        \item Напряжение между концами блока конденсаторов равно сумме напряжений на каждом конденсаторе:
+        \begin{equation}
+            U=U_1+U_2+\ldots
+        \end{equation}
+        \item Емкость блока конденсаторов находят из соотношения: 
+        \begin{equation}
+            \dfrac{1}{C}=\dfrac{1}{C_1}+\dfrac{1}{C_2}+\ldots
+        \end{equation}
+    \end{itemize}
+    
+    
+    
+    \item \textbf{Параллельное соединение:} начала конденсаторов соединяются между собой, концы конденсаторов соединяются также между собой (рис.\,\ref{fig:p116}, справа). \emph{От начала одного из конденсаторов по проводам возможно мысленно перейти к началу любого другого из конденсаторов, не встретив никакое другое устройство} (такие <<переходы>> также возможны между концами конденсаторов).
+
+    Вот свойства параллельного соединения.
+    \begin{itemize}
+        \item Напряжение блока конденсаторов и их напряжения равны:
+        \begin{equation}
+            U=U_1=U_2=\ldots
+        \end{equation}
+        \item Заряд блока конденсаторов равен сумме зарядов на каждом из них:
+        \begin{equation}
+            q=q_1+q_2+\ldots
+        \end{equation}
+        \item Емкость блока конденсаторов находят так: 
+        \begin{equation}
+            C=C_1+C_2+\ldots
+        \end{equation}
+    \end{itemize}
+    
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+    \draw[yshift=-.6cm] (0,1) to[*C=$C_1$] ++ (2,0) to[*C=$C_2$] ++ (2,0);
+
+    \begin{scope}[xshift=7cm]
+    \draw (0,1) to[*C=$C_1$] ++ (2,0) --++ (0,-.6) coordinate (r) --++ (0,-.6) to[*C=$C_2$] ++ (-2,0) --++ (0,.6) coordinate (l) --++ (0,.6);
+    \draw (l) --++ (-1,0) (r) --++ (1,0);
+    \node[circ] at (l) {};
+    \node[circ] at (r) {};
+    \end{scope}
+    
+\end{circuitikz}
+\caption{Последовательное и параллельное соединение двух конденсаторов}
+\label{fig:p116}
+\end{figure}
+\end{enumerate}
+% \nointerlineskip
+
+% На рис.\,\ref{fig:p116} показаны схемы последовательного и параллельного соединения
+% двух конденсаторов.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

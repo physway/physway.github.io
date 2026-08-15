@@ -1,0 +1,184 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Эквипотенциальные поверхности}
+
+
+Характеризовать распределение поля в пространстве можно с помощью так называемых эквипотенциальных поверхностей.  
+
+\textbf{Эквипотенциальная поверхность}~--- это поверхность в пространстве, все точки которой имеют \emph{одинаковый потенциал} ($\varphi=\mathrm{const}$). 
+
+На рис.\,\ref{fig:p102} изображены эквипотенциальные поверхности поля для двух случаев: точечный заряд и заряженная пластина.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\begin{scope}[yshift=1.5cm]
+
+%pot line
+\foreach \i in{1,...,3}
+\draw[gray] (0,0) circle ({.5*\i});
+
+\shade[ball color=red] (0,0) circle (.15);
+
+%\phi
+% \node[below] at (0,.5) {$\varphi$};
+
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=6cm]
+
+%pot line
+\foreach \i in{1,...,3}
+\draw[gray,xshift={.5*\i cm}] (0,0) --++ (0,3);
+
+\foreach \i in{-1,...,-3}
+\draw[gray,xshift={.5*\i cm}] (0,0) --++ (0,3);
+
+
+%plane
+\draw[thick,red] (0,0) --++ (0,3);
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Эквипотенциальные поверхности поля заряженного тела}
+\label{fig:p102}
+\end{figure}
+
+Эквипотенциальными поверхностями поля точечного заряда являются всевозможные сферы с центром в заряде (серые линии на рис.\,\ref{fig:p102}, слева). Поле же вблизи равномерно заряженной пластины описывается эквипотенциальными поверхностями, параллельными пластине (серые линии на рис.\,\ref{fig:p102}, справа).
+
+\emph{Эквипотенциальные поверхности всегда перпендикулярны линиям поля.}\linebreak Этот факт иллюстрируется рисунком~\ref{fig:p103}. 
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\begin{scope}[yshift=1.5cm]
+
+%line
+\foreach \i in{0,...,11}
+\draw[->,Green] (0,0) --++ ({30*\i}:2);
+
+%pot line
+\foreach \i in{1,...,3}
+\draw[gray] (0,0) circle ({.5*\i});
+
+\shade[ball color=red] (0,0) circle (.15);
+
+%\phi
+% \node[below] at (0,.5) {$\varphi$};
+
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=6cm]
+
+%line
+\foreach \i in{0,...,5}
+\draw[->,Green] (0,{.25+\i*.5}) --++ ({180}:2);
+
+\foreach \i in{0,...,5}
+\draw[->,Green] (0,{.25+\i*.5}) --++ ({0}:2);
+
+
+%pot line
+\foreach \i in{1,...,3}
+\draw[gray,xshift={.5*\i cm}] (0,0) --++ (0,3);
+
+\foreach \i in{-1,...,-3}
+\draw[gray,xshift={.5*\i cm}] (0,0) --++ (0,3);
+
+
+%plane
+\draw[thick,red] (0,0) --++ (0,3);
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Перпендикулярность эквипотенциальных поверхностей и линий поля}
+\label{fig:p103}
+\end{figure}
+
+
+\noindent\textbf{Задача.} На рис.\,\ref{fig:p104} показаны линии однородного электрического поля и две эквипотенциальные поверхности (А и~Б). Какая поверхность, А или~Б, характеризуется большим значением потенциала?
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\begin{scope}[xshift=6cm]
+
+%line
+\foreach \i in{0,...,2}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (0,{.25+\i*.5}) --++ ({0}:2);
+
+
+%pot line
+\draw[gray,xshift={.5*1 cm}] (0,0) --++ (0,1.5) node[above,black] {А};
+\draw[gray,xshift={.5*3 cm}] (0,0) --++ (0,1.5) node[above,black] {Б};
+
+
+
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{К задаче}
+\label{fig:p104}
+\end{figure}
+
+\noindent\emph{Решение}. Как известно, в направлении линии поля потенциал поля убывает. Значит, потенциал поверхности~А больше потенциала поверхности~Б. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

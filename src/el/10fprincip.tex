@@ -1,0 +1,119 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Сложение электрических полей}
+
+
+Электрическое поле, создаваемое несколькими зарядами, можно рассматривать как наложение полей, создаваемых каждым зарядом в отдельности.
+%
+\begin{law}
+\textbf{Принцип суперпозиции для напряженностей.} Если заряды $q_1, q_2,\ldots$ по отдельности создают в данной точке поля $\vec E_1,\vec E_2,\ldots,$ то вместе они создают в данной точке поле
+\begin{equation}
+    \vec E=\vec E_1+\vec E_2+\ldots
+\end{equation}
+\end{law}
+%
+Этот принцип можно проиллюстрировать для случая двух зарядов (рис.\,\ref{fig:p105}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%dashed
+\draw[gray,dashed] (0,0) --++ ({asin(3/5)}:4);
+\draw[gray,dashed] (5,0) --++ ({180-asin(4/5)}:3) coordinate (p);
+
+
+%point
+\draw[->,thick,vec,gray] (p) --++ ({asin(3/5)}:1) node[above,black] {$\vec E_1$};
+\draw[->,thick,vec,gray] (p) --++ ({-asin(4/5)}:{16/9}) node[below left,black,inner ysep=0] {$\vec E_2$};
+
+\draw[dashed,gray] ([shift={({asin(3/5)}:1)}]p) --++ ({-asin(4/5)}:{16/9}) coordinate (e) --++ ({180+asin(3/5)}:1);
+
+\draw[->,thick,vec,Green] (p) -- (e) node[right,black] {$\vec E$};
+
+\node at (p) [circle,fill=red,inner sep=0pt,minimum size=1mm,label={above left,inner xsep=0:$A$}] {};
+
+
+%q
+\shade[ball color=red] (0,0) circle (.15);
+\shade[ball color=NavyBlue] (5,0) circle (.15);
+
+\node[below,yshift=-.15 cm] at (0,0) {$q_1$};
+\node[below,yshift=-.15 cm] at (5,0) {$q_2$};
+
+
+    \end{tikzpicture}
+\caption{Принцип суперпозиции для напряженностей}
+\label{fig:p105}
+\end{figure}
+
+Положительный заряд~$q_1$ создает в точке~$A$ поле~$\vec E_1$, а отрицательный заряд~$q_2$ в этой же точке создает поле~$\vec E_2$. Согласно вышеуказанному принципу вместе они создают в точке~$A$ поле~$\vec E=\vec E_1+\vec E_2$ (рис.\,\ref{fig:p105}). 
+
+\emph{Напряженности полей в общем случае складываются векторно.}
+%
+\begin{law}
+\textbf{Принцип суперпозиции для потенциалов.} Если заряды $q_1, q_2,\ldots$ по отдельности создают поля с потенциалами $\varphi_1,\varphi_2,\ldots$ в данной точке, то вместе они создают поле, потенциал которого в данной точке равен
+\begin{equation}
+    \varphi=\varphi_1+\varphi_2+\ldots
+\end{equation}
+\end{law}
+%
+Пусть снова имеется система двух зарядов (рис.\,\ref{fig:p106}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%dashed
+% \draw[gray,dashed] (0,0) --++ ({asin(3/5)}:4);
+% \draw[gray,dashed] (5,0) --++ ({180-asin(4/5)}:3) coordinate (p);
+
+
+%point
+% \node at (p) [circle,fill=red,inner sep=0pt,minimum size=1mm,label={above left,inner xsep=0:$A$}] {};
+\node at (p) [circle,fill=black,inner sep=0pt,minimum size=1mm,label={[anchor=south west]above:$\varphi$}] {};
+\node at (p) [transparent,circle,fill=red,inner sep=0pt,minimum size=1mm,label={[anchor=north east]below,red:$\varphi_1$}] {};
+\node at (p) [transparent,circle,fill=red,inner sep=0pt,minimum size=1mm,label={[anchor=north west]below,NavyBlue:$\varphi_2$}] {};
+\node at (p) [transparent,circle,fill=red,inner sep=0pt,minimum size=1mm,label={[anchor=south east]above:$A$}] {};
+
+
+%q
+\shade[ball color=red] (0,0) circle (.15);
+\shade[ball color=NavyBlue] (5,0) circle (.15);
+
+\node[below,yshift=-.15 cm] at (0,0) {$q_1$};
+\node[below,yshift=-.15 cm] at (5,0) {$q_2$};
+
+
+    \end{tikzpicture}
+\caption{Принцип суперпозиции для потенциалов}
+\label{fig:p106}
+\end{figure}
+
+Положительный заряд~$q_1$ создает поле с потенциалом~$\varphi_1$ в точке~$A$, а отрицательный заряд~$q_2$~--- поле c потенциалом~$\varphi_2$ в этой же точке. Тогда вместе они создают поле, потенциал которого в точке~$A$ равен~$\varphi=\varphi_1+\varphi_2$ (рис.\,\ref{fig:p106}). 
+
+Следует отметить, что \emph{потенциалу поля положительного заряда приписывают знак плюс, потенциалу поля отрицательного заряда~--- знак минус.} Так, в ситуации на рис.\,\ref{fig:p106} это правило дает: $\varphi_1>0$ и $\varphi_2<0$. 
+
+
+
+
+ 
+\end{document}

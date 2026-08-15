@@ -1,0 +1,625 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Индукция и линии магнитного поля}
+
+
+\textbf{Индукция} ($\vec B$ [Тл])~--- это характеристика силовой способности магнитного поля в точке пространства. В каждой точке пространства вектор~$\vec B$ направлен туда же, куда и северный конец ($N$"=полюс) \emph{магнитной стрелки}, помещенной в данную точку (рис.\,\ref{fig:p140}, слева). 
+
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{ne/.pic={
+  \path[rotate=0] (0,0) ++ (0,\dc) coordinate (ac) --++ ({3*\dc},{-\dc}) coordinate (rc) --++ ({-3*\dc},{-\dc}) coordinate (bc) --++ ({-3*\dc},{\dc}) coordinate (lc) --++ ({3*\dc},{\dc});
+  \fill[red,semitransparent] (0,\dc) node[above,black,opaque] {6} --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) -- cycle;
+  \fill[NavyBlue,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+  \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;}
+}
+
+
+\def\lm{1} 
+\def\dc{.1}
+
+
+\begin{scope}[even odd rule,gray]
+\def\dg{1.1} % должно сходиться с \dg в %3 линии
+\clip[] ({-\dg*1cm-7*\pgflinewidth},{{-2.52*1cm-9*\pgflinewidth}}) rectangle++ ({2*\lm*1cm+\dg*1cm+\dg*1cm+14*\pgflinewidth},{2*2.52*1cm+4*\pgflinewidth})
+(0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+%lines
+%1
+\def\ds{.2}
+% \draw[yshift=.19cm,->,decoration={markings,mark=at position {1/2+3/20} with {\pic {ne};}},postaction={decorate}] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+% arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+% coordinate (e1)
+% ;
+
+\path[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/2} with
+        \fill[NavyBlue,semitransparent] (0,\dc) --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) node[above,black,opaque] {3} -- cycle;
+        \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+        \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+      }
+    }
+  ]
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\path[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\path[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {.07} with
+        \fill[NavyBlue,semitransparent] (0,\dc) node[left,black,opaque] {2}  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) -- cycle;
+        \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+        \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+      }
+    }
+  ]
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/7} with
+        \fill[NavyBlue,semitransparent] (0,\dc) node[below,black,opaque] {4} --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) -- cycle;
+        \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+        \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+      }
+    }
+  ]
+;
+
+
+%%%%%
+%%%%%
+
+
+%reverslines
+\begin{scope}[yscale=-1]
+%1
+\def\ds{.2}
+\path[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\path[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/6} with
+        \fill[NavyBlue,semitransparent] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) node[above,black,opaque] {5} -- cycle;
+        \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+        \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+      }
+    }
+  ]
+;
+
+%3
+\def\dg{1.1}
+\path[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1) pic {ne}
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+\end{scope}
+\end{scope}
+
+
+
+
+
+%magnet
+\fill[red,semitransparent] (0,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue,semitransparent] (\lm,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.) {$S$}; 
+\node[left] at (2,.) {$N$}; 
+
+\draw (0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+
+% \path[gray] (0,0) --++ (-1,0)
+% [
+%     postaction=decorate,
+%     decoration={
+%       name=markings,
+%       mark={
+%         at position {1} with
+%         \fill[NavyBlue,semitransparent] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) -- cycle;
+%         \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+%         \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+%       }
+%     }
+%   ]
+% ;
+
+\path[gray] ({2*\lm},0) --++ (1,0)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/2} with
+        \fill[NavyBlue,semitransparent] (0,\dc) node[above,black,opaque] {1} --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) -- cycle;
+        \fill[red,semitransparent] (0,-\dc)  --++ ({-3*\dc},{\dc}) --++ ({3*\dc},{\dc}) -- cycle;
+        \draw[black] (0,\dc)  --++ ({3*\dc},{-\dc}) --++ ({-3*\dc},{-\dc}) --++ ({-3*\dc},{\dc}) -- cycle;
+      }
+    }
+  ]
+;
+
+
+%phantom
+\phantom{
+\def\mas{1.5}
+\path[gray] (0,0) --++ (-1,0)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/2} with
+        \draw[gray,vec,thick,->] (0,0)  --++ ({\mas*1},0) node[below,black] {$\vec B_1$};
+      }
+    }
+  ]
+;
+}
+
+
+
+
+
+
+
+% \draw[tips, -{>[length=10pt,bend]}] (0,0) to[bend left] (1,0);
+
+
+
+
+
+
+
+
+
+
+
+
+\def\mas{1.5}
+
+\begin{scope}[xshift=8cm]
+
+\begin{scope}[even odd rule,gray]
+\def\dg{1.1} % должно сходиться с \dg в %3 линии
+\clip[] ({-\dg*1cm-7*\pgflinewidth},{{-2.52*1cm-9*\pgflinewidth}}) rectangle++ ({2*\lm*1cm+\dg*1cm+\dg*1cm+14*\pgflinewidth},{2*2.52*1cm+4*\pgflinewidth})
+(0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+%lines
+%1
+\def\ds{.2}
+% \draw[yshift=.19cm,->,decoration={markings,mark=at position {1/2+3/20} with {\pic {ne};}},postaction={decorate}] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+% arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+% coordinate (e1)
+% ;
+
+\path[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/2} with
+        \draw[vec,thick,->] (0,0)  --++ ({\mas*.8},0) node[above,black] {$\vec B_3$};
+        \node at (0,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+      }
+    }
+  ]
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\path[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\path[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {.07} with
+        \draw[vec,thick,->] (0,0)  --++ ({\mas*.7},0) node[yshift=-.03cm,left,black] {$\vec B_2$};
+        \node at (0,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+      }
+    }
+  ]
+;
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/7} with
+        \draw[vec,thick,->] (0,0)  --++ ({\mas*.5},0) node[below,black] {$\vec B_4$};
+        \node at (0,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+      }
+    }
+  ]
+;
+
+
+%%%%%
+%%%%%
+
+
+%reverslines
+\begin{scope}[yscale=-1]
+%1
+\def\ds{.2}
+\path[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\path[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\path[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\path[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/6} with
+        \draw[gray,vec,thick,->] (0,0)  --++ ({\mas*.6},0) node[above,black] {$\vec B_5$};
+        \node at (0,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+      }
+    }
+  ]
+;
+
+%3
+\def\dg{1.1}
+\path[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1)
+;
+\draw[vec,thick,->] (e1)  --++ ({\mas*-.4},0) node[above,black] {$\vec B_6$};
+\node at (e1) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+\path[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+\end{scope}
+\end{scope}
+
+
+
+
+
+%magnet
+\fill[red,semitransparent] (0,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue,semitransparent] (\lm,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.) {$S$}; 
+\node[left] at (2,.) {$N$}; 
+
+\draw (0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+
+% \path[gray] (0,0) --++ (-1,0)
+% [
+%     postaction=decorate,
+%     decoration={
+%       name=markings,
+%       mark={
+%         at position {1} with
+%         \draw[vec,thick,->] (0,0) --++ (-.8,0);
+%       }
+%     }
+%   ]
+% ;
+
+\path[gray] ({2*\lm},0) --++ (1,0)
+[
+    postaction=decorate,
+    decoration={
+      name=markings,
+      mark={
+        at position {1/2} with
+        \draw[gray,vec,thick,->] (0,0)  --++ ({\mas*1},0) node[below,black] {$\vec B_1$};
+        \node at (0,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:] {};
+      }
+    }
+  ]
+;
+
+
+
+
+
+
+
+
+% \draw[tips, -{>[length=10pt,bend]}] (0,0) to[bend left] (1,0);
+
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Стрелки и соответствующие векторы индукции}
+\label{fig:p140}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Возле магнита расположены шесть магнитных стрелок, способных свободно вращаться вокруг своих центров. На рис.\,\ref{fig:p140} (справа) изображены шесть векторов индукции поля магнита: каждой магнитной стрелке отвечает свой вектор~$\vec B$.  
+
+Наглядно описывать магнитное поле в пространстве принято с помощью \textbf{линий магнитного поля}~--- линий, идущих вдоль векторов индукции поля в различных точках пространства\footnote{Эти линии называют также \emph{линиями индукции} или \emph{магнитными силовыми линиями}. Всякая линия поля изображается так, что в любой ее точке вектор индукции направлен по касательной к линии поля.}.
+
+На рис.\,\ref{fig:p141} показана картина линий поля полосового магнита.
+
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\lm{1} 
+
+\begin{scope}[even odd rule,gray]
+\def\dg{1.1} % должно сходиться с \dg в %3 линии
+\clip[] ({-\dg*1cm-\pgflinewidth},{{-2.52*1cm-4*\pgflinewidth}}) rectangle++ ({2*\lm*1cm+\dg*1cm+\dg*1cm+2*\pgflinewidth},{2*2.52*1cm+8*\pgflinewidth})
+(0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+;
+%lines
+%1
+\def\ds{.2}
+\draw[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\draw[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\draw[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\draw[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+
+
+%%%%%
+%%%%%
+
+
+%reverslines
+\begin{scope}[yscale=-1]
+%1
+\def\ds{.2}
+\draw[yshift=.19cm,->] ({2*\lm*1cm+\ds*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\ds*1cm}, y radius=.5cm]
+coordinate (e1)
+;
+
+\draw[yshift=.19cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\ds*1cm}, y radius=.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\ds*1cm}, y radius=.4cm] 
+;
+
+
+%2
+\def\df{.5}
+\draw[yshift=.42cm,->] ({2*\lm*1cm+\df*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\df*1cm}, y radius=.9cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.42cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\df*1cm}, y radius=.9cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\df*1cm}, y radius=.7cm] 
+;
+
+
+%3
+\def\dg{1.1}
+\draw[yshift=.8cm,->] ({2*\lm*1cm+\dg*1cm},{(\lm/4)*7/8}) 
+arc [start angle=0, end angle=90, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+coordinate (e1)
+;
+
+\draw[yshift=.8cm] (e1) 
+arc [start angle=90, end angle=180, x radius={1cm+\dg*1cm}, y radius=1.5cm] 
+arc [start angle=180, end angle=360, x radius={1cm+\dg*1cm}, y radius=1.1cm] 
+;
+\end{scope}
+\end{scope}
+
+
+
+
+
+%magnet
+\fill[red,semitransparent] (0,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+\fill[NavyBlue,semitransparent] (\lm,{-\lm/4}) rectangle++ (\lm,{\lm/2});
+
+\node[right] at (0,.) {$S$}; 
+\node[left] at (2,.) {$N$}; 
+
+\draw[gray,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{<}}},postaction={decorate}] (0,0) --++ (-2,0); 
+\draw[gray,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] ({2*\lm},0) --++ (2,0);
+
+\draw (0,{-\lm/4}) rectangle++ ({2*\lm},{\lm/2});
+
+
+
+
+
+
+
+% \draw[tips, -{>[length=10pt,bend]}] (0,0) to[bend left] (1,0);
+
+
+
+    \end{tikzpicture}
+\caption{Линии магнитного поля полосового магнита}
+\label{fig:p141}
+\end{figure}
+
+
+\emph{Линии поля выходят из северного полюса магнита и входят в южный полюс (линии не пересекаются; внутри магнита они замыкаются). Чем больше густота линий, тем больше индукция поля в данной области пространства.}
+
+% Так, в ситуации на рис.\,\ref{fig:p141}
+
+Именно вдоль линий поля выстраиваются магнитные стрелки (или железные опилки), размещенные возле магнита. 
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

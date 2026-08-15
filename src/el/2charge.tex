@@ -1,0 +1,195 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Заряд}
+
+
+Заряженные тела могут как притягиваться друг к другу, так и отталкиваться. В общем случае характер взаимодействия таких тел определяется их зарядами.
+
+\textbf{Заряд} ($q$ [Кл])~--- это характеристика способности заряженного тела взаимодействовать с другим заряженным телом. Чем больше заряд данного тела, тем с большей силой это тело притягивается (или отталкивается) к другому заряженному телу при прочих равных условиях. Положительно заряженное тело имеет положительный заряд, отрицательно заряженное~--- отрицательный заряд. Для краткости всякое заряженное тело или частицу называют просто зарядом.
+
+На рис.\,\ref{fig:p89} показаны два заряженных тела.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\tikzset{atom/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70,rotate={rnd*360}] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\tikzset{atompo/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \end{scope}}
+}
+
+\tikzset{atomne/.pic={
+  \begin{scope}[shift={({rnd*360}:.05)},rotate={rnd*360}]
+  \shade[ball color=red] (0,0) circle (\dn);
+  \shade[ball color=NavyBlue!70] ([shift={(180:{\dn cm})}]0,0) circle (\de);
+  \shade[ball color=NavyBlue!70] ([shift={(0:{\dn cm})}]0,0) circle (\de);
+  \end{scope}}
+}
+
+\def\dn{.15}
+\def\de{.1}
+
+
+%solid
+\fill[red,nearly transparent] (0,0) rectangle++ (4,2);
+\draw[] (0,0) rectangle++ (4,2);
+
+\fill[NavyBlue,nearly transparent] (7,0) rectangle++ (4,2);
+\draw[] (7,0) rectangle++ (4,2);
+
+
+%T
+\node[above] at (2,2) {$q_\text{А}$};
+\node[above] at (9,2) {$q_\text{Б}$};
+
+
+%q
+\node[below] at (2,0) {А};
+\node[below] at (9,0) {Б};
+
+
+
+%atoms left
+\foreach \y in {0,...,2}
+\foreach \x in {0,...,4}
+\pic[shift={(.4,.4)}] at ({0+(4-.8)/5*\x},{0+(2-.8)/2*\y}) {atom};
+
+\foreach \y in {0,...,2}
+\pic[shift={(.4,.4)}] at ({0+(4-.8)/5*5},{0+(2-.8)/2*\y}) {atompo};
+
+%%%
+
+%atoms right
+\foreach \y in {0,...,2}
+\foreach \x in {1,...,5}
+\pic[shift={(7.4,.4)}] at ({0+(4-.8)/5*\x},{0+(2-.8)/2*\y}) {atom};
+
+\foreach \y in {0,...,2}
+\pic[shift={(7.4,.4)}] at ({0+(4-.8)/5*0},{0+(2-.8)/2*\y}) {atomne};
+
+
+
+    \end{tikzpicture}
+\caption{Заряженные тела}
+\label{fig:p89}
+\end{figure}
+
+Каждое тело на рис.\,\ref{fig:p89} упрощенно составлено из протонов (красные шары) и электронов (синие шары)\footnote{Внимание уделено именно заряженным частицам, находящимся в атомах тела. Разница в размерах шаров на рисунке~\ref{fig:p89} подчеркивает различие масс соответствующих частиц: масса протона почти в 2000~раз больше массы электрона.}. Тело~А имеет положительный заряд~$q_\text{А}>0$: в нем протоны преобладают над электронами. Наоборот, тело~Б несет отрицательный заряд~$q_\text{Б}<0$: в нем уже электроны преобладают над протонами. 
+
+% Приблизительно такая картина распределения зарядов в телах получается после трения, например, пластикового стержня о шерсть.  
+
+\emph{Заряды (заряженные тела) разных знаков притягиваются друг к другу, а заряды одного знака друг от друга отталкиваются.} Сказанное иллюстрируется рисунком~\ref{fig:p90} (красным шарам на нитях сообщены положительные заряды, синим~--- отрицательные).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+%1
+\draw (.6,3) --++ (-75:2);
+\path (.6,3) --++ (-75:2.15) coordinate (cir);
+\shade[ball color=red] (cir) coordinate (C) circle (.15);
+
+\draw (2.5,3) --++ (-105:2);
+\path (2.5,3) --++ (-105:2.15) coordinate (cir);
+\shade[ball color=NavyBlue] (cir) coordinate (C) circle (.15);
+
+
+%2
+\begin{scope}[xshift=4.5cm]
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+\draw ({.6+cos(75)*2.15},3) --++ (-105:2);
+\path ({.6+cos(75)*2.15},3) --++ (-105:2.15) coordinate (cir);
+\shade[ball color=red] (cir) coordinate (C) circle (.15);
+
+\draw ({2.5-cos(75)*2.15},3) --++ (-75:2);
+\path ({2.5-cos(75)*2.15},3) --++ (-75:2.15) coordinate (cir);
+\shade[ball color=red] (cir) coordinate (C) circle (.15);
+    
+\end{scope}
+
+
+%3
+\begin{scope}[xshift=9cm]
+
+\filldraw[lightgray,semitransparent] (0,3) rectangle++ (3.1,.3);  
+\draw (0,3) --++ (3.1,0);
+
+
+\draw ({.6+cos(75)*2.15},3) --++ (-105:2);
+\path ({.6+cos(75)*2.15},3) --++ (-105:2.15) coordinate (cir);
+\shade[ball color=NavyBlue] (cir) coordinate (C) circle (.15);
+
+\draw ({2.5-cos(75)*2.15},3) --++ (-75:2);
+\path ({2.5-cos(75)*2.15},3) --++ (-75:2.15) coordinate (cir);
+\shade[ball color=NavyBlue] (cir) coordinate (C) circle (.15);
+    
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Притяжение и отталкивание зарядов}
+\label{fig:p90}
+\end{figure}
+
+\textbf{Элементарный электрический заряд} ($e$ [Кл])~--- это величина наименьшего заряда, существующего в природе ($e\approx1{,}6\cdot10^{-19}$~Кл). Протон и электрон являются частицами с минимальной возможной величиной заряда. Заряд протона равен $q_p\approx1{,}6\cdot10^{-19}$~Кл; заряд электрона равен $q_e\approx-1{,}6\cdot10^{-19}$~Кл, то есть его заряд равен заряду протона со знаком минус. 
+
+Заряд тела обусловлен преобладанием в нем протонов или электронов. Если заряд тела $q>0$, то $q=Nq_p$ (где $N$~--- количество избыточных протонов). Если заряд тела $q<0$, то $q=Nq_e$ (где $N$~--- количество избыточных электронов).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,123 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Электромагнитная волна}
+
+
+\textbf{Электромагнитная волна}~--- это распространение колебаний электрического и магнитного полей\footnote{А именно, колебаний \emph{напряженности} электрического поля и \emph{индукции} магнитного поля.}. 
+
+\emph{Источником электромагнитных волн является любой заряд, движущийся с ускорением.} На рис.\,\ref{fig:p172} показана структура электромагнитной волны вдали от колеблющегося заряда, излучающего эту волну.
+
+    \begin{figure}[H]
+    \centering
+
+\begin{tikzpicture}[x=(-15:0.9), y=(90:0.9), z=(-150:1.1),font=\small,line cap=round,                >={Stealth[bend,inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+  
+  
+  \def\A{1.5}
+  \def\nNodes{5} % use even number
+  \def\nVectorsPerNode{8}
+  \def\N{\nNodes*40}
+  \def\xmax{\nNodes*pi/2*1.01}
+  \pgfmathsetmacro\nVectors{(\nVectorsPerNode+1)*\nNodes}
+
+
+  \def\drawBNode{ % draw B node and vectors with some offset
+    \fill[gray,nearly transparent,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.0,samples=40]
+      plot (\t,0,{\A*sin(\t*360/pi)});
+    \draw[gray,thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+      plot (\t,0,{\A*sin(\t*360/pi)});
+    % \foreach \k [evaluate={\t=\k*pi/2/(\nVectorsPerNode+1);
+    %                        \angle=\k*90/(\nVectorsPerNode+1);}]
+    %             in {1,...,\nVectorsPerNode}{
+    %   \draw[vector]  (\iOffset*pi/2+\t,0,0) -- ++(0,0,{\A*sin(2*\angle+\iOffset*180)});
+    % }
+  }
+
+  
+  \def\drawENode{ % draw E node and vectors with some offset
+    \fill[Green,nearly transparent,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.0,samples=40]
+      plot (\t,{\A*sin(\t*360/pi)},0);
+    \draw[Green,thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+      plot (\t,{\A*sin(\t*360/pi)},0);
+    % \foreach \k [evaluate={\t=\k*pi/2/(\nVectorsPerNode+1);
+    %                        \angle=\k*90/(\nVectorsPerNode+1);}]
+    %             in {1,...,\nVectorsPerNode}{
+    %   \draw[vector,]  (\iOffset*pi/2+\t,0,0) -- ++(0,{\A*sin(2*\angle+\iOffset*180)},0);
+    % }
+  }
+  
+  % MAIN AXES
+  \draw[->] (0,0,0) -- ++(\xmax*1.3,0,0) node[below] {$x$};
+  \draw[->] (0,-\A*1.2,0) -- (0,\A*1.2,0) node[left] {$y$};
+  \draw[->] (0,0,-\A*1.2) -- (0,0,\A*1.2) node[left] {$z$};
+  
+
+%lambda
+\draw[densely dashed,gray] ({1.25*pi},{\A},0) --++ (0,.5,0) coordinate (l1);
+\draw[densely dashed,gray] ({2.25*pi},{\A},0) --++ (0,.5,0) coordinate (l2);
+
+\draw[<->,gray] ([yshift=-.2cm]l1) --++ ({pi},0,0) node[midway,above,black] {$\lambda$};
+
+
+  % draw (anti-)nodes
+  \foreach \iNode [evaluate={\iOffset=\iNode-1;}] in {1,...,\nNodes}{
+    \ifodd\iNode \drawBNode \drawENode % E overlaps B
+    \else        \drawENode \drawBNode % B overlaps E
+    \fi
+  }
+
+
+%EBv
+\draw[->,Green,thick,vec]  (pi/4,0,0) --++ (0,{\A},0) node[above,black] {$\vec E$};
+\draw[->,gray,thick,vec]  (pi/4,0,0) --++ (0,0,{\A}) node[left,black,shift={(0,0,.1)}] {$\vec B$};
+\draw[->,NavyBlue,thick,vec]  ({2.7*pi},.2,0) --++ (1,0,0) node[above,midway,black] {$\vec v$};
+
+%O
+% \node[above left] at (0,0) {$O$};
+
+
+
+    \end{tikzpicture}
+\caption{Электромагнитная волна}
+\label{fig:p172}
+\end{figure}
+
+Электромагнитная волна, изображенная на рис.\,\ref{fig:p172}, излучается зарядом, колеблющимся с частотой~$\nu$ вдоль оси~$y$ около начала координат. Волна распространяется (бежит) со скоростью~$\vec v$ вдоль оси~$x$. В каждой точке оси~$x$ векторы напряженности~$\vec E$ электрического поля и индукции~$\vec B$ магнитного поля волны совершают колебания вдоль осей~$y$ и~$z$ соответственно (в каждой точке оси~$x$ векторы~$\vec E$ и~$\vec B$ взаимно перпендикулярны\footnote{Кратчайший поворот вектора~$\vec E$ к вектору~$\vec B$ всегда совершается против часовой стрелки, если смотреть с конца вектора~$\vec v$.}; колебания этих векторов происходят также с частотой~$\nu$, называемой \emph{частотой электромагнитной волны}). 
+
+Две синусоиды на рис.\,\ref{fig:p172} отражают распределение значений напряженности~$E$ и индукции~$B$ вдоль оси~$x$ в некоторый момент времени. \emph{Длина волны}~$\lambda$~--- это расстояние между двумя ближайшими впадинами или горбами (см.~рис.\,\ref{fig:p172}; $\lambda=vT$, где $T$~--- период волны, то есть величина обратная частоте волны). 
+
+Электромагнитные волны являются \emph{поперечными}~--- колебания векторов напряжённости и индукции происходят в плоскости, перпендикулярной направлению распространения волны $(\vec E\perp\vec B\perp\vec v)$.
+
+Все электромагнитные волны в зависимости от частоты (или длины волны в вакууме) разделяют на диапазоны.
+\begin{enumerate}
+    \item \textbf{Радиоволны} ($\nu<3\cdot10^{12}$~Гц).
+    \item \textbf{Инфракрасное излучение} ($3\cdot10^{12}\text{~Гц}<\nu<4\cdot10^{14}$~Гц).
+    \item \textbf{Видимый свет} ($4\cdot10^{14}\text{~Гц}<\nu<8\cdot10^{14}$~Гц).
+    \item \textbf{Ультрафиолетовое излучение} ($8\cdot10^{14}\text{~Гц}<\nu<6\cdot10^{16}$~Гц).
+    \item \textbf{Рентгеновское излучение} ($6\cdot10^{16}\text{~Гц}<\nu<8\cdot10^{19}$~Гц).
+    \item \textbf{Гамма"=излучение} ($\nu>8\cdot10^{19}$~Гц).
+\end{enumerate}
+
+
+
+
+
+
+
+
+ 
+\end{document}

@@ -1,0 +1,658 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Электроскоп. Закон сохранения заряда}
+
+
+\sbox{0}{%
+\includegraphics[]{el/4escope_pic.pdf}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[14]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Электроскоп}
+    \label{fig:p93}
+\end{wrapfigure}
+
+\textbf{Электроскоп}~--- это прибор для обнаружения электрических зарядов (рис.\,\ref{fig:p93}). Он состоит из металлического \emph{стержня}, пропущенного через пластиковую крышку, закрывающую прозрачный сосуд. К стержню в верхней части обычно припаян металлический \emph{шар}; к нижней части стержня подвешены две подвижные тонкие \emph{пластины} (так называемые листки или лепестки; их делают из металла или бумаги).
+
+Если к незаряженному электроскопу поднести (не касаясь!), например, положительно заряженную палочку (рис.\,\ref{fig:p94}, слева), то в следствие электризации \emph{влиянием} в шаре электроны будут преобладать над протонами~--- верхняя часть прибора заряжена отрицательно. В пластинах тогда будет иметься избыток протонов~--- нижняя часть прибора заряжена положительно. Так как оба листка поэтому заряжены положительно, то они, отталкиваясь, расходятся в разные стороны. Аналогично, при поднесении без касания отрицательного заряда к электроскопу (рис.\,\ref{fig:p94}, справа) его листки тоже расходятся~--- листки тогда несут отрицательные заряды. 
+
+}
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+%path rod
+\path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+%bulb
+\draw (lc) ++ (-1,-.65) coordinate (lbu) --++ (0,-2.25) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+%cap
+\fill[brown,semitransparent] (lbu) rectangle++ (1,.1);
+\draw (lbu) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+\fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+\draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+%rod
+\fill[NavyBlue!80] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+\fill [red,path fading=north] (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] --++ (0,1.3) -- cycle;
+\draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+%%%%
+%plates
+%%%%
+
+%%% right plate
+
+\path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+\path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+\filldraw[fill=red] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+%%% left plate
+
+\path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+\path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+\filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \filldraw[fill=red] (bc) circle ({sin(15)*.2+.04});
+\draw[] (bc) circle ({sin(15)*.2});
+
+% \node[circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,opaque] at (bc) {};
+
+% charge
+\path (rc) ++ (105:.2) ++ (135:.5) coordinate (ch);
+\fill[red] (ch) arc [start angle=0, end angle=-90, radius={sin(15)*.2}] --++ (-1,0) arc [start angle=-90, end angle=-270, radius={sin(15)*.2}] --++ (1,0) arc [start angle=90, end angle=0, radius={sin(15)*.2}];
+\draw (ch) arc [start angle=0, end angle=-90, radius={sin(15)*.2}] --++ (-1,0) arc [start angle=-90, end angle=-270, radius={sin(15)*.2}] --++ (1,0) arc [start angle=90, end angle=0, radius={sin(15)*.2}];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% right pic
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{scope}[xshift=5cm]
+
+%path rod
+\path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+%bulb
+\draw (lc) ++ (-1,-.65) coordinate (lbu) --++ (0,-2.25) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+%cap
+\fill[brown,semitransparent] (lbu) rectangle++ (1,.1);
+\draw (lbu) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+\fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+\draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+%rod
+\fill[red] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+\fill [NavyBlue!80,path fading=north] (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] --++ (0,1.3) -- cycle;
+\draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+%%%%
+%plates
+%%%%
+
+%%% right plate
+
+\path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+\path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+\filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+%%% left plate
+
+\path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+\path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+\filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \filldraw[fill=red] (bc) circle ({sin(15)*.2+.04});
+\draw[] (bc) circle ({sin(15)*.2});
+
+% \node[circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,opaque] at (bc) {};
+
+% charge
+\path (rc) ++ (105:.2) ++ (45:.5) coordinate (ch);
+\fill[NavyBlue!80] (ch) arc [start angle=180, end angle=270, radius={sin(15)*.2}] --++ (1,0) arc [start angle=-90, end angle=90, radius={sin(15)*.2}] --++ (-1,0) arc [start angle=90, end angle=180, radius={sin(15)*.2}];
+\draw (ch) arc [start angle=180, end angle=270, radius={sin(15)*.2}] --++ (1,0) arc [start angle=-90, end angle=90, radius={sin(15)*.2}] --++ (-1,0) arc [start angle=90, end angle=180, radius={sin(15)*.2}];
+
+
+\end{scope}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \end{tikzpicture}
+\caption{Опыты с электроскопом}
+\label{fig:p94}
+\end{figure}
+
+% Для описания состояний тел, участвующих в электрических явлениях, удобно рассматривать несколько тел как \emph{замкнутую систему} (в такой системе тела могут обмениваться зарядами только между собой). Тогда можно говорить о заряде системы тел~--- то есть о сумме зарядов тел системы.
+
+Пусть теперь имеются два заряженных металлических шара (рис.\,\ref{fig:p95}, слева).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\shade[ball color=red] (0,0) circle (.15);
+\shade[ball color=NavyBlue] (2,0) circle (.15);
+
+
+%name
+\node[yshift=.15cm,above] at (0,0) {$q_\text{А}^{\phantom{'}}$};
+\node[yshift=.15cm,above] at (2,0) {$q_\text{Б}^{\phantom{'}}$};
+
+\node[yshift=-.15cm,below] at (0,0) {А};
+\node[yshift=-.15cm,below] at (2,0) {Б};
+
+
+
+\begin{scope}[xshift=6cm]
+
+\shade[ball color=NavyBlue] (0,0) circle (.15);
+\shade[ball color=NavyBlue] (2,0) circle (.15);
+
+
+% connect
+\def\dc{.05}
+\draw [nearly transparent] (0,.15) -- (2,.15);
+\draw [semitransparent,yshift=\dc cm] (0,.15) -- (2,.15);
+\draw [yshift={2*\dc cm}] (0,.15) -- (2,.15);
+
+
+%name
+\node[yshift=.15cm,above left] at (0,0) {$q_\text{А}'$};
+\node[yshift=.15cm,above right] at (2,0) {$q_\text{Б}'$};
+
+\node[yshift=-.15cm,below] at (0,0) {А};
+\node[yshift=-.15cm,below] at (2,0) {Б};
+
+\end{scope}
+
+
+%\Longrightarrow
+\path (4,0) node {$\Longrightarrow$};
+
+
+    \end{tikzpicture}
+\caption{Опыт с заряженными шарами}
+\label{fig:p95}
+\end{figure}
+
+Одинаковые шары~А и~Б (\emph{замкнутая} система тел\footnote{В замкнутой системе тела могут обмениваться зарядами только между собой.}) с зарядами~$q_\text{А}^{\phantom{'}}$ и~$q_\text{Б}^{\phantom{'}}$ соединяют тонким железным стержнем, который затем убирают (рис.\,\ref{fig:p95}, справа). Теперь шары несут заряды~$q_\text{А}'$ и~$q_\text{Б}'$. Здесь выполняется следующий закон.
+
+% Шары~А и~Б имеют одинаковые размеры и вначале несут заряды~$q_\text{А}$ и~$q_\text{Б}$ соответственно (рис.\,\ref{fig:p95}). Эти шары образуют так называемую замкнутую систему тел~--- то есть систему, в которой они могут обмениваться зарядами только между собой. Тогда начальный заряд этой системы (сумма зарядов тел системы) равен~$q_\text{А}+q_\text{Б}$. Шары соединяют тонким металлическим стержнем, так что теперь шары образуют как бы одно тело~--- гантель, по которой перераспределяется заряд всей системы. Затем стержень убирают, и шары~А и~Б несут некоторые заряды~$q_\text{А}'$ и~$q_\text{Б}'$ соответственно. В этом опыте выполняется следующий закон.
+%
+\begin{law}
+    \textbf{Закон сохранения заряда.} Заряд замкнутой системы тел (сумма зарядов тел системы) остается постоянным при любых процессах, происходящих в системе:
+    \begin{equation}
+        \label{4escope_e1}
+        q_\text{до}=q_\text{после},
+    \end{equation}
+    где $q_\text{до}$ и $q_\text{после}$~--- заряды системы тел до и после рассматриваемого процесса.
+\end{law}
+%
+Так, для опыта с шарами (рис.\,\ref{fig:p95}) формулу~\eqref{4escope_e1} можно переписать следующим образом: $q_\text{А}^{\phantom{'}}+q_\text{Б}^{\phantom{'}}=q_\text{А}'+q_\text{Б}'$ (причем $q_\text{А}'=q_\text{Б}'$, так как шары одинаковые).
+
+
+% Пусть теперь имеется два заряженных электроскопа (рис.\,\ref{fig:p95}, слева)
+% Пусть теперь два первоначально заряженных электроскопа соединяют металлическим стержнем и убирают его (рис.\,\ref{fig:p95}).
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% %path rod
+% \path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+% %bulb
+% \draw (lc) ++ (-1,-.65) coordinate (lbu1) --++ (0,-2.25) coordinate (lbbu) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+% %cap
+% \fill[brown,semitransparent] (lbu1) rectangle++ (1,.1);
+% \draw (lbu1) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+% \fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+% \draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+% %rod
+% \fill[red] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+% \draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+% %%%%
+% %plates
+% %%%%
+
+% %%% right plate
+
+% \path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+% \path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+% \filldraw[fill=red] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+% %%% left plate
+
+% \path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+% \path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% % \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% % \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% % \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% % \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+% \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \draw[] (bc) circle ({sin(15)*.2});
+
+
+% % name
+% \path (rc) ++ (105:.2) ++ (90:.2) coordinate (nl);
+% \node[above] at (nl) {$q$};
+
+% \path (lbbu) ++ ({1+sin(15)*.2},0) coordinate (nbl);
+% \node[below] at (nbl) {А};
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % right scope
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{scope}[xshift=3cm]
+
+% %path rod
+% \path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+% %bulb
+% \draw (lc) ++ (-1,-.65) coordinate (lbu) --++ (0,-2.25) coordinate (lbbu) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+% %cap
+% \fill[brown,semitransparent] (lbu) rectangle++ (1,.1);
+% \draw (lbu) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+% \fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+% \draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+% %rod
+% \fill[NavyBlue!80] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+% \draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+% %%%%
+% %plates
+% %%%%
+
+% %%% right plate
+
+% \path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+% \path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+% %%% left plate
+
+% \path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+% \path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% % \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% % \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% % \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% % \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \draw[] (bc) circle ({sin(15)*.2});
+
+
+% % name
+% \path (rc) ++ (105:.2) ++ (90:.2) coordinate (nl);
+% \node[above] at (nl) {$-3q$};
+
+% \path (lbbu) ++ ({1+sin(15)*.2},0) coordinate (nbl);
+% \node[below] at (nbl) {Б};
+
+
+
+
+% \end{scope}
+
+
+% %%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%% right picture
+% %%%%%%%%%%%%%%%%%
+
+
+% \begin{scope}[xshift=8cm]
+
+% %path rod
+% \path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+% %bulb
+% \draw (lc) ++ (-1,-.65) coordinate (lbu) --++ (0,-2.25) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+% %cap
+% \fill[brown,semitransparent] (lbu) rectangle++ (1,.1);
+% \draw (lbu) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+% \fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+% \draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+% %rod
+% \fill[NavyBlue!80] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+% \draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+% %%%%
+% %plates
+% %%%%
+
+% %%% right plate
+
+% \path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+% \path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+% %%% left plate
+
+% \path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+% \path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% % \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% % \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% % \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% % \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \draw[] (bc) circle ({sin(15)*.2});
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % right scope
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{scope}[xshift=3cm]
+
+% %path rod
+% \path[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+
+
+% %bulb
+% \draw (lc) ++ (-1,-.65) coordinate (lbu) --++ (0,-2.25) --++ ({2+sin(15)*.2+sin(15)*.2},0) --++ (0,2.25) coordinate (rbu);
+
+
+% %cap
+% \fill[brown,semitransparent] (lbu) rectangle++ (1,.1);
+% \draw (lbu) ++ (1,0) --++ (-1,0) --++ (0,.1) --++ (1,0);
+
+% \fill[brown,semitransparent] (rbu) rectangle++ (-1,.1);
+% \draw (rbu) ++ (-1,0) --++ (1,0) --++ (0,.1) --++ (-1,0);
+
+
+% %rod
+% \fill[NavyBlue!80] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) coordinate (lp) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] coordinate (rp) -- cycle;
+% \draw[] (0,0) coordinate (rc) arc [start angle=-75, end angle=255, radius=.2] coordinate (lc) --++ (0,-1.3) arc [start angle=-180, end angle=0, radius={sin(15)*.2}] -- cycle;
+
+
+% %%%%
+% %plates
+% %%%%
+
+% %%% right plate
+
+% \path (rp) --++ ({-sin(15)*.2},0) coordinate (bc);
+
+% \path[] ([xshift=.04cm]rp) arc [start angle=0, end angle={270+asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] coordinate (rcir) --++ (0,-.9) coordinate (bell) --++ (.04,0) coordinate (belr) -- cycle;
+
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{rp}=(rp),\p{bell}=(bell),\p{belr}=(belr) in {[rotate around={30:(bc)}] ([xshift=.04cm]\p{rp}) -- (\p{belr}) -- (\p{bell}) -- (\p{rp}) -- cycle};
+
+% %%% left plate
+
+% \path[name path=circ] (bc) circle ({sin(15)*.2+.04});
+% \path[name path=left] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) --++ (0,-.1)};
+
+% % \filldraw[fill=red,rotate around={-90:(bc)}] ([xshift=-.5\pgflinewidth]lp) rectangle++ (-.04,-1);
+% % \filldraw[fill=red] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-0:(bc)}] ([xshift=-.0\pgflinewidth]\p{lp}) rectangle++ (-.04,-1)};
+
+% % \draw[name intersections={of=circ and left, by=x1}] (x1) --++ (0,-.9) --++ (-.04,0) -- ([xshift=-.04cm]lp);
+% % \filldraw[fill=red] ([xshift=-.04cm]lp) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle;
+% \filldraw[fill=NavyBlue!80] let \p{bc}=(bc),\p{lp}=(lp) in {[rotate around={-30:(bc)}] ([xshift=-.04cm]\p{lp}) arc [start angle=-180, end angle={-450-asin(sin(15)*.2/(sin(15)*.2+.04))}, radius={sin(15)*.2+.04}] --++ (0,-.9) --++ (-.04,0) -- cycle};
+
+% \draw[] (bc) circle ({sin(15)*.2});
+
+
+
+
+% \end{scope}
+
+% % name
+% \path (rc) ++ (105:.2) ++ (90:.2) coordinate (nl);
+% \node[above right] at (nl) {$q_\text{Б}'$};
+% \node[above left] at ([xshift=-3cm]nl) {$q_\text{А}'$};
+
+% \path ([xshift=5cm]lbbu) ++ ({1+sin(15)*.2},0) coordinate (nbl);
+% \node[below] at (nbl) {А};
+% \path ([xshift=8cm]lbbu) ++ ({1+sin(15)*.2},0) coordinate (nbl);
+% \node[below] at (nbl) {Б};
+
+
+
+% % connect
+% \def\dc{.05}
+% \draw [nearly transparent] ([xshift=-3cm]nl) -- (nl);
+% \draw [semitransparent] ([shift={(-3,\dc)}]nl) -- ([shift={(0,\dc)}]nl);
+% \draw [] ([shift={(-3,2*\dc)}]nl) -- ([shift={(0,2*\dc)}]nl);
+
+
+
+% \end{scope}
+
+
+% %\Longrightarrow
+% \path (lbu1) ++ ({(3+2+sin(15)*.2+sin(15)*.2+8)/2},-.6) coordinate (cen);
+% \path (cen) node {$\Longrightarrow$};
+
+
+
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Опыты с двумя электроскопами}
+% \label{fig:p95}
+% \end{figure}
+
+% Два одинаковых электроскопа~А и~Б с зарядами~$q$ и~$-3q$ соответственно представляют собой систему тел. Эти электроскопы соединяют металлическим стержнем и убирают его. Заряд в системе перераспределилися между электроскопами.
+
+
+
+
+
+
+
+
+
+%%%%
+%электроскоп рис
+ 
+%         \begin{figure}[H]
+%     \centering
+% \begin{asy}
+% settings.outformat="png";
+% // settings.prc=true;
+% settings.render=15;
+
+
+% import three;
+% import texcolors;
+% import x11colors;
+% import solids;
+% import palette;
+% size(3cm,0);
+% currentprojection =
+% orthographic((5,4,1.5));
+
+
+% //styles
+% ///////////////////////////////////////////
+% DefaultHead3.size=new real(pen p=currentpen) {return 3mm;};
+% defaultpen(fontsize(11pt));
+% defaultpen(linewidth(0.4pt));
+% pen thick=black+2*linewidth(currentpen);
+% /////////////////////////////////////////
+
+
+
+% //axes
+% //draw(O--2.5X,L=Label("$x$",EndPoint,WSW));
+% //draw(O--2.3Y,L=Label("$y$",EndPoint,ESE));
+% //draw(O--3Z,L=Label("$\vec n$",EndPoint,W),Arrow3(angle=10));
+
+
+% //////////////////////////////////////////
+% //bulb
+% path3 bu=(0,1,-.05)--(0,1,2.25)--(0,.95,2.25)--(0,.95,0);
+% for (int n = 0; n <= 11; ++n) {
+% revolution sur=revolution(O,bu,Z,30*n,30*(n+1));
+% draw(surface(sur),MediumAquamarine+opacity(.05));
+% }
+
+% draw(shift(0,0,-0.05)*rotate(0,X)*scale3(1)*unitdisk,MediumAquamarine+opacity(.3));
+
+% //cap disk
+% draw(shift(0,0,2.25)*rotate(0,X)*scale3(1)*unitdisk,orange);
+% draw(shift(0,0,2.35)*rotate(0,X)*scale3(1)*unitdisk,orange);
+% revolution cyl=cylinder((0,0,2.25),1,.1,Z);
+% draw(surface(cyl),orange);
+
+% //rod
+% revolution cyl=cylinder((0,0,1.5),.05,1.5,Z);
+% draw(surface(cyl),lightgray);
+
+% revolution cyl=cylinder((-.4,0,1.5),.05,.8,X);
+% draw(surface(cyl),lightgray);
+% draw(shift(-.4,0,1.5)*rotate(90,Y)*scale3(.05)*unitdisk,lightgray);
+% draw(shift(.4,0,1.5)*rotate(90,Y)*scale3(.05)*unitdisk,lightgray);
+
+% //plates
+% revolution cyl=cylinder((-.3,0,1.5),.06,.1,X);
+% draw(surface(cyl),yellow);
+% revolution cyl=cylinder((.2,0,1.5),.06,.1,X);
+% draw(surface(cyl),yellow);
+
+% real a=0.06;
+
+% path3 path1=(-.3,.06,1.5) -- (-.3,.06,.5) -- (.3,.06,.5) -- (.3,.06,1.3) -- (-.2,.06,1.3) -- (-.2,.06,1.5) -- cycle;
+% draw(surface(path1), yellow);
+
+% path3 path1=(.3,-a,1.5) -- (.3,-a,.5) -- (-.3,-a,.5) -- (-.3,-a,1.3) -- (.2,-a,1.3) -- (.2,-a,1.5) -- cycle;
+% draw(surface(path1), Goldenrod);
+
+% //circ
+% draw(shift(0,0,3.0)*scale3(.2)*unitsphere,lightgray);
+
+% //plane box
+% real a=4.5;
+% path3 pl=((-a,-a,0)--(a,-a,0)--(a,a,0)--(-a,a,0)--cycle); 
+% //draw(pl);
+% //draw(surface(pl), lightgray+opacity(.5));
+
+
+% \end{asy}
+
+
+
+% \caption{Электроскоп}
+% \label{fig:p92}
+% \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

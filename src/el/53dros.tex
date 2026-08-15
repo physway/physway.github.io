@@ -1,0 +1,118 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Вынужденные колебания в контуре}
+
+
+Электромагнитные колебания в колебательном контуре называются \emph{вынужденными}, если они возникают под действием периодической \emph{вынуждающей} силы. 
+
+Так, вынужденные колебания совершаются в контуре, подключенном к источнику \emph{синусоидального} напряжения (рис.\,\ref{fig:p168}).
+
+    \begin{figure}[H]
+    \centering
+\begin{circuitikz}[circuit ee IEC,font=\small,thin,
+    line cap=round,line join=round,
+>={Stealth[inset=0pt,round,length=3mm, angle'=20]},
+vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \ctikzset{bipoles/americaninductor/coils=3}
+
+
+% 1 pic
+
+% \path (0,0) --++ (2.5,0) --++ (0,1.5) coordinate (cl) --++ (-2.5,0) --++ (0,-1.5);
+
+%L
+% \path (cl) ++ (-{48*\pgflinewidth},0) ++ (0,{.5*\pgflinewidth}) coordinate (cc);
+% \fill[yellow] (cc)
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% arc (0:180:{13.65*\pgflinewidth})
+% -- cycle
+% ;
+
+%C
+% \path[] (cl) ++ (0,-1.5) ++ (-{79*\pgflinewidth},{30*\pgflinewidth}) --++ (0,{-60*\pgflinewidth}) ++ ({-20\pgflinewidth},0) coordinate (cc);
+% \fill[yellow] (cc) rectangle++ ({20*\pgflinewidth},{60*\pgflinewidth});
+
+
+\draw (0,0) to[*C,l_=$C$,name=c] ++ (2.5,0) --++ (0,1.5) coordinate (cl); 
+\draw[line cap=butt] (cl) to[*L,l_=$L$,mirror] ++ (-2.5,0) coordinate (cll);
+\draw (cll) to[*short,-o] ++ (0,-.5) (0,0) to[*short,-o] ++ (0,.5);
+\draw[semithick,xshift=-.2cm,scale around={.6:(0.2,.75)}] (0,.75) node[left,inner sep=0.2222em] {$U$} sin ++ (.1,.1) cos ++ (.1,-.1) sin ++ (.1,-.1) cos ++ (.1,.1);
+% \node[below] at (c.south) {$q_\text{max}$};
+% \node[left] at (c.north west) {$+$};
+% \node[right] at (c.north east) {$-$};
+
+
+\end{circuitikz}
+\caption{Вынужденные колебания}
+\label{fig:p168}
+\end{figure}
+
+Пусть в схеме, показанной на рис.\,\ref{fig:p168}, напряжение источника\footnote{На схеме выводы источника~--- это выколотые точки.} меняется по закону: $U=U_0\sin(\omega t)$. Тогда в контуре происходят колебания заряда и тока с \emph{вынужденной} циклической частотой~$\omega$. (Если бы колебания в контуре были свободными, то они совершались бы с \emph{собственной} циклической частотой~$\omega_\text{с}$ контура, равной\footnote{Подстановка формулы Томсона в определение циклической частоты.}: $\omega_\text{с}=\dfrac{1\strut}{\sqrt{LC}\strut}$.) 
+
+На рис.\,\ref{fig:p169} приведен график зависимости амплитуды силы тока в контуре от циклической частоты (\emph{резонансная кривая}). 
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\draw[->] (0,0) --++ (0,4) node[left,black] {$I_\text{max}$};
+\draw[->] (0,0) --++ (6,0) node[below,black] {$\omega$};
+\node[below left] (O) at (0,0) {$O$};
+
+\def\X{.6}
+\def\R{.2}
+\draw[red,thick,domain=0.1:5,samples=1000] plot (\x,{1.5/(sqrt(\R+(\X*\x-1/(\X*\x))^2))});
+% \draw[red,dashed,thick,domain=pi:4*pi,yshift={\cy-.3 cm},,xscale=.5,samples=1000] plot (\x,{\xmax*cos(\x r)});
+\draw[red,thick] (0,0) -- (.1,{{1.5/(sqrt(\R+(\X*.1-1/(\X*.1))^2))}});
+
+
+%dash
+\draw[gray,densely dashed] ({1/(sqrt(\X*\X))},0) node[below,black] {$\omega_\text{с}$} --++ (0,{1.5/sqrt(\R)});
+
+
+
+
+    \end{tikzpicture}
+\caption{Резонансная кривая}
+\label{fig:p169}
+\end{figure}
+
+
+Как видно из рисунка, амплитуда тока тем больше, чем ближе вынужденная частота~$\omega$ к собственной частоте~$\omega_\text{с}$ контура. При $\omega = \omega_\text{с}$ (возможно, приблизительно) наступает \emph{резонанс}~--- возрастание амплитуды колебаний. При $\omega\to0$ ток в контуре равен нулю (ток малой частоты~--- это практически постоянный ток, который через конденсатор пройти не может); ток также равен нулю при $\omega\to\infty$ (при быстром изменении тока в катушке возникает большая ЭДС самоиндукции, препятствующая увеличению тока).
+
+В случае колебаний в контуре (свободных или вынужденных) в нем протекает так называемый \emph{переменный ток}~--- ток, изменяющийся с течением времени. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}
