@@ -1,0 +1,211 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Сохранение и изменение энергии}
+
+
+\textbf{Полная механическая энергия} ($E$ [Дж])~--- это сумма кинетической и потенциальной энергии тела\footnote{Для системы тел~--- сумма кинетических и потенциальных энергий тел системы.}:
+\begin{equation}
+    E=E_\text{к}+E_\text{п}.
+\end{equation}
+%
+\begin{law}
+\textbf{Закон сохранения полной механической энергии.} Если на тело (в системе тел) не действуют силы трения и внешние силы, то полная механическая энергия тела (системы) сохраняется\footnote{Вообще говоря, этот закон справедлив в случае равенства нулю суммы работ сил трения и внешних сил: $A_\text{тр}+A_\text{внеш}=0$.}:
+\begin{equation}\label{45COE_e1}
+    E_1=E_2=\ldots,
+\end{equation}
+где~$E_1$ и $E_2$~--- полные механические энергии в первом и втором состояниях.
+\end{law}
+
+Пусть, например, вначале шар покоится на горке, и сжатая пружина с приставленным к ней бруском неподвижна (рис.\,\ref{fig:p59}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \draw[lightgray,semitransparent,line width=.3cm,yshift=-.15cm,line cap=butt] (0,1.5) to[out=0,in=180] (4,0) -- (6,0); %не сходятся края толстой и тонкой
+% \begin{scope}
+%     \clip[] (0,1.5) to[out=0,in=180] (4,0) -- (6,0) --++ (0,-.3) --++ (-6,0) -- cycle; 
+%     \draw[double=lightgray!50!white,lightgray!50!white,line cap=butt,double,double distance between line centers=.6cm] (0,1.5) to[out=0,in=180] (4,0) -- (6,0); %не сходятся края толстой и тонкой
+% \end{scope}
+
+\filldraw[lightgray,semitransparent] (0,1.5) to[out=0,in=180] (4,0) -- (6,0) --++ (0,-.3) --++ (-6,0) -- cycle;  
+\draw (0,1.5) to[out=0,in=180] (4,0) -- (6,0);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%left pic
+%solid
+\shade[ball color=lightgray] (0,1.8) coordinate (C) circle (.3);
+
+% h
+\draw[densely dashed,gray] (0,1.5) --++ (5,0) coordinate (h1);
+\draw[<->,gray] ([xshift=-.2cm]h1) --++ (0,-1.5) node[midway,right,black] {$h$};
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% right pic
+\begin{scope}[xshift=8cm]
+\filldraw[lightgray,semitransparent] (0,1.5) -- (0,0) -- (6,0) --++ (0,-.3) --++ (-6.3,0) --++ (0,1.8) -- cycle;
+\draw[] (0,1.5) -- (0,0) --++ (6,0);
+
+\filldraw[lightgray,draw=black] (1.4,0) rectangle++ (1,.5);
+
+%% elast
+
+% before
+\draw (0,0)
+foreach \x in {.1,.3,...,1.4}
+{ -- ({\x},.5) -- ({\x+.1},0) }
+;
+
+% % after
+% \draw[red] (0,.5) -- (0,0)
+% foreach \x in {.2,.6,...,3}
+% { -- ({\x},.5) -- ({\x+.2},0) }
+% -- (2.8,.5)
+% ;
+
+% x
+\draw[densely dashed,gray] (1.4,.5) --++ (0,1) coordinate (x1);
+\draw[densely dashed,gray] (2.8,0) --++ (0,1.5);
+\draw[<->,gray] ([yshift=-.2cm]x1) --++ (1.4,0) node[midway,above,black] {$x$};
+
+
+
+\end{scope}
+
+    \end{tikzpicture}
+\caption{Начальные положения шара и сжатой пружины с бруском}
+\label{fig:p59}
+\end{figure}
+
+Покоящийся шар (рис.\,\ref{fig:p59}, слева) массы~$m_\text{ш}$ на высоте~$h$ обладает в начальном положении полной механической энергией $E_\text{ш1}=m_\text{ш}gh$. Неподвижная система тел <<пружина"=брусок>> (рис.\,\ref{fig:p59}, справа) с деформацией~$x$ легкой пружины жесткости~$k$ обладает вначале полной механической энергией $E_\text{пб1}=\dfrac{kx^2}{2}$.
+
+% (рис.\,\ref{fig:p59}).
+
+% \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% % \draw[lightgray,semitransparent,line width=.3cm,yshift=-.15cm,line cap=butt] (0,1.5) to[out=0,in=180] (4,0) -- (6,0); %не сходятся края толстой и тонкой
+% % \begin{scope}
+% %     \clip[] (0,1.5) to[out=0,in=180] (4,0) -- (6,0) --++ (0,-.3) --++ (-6,0) -- cycle; 
+% %     \draw[double=lightgray!50!white,lightgray!50!white,line cap=butt,double,double distance between line centers=.6cm] (0,1.5) to[out=0,in=180] (4,0) -- (6,0); %не сходятся края толстой и тонкой
+% % \end{scope}
+
+% \filldraw[lightgray,semitransparent] (0,1.5) to[out=0,in=180] (4,0) -- (6,0) --++ (0,-.3) --++ (-6,0) -- cycle;  
+% \draw (0,1.5) to[out=0,in=180] (4,0) -- (6,0);
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%left pic
+% %solid
+% \shade[ball color=lightgray] (5,.3) coordinate (C) circle (.3);
+
+% % % h
+% % \draw[densely dashed,gray] (0,1.5) --++ (5,0) coordinate (h1);
+% % \draw[<->,gray] ([xshift=-.2cm]h1) --++ (0,-1.5) node[midway,right,black] {$h$};
+
+% % v
+% \draw[->,NavyBlue,thick,vec] (C) coordinate (F)--++ (0:1) node[black,above] {$\vec v_\text{ш}$};
+% \node[] at (F) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % right pic
+% \begin{scope}[xshift=8cm]
+% \filldraw[lightgray,semitransparent] (0,1.5) -- (0,0) -- (6,0) --++ (0,-.3) --++ (-6.3,0) --++ (0,1.8) -- cycle;
+% \draw[] (0,1.5) -- (0,0) --++ (6,0);
+
+% \filldraw[lightgray,draw=black] (2.8,0) rectangle++ (1,.5);
+
+% %% elast
+
+% % % before
+% % \draw (0,.5) -- (0,0)
+% % foreach \x in {.1,.3,...,1.4}
+% % { -- ({\x},.5) -- ({\x+.1},0) }
+% % -- (1.4,.5)
+% % ;
+
+% % after
+% \draw[] (0,.5) -- (0,0)
+% foreach \x in {.2,.6,...,3}
+% { -- ({\x},.5) -- ({\x+.2},0) }
+% -- (2.8,.5)
+% ;
+
+% % % x
+% % \draw[densely dashed,gray] (1.4,.5) --++ (0,1) coordinate (x1);
+% % \draw[densely dashed,gray] (2.8,0) --++ (0,1.5);
+% % \draw[<->,gray] ([yshift=-.2cm]x1) --++ (1.4,0) node[midway,above,black] {$x$};
+
+% % v
+% \draw[->,NavyBlue,thick,vec] (3.3,.25) coordinate (F)--++ (0:1) node[black,above] {$\vec v_\text{б}$};
+% \node[] at (F) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+% \end{scope}
+
+%     \end{tikzpicture}
+% \caption{Конечные положения тел}
+% \label{fig:p59}
+% \end{figure}
+
+Пусть рассматриваемые тела изменили свое положение.
+Соскользнув без трения с горки на горизонтальную поверхность, шар приобрел скорость~$v_\text{ш}$, и его полная механическая энергия стала равна $E_\text{ш2}=\dfrac{m_\text{ш}^{\vphantom 2}v_\text{ш}^2}{2}$. Пружина возвращаясь в недеформированное состояние, привела в движение соприкасающийся с ней на гладкой поверхности брусок массы~$m_\text{б}$, который приобрел скорость~$v_\text{б}$; тогда полная механическая энергия этой системы равна $E_\text{пб2}=\dfrac{m_\text{б}^{\vphantom 2}v_\text{б}^2}{2}$. 
+
+% Опыт показывает, что в рассмотренном примере полная механические энергии тела (системы тел) в начальном и конечном положениях равны.
+
+Так, для рассмотренного процесса с шаром  соотношение~\eqref{45COE_e1} дает: $E_\text{ш1}\hm=E_\text{ш2}$ или $m_\text{ш}gh=\dfrac{m_\text{ш}^{\vphantom 2}v_\text{ш}^2}{2}$ (аналогично для системы <<пружина"=брусок>>).
+
+Если же на тело (в системе тел) действуют силы трения и$/$или внешние силы, то справедлив следующий закон.
+%
+\begin{law}
+\textbf{Закон изменения полной механической энергии.} Работа \emph{непотенциальных сил}\footnote{Под непотенциальными силами здесь можно понимать силы трения и внешние силы, тогда работа непотенциальных сил равна $A_\text{н.\,с}=A_\text{тр}+A_\text{внеш}$.}, действующих на тело (в системе тел), равна изменению полной механической энергии тела (системы):
+\begin{equation}
+    A_\text{н.\,с}=\Delta E.
+\end{equation}
+\end{law}
+
+% Так для рассмотренных процессов с шаром и системой <<пружина--брусок>> соотношение~\eqref{45COE_e1} дает: $E_\text{ш1}=E_\text{ш2}$ или 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

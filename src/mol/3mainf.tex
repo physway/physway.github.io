@@ -1,0 +1,176 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Основные формулы молекулярной физики}
+
+
+В молекулярной физике рассматриваются \emph{макроскопические} тела~--- то есть тела, состоящие из огромного числа частиц\footnote{Обычно речь идет о молекулах или атомах, что предполагается далее.}: например, даже в одном грамме воды содержится порядка~$10^{22}$ молекул. Для удобства описания таких тел с учетом их внутреннего строения вводят следующие величины.
+\begin{itemize}
+    \item \textbf{Число Авогадро} $\left(N_\text{А}\ \left[\dfrac{1}{\text{моль}}\right]\right)$~--- это число частиц, содержащееся в такой порции вещества, \strut которой удобно пользоваться на практике (эта порция носит название <<моль>>). Моль любого вещества содержит одно и то же число частиц, которое в настоящее время принимают приближенно равным  $N_\text{А}\approx6\cdot10^{23}$~моль$^{-1}$.
+    
+    \item \textbf{Количество вещества} ($\nu$ [моль])~--- это количество порций по $N_\text{А}$ частиц, образующих данное тело. 
+
+    \item \textbf{Молярная масса} $\left(M\ \left[\dfrac{\text{кг\vphantom{1}}}{\text{моль}}\right]\right)$~--- это масса порции из $N_\text{А}$ частиц данного вещества (или, как говорят, \strut масса одного моля этого вещества). Молярные массы химических элементов можно узнать из таблицы Менделеева: следует взять атомную массу (число возле номера элемента) из ячейки данного элемента и умножить на~$10^{-3}$~--- получится значение в $\text{кг}/\text{моль}$. Например, в ячейке железа у его порядкового номера стоит число~56 (округленно); это значит, что молярная масса железа (одноатомное вещество) равна~$56\cdot10^{-3}$~$\text{кг}/\text{моль}$.
+
+    Для определения молярной массы вещества, молекулы которого состоят из нескольких атомов, нужно суммировать молярные массы. Например, молярная масса воды~H$_2$O равна $1\cdot10^{-3}\cdot2+16\cdot10^{-3}=18\cdot10^{-3}$~$\text{кг}/\text{моль}$. 
+    \end{itemize}
+
+\textbf{Число частиц} в теле с учетом определения количества вещества можно вычислять по формуле:
+\begin{equation}
+    N=\nu N_\text{А}.
+\end{equation}
+
+\textbf{Масса} вещества с учетом определения молярной массы рассчитывается так:
+\begin{equation}
+    m=\nu M,
+\end{equation}
+или, обозначая массу частицы через~$m_0$:
+\begin{equation}
+    m=Nm_0.
+\end{equation}
+
+\textbf{Плотность}, как известно из механики, находится по формуле:
+\begin{equation}
+    \rho=\frac{m}{V}.
+\end{equation}
+
+\textbf{Концентрация} $\left(n\ \left[\dfrac{1}{\text{м}^3}\right]\right)$~--- это характеристика тела, показывающая число частиц в единице \strut объема:
+\begin{equation}
+    n=\dfrac{N}{V}.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%
+% далее посчитался ненужным такой листок, но инфа может пригодится далее при упоминании идеального газа
+
+% \textbf{Идеальный газ}~--- это \emph{физическая модель}\footnote{Физическая модель~--- это упрощенный аналог физической системы (процесса), сохраняющий ее главные черты.}, использующаяся для описания разреженных газов, когда расстояния между их частицами\footnote{Молекулами или атомами.} намного больше размеров самих частиц. Эта модель предполагает следующие допущения.
+% \begin{enumerate}
+%     \item Частицы газа считаются материальными точками (рис.\,\ref{fig:p68}).
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% %gas
+% \draw (1,0) rectangle++ (2,2);
+
+% % \foreach \i in {1,...,100}
+% %   \fill[Green,shift={(1.03,0.03)}] ({rnd*1.94cm}, {rnd*1.94cm}) circle (.02);
+
+
+%     \end{tikzpicture}
+% \caption{Размеры частиц пренебрежимо малы}
+% \label{fig:p68}
+% \end{figure}
+
+%     \item Частицы не взаимодействуют друг с другом на расстоянии.
+
+% \tikzfading[name=fade right,
+% left color=transparent!50,
+% right color=transparent!100]
+
+%     \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \def\num{2}
+
+% \foreach \i in {1,...,\num}
+%   \path[Green] (rnd*360:rnd*2cm) circle (.05) coordinate (m\i);
+
+% \foreach \i in {1,...,\num}{
+%   \def\ang{rnd*360}
+%   \draw[Green,path fading=fade right,fading angle=\ang,line width=.05cm] (m\i) --++ (rnd*\ang:1cm);
+% };
+
+% \foreach \i in {1,...,\num}
+%   \fill[Green] (m\i) circle (.05);
+
+% % \draw[Green,path fading=fade right,fading angle=90,line width=.05cm] (0,0) --++ (90:1cm);
+
+
+% % \node at (m1) {1};
+
+%     \end{tikzpicture}
+% \caption{Размеры частиц пренебрежимо малы}
+% \label{fig:p69}
+% \end{figure}
+    
+%     \item Столкновения частиц считают абсолютно упругими.
+% \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

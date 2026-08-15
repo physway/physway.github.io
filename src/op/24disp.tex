@@ -1,0 +1,167 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Дисперсия света}
+
+
+Прежде всего нужно сказать, что белый (солнечный) свет является смесью световых пучков разных цветов, а именно~--- смесью волн всего видимого диапазона (от красного до фиолетового).  
+
+На рис.\,\ref{fig:p194} показан \emph{спектр} белого света~--- полоса со всеми цветами радуги, плавно переходящими друг в друга.  
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\draw[->] (-1,0) -- (13,0) node[below] {$\nu$, Гц};
+\node[inner sep=0mm,label={below:$4\cdot10^{14}$}] at (1,0) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={below:$8\cdot10^{14}$}] at (11,0) {\tikz\draw(0,0) -- (0,2mm);};
+
+
+\node[anchor=south west,inner sep=0] at (1,0.2) {\pgfspectra[width=10cm,gamma=0,begin=740,end=380]};
+
+
+
+    \end{tikzpicture}
+\caption{Спектр белого света}
+\label{fig:p194}
+\end{figure}
+
+
+Каждому цвету соответствует волна определенной частоты в диапазоне видимого света (волны с частотами примерно от $4\cdot10^{14}$~Гц до $8\cdot10^{14}$~Гц). Красный свет имеет наименьшую частоту, а фиолетовый~--- наибольшую. 
+
+В спектре белого света удобно выделять семь цветов~--- красный, оранжевый, желтый, зеленый, голубой, синий, фиолетовый\footnote{Для запоминания цветов можно использовать такое правило: <<каждый охотник желает знать, где сидит фазан>> (первые буквы слов фразы соответствует первым буквам цветов).}. Так цвета перечислены \emph{в порядке возрастания частоты} света (см.~рис.\,\ref{fig:p194}).
+
+\textbf{Дисперсия света}~--- это зависимость преломляемости луча света от его частоты (на данной границе сред).
+
+Пусть узкий луч солнечного света падает на стеклянную призму (рис.\,\ref{fig:p195}). 
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\fill[lightgray,opacity=.6] (0,0) rectangle (\linewidth,5); 
+\coordinate (O) at (.5\linewidth,2.5);
+
+\def\R{4}
+\fill[SkyBlue,nearly transparent] (O) ++ (0,{-sqrt(3)/4*\R}) --++ (180:{\R/2}) --++ (60:\R) --++ (-60:\R) -- cycle;
+\draw[] (O) ++ (0,{-sqrt(3)/4*\R}) --++ (180:{\R/2})  --++ (60:{\R/2}) coordinate (lt) --++ (60:{\R/2}) coordinate (at) --++ (-60:\R) coordinate (rt) -- cycle;
+\path[name path=a] (at) -- (rt);
+
+
+% color
+\def\wc{30}
+\draw[white,very thick,vec,->] (lt) ++ ({\wc+180}:2) --++ ({\wc}:1);
+\draw[white,very thick] (lt) ++ ({\wc+180}:2) ++ ({\wc}:.9) --++ ({\wc}:1.1);
+% \draw[dashed] (lt) ++ ({60+90}:2) --++ ({60+90+180}:4);
+
+\foreach \i/\col in {1,2,3,4,5,6,7}{
+\def\gam{1.8}
+\path[semithick,name path global=b\i] (lt) --++ ({\wc-5-.7*\i^\gam}:2.5);
+% \coordinate[name intersections={of=a and b\i, by=x}] (x\i) at (x);
+}
+
+\definecolor{viol}{RGB}{139,0,255}
+\definecolor{oran}{RGB}{255,165,0}
+\foreach \i/\col in {1/red,2/red!40!yellow,3/yellow,4/Green,5/Cerulean,6/blue,7/viol}{
+\def\gam{1.8}
+\draw[semithick,\col,name intersections={of=a and b\i, by=x}] (lt) -- (x);
+% \coordinate[name intersections={of=a and b\i, by=x}] (x\i) at (x);
+}
+
+
+
+% \draw[name intersections={of=a and b7, by=x}] (x) --++ (2,0);
+
+
+% \node[draw] (r) at (O) {\pgfmathparse{sin(90-\wc)/sin(30+\wc-5-.7*1*1))}\pgfmathresult};
+% \node[draw] (r) at (O) {\pgfmathparse{sin(90-\wc)/sin(20))}\pgfmathresult};
+
+
+
+%after
+% \draw[dashed,name intersections={of=a and b1, by=x}] (x) ++ ({\wc}:2) --++ ({\wc+180}:4);
+\foreach \i/\col in {1/red,2/red!40!yellow,3/yellow,4/Green,5/Cerulean,6/blue,7/viol}{
+\def\gam{1.8}
+\def\n{sin(90-\wc)/sin(\wc+\wc-5-.7*\i^\gam)}
+\def\al{\wc-(\wc-5-.7*\i^\gam)}
+\def\be{asin(sin(\al)*\n)}
+\draw[thick,\col,name intersections={of=a and b\i, by=x}] (x) --++ ({\wc-\be}:2);
+
+}
+
+
+
+% \node[draw] (r) at (O) {\pgfmathparse{sin(90-\wc)/sin(\wc+\wc-5-.7*1*1)}\pgfmathresult};
+% \node[draw] (r) at (O) {\pgfmathparse{\wc-(\wc-5-.7*1*1)}\pgfmathresult};
+% \node[draw] (r) at (O) {\pgfmathparse{sin(5)*1.1}\pgfmathresult};
+
+
+
+
+
+
+
+
+% \def\nr{1.515}
+% \def\no{1.516}
+% \def\ny{1.517}
+% \def\ngr{1.520}
+% \def\ng{1.523}
+% \def\nb{1.527}
+% \def\nv{1.532}
+
+% \node[draw] (r) at (O) {\pgfmathparse{asin(sin(90-\wc)/\nb)}\pgfmathresult};
+% \node[below= of r] (o) at (O) {\pgfmathparse{asin(sin(90-\wc)/\nv)}\pgfmathresult};
+
+
+
+
+
+
+
+% \draw (O) circle (2.5);
+
+    
+    
+    
+    
+    
+    
+    \end{tikzpicture}
+\caption{Дисперсия света}
+\label{fig:p195}
+\end{figure}
+
+Можно считать, что на призму падают разноцветные лучи, смешанные в один луч (эту <<смесь>> глаз воспринимает как белую). Преломление цветных лучей при вхождении в призму оказывается разным (на рис.\,\ref{fig:p195} ход лучей показан качественно): \emph{при переходе от красного цвета к фиолетовому (при увеличении частоты света) отклонение цветного луча увеличивается}.
+
+Зависимость показателя преломления среды от частоты света имеет вид\footnote{Эта зависимость (<<чем больше~$\nu$, тем больше~$n$>>) работает на очень малых изменениях частоты, но ей можно пользоваться для качественных ответов: например, показатель преломления для синего цвета больше показателя преломления для зеленого и~т.\,д.}:
+\begin{equation}
+    \label{24disp_e1}
+    n\sim \nu.
+\end{equation}
+
+
+
+
+
+
+
+ 
+\end{document}

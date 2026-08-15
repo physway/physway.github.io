@@ -1,0 +1,176 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Давление в жидкости}
+
+Действие силы тяжести на жидкость приводит к тому, что внутри этой среды создается так называемое \emph{гидростатическое давление}\footnote{Аналогично в газах создается аэростатическое давление.}. Это давление действует на любое тело или его часть, находящиеся внутри данной среды.
+
+Пусть имеется ряд сосудов разной формы, в которые налита жидкость. Сосуды одинаково приподняты над горизонтальной опорой (рис.\,\ref{fig:p51}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) --++ (2,0) --++ (0,.25) coordinate (a1) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) coordinate (a2) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) coordinate (a3) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) coordinate (a4) --++ (1,0) --++ (0,-.25) --++ (2,0) 
+--++ (0,-.3) --++ (-14,0) -- cycle;
+\draw (0,0) --++ (2,0) --++ (0,.25) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) --++ (1,0) --++ (0,-.25) --++ (2,0) --++ (0,.25) --++ (1,0) --++ (0,-.25) --++ (2,0);
+
+%wat
+\fill [SkyBlue,semitransparent] (a1) rectangle++ (.3,1);
+\fill [SkyBlue,semitransparent] (a2) rectangle++ (.7,1);
+\fill [SkyBlue,semitransparent] (a3) --++ (.5,0) --++ ({.5/1.5},1) --++ (-.5,0) --++ ({-.5/1.5},-1);
+\fill [SkyBlue,semitransparent] (a4) --++ (1,0) --++ (0,1) --++ (-.3,0) --++ (0,-.7) --++ (-.7,0) --++ (0,-.3);
+
+%parab
+\draw[ultra thick,SkyBlue] ([yshift=.5\pgflinewidth]a1) parabola ++ (-1,-.25);
+\draw[very thick,SkyBlue] ([yshift=.5\pgflinewidth]a2) parabola ++ (-1,-.25);
+\draw[thick,SkyBlue] ([yshift=.5\pgflinewidth]a3) parabola ++ (-1,-.25);
+\draw[semithick,SkyBlue] ([yshift=.5\pgflinewidth]a4) parabola ++ (-1,-.25);
+
+%bulbs
+\draw (a1) --++ (.3,0) --++ (0,1.5) ++ (-.3,0) --++ (0,-1.5);
+\draw (a2) --++ (.7,0) --++ (0,1.5) ++ (-.7,0) --++ (0,-1.5);
+\draw (a3) --++ (.5,0) --++ (.5,1.5) ++ (-.5,0) --++ (-.5,-1.5);
+\draw (a4) --++ (1,0) --++ (0,1.5) ++ (-.3,0) --++ (0,-1.2) --++ (-.7,0) --++ (0,-.3);
+
+\begin{scope}[gray]
+    
+%dash
+\draw[densely dashed] (a1) ++ (1,0) --++ (.4,0) coordinate (h1);
+\draw[densely dashed] ([yshift=1cm]a1) ++ (.3,0) --++ (1.1,0);
+
+\draw[densely dashed] (a2) ++ (1,0) --++ (.4,0) coordinate (h2);
+\draw[densely dashed] ([yshift=1cm]a2) ++ (.7,0) --++ (.7,0);
+
+\draw[densely dashed] (a3) ++ (1,0) --++ (.4,0) coordinate (h3);
+\draw[densely dashed] ([yshift=1cm]a3) ++ ({.5+.5/1.5},0) --++ ({1.4-.5-.5/1.5},0);
+
+\draw[densely dashed] (a4) ++ (1,0) --++ (.4,0) coordinate (h4);
+\draw[densely dashed] ([yshift=1cm]a4) ++ (1,0) --++ (.4,0);
+
+%arrows h
+\draw[<->] ([xshift=-.2cm]h1) --++ (0,1) node[midway,right,black] {$h$};
+\draw[<->] ([xshift=-.2cm]h2) --++ (0,1) node[midway,right,black] {$h$};
+\draw[<->] ([xshift=-.2cm]h3) --++ (0,1) node[midway,right,black] {$h$};
+\draw[<->] ([xshift=-.2cm]h4) --++ (0,1) node[midway,right,black] {$h$};
+
+\end{scope}
+
+
+    \end{tikzpicture}
+\caption{Сосуды с жидкостью}
+\label{fig:p51}
+\end{figure}
+
+Каждый сосуд на рис.\,\ref{fig:p51} заполнен разным количеством жидкости плотностью~$\rho_\text{с}$ (плотность среды) до высоты~$h$. В вертикальной стенке у дна в этих сосудах проделаны достаточно малые отверстия разного диаметра. Жидкости вытекают из сосудов тонкими струями.
+
+Оказывается, что в ситуации, показанной на рис.\,\ref{fig:p51}, дальности полета всех струй равны между собой. В данном случае этот факт косвенно указывает на то, что давления в жидкости у отверстий во всех сосудах одинаковы. Опыт показывает, что гидростатическое давление прямо пропорционально плотности среды~$\rho_\text{с}$, ускорению свободного падения~$g$ и глубине~$h$. 
+
+\textbf{Давление в жидкости}, находящейся в покое, рассчитывают по формуле:
+\begin{equation}\label{36liquid_e1}
+    P_\text{ж}=\rho_\text{с}gh+P_\text{атм},
+\end{equation}
+где $\rho_\text{с}gh$~--- гидростатическое давление, $P_\text{атм}$~--- атмосферное давление.
+
+К примеру, если заткнуть отверстия в сосудах на рис.\,\ref{fig:p51}, то давления в любых точках жидкости в сосудах можно вычислять по формуле~\eqref{36liquid_e1}.
+
+\sbox{0}{%
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\def\hw{.6} % water height
+
+% \filldraw[lightgray,semitransparent] (0,0) rectangle (5,-0.3);
+\draw[densely dashed] (0,0) -- (5,0);
+
+%liquid [water+бензин]
+\begin{scope}
+\clip (1.5,{1+\hw}) -- (1.5,1) arc [start angle=-180, end angle=0, radius=1] coordinate (lr) --++ (-.5,0) (3,1) arc [start angle=0, end angle=-180, radius=.5] --++ (0,\hw) --++ (-.5,0);    
+\fill[SkyBlue,semitransparent] (1.5,{1+\hw}) -- (1.5,1) arc [start angle=-180, end angle=0, radius=1] coordinate (lr) --++ (-.5,0) (3,1) arc [start angle=0, end angle=-180, radius=.5] --++ (0,\hw) --++ (-.5,0);
+\end{scope}
+
+\fill[yellow!70!black,semitransparent] (lr) --++ (0,{\hw/0.7}) --++ (-.5,0) --++ (0,-{\hw/0.7}) -- cycle;
+
+%bulb
+\draw[] (1.5,2) -- (1.5,1) arc [start angle=-180, end angle=0, radius=1] --++ (0,1);
+\draw[] (2,2) -- (2,1) arc [start angle=-180, end angle=0, radius=.5] --++ (0,1);
+
+%sizes
+\def\sz{.8}
+\draw[densely dashed,gray] (1.5,{1+\hw}) --++ (-\sz,0) coordinate (hl);
+\draw[densely dashed,gray] (3.5,1) --++ (\sz,0) coordinate (hr1);
+\draw[densely dashed,gray] (3.5,{1+\hw/.7}) --++ (\sz,0) coordinate (hr2);
+
+%arrows h
+\draw[<->,gray] ([xshift=.2cm]hl) --++ (0,{-1-\hw}) node[midway,left,black] {$h_\text{вл}$};
+\draw[<->,gray] ([xshift=-.2cm]hr1) --++ (0,-1) node[midway,right,black] {$h_\text{вп}$};
+\draw[<->,gray] ([xshift=-.2cm]hr2) --++ (0,-{\hw/.7}) node[midway,right,black] {$h_\text{бп}$};
+
+% O
+\node at (2.5,0) [circle,fill=black,inner sep=0pt,minimum size=1mm,label=below:$O$] {};
+
+%lp
+\node[above] at (1.75,2) {Л};
+\node[above] at (3.25,2) {П};
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[10]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \captionsetup{labelsep=none}
+    \caption{.\\Сообщающиеся сосуды}
+    \label{fig:p52}
+\end{wrapfigure}
+
+
+\textbf{Сообщающиеся сосуды}~--- это сосуды, соединенные между собой в нижней части трубкой.
+
+Пусть в открытые сообщающиеся сосуды, изображенные на рис.\,\ref{fig:p52}, налиты вода и бензин, обозначенные светло"=голубым и бледно"=желтым цветом соответственно.
+
+Можно сказать, что вода и бензин плотностей~$\rho_\text{в}$ и~$\rho_\text{б}$ устанавливаются в виде двух изогнутых столбов~Л и~П, примыкающих друг к другу в точке~$O$, относительно которой можно записать связь давлений в сообщающихся сосудах:
+\begin{equation}\label{36liquid_e2}
+    P_\text{л}=P_\text{п},
+\end{equation}
+где~$P_\text{л}$ и $P_\text{п}$~--- давления со стороны левого~Л и правого~П столба.
+
+}
+
+Так, в примере на рис.\,\ref{fig:p52} <<формула сообщающихся сосудов>>~\eqref{36liquid_e2} дает: $\rho_\text{в}gh_\text{вл}\hm+P_\text{атм}=\rho_\text{в}gh_\text{вп}+\rho_\text{б}gh_\text{бп}+P_\text{атм}$; где~$h_\text{вл}$ и~$h_\text{вп}$~--- <<высоты>> воды в левом и правом столбе, $h_\text{бп}$~--- <<высота>> бензина в правом столбе (как видно, давление~$P_\text{атм}$ можно исключать из этого равенства, если сообщающиеся сосуды открытые).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

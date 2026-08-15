@@ -1,0 +1,132 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Полное внутреннее отражение}
+
+
+Пусть точечный источник света находится в воде, над поверхностью которой находится воздух (рис.\,\ref{fig:p179}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[SkyBlue,semitransparent] (0,0) rectangle (9,-3);
+\draw (0,0) -- (9,0);
+
+
+%S
+\node[] at (1,-2) [circle,fill=Green,inner sep=0pt,minimum size=1mm,label={left:$S$}] {};
+\coordinate (s) at (1,-2);
+
+
+%light
+\draw[Green] 
+(s) --++ ({90-20}:{2/cos(20)})
+coordinate (l1) node[above left,inner xsep=0,black] {$A$}
+;
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(l1) --++ ({90-asin(1.33*sin(20))}:2) 
+;
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(s) --++ ({90-20}:{2})
+;
+
+
+\draw[Green] 
+(s) --++ ({90-35}:{2/cos(35)})
+coordinate (l2) node[above left,inner xsep=0,black] {$B$}
+;
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(l2) --++ ({90-asin(1.33*sin(35))}:2) 
+;
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(s) --++ ({90-35}:{2})
+;
+
+
+\path[] 
+(s) --++ ({90-48.8}:{2/cos(48.8)})
+coordinate (l3)
+;
+\draw[Green,decoration={markings,mark=at position {1/3} with {\arrow{>}}},postaction={decorate},yscale=-1] 
+(l3) --++ ({90-48.8}:{2/cos(48.8)})
+;
+\draw[dashed] (l3) --++ (0,-1.5) coordinate (pe);
+\pic [draw,angle radius=7mm,angle eccentricity=1.4,"$\alpha_\text{пр}$"] {angle = s--l3--pe};
+\draw[Green] 
+(s) --++ ({90-48.8}:{2/cos(48.8)})
+coordinate (l3) node[above,black] {$C$}
+;
+\draw[gray,dashed,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] ([yshift=.7mm]l3) --++ (2,0);
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(s) --++ ({90-48.8}:{2})
+;
+
+
+\draw[Green] 
+(s) --++ ({90-70}:{2/cos(70)})
+coordinate (l4)
+;
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate},yscale=-1] 
+(l4) --++ ({90-70}:{.5/cos(70)})
+;
+\path[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(s) --++ ({90-70}:{2})
+;
+
+
+
+    \end{tikzpicture}
+\caption{Полное внутреннее отражение}
+\label{fig:p179}
+\end{figure}
+
+Источник~$S$ испускает лучи во все стороны (на рисунке показаны некоторые из них). Луч~$SA$, падающий на поверхность воды под сравнительно малым углом\footnote{Угол падения отсчитывается \emph{от перпендикуляра} к границе раздела сред в точке падения!}, как и следовало ожидать, преломляется, выходя в воздух\footnote{Лучи~$SA$ и~$SB$  также частично отражаются назад в воду (на рисунке не показано).}. Угол падения луча~$SB$ больше; этот луч также выходит в воздух, но после преломления (в воздухе) луч идет ближе к поверхности воды. 
+
+С увеличением угла падения преломленный луч идет все ближе к поверхности воды, и наступает такой момент, когда угол преломления становится равным~$90^\circ$: этому случаю соответствует луч~$SC$, который после преломления должен был бы пойти параллельно поверхности воды (серый штриховой луч). В действительности падающий луч~$SC$ отражается обратно в воду. При дальнейшем увеличении угла падения луч уже не выходит из воды.
+
+Рассмотренное явление называют \emph{полным внутренним отражением}. Угол падения, которому соответствует угол преломления~$90^\circ$, называется \emph{предельным углом полного внутреннего отражения} (обозначается~$\alpha_\text{пр}$; см.~рис.\,\ref{fig:p179}). При углах падения, равных или превышающих~$\alpha_\text{пр}$, оптически более плотная среда не выпускает наружу лучи света. (Угол~$\alpha_\text{пр}$ вычисляют из закона преломления, рассматривая случай хода луча из более плотной среды в менее плотную с углом преломления~$90^\circ$: $n_1\sin\alpha_\text{пр}=n_2\sin90^\circ$, где $n_1$~--- показатель преломления более плотной среды, $n_2$~--- показатель преломления менее плотной среды.)
+
+\medskip
+
+\noindent\textbf{Задача.} Найти показатель преломления рубина, если предельный угол полного отражения для рубина равен~$34^\circ$.
+
+\smallskip
+
+\noindent\emph{Решение.} Если нет специальных оговорок, то оптически менее плотной средой является воздух (или вакуум) с показателем преломления, равным единице. В таком случае рассмотрение хода луча с углом падения, равным~$\alpha_\text{пр}$, позволяет записать закон преломления так: $n_\text{р}\sin\alpha_\text{пр}=n_\text{в}\sin90^\circ$, где $n_\text{р}$ и $n_\text{в}$~--- показатели преломления рубина и воздуха соответственно.
+
+Отсюда искомый показатель преломления равен:
+\begin{equation*}
+    n_\text{р}=\frac{n_\text{в}\sin90^\circ}{\sin\alpha_\text{пр}}=\frac{1\cdot\sin90^\circ}{\sin34^\circ}\approx1{,}79.
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

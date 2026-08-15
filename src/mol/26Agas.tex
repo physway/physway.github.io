@@ -1,0 +1,237 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Работа газа}
+
+
+Пусть сосуд с газом, находящимся под неподвижным гладким массивным поршнем, поставили на огонь (рис.\,\ref{fig:p82}, слева).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% plane
+\filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] (0,0) -- (5,0);
+
+
+% %solid
+% \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+%     % red part
+%     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+%     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+%plunger
+\fill[lightgray] (1.5,2.6) --++ (2,0) --++ (0,.5) --++ (-2,0) -- cycle;
+\draw[] (1.5,2.6) --++ (2,0) ++ (0,.5) --++ (-2,0);
+% \node[above] at (2.5,3.1) {$M$};
+
+
+%cyl
+\draw (1.5,1.1) coordinate (gl) ++ (0,3.5) --++ (0,-3.5) --++ (2,0) coordinate (gr) --++ (0,3.5);
+
+
+
+%sup
+\fill[lightgray,semitransparent] (gl) ++ (.25,0) --++ (-.5,0) --++ (0,-1.1) -- cycle;
+\draw[] (gl) ++ (.25,0) --++ (-.5,0) --++ (0,-1.1) -- cycle;
+
+\fill[lightgray,semitransparent] (gr) ++ (-.25,0) --++ (.5,0) --++ (0,-1.1) -- cycle;
+\draw[] (gr) ++ (-.25,0) --++ (.5,0) --++ (0,-1.1) -- cycle;
+
+%gas
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.54,1.14)}] ({rnd*1.92cm}, {rnd*1.42cm}) circle (.02);
+\node[fill=white] at (2.5,1.85) {$P,V_1$};
+
+%flame
+
+\begin{scope}[yshift=.1cm]
+    
+\fill[red,nearly opaque] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.5,1) 
+to [out=-45,in=90] (2.7,.5) 
+to [out=45,in=-90] (2.75,.7) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.55,1) 
+to [out=-45,in=90] (2.65,.4) 
+to [out=45,in=-90] (2.8,.55) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-110] (2.55,1) 
+to [out=-70,in=150] (2.8,.5) 
+to [out=-100,in=90] (2.8,0.3)
+to [out=-90,in=0] (2.5,0);
+
+\end{scope}
+
+\filldraw[] (2,0) rectangle++ (1,.1);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%right pic
+
+\begin{scope}[xshift=7cm]
+
+% plane
+\filldraw[lightgray,semitransparent] (0,0) -- (5,0) --++ (0,-.3) --++ (-5,0) -- cycle;
+\draw[] (0,0) -- (5,0);
+
+
+% %solid
+% \fill[lightgray] (2.5,1) rectangle++ (2,.2);
+%     % red part
+%     \fill[red,path fading=east] (2.5,1) rectangle++ (1,.2);
+%     \draw[] (2.5,1) rectangle++ (2,.2);
+
+
+%plunger
+\begin{scope}[yshift=1cm]
+    
+\fill[lightgray] (1.5,2.6) --++ (2,0) --++ (0,.5) --++ (-2,0) -- cycle;
+\draw[] (1.5,2.6) --++ (2,0) ++ (0,.5) --++ (-2,0);
+% \node[above] at (2.5,3.1) {$M$};
+\end{scope}
+
+
+%cyl
+\draw (1.5,1.1) coordinate (gl) ++ (0,3.5) --++ (0,-3.5) --++ (2,0) coordinate (gr) --++ (0,3.5);
+
+
+
+%sup
+\fill[lightgray,semitransparent] (gl) ++ (.25,0) --++ (-.5,0) --++ (0,-1.1) -- cycle;
+\draw[] (gl) ++ (.25,0) --++ (-.5,0) --++ (0,-1.1) -- cycle;
+
+\fill[lightgray,semitransparent] (gr) ++ (-.25,0) --++ (.5,0) --++ (0,-1.1) -- cycle;
+\draw[] (gr) ++ (-.25,0) --++ (.5,0) --++ (0,-1.1) -- cycle;
+
+%gas
+\foreach \i in {1,...,100}
+  \fill[Green,shift={(1.54,1.14)}] ({rnd*1.92cm}, {rnd*2.42cm}) circle (.02);
+\node[fill=white] at (2.5,2.35) {$P,V_2$};
+
+%flame
+
+\begin{scope}[yshift=.1cm]
+    
+\fill[red,nearly opaque] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.5,1) 
+to [out=-45,in=90] (2.7,.5) 
+to [out=45,in=-90] (2.75,.7) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.8:(2.5,0)},orange] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-90] (2.55,1) 
+to [out=-45,in=90] (2.65,.4) 
+to [out=45,in=-90] (2.8,.55) 
+to [out=-45,in=0] (2.5,0);
+
+\fill[scale around={.5:(2.5,0)},yellow] (2.5,0) 
+to [out=180,in=-90] (2.2,.3) 
+to [out=90,in=-110] (2.55,1) 
+to [out=-70,in=150] (2.8,.5) 
+to [out=-100,in=90] (2.8,0.3)
+to [out=-90,in=0] (2.5,0);
+
+\end{scope}
+
+\filldraw[] (2,0) rectangle++ (1,.1);
+
+\end{scope}
+
+
+%\Longrightarrow
+\path (6,2.3) node {$\Longrightarrow$};
+
+
+    \end{tikzpicture}
+\caption{Расширение газа}
+\label{fig:p82}
+\end{figure}
+
+Газ начального объема~$V_1$ медленно получает тепло от огня, так что давление~$P$ газа не меняется~--- оно равно давлению почти покоящегося поршня на газ (рис.\,\ref{fig:p82}, слева). При постоянном давлении температура газа медленно повышается, то есть его молекулы начинают двигаться быстрее~--- они сильнее толкают поршень, и он постепенно поднимается (рис.\,\ref{fig:p82}, справа). За время наблюдения газ расширяется до объема~$V_2$, совершая работу.
+
+\textbf{Работа газа} ($A$ [Дж])~--- это работа сил давления газа. При \emph{постоянном давлении} газа ее находят по формуле:
+\begin{equation}
+    A=P\Delta V,
+\end{equation}
+где $P$~--- давление, а $\Delta V$~--- изменение объема газа.
+
+При расширении газ совершает положительную работу ($A>0$), при сжатии~--- отрицательную ($A<0$). Так, в рассмотренном примере (рис.\,\ref{fig:p82}) газ совершает положительную работу $A=P(V_2-V_1)$.
+
+Описанный выше процесс c газом можно изобразить на $PV$"=диаграмме (рис.\,\ref{fig:p83}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\draw[->] (-.3,0) --++ (0:4.3cm) node[below,black] {$V$};
+\draw[->] (0,-.3) --++ (90:3.3cm) node[left,black] {$P$};
+\node[below left] at (0,0) {$O$};
+
+
+%S
+\fill[red,nearly transparent] (0,2) ++ (1,0) --++ (2,0) --++ (0,-2) --++ (-2,0) -- cycle;
+\node at (2,1) {$A$};
+
+%red
+\draw[densely dashed] (0,2) node[left] {$P$} --++ (0:1cm) coordinate (v1);
+\draw[thick,red] (v1) --++ (0:2cm);
+
+\draw[densely dashed] (v1) --++ (-90:2cm) node[below] {$V_1$};
+\draw[densely dashed] (v1) ++ (0:2cm) --++ (-90:2cm) node[below] {$V_2$};
+
+
+
+    \end{tikzpicture}
+\caption{Работа газа как площадь}
+\label{fig:p83}
+\end{figure}
+
+Как видно, \emph{работа газа} равна \emph{площади фигуры} (взятой с соответствующим знаком) между графиком и осью~$V$ на $PV$"=диаграмме для соответствующего изменения объема. 
+
+\textbf{Работа внешних сил}~$A'$ над газом связана с работой газа~$A$ так:
+\begin{equation}
+    A'=-A.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

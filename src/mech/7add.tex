@@ -1,0 +1,269 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Сложение и относительность скоростей}
+
+
+Движение тела, разумеется, можно рассматривать не только относительно планеты. На рис.\,\ref{fig:p13} показан опыт с катящимся шаром по неподвижной тележке.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\begin{scope}[xshift=4cm]    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [left,black] at (0,.75) {Т};
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{1} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=1cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {Н};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ball
+\shade[ball color=lightgray,nearly transparent] (2,1.3) circle (.3);
+\shade[ball color=lightgray,semitransparent,xshift=1cm] (2,1.3) circle (.3);
+\shade[ball color=lightgray,xshift=2cm] (2,1.3) circle (.3) node[above,yshift=.3cm,black] {Ш} node [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,opaque] (vo) {};
+\draw[->,NavyBlue,thick,vec] (vo) --++ (0:1) node[black,above right,inner xsep=0] {$\vec v_\text{отн}$};
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Тележка покоится}
+\label{fig:p13}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/7add_1}
+
+% \caption{Тележка покоится}
+% \label{fig:p13}
+% \end{figure}
+
+
+Наблюдатель~Н толкает шар~Ш вправо и измеряет скорость шара~$\vec v_\text{отн}$ относительно тележки~Т. Такой толчок дал бы ту же скорость, даже если бы тележка катилась равномерно прямолинейно: ведь наблюдатель стоит на ней.
+
+Ясно, что если шар толкают так же, а тележка движется, то расстояние пройденное шаром за то же время относительно планеты будет другим (рис.\,\ref{fig:p14}). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the next pic
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{1} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=0cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {Н};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+%all mot
+\begin{scope}[xshift=4cm]
+%scope for motions 1 and 2
+\begin{scope}[transparency group, nearly transparent]
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[transparency group, semitransparent]
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[xshift=1cm,transparency group]
+    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+\end{scope}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[xshift=2cm]
+    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [left,black] at (0,.75) {Т};
+\draw[->,NavyBlue,thick,vec] (4,.75) node [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,opaque] {} --++ (0:1) node[black,below right,inner xsep=0] {$\vec v_\text{пер}$};
+;
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+\end{scope}
+
+%ball
+\shade[ball color=lightgray,nearly transparent] (6,1.3) circle (.3);
+\shade[ball color=lightgray,semitransparent] (8,1.3) circle (.3);
+\shade[ball color=lightgray] (10,1.3) circle (.3) node[above,yshift=.3cm,black] {Ш} node [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,opaque] (va) {};
+\draw[->,NavyBlue,thick,vec] (va) --++ (0:2) node[black,above right,inner xsep=0] {$\vec v_\text{абс}$};
+;
+
+
+    \end{tikzpicture}
+\caption{Тележка движется}
+\label{fig:p14}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/7add_2}
+
+% \caption{Тележка движется}
+% \label{fig:p14}
+% \end{figure}
+
+
+Шар снова толкают вправо и его скорость в системе отсчета тележки опять равна~$\vec v_\text{отн}$ (на рис.\,\ref{fig:p14} не показана). В этот раз тележка имеет скорость~$\vec v_\text{пер}$ и как бы переносит тело. В системе отсчета планеты шар теперь двигается с некоторой скоростью~$\vec v_\text{абс}$, называемой \emph{абсолютной скоростью}. Cвязь трех ключевых скоростей, упомянутых ранее, дает \textbf{закон сложения скоростей}:
+\begin{equation}
+    \vec v_\text{абс}=\vec v_\text{отн}+\vec v_\text{пер},
+\end{equation}
+где $\vec v_\text{отн}$~--- \emph{относительная скорость}, $\vec v_\text{пер}$~--- \emph{переносная скорость}.
+
+
+
+% \begin{law}
+% \textbf{Закон сложения скоростей:}
+% \begin{equation}
+%     \vec v_\text{абс}=\vec v_\text{отн}+\vec v_\text{пер}
+% \end{equation}
+% где $\vec v_\text{отн}$~--- относительная скорость; $\vec v_\text{пер}$~--- переносная скорость.
+% \end{law}
+
+% Итак, \emph{относительность скоростей} заключается в том, что необходимо пояснять для какой системы отсчета указывается та или иная скорость.
+
+Иногда решение задачи становится проще, если рассматривать движение одного тела, прикрепившись к другому. На рис.\,\ref{fig:p15} красное тело догоняет синее.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\shade[ball color=red] (1,.3) circle (.3);
+\shade[ball color=NavyBlue] (6,.3) circle (.3);
+
+%vec
+\draw[->,NavyBlue,thick,vec] (1.4,.3) --++ (2,0) node[black,above] {$\vec v_1$};
+
+\draw[->,NavyBlue,thick,vec] (6.4,.3) --++ (1,0) node[black,above] {$\vec v_2$};
+
+
+    \end{tikzpicture}
+\caption{Красный шар настигает синий шар}
+\label{fig:p15}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+
+%     \includestandalone{PICS/mech/7add_3}
+
+% \caption{Красный шар настигает синий шар}
+% \label{fig:p15}
+% \end{figure}
+
+
+Если стоять на синем (правом) шаре, скользящем, например, без вращения, можно измерять скорость сближения~--- то есть \textbf{относительную скорость}: 
+\begin{equation}
+    \vec v_{12}=\vec v_{1}-\vec v_{2},
+\end{equation}
+где $\vec v_\text{12}$~--- скорость первого тела относительно второго тела.
+
+
+
+
+
+ 
+\end{document}

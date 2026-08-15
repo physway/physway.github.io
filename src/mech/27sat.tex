@@ -1,0 +1,87 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Спутник}
+
+\textbf{Спутник}~--- это тело, двигающееся вокруг другого тела под действием силы тяготения. 
+
+Можно сказать, что спутником, например, Солнца является любая планета Солнечной системы, в том числе Земля. Земля, в свою очередь, также имеет собственный \emph{естественный спутник}~--- Луну. 
+
+% В этих примерах речь идет о так называемых \emph{естественных спутниках}.
+
+На рис.\,\ref{fig:p37} условно показано круговое движение спутника вокруг планеты.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\shade[ball color=Green] (0,0) circle (.6);
+\node [below,black] at (0,-.6) {П};
+
+
+\draw[dashed] (0,0) circle (3cm);
+\path (0,0) ++ (20:3cm) node (s) {} ++ (.15,0) node[black,right] {С};
+\shade[ball color=lightgray] (s) circle (.15);
+
+
+%vec
+\draw[->,NavyBlue,thick,vec] (s.center) --++ (110:2cm) node[black,right,midway] {$\vec v_\text{к}$};
+\node at (s) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,red,thick,vec] (s.center) --++ (200:1cm) node[black,below] {$\vec F_\text{т}$};
+
+%r
+\draw[<->,gray] (0,0) --++ (90:3cm) node[midway,left,black] {$r$};
+\node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+    \end{tikzpicture}
+\caption{Вращение спутника вокруг планеты}
+\label{fig:p37}
+\end{figure}
+
+Спутник~С, обладающий касательной скоростью~$\vec v_\text{к}$, под действием силы тяготения~$\vec F_\text{т}$, направленной к центру планеты~П, вращается вокруг планеты, как говорят, по круговой орбите~--- то есть по окружности (штриховая линия)\footnote{В действительности траекториями движения спутников (орбитами) являются \emph{эллипсы}.}. Центр этой окружности совпадает с центром планеты, расстояние~$r$ между центрами тел (радиус орбиты) не меняется. Центростремительное ускорение спутника по сути является ускорением свободного падения в месте нахождения спутника и создается силой тяготения планеты ($a_\text{ц}=g$).
+
+\textbf{Искусственный спутник}~--- это спутник, созданный человеком. Для того, чтобы такой спутник смог двигаться по круговой орбите вокруг планеты \emph{вблизи ее поверхности} (то есть высота над поверхностью $h=0$), он должен обладать так называемой \textbf{первой космической скоростью}
+\begin{equation}
+    v_\text{1к}=\sqrt{G\dfrac{m_\text{планеты}}{R_\text{планеты}}},
+\end{equation}
+где~$m_\text{планеты}$ и~$R_\text{планеты}$~--- масса и радиус планеты соответственно.
+
+% \textbf{Искусственный спутник}~--- это спутник, созданный человеком. 
+
+Если скорость запущенного спутника меньше первой космической скорости, то он упадет на планету. При скорости, большей первой космической, спутник опишет эллиптическую траекторию. 
+
+Минимальная скорость, требуемая запущенному телу для удаления от планеты на бесконечность, называется \textbf{второй космической скоростью} и вычисляется по формуле:
+\begin{equation}
+    v_\text{2к}=\sqrt{2}v_\text{1к}.
+\end{equation}
+
+Так, для Земли первая космическая скорость приблизительно равна~$8$~км$/$с.
+
+% $v_\text{1к}\approx8$~км$/$с.
+
+ 
+\end{document}

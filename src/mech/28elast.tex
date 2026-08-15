@@ -1,0 +1,214 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Сила упругости}
+
+\textbf{Деформация}~--- это изменение формы или размеров тела. На рис.\,\ref{fig:p38} изображены деформированные резиновый шар и пластилиновый брусок.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (5,-0.3);
+\draw (0,0) -- (5,0);
+
+% \filldraw[lightgray,draw=black] ({5/3-.5},0) rectangle++ (1,.5);
+
+% \shade[ball color=lightgray] ({5/3},0.3) circle (.3);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\filldraw[lightgray,draw=black] ({2*5/3-.5},0) --++ (1,0) --++ (0,.5) to [out=180,in=0] ++ (-.5,-.15) node (a) {} to [out=180,in=0] ++ (-.5,.15) --++ (0,-.5);
+
+% \path ({5/3},0) arc (-90:155:.3cm) node (s) {};
+% \shade[ball color=lightgray] ({2*5/3},0) arc (-90:25:.3cm) to [out=115,in=0] ({2*5/3},.35) node (b) {} to [out=180,in=65] (s.center) arc (155:270:.3cm);
+\path ({5/3-.15},0) to [out=175,in=-110]++ (-.3,.3) node (s1) {};
+\shade[ball color=lightgray] ({5/3+.15},0) to [out=5,in=-70]++ (.3,.3) to [out=110,in=0] ({5/3},.35) node (b) {} to [out=180,in=70] (s1.center) to [out=250,in=175] ({5/3-.15},0);
+% \draw[] ({5/3},0.3) circle (.3);
+
+%vec
+\draw[->,red,thick,vec] (a.center) --++ (0,-1) node[black,right] {$\vec F$};
+\node at (a.center) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:Б] {};
+
+\draw[->,red,thick,vec] (b.center) --++ (0,-1) node[black,right] {$\vec F$};
+\node at (b.center) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:Ш] {};
+
+% \draw (b) --++ (-3,0);
+
+
+    \end{tikzpicture}
+\caption{Деформированные тела}
+\label{fig:p38}
+\end{figure}
+
+Резиновый шар~Ш и пластилиновый брусок~Б испытывают деформации под действием некоторой внешней силы~$\vec F$, приложенной к телам сверху. 
+
+Теперь внешние силы, деформирующие тела, сняли (рис.\,\ref{fig:p39}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (5,-0.3);
+\draw (0,0) -- (5,0);
+
+% \filldraw[lightgray,draw=black] ({5/3-.5},0) rectangle++ (1,.5);
+
+\shade[ball color=lightgray] ({5/3},0.3) circle (.3);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\filldraw[lightgray,draw=black] ({2*5/3-.5},0) --++ (1,0) --++ (0,.5) to [out=180,in=0] ++ (-.5,-.15) node (a) {} to [out=180,in=0] ++ (-.5,.15) --++ (0,-.5);
+
+%descr
+\node[above] at (a) {Б};
+\node[above] at ({5/3},0.6) {Ш};
+
+
+% \path ({2*5/3},0) arc (-90:155:.3cm) node (s) {};
+% % \shade[ball color=lightgray] ({2*5/3},0) arc (-90:25:.3cm) to [out=115,in=0] ({2*5/3},.35) node (b) {} to [out=180,in=65] (s.center) arc (155:270:.3cm);
+% \path ({2*5/3-.1},0) to [out=170,in=-110]++ (-.25,.3) node (s1) {};
+% \shade[ball color=lightgray] ({2*5/3+.1},0) to [out=10,in=-70]++ (.25,.3) to [out=110,in=0] ({2*5/3},.35) node (b) {} to [out=180,in=70] (s1.center) to [out=250,in=170] ({2*5/3-.1},0);
+
+% %vec
+% \draw[->,red,thick,vec] (a.center) --++ (0,-1) node[black,right] {$\vec F$};
+% \node at (a.center) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:Б] {};
+
+% \draw[->,red,thick,vec] (b.center) --++ (0,-1) node[black,right] {$\vec F$};
+% \node at (b.center) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:Ш] {};
+
+% \draw (b) --++ (-3,0);
+
+
+    \end{tikzpicture}
+\caption{Тела после снятия деформирующих сил}
+\label{fig:p39}
+\end{figure}
+
+Как видно из рис.\,\ref{fig:p39}, деформации тел можно разделить на два вида.
+\begin{itemize}
+    \item \textbf{Упругая} деформация исчезает после снятия деформирующего действия.
+    \item \textbf{Неупругая} деформация сохраняется (возможно, частично) после снятия деформирующей нагрузки.  
+\end{itemize}
+
+Таким образом, в рассмотренном примере в шаре возникали упругие деформации, а в бруске~--- неупругие. 
+
+\sbox{0}{%
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (-0.25,0) rectangle (2.25,-0.3);
+\draw (-0.25,0) -- (2.25,0);
+
+
+\begin{scope}[xshift=.7cm]
+    
+\draw (0,0)
+foreach \y in {.15,.45,...,3}
+{ -- (.6,{\y}) -- (0,{\y+.15}) }
+-- (.6,3)
+;
+
+\shade[ball color=lightgray] (.3,3.3) node (c) {} circle (.3);
+
+%vec
+\draw[->,red,thick,vec] (c.center) --++ (0,1) node[black,right] {$\vec F_\text{упр}$};
+\node at (c.center) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=above:] {};
+
+
+% \draw[decoration = {zigzag,segment length = 2mm, amplitude = 2mm}, decorate] (1,0) -- ++(3,0);
+% \draw (1,0) rectangle (1.2,.2);
+\end{scope}
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[17]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Шар на пружине}
+    \label{fig:p40}
+\end{wrapfigure}
+
+
+\textbf{Сила упругости} ($\vec F_\text{упр}$ [Н])~--- это сила, с которой упруго деформированное тело действует на соприкасающееся с ним тело, вызывающее деформацию. 
+
+Пусть на пружину положили массивный шар (рис.\,\ref{fig:p40}). Под действием веса шара пружина деформируется (верхняя часть пружины смещается вниз), и возникает направленная вверх сила~$\vec F_\text{упр}$, удерживающая шар (остальные силы не показаны).
+
+
+
+% \begin{figure}[H]
+%     \centering
+
+%     \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (0,0) rectangle (5,-0.3);
+% \draw (0,0) -- (5,0);
+
+% \draw (.6,0) -- (0,0)
+% foreach \y in {.15,.45,...,3}
+% { -- (.6,{\y}) -- (0,{\y+.15}) }
+% -- (.6,3)
+% ;
+
+% \shade[ball color=lightgray] (.3,3.3) circle (.3);
+
+
+% % \draw[decoration = {zigzag,segment length = 2mm, amplitude = 2mm}, decorate] (1,0) -- ++(3,0);
+% % \draw (1,0) rectangle (1.2,.2);
+
+%     \end{tikzpicture}
+% \caption{Тела после снятия деформирующих сил}
+% \label{fig:p40}
+% \end{figure}
+
+
+Сила упругости:
+\begin{itemize}
+    \item направлена в
+    сторону, \emph{противоположную смещению частиц} тела в процессе деформации;
+    \item действует также \emph{между соседними слоями} деформированного тела и приложена к каждому слою.
+\end{itemize}
+
+}
+
+\begin{law}
+    \textbf{Закон Гука.} Сила упругости прямо пропорциональна величине деформации. Так, пружина, сжатая или растянутая на величину~$ x$, действует с силой
+    \begin{equation}
+    F_\text{упр}=kx,
+    \end{equation}
+    где~$k$~--- жёсткость пружины.
+\end{law}
+
+Стоит отметить, что сила реакции и вес представляют собой силы упругости, которые служат проявлением \emph{электромагнитного взаимодействия} тел.
+
+
+ 
+\end{document}

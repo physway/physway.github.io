@@ -1,0 +1,205 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Система отсчета. Действие}
+
+Прежде всего стоит вспомнить, что \emph{системой отсчета} (СО), попросту говоря, называется тело, к которому прикреплен \emph{наблюдатель}. Так, на рис.\,\ref{fig:p26} показаны наблюдатели, связанные с разными~СО; рядом с ними происходит падение тяжелого шара (положение шара фиксируют ежесекундно).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\begin{scope}[xshift=8cm]
+    
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [right,black] at (4,.75) {Т};
+\draw[->,NavyBlue,thick,vec] (1,1.2) --++ (-1,0) node[black,above] {$\vec v_\text{т}$};
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{2} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=1cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {$\text{Н}_2$};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ball
+\shade[ball color=lightgray,nearly transparent,yshift=4cm] (6,.3) circle (.3);
+\shade[ball color=lightgray,semitransparent,yshift=3cm] (6,.3) circle (.3);
+\shade[ball color=lightgray] (6,.4) circle (.3) node[xshift=.3cm,right] {Ш};
+
+%vec
+\node at (6,3.3) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,NavyBlue,thick,vec] (6,3.3) --++ (0,-.75) node[black,right] {$\vec v_1$};
+
+\node at (6,0.4) [circle,fill=NavyBlue,inner sep=0pt,minimum size=1mm,label=below:] {};
+\draw[->,NavyBlue,thick,vec] (6,0.4) --++ (0,-1.5) node[black,right,inner ysep=0mm] {$\vec v_2$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%person 2
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{3} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=0cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {$\text{Н}_1$};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Наблюдатели и падающий шар}
+\label{fig:p26}
+\end{figure}
+
+Наблюдатель~$\text{Н}_1$ стоит на поверхности планеты, а наблюдатель~$\text{Н}_2$ стоит на тележке~Т, движущейся с постоянной скоростью~$\vec v_\text{т}$ относительно этой планеты. Тогда можно считать, что имеются две СО: СО~<<планета>> и СО~<<тележка>>\footnote{Это <<правильные>> СО. Дальнейшие рассуждения справедливы для таких СО.}.   
+
+\textbf{Действие}~--- это влияние одного тела, приводящее к \emph{изменению скорости} другого тела.
+Можно согласиться, что шар~Ш на рис.\,\ref{fig:p26} главным образом подвергается влиянию планеты, поэтому его скорость и меняется.
+
+
+Те же наблюдатели рассматривают уже приземлившийся шар (рис.\,\ref{fig:p27}).
+
+\begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (0,0) rectangle (12,-0.3);
+\draw (0,0) -- (12,0);
+
+\begin{scope}[xshift=8cm]
+%%motion1
+\filldraw[lightgray,draw=black] (0,0.5) rectangle (4,1);
+\node [right,black] at (4,.75) {Т};
+\draw[->,NavyBlue,thick,vec] (1,1.2) --++ (-1,0) node[black,above] {$\vec v_\text{т}$};
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{2} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=1cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {$\text{Н}_2$};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+%wheels
+\draw[black,fill=black]
+    (1,.3) circle(.3cm)
+    (3,.3) circle(.3cm);
+\draw[fill=gray]
+    (1,.3) circle(.2cm)
+    (3,.3) circle(.2cm);
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ball
+\shade[ball color=lightgray] (6,.3) circle (.3) node[xshift=.3cm,right] {Ш};
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%person 2
+% PERSON
+\def\W{5.2}     % ground width
+\def\L{3.2}     % length
+\def\T{0}    % plank thickness
+\def\H{2.0}     % human height
+  \def\x{3} % human position
+  \coordinate (O) at (0,0);
+\begin{scope}[yshift=0cm]  
+  \draw[thick] (\x,\H) circle(0.3) coordinate (H) node[xshift=0.3cm,right] {$\text{Н}_1$};
+  \draw[thick] (H)++(-90:0.3) coordinate (N) to[out=-92,in=92]++ (0,-0.40*\H) coordinate (P);
+  \draw[thick] (N)++(-95:0.03) to[out=-105,in=90]++ (-0.02*\W,-0.4*\H);
+  \draw[thick] (N)++(-85:0.03) to[out=-80,in=90]++ (0.02*\W,-0.4*\H);
+  \draw[thick] (P) to[out=-92,in=82] (\x-0.02*\W,\T);
+  \draw[thick] (P) to[out=-80,in=90] (\x+0.02*\W,\T);
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Наблюдатели и неподвижный шар}
+\label{fig:p27}
+\end{figure}
+
+На рис.\,\ref{fig:p27} наблюдатель~$\text{Н}_1$ фиксирует постоянную (равную нулю) скорость шара~Ш, а наблюдатель~$\text{Н}_2$~--- постоянную ненулевую. Скорость шара неизменна, хотя и тут \emph{воздействие планеты} на шар нельзя отрицать. Ясно, что имеется еще некоторое действие на шар со стороны \emph{поверхности}. 
+
+Итак, тело может также одновременно испытывать влияния со стороны сразу нескольких других тел. Если же при наличии нескольких действий на тело оно \emph{покоится} или движется \emph{равномерно прямолинейно}, то в этом случае говорят, что эти \textbf{действия скомпенсированы}. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

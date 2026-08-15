@@ -1,0 +1,177 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Ход лучей в тонкой линзе}
+
+
+% Во многих задачах на построения хода лучей света через линзу саму линзу можно считать тонкой (толщина линзы много меньше характериных расстояний в задаче). (Далее предполагается, что речь идет о тонких линзах)
+
+Пусть имеются два параллельных пучка света: один падает на тонкую собирающую линзу, другой~---  на тонкую рассеивающую (рис.\,\ref{fig:p184}).
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[use optics,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\node[lens,thick,line cap=butt,object height=3cm,focal length=2cm] (L1) at (0,0) {};
+\draw (0,0) node[below left,inner sep=.2222em] {$O$} --(3,0) (0,0)--(-3,0) node[above] {ГОО};
+\node[inner sep=0mm,label={[inner xsep=.1111em]below left:$F$}] (FL) at (L1.west focus) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={below:$F$}] (FR) at (L1.east focus) {\tikz\draw(0,0) -- (0,2mm);};
+
+
+%light
+\foreach \i in {0,1,...,4}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate},yshift={-\i*.5 cm}] (-2,1) --++ (2,0) coordinate (li\i);
+
+\foreach \i in {0,1,...,4}
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate},shorten >=-.5cm] (li\i) -- (FR.center);
+
+
+%%%%%%%
+%%%%%%%
+%%%%%%%
+
+
+\begin{scope}[xshift=8cm]
+
+\node[lens,thick,lens type=diverging,line cap=butt,object height=3cm,focal length=2cm] (L1) at (0,0) {};
+\draw (0,0) node[below left,inner sep=.2222em] {$O$} --(3,0) (0,0)--(-3,0) node[above] {ГОО};
+\node[inner sep=0mm,label={[inner xsep=.1111em]below left:$F$}] (FL) at (L1.west focus) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={below:$F$}] (FR) at (L1.east focus) {\tikz\draw(0,0) -- (0,2mm);};
+
+
+%light
+\foreach \i in {0,1,...,4}
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate},yshift={-\i*.5 cm}] (-2,1) --++ (2,0) coordinate (li\i);
+
+\foreach \i in {0,1,3,4}{
+\draw[densely dashed,gray] (FL.center) -- (li\i);
+}
+
+\foreach \i in {0,1,...,4}{
+\path[semitransparent,red] 
+(FL.center) --++ ({atan((1-\i*.5)/2)}:3.6) coordinate (en\i);
+}
+
+\foreach \i in {0,1,...,4}{
+\draw[Green,decoration={markings,mark=at position {1/2} with {\arrow{>}}},postaction={decorate}] 
+(li\i) -- (en\i);
+}
+
+\end{scope}
+
+
+
+
+    \end{tikzpicture}
+\caption{Фокусировка и рассеяние параллельного пучка света}
+\label{fig:p184}
+\end{figure}
+
+В случае собирающей линзы (рис.\,\ref{fig:p184}, слева) пучок света, параллельный \emph{главной оптической оси}~ГОО (оси симметрии линзы), после прохождения линзы собирается в ее правом \emph{фокусе}~$F$ (любая линза имеет два фокуса~--- слева и справа на~ГОО; обычно фокусы расположены на одинаковых расстояниях от линзы). Рассеивающая же линза (рис.\,\ref{fig:p184}, справа) преобразует такой пучок света в расходящийся пучок, как бы (мнимо) выходящий из левого фокуса~$F$ линзы. Точки~$O$ на рис.\,\ref{fig:p184} называются \emph{оптическими центрами} линз. Расстояния~$OF$ называются \emph{фокусными расстояниями} (обозначаются~$F$).
+
+Падающие на линзы лучи на рис.\,\ref{fig:p184} удобно называть \emph{<<нормальными>>} (они как бы падают на линзу под \emph{прямым} углом).
+
+\textbf{Оптическая сила} ($D$ [дптр])~--- это характеристика преломляющей способности линзы:
+\begin{equation}
+    D=\frac{1}{F}.
+\end{equation}
+% где $F$~--- фокусное расстояние линзы.
+
+Чем больше оптическая сила линзы, тем ближе к линзе фокусируется (возможно, мнимо) пучок света, падающий на нее <<нормально>> (см.~рис.\,\ref{fig:p184}).
+
+\textbf{Правила хода лучей в линзе} можно сформулировать так\footnote{В случае рассеивающей линзы выражение <<идет через>> понимать как <<мнимо идет через>>.}. 
+\begin{enumerate}
+    \item <<Нормальный>> луч после преломления идет через фокус (рис.\,\ref{fig:p185}, слева).
+    \item Луч, идущий в оптический центр, не преломляется (рис.\,\ref{fig:p185}, посередине).
+    \item Если луч падает на линзу \emph{наклонно} (<<ненормально>>), то для построения его дальнейшего хода через центр линзы проводят \emph{побочную оптическую ось}~ПОО, параллельную этому лучу, и находят \emph{побочный фокус~$P$}, находящийся в точке пересечения~ПОО с \emph{фокальной плоскостью}~ФП, проходящей через фокус~$F$ перпендикулярно~ГОО. Преломленный луч идет через этот побочный фокус (рис.\,\ref{fig:p185}, справа). 
+\end{enumerate}
+\nointerlineskip
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[use optics,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\node[lens,thick,line cap=butt,object height=2cm,focal length=1cm] (L1) at (0,0) {};
+\draw (0,0) node[below left,inner sep=.2222em] {} -- (2,0) (0,0) -- (-2,0);
+\node[inner sep=0mm,label={below:$F$}] (FL) at (L1.west focus) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={below:$F$}] (FR) at (L1.east focus) {\tikz\draw(0,0) -- (0,2mm);};
+
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (-2,.5) --++ (2,0) coordinate (li);
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate},shorten >=-.5cm] (li) -- (FR.center);
+
+
+%%%
+
+
+\begin{scope}[xshift=5cm]
+
+\node[lens,thick,line cap=butt,object height=2cm,focal length=1cm] (L1) at (0,0) {};
+\draw (0,0) node[below left,inner sep=.2222em] {} -- (2,0) (0,0) -- (-2,0);
+\node[inner sep=0mm,label={below:$F$}] (FL) at (L1.west focus) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={above:$F$}] (FR) at (L1.east focus) {\tikz\draw(0,0) -- (0,2mm);};
+
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (-2,.5) -- (0,0);
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (0,0) -- (2,-.5);
+
+
+\end{scope}
+
+
+%%%
+
+
+\begin{scope}[xshift=10cm]
+
+\node[lens,thick,line cap=butt,object height=2cm,focal length=1cm] (L1) at (0,0) {};
+\draw (0,0) node[below right,inner sep=.1111em] {} -- (2,0) (0,0) -- (-2,0);
+\node[inner sep=0mm,label={below:}] (FL) at (L1.west focus) {\tikz\draw(0,0) -- (0,2mm);};
+\node[inner sep=0mm,label={[inner xsep=.1111em]below right:$F$}] (FR) at (L1.east focus) {\tikz\draw(0,0) -- (0,2mm);};
+
+
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate}] (-1.5,0) -- (0,.5);
+\coordinate (O) at (0,0);
+\coordinate (b) at (-1.5,-.5);
+\draw[densely dashed, red,name path=red] (b) node[below,black] {ПОО} -- (O) coordinate[pos=2](en) -- (en);
+\draw[densely dashed,name path=gr] (FR.center) ++ (0,1) --++ (0,-2) node [right] {ФП};
+\draw[Green,decoration={markings,mark=at position {1/2+1.5/20} with {\arrow{>}}},postaction={decorate},name intersections={of=red and gr, by=x},shorten >=-.5cm] (0,.5) -- (x);
+\path[name intersections={of=red and gr, by=x}] (x) node[] [circle,fill=,inner sep=0pt,minimum size=1mm,label={[inner xsep=.1111em]above right:$P$}] {};
+;
+
+
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{К правилам хода лучей в линзе}
+\label{fig:p185}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

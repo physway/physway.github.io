@@ -1,0 +1,179 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Основы механических передач}
+
+
+\sbox{0}{%
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+\filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (1);
+\node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+    \end{tikzpicture}%
+}
+
+{%
+\setlength\intextsep{0pt}
+\begin{wrapfigure}[]{r}{\wd0}
+    \centering
+    \usebox{0}%
+    \caption{Блок}
+    \label{fig:p22}
+\end{wrapfigure}
+
+\emph{Механической передачей} можно назвать приспособление для передачи движения от одного тела к другому.
+
+Удобнее всего передавать вращения. Поэтому общим элементом для многих механизмов является \emph{блок}~--- твердый диск, способный вращаться вокруг оси, проходящей через его центр перпендикулярно его плоскости (рис.\,\ref{fig:p22}).
+
+}
+% \begin{figure}[H]
+% \centering
+
+%     \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+% \filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (1);
+% \node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+
+
+%     \end{tikzpicture}%
+% \caption{Блок}
+% \label{fig:p22}
+% \end{figure}
+
+
+Вот основные виды механических передач.
+\begin{enumerate}
+    \item \textbf{Ременная передача.} Можно считать, что движение передается от одного блока к другому посредством невесомой нерастяжимой \emph{нити} (рис.\,\ref{fig:p23}).
+
+    \begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+    \node[draw=gray,fill=lightgray,semitransparent,circle,xshift=2.2cm,minimum size=20mm,outer sep=0,label=right:$\text{Б}_2$] (big) {};
+    \node at (0,0) [xshift=2.2cm,circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};    \node[draw=gray,fill=lightgray,semitransparent,circle,minimum size=10mm,outer sep=0,label=left:$\text{Б}_1$] (small) {};
+    \node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+    \draw (tangent cs:node=small,point={(big.south)},solution=2) node[] (ss){} -- (tangent cs:node=big,point={(small.south)}) node[] (bs){};
+    \draw (tangent cs:node=small,point={(big.north)},solution=1) node[] (sn) {} -- (tangent cs:node=big,point={(small.north)},solution=2) node[] (bn){};
+
+    \draw let \p1=($(bn)-(big.center)$), \p2=($(bs)-(big.center)$), \n1={veclen(\x1,\y1)}, \n2={atan2(\y1,\x1)},
+    \n3={atan2(\y2,\x2)} in (bn) arc[start angle=\n2, end angle=\n3, radius=\n1];
+
+    \draw let \p1=($(sn)-(small.center)$), \p2=($(ss)-(small.center)$), \n1={veclen(\x1,\y1)}, \n2={atan2(\y1,\x1)},
+    \n3={atan2(\y2,\x2)} in (sn) arc[start angle=\n2, end angle=\n3+360, radius=\n1];
+
+    %vec
+    \draw[->,NavyBlue,thick,vec,xshift=2.2cm] (80:1) --++ (-10:1.5) node[black,above] {$\vec v_2$};
+    \node at (80:1) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:,xshift=2.2cm] {};
+
+    \draw[->,NavyBlue,thick,vec] (180:.5) --++ (90:1.5) node[black,left] {$\vec v_1$};
+    \node at (180:.5) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:] {};
+    
+    
+    \end{tikzpicture}%
+\caption{Ременная передача}
+\label{fig:p23}
+\end{figure}
+\nointerlineskip
+При отсутствии скольжения нити относительно блоков~Б$_1$ и~Б$_2$ соответствующие скорости их крайних точек~$v_1$ и~$v_2$ одинаковы: $v_1=v_2$.
+
+    \item \textbf{Зубчатая передача.} Движение передается от одного блока к другому при помощи зацепления крайних точек (рис.\,\ref{fig:p24}).
+
+        \begin{figure}[H]
+\centering
+
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+    \filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (1);
+    \node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+    \node[right] at (1,0) {$\text{Б}_2$};
+
+    \filldraw[draw=gray,fill=lightgray,semitransparent,xshift=-1.5cm] (0,0) circle (.5);
+    \node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:,xshift=-1.5cm] {};
+    \node[left] at (-2,0) {$\text{Б}_1$};
+    
+    
+    %vec
+    % \draw[->,NavyBlue,thick,vec] (0:1) --++ (-90:1.5) node[black,right] {$\vec v_2$};
+    % \node at (0:1) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:] {};
+
+    % \draw[->,NavyBlue,thick,vec,xshift=-1.5cm] (120:.5) --++ (30:1.5) node[black,above] {$\vec v_1$};
+    % \node at (120:.5) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:,xshift=-1.5cm] {};
+
+    \draw[->,NavyBlue,thick,vec] (180:1) --++ (-90:1.5) node[black,right] {$v_1=v_2$};
+    \node at (180:1) [circle,fill=,inner sep=0pt,minimum size=1mm,label=above:] {};
+    
+    
+    \end{tikzpicture}%
+\caption{Зубчатая передача}
+\label{fig:p24}
+\end{figure}
+\nointerlineskip
+Отсутствие проскальзывания между блоками~Б$_1$ и~Б$_2$ для соответствующих скоростей их крайних точек дает: $v_1=v_2$.
+
+    \item \textbf{Двойной блок.} Движение передается от одного блока к другому из-за того, что блоки жестко скреплены и насажены на общую ось (рис.\,\ref{fig:p25}). 
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[scale=1,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+    \filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (1.2);
+    \node at (0,0) [circle,fill=gray,inner sep=0pt,minimum size=1mm,label=below:] {};
+    \node[right] at (1.2,0) {$\text{Б}_2$};
+
+    \filldraw[draw=gray,fill=lightgray,semitransparent] (0,0) circle (.5);
+    \node[left] at (-.5,0) {$\text{Б}_1$};
+    
+    
+    %vec
+    \draw[->,thick,vec] (0.7,0) arc [start angle=0, end angle=-50, radius=0.7] node[below] {$\omega_1$};
+    \draw[->,thick,vec] (-1.4,0) arc [start angle=180, end angle=140, radius=1.4] node[above] {$\omega_2$};
+    
+    
+    
+    \end{tikzpicture}%
+\caption{Двойной блок}
+\label{fig:p25}
+\end{figure}
+\nointerlineskip
+    Блоки~Б$_1$ и~Б$_2$ образуют \emph{твердое тело}, поэтому справедливо равенство их угловых скоростей~$\omega_1$ и~$\omega_2$ соответственно: $\omega_1=\omega_2$.
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+ 
+\end{document}

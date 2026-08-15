@@ -1,0 +1,135 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% %from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Равновесие твердого тела}
+
+\emph{Равновесие}~--- это состояние тела\footnote{Далее все тела считаются твердыми~--- то есть недеформирующимися.}, при котором каждая его точка остается неподвижной в некоторой инерциальной системе отсчета. На рис.\,\ref{fig:p45} изображена в равновесии горизонтальная длинная легкая доска, к которой приложены силы со стороны бруска, шара и опоры. 
+
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[font=\small,line cap=round,       >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\filldraw[lightgray,semitransparent] (5.3,0) -- ({6-cos(45)*.5},0) --++ (45:.5) --++ (-45:.5) -- (6.7,0) -- (6.7,-.3) -- (5.3,-.3) -- cycle;
+\draw (5.3,0) -- ({6-cos(45)*.5},0) --++ (45:.5) node[yshift=.2cm,above right] {$O$} --++ (-45:.5) -- (6.7,0);
+
+%solid
+\filldraw[lightgray,draw=black] (1,{sin(45)*.5}) rectangle (11,{sin(45)*.5+.2});
+\filldraw[lightgray,draw=black] ({3.5-.5},{sin(45)*.5+.2}) rectangle++ (1,.5);
+\draw[->,red,thick,vec] ({3.5},{sin(45)*.5+.1}) coordinate (fls) --++ (0,{-1.2}) node[black,right] {$\vec P_1$};
+\node at (fls) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+\node[above] at (3.5,{sin(45)*.5+.2+.5}) {Б};
+
+
+%calc
+\def\km{(5/3)^3}
+
+%balls
+% \shade[ball color=lightgray] ({6-(5/\km)},{sin(45)*.5+.2+.5}) node[yshift=.5cm,above] {Ш$_1$} circle (.5);
+% \draw[->,red,thick,vec] ({6-(5/\km)},{sin(45)*.5+.1}) coordinate (flb) --++ (0,{-\km*.6}) node[black,right] {$\vec P_1$};
+% \node at (flb) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+\shade[ball color=lightgray] (11,{sin(45)*.5+.2+.3}) node[yshift=.3cm,above] {Ш} circle (.3);
+\draw[->,red,thick,vec] (11,{sin(45)*.5+.1}) coordinate (frb) --++ (0,-.6) node[black,right] {$\vec P_2$};
+\node at (frb) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+%N
+\draw[->,red,thick,vec] (6,{sin(45)*.5+.1}) coordinate (fn) --++ (0,{1.8}) node[black,right] {$\vec N$};
+\node at (fn) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+%board
+\node[left] at (1,{sin(45)*.5+.1}) {Д};
+
+
+    \end{tikzpicture}
+\caption{Равновесие доски}
+\label{fig:p45}
+\end{figure}
+
+%%% extra pic
+% \begin{figure}[H]
+% \centering
+
+% \begin{tikzpicture}[font=\small,line cap=round,       >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+% \filldraw[lightgray,semitransparent] (5,2) rectangle (7,2.3);
+% \draw (5,2) -- (7,2);
+% \draw (6,2) -- (6,0.2) node[above right] {$O$};
+
+% %solid
+% \filldraw[lightgray,draw=black] (2,0) rectangle (10,.2);
+
+% %calc
+% \def\km{(5/3)^3}
+% \def\lb{6-(4/\km)}
+
+% %balls
+% \shade[ball color=lightgray] ({\lb},{.2+.5}) coordinate (lb) circle (.5);
+% \draw[->,red,thick,vec] ({\lb},.1) --++ (0,{-\km*.8}) node[black,right] {$\vec F$};
+% \node at ({\lb},.1) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+% \shade[ball color=lightgray] (10,{.2+.3}) coordinate (rb) circle (.3);
+% \draw[->,red,thick,vec] (rb) --++ (0,-.8) node[black,right] {$\vec F$};
+% \node at (rb) [circle,fill=red,inner sep=0pt,minimum size=1mm,label=] {};
+
+
+
+
+%     \end{tikzpicture}
+% \caption{Уравновешенные шары}
+% \label{fig:p45}
+% \end{figure}
+%%%
+
+
+% Доска~Д закреплена в неподвижной точке~$O$ так, что она может вращаться вокруг этой точки в плоскости рисунка (через эту точку проходит неподвижная \emph{ось вращения} доски). 
+
+Доска~Д гладкая и не закреплена ни в какой точке, но установлена так, что не совершает ни поступательное, ни вращательное движение. Покоящиеся на доске брусок~Б и шар~Ш действуют на доску силами~$\vec P_1$ и~$\vec P_2$ соответственно (масса бруска больше массы шара). Со стороны опоры в точке~$O$ к доске приложена сила~$\vec N$ (перпендикулярная одной из соприкасающихся поверхностей).
+
+Вот \textbf{условия равновесия тела} под действием приложеных к нему сил.
+\begin{enumerate}
+    \item Сумма всех составляющих (<<частей>>) сил, взятых со знаком плюс или минус, вдоль любой оси равна нулю\footnote{Предполагается, что силы раскладывают по взаимно перпендикулярным направлениям.}:
+    \begin{equation}\label{32equil_e1}
+        \pm F_1\pm F_2\pm\ldots =0.
+    \end{equation}
+    Знак~<<$+$>> приписывают составляющей, если она сонаправлена с выбранной осью; знак~<<$-$>> приписывают составляющей в противном случае.
+    
+    \item Сумма всех моментов сил, взятых со знаком плюс или минус, относительно выбранной оси вращения равна нулю:
+    \begin{equation}\label{32equil_e2}
+        \pm M_1\pm M_2\pm\ldots =0.
+    \end{equation}
+    Знак~<<$+$>> приписывают моменту, если его сила стремится повернуть тело, например, по часовой стрелке; в противном случае моменту приписывают знак~<<$-$>>. (Можно выбирать свое положительное направление вращения.)
+\end{enumerate}
+
+Для удобства соотношение~\eqref{32equil_e1} можно называть \emph{уравнением сил}, а соотношение~\eqref{32equil_e2}~--- \emph{уравнением моментов}.
+
+Условия равновесия в примере с доской на рис.\,\ref{fig:p45} работают следующим образом. Так как горизонтальных сил нет, уравнение сил записывается только для вертикального направления (ось направлена, например, вверх): $N-P_1-P_2=0$. Уравнение моментов относительно оси, проходящей, например, через точку~$O$, выглядит так: $M_{P2}-M_{P1}=0$ (момент силы~$N$ равен~нулю).
+
+
+
+ 
+\end{document}

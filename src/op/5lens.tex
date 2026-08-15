@@ -1,0 +1,295 @@
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+
+%from pagenumber to up
+% \phantomsection 
+% \hypertarget{toc}{}
+
+ 
+
+ 
+
+ 
+   
+
+\section{Линза}
+
+
+\textbf{Линза}~--- это прозрачное тело, ограниченное сферическими поверхностями. Выделяют два вида линз\footnote{Далее предполагается, что показатель преломления линзы \emph{больше} показателя преломления окружающей среды.}.
+\begin{enumerate}
+    \item \textbf{Собирающая}: толщина середины линзы \emph{больше} толщины ее края. На рис.\,\ref{fig:p180} показаны все возможные собирающие линзы.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\pgfmathsetmacro{\lensRadius}{1.5}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius];
+
+
+\draw (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius] node[below] {Двояковыпуклая}
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius];
+
+
+
+%%%
+
+
+\begin{scope}[xshift=4.5cm]
+
+\pgfmathsetmacro{\lensRadius}{1.5}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) -- (0,-\lensHeight)
+(0,\lensHeight) arc[start angle=\startAngle,delta angle=-2*\startAngle,radius=\lensRadius];
+
+
+\draw (0,\lensHeight) -- (0,-\lensHeight) node[below] {Плосковыпуклая};
+\draw (0,\lensHeight) arc[start angle=\startAngle,delta angle=-2*\startAngle,radius=\lensRadius];
+
+\end{scope}
+
+
+%%%
+
+
+\begin{scope}[xshift=9cm]
+
+\pgfmathsetmacro{\lensRadius}{1.5}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\pgfmathsetmacro{\lensRadiusb}{3}
+\pgfmathsetmacro{\lensHeightb}{1}
+\pgfmathsetmacro{\startAngleb}{asin(\lensHeightb/\lensRadiusb)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) arc[start angle=\startAngle,delta angle=-2*\startAngle,radius=\lensRadius]
+arc[start angle=-\startAngleb,delta angle=2*\startAngleb,radius=\lensRadiusb];
+
+
+\draw (0,\lensHeight) arc[start angle=\startAngle,delta angle=-2*\startAngle,radius=\lensRadius] node[below,xshift=.3cm] {Вогнуто"=выпуклая}
+arc[start angle=-\startAngleb,delta angle=2*\startAngleb,radius=\lensRadiusb];
+
+\end{scope}
+
+    \end{tikzpicture}
+\caption{Собирающие линзы}
+\label{fig:p180}
+\end{figure}
+\nointerlineskip
+
+    \item \textbf{Рассеивающая}: толщина середины линзы \emph{меньше} толщины ее края. На рис.\,\ref{fig:p181} изображены все возможные рассеивающие линзы.
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\pgfmathsetmacro{\lensRadius}{2}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) --++ (.4,0) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (-.8,0)
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.4,0)
+;
+
+
+\draw (0,\lensHeight) --++ (.4,0) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (-.4,0) node[below] {Двояковогнутая}
+--++ (-.4,0)
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.4,0)
+% --++ (0,.4) --++ (0,-.4)
+;
+
+%%%
+
+
+\begin{scope}[xshift=4.5cm]
+
+\pgfmathsetmacro{\lensRadius}{2}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) -- (0,-\lensHeight)
+--++ (.6,0)
+arc[start angle=-180+\startAngle,delta angle=-2*\startAngle,radius=\lensRadius]
+--++ (-.6,0)
+;
+
+
+\draw (0,\lensHeight) -- (0,-\lensHeight)
+--++ (.3,0) node[below] {Плосковогнутая}
+--++ (.3,0)
+arc[start angle=-180+\startAngle,delta angle=-2*\startAngle,radius=\lensRadius]
+--++ (-.6,0)
+;
+
+\end{scope}
+
+
+%%%
+
+
+\begin{scope}[xshift=9cm]
+
+\pgfmathsetmacro{\lensRadius}{3}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+\pgfmathsetmacro{\lensRadiusb}{1.3}
+\pgfmathsetmacro{\lensHeightb}{1}
+\pgfmathsetmacro{\startAngleb}{asin(\lensHeightb/\lensRadiusb)}
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.6,0)
+arc[start angle=-180+\startAngleb,delta angle=-2*\startAngleb,radius=\lensRadiusb]
+--++ (-.6,0)
+;
+
+
+\draw (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.3,0) node[below,xshift=-.1cm] {Выпукло"=вогнутая}
+--++ (.3,0)
+arc[start angle=-180+\startAngleb,delta angle=-2*\startAngleb,radius=\lensRadiusb]
+--++ (-.6,0)
+;
+
+\end{scope}
+
+
+
+    \end{tikzpicture}
+\caption{Рассеивающие линзы}
+\label{fig:p181}
+\end{figure}
+
+\end{enumerate}
+\nointerlineskip
+
+% На рис.\,\ref{fig:p182} показаны качественные изменения пучка света при прохождении собирающей и рассеивающей линз. 
+
+Пусть имеются две линзы; на них падают параллельные пучки света (рис.\,\ref{fig:p182}).
+
+\tikzfading[name=fade right,
+left color=transparent!0,
+right color=transparent!90]
+
+\tikzfading[name=fade rightb,
+left color=transparent!40,
+right color=transparent!70]
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\pgfmathsetmacro{\lensRadius}{3}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+
+%light
+\fill[yellow,path fading=fade right] (-2,.4) -- (0,.4) -- (2,0) -- (0,-.4) -- (-2,-.4) -- cycle;
+\draw[orange,->] (-2,.6) --++ (1,0) node[midway,above,black] {Свет};
+
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius];
+
+
+\draw (0,\lensHeight) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius];
+
+
+%%%
+
+
+\begin{scope}[xshift=6cm]
+
+\pgfmathsetmacro{\lensRadius}{2.5}
+\pgfmathsetmacro{\lensHeight}{1}
+\pgfmathsetmacro{\startAngle}{asin(\lensHeight/\lensRadius)}
+
+
+%light
+\fill[yellow,path fading=fade right] (-2,.4) -- (0,.4) -- (2,.8) -- (2,-.8) -- (0,-.4) -- (-2,-.4) -- cycle;
+\draw[orange,->] (-2,.6) --++ (1,0) node[midway,above,black] {Свет};
+
+
+\fill[SkyBlue,semitransparent] (0,\lensHeight) --++ (.3,0) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (-.6,0)
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.3,0)
+;
+
+
+\draw (0,\lensHeight) --++ (.3,0) arc[start angle=180-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (-.3,0)
+--++ (-.3,0)
+arc[start angle=-\startAngle,delta angle=2*\startAngle,radius=\lensRadius]
+--++ (.3,0)
+;
+
+
+
+
+\end{scope}
+
+    \end{tikzpicture}
+\caption{Действия собирающей и рассеивающей линз}
+\label{fig:p182}
+\end{figure}
+
+
+Собирающая линза преобразует параллельный пучок света в \emph{сходящийся} пучок (рис.\,\ref{fig:p182}, слева), а рассеивающая~--- в \emph{расходящийся} (рис.\,\ref{fig:p182}, справа).
+
+Линзу можно считать \emph{тонкой}, если \emph{ее толщина много меньше характерных расстояний в задаче.} На рис.\,\ref{fig:p183} показаны обозначения тонких линз. 
+
+    \begin{figure}[H]
+    \centering
+
+    \begin{tikzpicture}[use optics,font=\small,            line cap=round,                             >={Stealth[inset=0pt,round,length=3mm, angle'=20]},vec/.style={>={Stealth[inset=0pt,round,length=3.5mm, angle'=20]}}]
+
+
+\node[lens,thick,line cap=butt] (L1) at (0,0) {};
+\node[below] at (L1.south) {Собирающая};
+
+\node[lens,thick,lens type=diverging,line cap=butt] (L1) at (4,0) {};
+\node[below,yshift=-4pt] at (L1.south) {Рассеивающая};
+
+
+    \end{tikzpicture}
+\caption{Обозначения тонких собирающей и рассеивающей линз}
+\label{fig:p183}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{document}
