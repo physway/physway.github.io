@@ -1,0 +1,1685 @@
+\documentclass[12pt,a4paper,openany]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[]{graphicx} %[draft] не показывать рисы
+\usepackage[russian]{babel} %
+\usepackage{hyperref}
+\usepackage[sorting=none]{biblatex}
+% \addbibresource{bibliography.bib}
+\usepackage{csquotes}
+\usepackage[section]{placeins}
+\usepackage{float}
+\usepackage[mode=buildnew]{standalone}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{mybluelinks}{RGB}{0, 71, 211}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mybluelinks,
+    citecolor=mybluelinks,
+    urlcolor=mybluelinks,
+    pdftitle={Электронный справочник по физике},
+    pdfauthor={Кравченко Игорь Игоревич (17. 05. 1994) (\LaTeX-код, материалы)},
+    pdfpagemode=UseOutlines,%UseOutlines%UseNone
+    pdfstartview=FitH,
+    }
+
+\usepackage{tikz,pgffor,bm}
+\usetikzlibrary {perspective}
+\usetikzlibrary {fadings,patterns,shadows}
+\usetikzlibrary{positioning}
+\usepackage{stackengine}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary {math}
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+\usepackage[a4paper,%showframe,
+            top=1in,
+            bottom=1in,
+            left=3cm,
+            right=3cm]{geometry}
+\usetikzlibrary{shadings}
+\usetikzlibrary {shapes.symbols}
+\usetikzlibrary {decorations.pathmorphing,decorations.pathreplacing, decorations.shapes}
+\usepackage[labelsep=period,figurewithin=none,tablename=Табл.,tablewithin=none,justification=centering]{caption}[2018/05/01]
+\DeclareCaptionLabelFormat{sepnum}{#1\,#2} %разделитель между номером и рис. (табл.)
+\captionsetup{labelformat=sepnum}
+\usepackage{amssymb,amsmath}
+% \numberwithin{equation}{section}
+\usetikzlibrary{intersections}
+\usepackage{array}
+\usepackage{scalefnt}
+\usepackage[version=4]{mhchem}
+\usepackage{mathtools}
+\usepackage{color}
+\usetikzlibrary{calc}
+\usepackage{marvosym}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[CE]{\small \href{mailto:super.antig@yandex.ru}{super.antig@yandex.ru}\hfill \href{https://vk.com/igorkravchenko1}{Кравченко Игорь Игоревич}\hfill \href{tel:+79010144910}{$+\,$7\: 901\: 014\: 49\: 10}}
+\fancyhead[CO]{\small \href{mailto:pili.iveta@yandex.ru}{pili.iveta@yandex.ru}\hfill \href{https://ksdr.profi.ru/profile/KravchenkoIN3/}{Кравченко Ивета Николаевна}\hfill \href{tel:+79180260674}{$+\,$7\: 918\: 026\: 06\: 74}}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14.5pt}
+%% переход с номера страницы на оглавление
+\fancyfoot[C]{\hyperlink{toc}{\thepage}}
+\fancypagestyle{plain}{
+\fancyhead{}
+\fancyfoot[C]{\hyperlink{toc}{\thepage}}
+}
+%%
+\fancypagestyle{myfancy}{
+\fancyhead[CE]{\small \href{mailto:super.antig@yandex.ru}{super.antig@yandex.ru}\hfill \href{https://vk.com/igorkravchenko1}{Кравченко Игорь Игоревич}\hfill \href{tel:+79010144910}{$+\,$7\: 901\: 014\: 49\: 10}}
+\fancyhead[CO]{\small \href{mailto:pili.iveta@yandex.ru}{pili.iveta@yandex.ru}\hfill \href{https://ksdr.profi.ru/profile/KravchenkoIN3/}{Кравченко Ивета Николаевна}\hfill \href{tel:+79180260674}{$+\,$7\: 918\: 026\: 06\: 74}}
+}
+
+\usepackage{soulutf8}
+\usepackage{mathrsfs}
+\usepackage[europeanresistors,americaninductors,americanvoltages,compatibility]{circuitikzgit}
+\usepackage[inline]{asymptote}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{optics}
+\usepackage{subcaption}
+\usepackage{eso-pic}
+\usepackage[most]{tcolorbox}
+\usepackage{hhline}
+\usepackage{makecell}
+\renewcommand\theadfont{\normalsize}
+\usepackage{enumitem}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usetikzlibrary{spath3}
+\usetikzlibrary{angles,quotes,babel}
+\usepackage{adjustbox}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows.meta,bending}
+\usepackage{tikzscale}
+\usepackage{pdfpages}
+\usetikzlibrary{circuits.ee.IEC}
+\usepackage{pgf-spectra}
+\usepackage{chngcntr} % Нужен, если используется старая версия LaTeX
+\counterwithout{section}{chapter}  % Секции идут по порядку (1, 2, 3...)
+\counterwithout{equation}{chapter} % Отвязываем формулы от глав класса book [1]
+\counterwithout{equation}{section} % Отвязываем формулы от секций (на всякий случай)
+\counterwithout{figure}{chapter}   % Отвязываем рисунки от глав (сквозной счет)
+\counterwithout{table}{chapter}    % Отвязываем таблицы от глав (сквозной счет)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%new commands and stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%remove blank page of a part
+\let\cleardoublepage=\clearpage
+
+%ударение
+\renewcommand{\'}{\accent1}
+
+%перенос мат знак
+\renewcommand*{\hm}[1]{#1\nobreak\discretionary{}%
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+
+% изменить отступ после номера параграфа в оглавлении
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{2em}{2.3em}}
+\makeatother
+
+% изменить отступ после номера главы в оглавлении
+\makeatletter
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{2em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss #2%
+                                 \kern-\p@\kern\p@}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\makeatother
+
+
+% убрать колонтитулы на страницах Часть
+\makeatletter
+\renewcommand\part{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \thispagestyle{empty}%
+  \if@twocolumn
+    \onecolumn
+    \@tempswatrue
+  \else
+    \@tempswafalse
+  \fi
+  \null\vfil
+  \secdef\@part\@spart}
+\makeatother
+
+
+% убрать колонтитулы на страницах Глава
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
+
+%boxes
+\newsavebox{\myboxb}
+\newlength{\mylengthb}
+
+\newsavebox{\myboxa}
+\newlength{\mylengtha}
+
+
+%an environment law
+\newenvironment{law}[1][\unskip]{%
+\par
+\addvspace{\medskipamount}
+\noindent}
+{\par\addvspace{\medskipamount}}
+
+%pic / tab format
+\renewcommand\thefigure{\arabic{figure}}
+\renewcommand\thetable{\arabic{table}}
+
+
+% пробел после номер параграфа на странице
+% \makeatletter
+% \renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname\hspace{1em}}
+% \makeatother
+
+%tikz установки на все картинки
+\tikzset{every picture/.style={line join=round}}
+
+%функция округления числа для tikz
+\pgfmathdeclarefunction{roundn}{2}{%
+\pgfmathparse{#1}%
+\pgfmathparse{"\pgfmathprintnumber[fixed, precision=#2]{\pgfmathresult}"}%
+}
+
+%task comm
+\newcounter{task}
+\newcommand{\task}[1]{\par\addvspace{\bigskipamount}
+\refstepcounter{task}
+\noindent\begin{minipage}[t]{\leftmargini}
+\vspace*{0pt} % вкл / выкл корректировку выравнивания minipages
+\hfill\mbox{\arabic{task}.\hspace{\labelsep}}%
+\end{minipage}%
+\hfill\begin{minipage}[t]{\linewidth-\leftmargini}%
+#1
+
+\par\xdef\tpd{\the\prevdepth}
+\end{minipage}%
+
+\prevdepth\tpd
+}
+
+
+%change arrow length of {mhchem} package
+\ExplSyntaxOn
+\keys_define:nn { mhchem }
+ {
+  arrow-min-length .code:n =
+   \cs_set:Npn \__mhchem_arrow_options_minLength:n { {#1} } % default is 2em
+ }
+\ExplSyntaxOff
+
+
+% \title{Химия: атомы и химические элементы}
+% \author{Кравченко Ивета Николаевна}
+% \date{2021}
+
+\addto\captionsrussian{\renewcommand*\contentsname{Оглавление}}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\begin{document}
+
+
+\renewcommand\refname{Литература}
+
+% титульные листы (варианты)
+% \input{titlepage}
+% \input{title_el}
+\input{titlepage}
+
+
+\newpage
+
+% \addtocounter{page}{1}
+\pagestyle{empty}
+
+% убрать колонтитулы на страницах оглавления (только первая стр?)
+% \addtocontents{toc}{\protect\thispagestyle{empty}} 
+
+\phantomsection 
+\hypertarget{toc}{}
+\tableofcontents
+
+
+%%%
+%%% subfile method
+%%%
+
+
+% mech
+\clearpage
+\pagestyle{myfancy}
+
+
+\part{Механика}
+
+
+\chapter{Кинематика}
+
+
+\clearpage
+
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mech/1vec}
+\subfile{mech/2num}
+\subfile{mech/3mot}
+\subfile{mech/4main}
+\subfile{mech/5kinds}
+\subfile{mech/6str}
+\subfile{mech/7add}
+\subfile{mech/8ave}
+\subfile{mech/9gra}
+\subfile{mech/10g}
+\subfile{mech/11circ}
+\subfile{mech/12trans}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Динамика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mech/21sys}
+\subfile{mech/22IN}
+\subfile{mech/23mass}
+\subfile{mech/24inter}
+\subfile{mech/25Nlaws}
+\subfile{mech/26grav}
+\subfile{mech/28elast}
+\subfile{mech/29fric}
+\subfile{mech/30press}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Статика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mech/31torq}
+\subfile{mech/32equil}
+\subfile{mech/33COM}
+\subfile{mech/34Pasc}
+\subfile{mech/35hypress}
+\subfile{mech/36liquid}
+\subfile{mech/37Arch}
+\subfile{mech/37Arch}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Законы сохранения}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mech/41imp}
+\subfile{mech/43ECE}
+\subfile{mech/44ener}
+\subfile{mech/45COE}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Механические колебания и волны}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mech/51oscill}
+\subfile{mech/52pend}
+\subfile{mech/53wave}
+
+
+%mol
+\clearpage
+\ClearShipoutPictureFG
+\part{Молекулярная физика. Термодинамика}
+\chapter{Молекулярная физика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mol/1mmain}
+\subfile{mol/2diff}
+\subfile{mol/3mainf}
+\subfile{mol/4eqgas}
+\subfile{mol/5dal}
+\subfile{mol/6iso}
+\subfile{mol/7vap}
+\subfile{mol/8hum}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Термодинамика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{mol/21U}
+\subfile{mol/22htrans}
+\subfile{mol/23Q}
+\subfile{mol/24phase}
+\subfile{mol/25hgra}
+\subfile{mol/26Agas}
+\subfile{mol/27LOT}
+\subfile{mol/28heng}
+
+
+%el
+\clearpage
+\ClearShipoutPictureFG
+\part{Электродинамика}
+\chapter{Электростатика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{el/1epart}
+\subfile{el/2charge}
+\subfile{el/3electriz}
+\subfile{el/4escope}
+\subfile{el/5Claw}
+\subfile{el/6E}
+\subfile{el/7Eline}
+\subfile{el/8poten}
+\subfile{el/9eqpoten}
+\subfile{el/10fprincip}
+\subfile{el/11cond}
+\subfile{el/12condef}
+\subfile{el/13esphere}
+\subfile{el/14diel}
+\subfile{el/15cap}
+\subfile{el/16caps}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Постоянный ток}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{el/21I}
+\subfile{el/22R}
+\subfile{el/23Ohm}
+\subfile{el/24conn}
+\subfile{el/25Acurr}
+\subfile{el/26Eforce}
+\subfile{el/27fOhm}
+\subfile{el/28semi}
+\subfile{el/28semi2}
+\subfile{el/29pn}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Магнитное поле}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{el/31magn}
+\subfile{el/32magnne}
+\subfile{el/33B}
+\subfile{el/34Bprinc}
+\subfile{el/35Erst}
+\subfile{el/36wire}
+\subfile{el/37ring}
+\subfile{el/38coil}
+\subfile{el/39aFA}
+\subfile{el/39bFL}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Электромагнитная индукция}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{el/41mflux}
+\subfile{el/42Flaw}
+\subfile{el/43mcond}
+\subfile{el/44Lenz}
+\subfile{el/45si}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Электромагнитные колебания и волны}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{el/51emos}
+\subfile{el/52LC}
+\subfile{el/53dros}
+\subfile{el/54EE}
+\subfile{el/55ewave}
+
+
+%op
+\clearpage
+\ClearShipoutPictureFG
+\part{Оптика}
+\chapter{Геометрическая оптика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+\subfile{op/1light}
+\subfile{op/2refl}
+\subfile{op/3refr}
+\subfile{op/4tref}
+\subfile{op/5lens}
+\subfile{op/6tlens}
+\subfile{op/7image}
+\subfile{op/8eye}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Волновая оптика}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{op/21lprinc}
+\subfile{op/22linter}
+\subfile{op/23diffr}
+\subfile{op/24disp}
+
+
+\clearpage
+\ClearShipoutPictureFG
+\chapter{Основы специальной теории относительности (СТО)}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{sr/1sprinc}
+\subfile{sr/2smain}
+
+
+%qu
+\clearpage
+\ClearShipoutPictureFG
+\part{Квантовая физика}
+\chapter{Фотоны}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{qu/1photo}
+\subfile{qu/2pheq}
+\subfile{qu/3lpress}
+\subfile{qu/4bohr}
+\subfile{qu/5spec}
+\subfile{qu/6nucl}
+\subfile{qu/7rad}
+
+
+%za
+\clearpage
+\ClearShipoutPictureFG
+\part{Приложение}
+\chapter{Как решать задачи по физике}
+\clearpage
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+\end{tikzpicture}
+}
+
+
+\subfile{za/find}
+\subfile{za/mnote}
+
+
+%%%
+%%% pdf method
+%%%
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Векторы}}]{mech/1vec}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Числа и приставки}}]{mech/2num}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Механическое движение}}]{mech/3mot}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Основные понятия кинематики}}]{mech/4main}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Виды механического движения}}]{mech/5kinds}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Формулы для прямолинейного движения}}]{mech/6str}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сложение и относительность скоростей}}]{mech/7add}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Средняя скорость}}]{mech/8ave}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Графики механического движения}}]{mech/9gra}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Свободное падение}}]{mech/10g}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Движение по окружности}}]{mech/11circ}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Основы механических передач}}]{mech/12trans}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Динамика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Система отсчета. Действие}}]{mech/21sys}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Первый закон Ньютона}}]{mech/22IN}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Инертность и масса}}]{mech/23mass}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Взаимодействие и сила}}]{mech/24inter}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Второй и третий законы Ньютона}}]{mech/25Nlaws}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Силы тяготения и реакции}}]{mech/26grav}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Спутник}}]{mech/27sat}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сила упругости}}]{mech/28elast}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сила трения}}]{mech/29fric}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Давление}}]{mech/30press}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Статика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Момент силы}}]{mech/31torq}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Равновесие твердого тела}}]{mech/32equil}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Центр масс}}]{mech/33COM}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон Паскаля}}]{mech/34Pasc}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Гидравлический пресс}}]{mech/35hypress}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Давление в жидкости}}]{mech/36liquid}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон Архимеда}}]{mech/37Arch}
+
+
+% % не растягивать оставшееся на стр оглавление
+% \addtocontents{toc}{\protect\clearpage}
+
+
+% % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Законы сохранения}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Импульс}}]{mech/41imp}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Работа. Простые механизмы}}]{mech/42work}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}КПД механизма}}]{mech/43ECE}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Энергия}}]{mech/44ener}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сохранение и изменение энергии}}]{mech/45COE}
+
+
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Механические колебания и волны}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Механические колебания}}]{mech/51oscill}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Маятники}}]{mech/52pend}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Механическая волна}}]{mech/53wave}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Молекулярная физика. Термодинамика}
+
+
+% \chapter{Молекулярная физика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Основные понятия молекулярной физики}}]{mol/1mmain}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Диффузия. Броуновское движение}}]{mol/2diff}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Основные формулы молекулярной физики}}]{mol/3mainf}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Формулы для идеального газа}}]{mol/4eqgas}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection\addcontentsline{toc}{section}{\protect\numberline{\thesection}\texorpdfstring{Закон Д\'альтона}{Закон Да́льтона}}}]{mol/5dal}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Изопроцессы}}]{mol/6iso}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Пар}}]{mol/7vap}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Влажность воздуха}}]{mol/8hum}
+
+
+% % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Термодинамика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Внутренняя энергия}}]{mol/21U}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Теплопередача}}]{mol/22htrans}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Количество теплоты}}]{mol/23Q}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Изменения агрегатных состояний вещества}}]{mol/24phase}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Графики тепловых процессов}}]{mol/25hgra}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Работа газа}}]{mol/26Agas}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Законы термодинамики}}]{mol/27LOT}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Тепловые машины}}]{mol/28heng}
+
+
+% % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% % \part{Электродинамика}
+
+
+% \chapter{Электростатика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Заряженные частицы и тела}}]{el/1epart}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Заряд}}]{el/2charge}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электризация}}]{el/3electriz}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электроскоп. Закон сохранения заряда}}]{el/4escope}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон Кулона. Электрическое поле}}]{el/5Claw}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Напряженность электрического поля}}]{el/6E}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Линии электрического поля}}]{el/7Eline}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Потенциал}}]{el/8poten}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Эквипотенциальные поверхности}}]{el/9eqpoten}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сложение электрических полей}}]{el/10fprincip}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Проводник}}]{el/11cond}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Проводник в электрическом поле}}]{el/12condef}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электрическое поле проводящего шара}}]{el/13esphere}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Диэлектрик}}]{el/14diel}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Конденсатор}}]{el/15cap}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Соединения конденсаторов}}]{el/16caps}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Постоянный ток}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электрический ток}}]{el/21I}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сопротивление}}]{el/22R}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон Ома}}]{el/23Ohm}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Соединения проводников}}]{el/24conn}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Работа тока. Закон Джоуля"--~Ленца}}]{el/25Acurr}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Источник тока}}]{el/26Eforce}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон Ома для полной цепи}}]{el/27fOhm}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Полупроводник}}]{el/28semi}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Полупроводники \emph{p}- и \emph{n}-типа}}]{el/28semi2}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}\emph{p}--\emph{n}-Переход}}]{el/29pn}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Магнитное поле}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнит. Магнитное поле}}]{el/31magn}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнитная стрелка}}]{el/32magnne}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Индукция и линии магнитного поля}}]{el/33B}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сложение магнитных полей}}]{el/34Bprinc}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Опыт Эрстеда}}]{el/35Erst}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнитное поле прямого провода с током}}]{el/36wire}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнитное поле кольца с током}}]{el/37ring}
+
+
+% % не растягивать оставшееся на стр оглавление
+% \addtocontents{toc}{\protect\clearpage}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнитное поле катушки с током}}]{el/38coil}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сила Ампера}}]{el/39aFA}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сила Лоренца}}]{el/39bFL}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Электромагнитная индукция}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Магнитный поток}}]{el/41mflux}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Закон электромагнитной индукции Фарадея}}]{el/42Flaw}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}ЭДС индукции в движущемся проводе}}]{el/43mcond}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Правило Ленца}}]{el/44Lenz}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Индуктивность. Самоиндукция}}]{el/45si}
+
+
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter[\texorpdfstring{Электромагнитные колебания и волны}{Электромагнитные колебания и волны}]{Электромагнитные колебания\\ и волны}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электромагнитные колебания}}]{el/51emos}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Свободные колебания в контуре}}]{el/52LC}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Вынужденные колебания в контуре}}]{el/53dros}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электроэнергия}}]{el/54EE}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Электромагнитная волна}}]{el/55ewave}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Оптика}
+
+
+% \chapter{Геометрическая оптика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Свет. Луч света}}]{op/1light}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Отражение света. Зеркало}}]{op/2refl}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Преломление света}}]{op/3refr}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Полное внутреннее отражение}}]{op/4tref}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Линза}}]{op/5lens}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Ход лучей в тонкой линзе}}]{op/6tlens}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Построение изображения в линзе}}]{op/7image}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Глаз}}]{op/8eye}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Оптика}
+
+
+% \chapter{Геометрическая оптика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Свет. Луч света}}]{op/1light}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Отражение света. Зеркало}}]{op/2refl}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Преломление света}}]{op/3refr}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Полное внутреннее отражение}}]{op/4tref}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Линза}}]{op/5lens}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Ход лучей в тонкой линзе}}]{op/6tlens}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Построение изображения в линзе}}]{op/7image}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Глаз}}]{op/8eye}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Волновая оптика}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Сложение световых волн}}]{op/21lprinc}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Интерференция света}}]{op/22linter}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Дифракция света}}]{op/23diffr}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Дисперсия света}}]{op/24disp}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Теория относительности}
+
+
+% \chapter[Основы специальной теории относительности (СТО)]{Основы специальной\\ теории относительности (СТО)}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Принципы СТО}}]{sr/1sprinc}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Основные формулы СТО}}]{sr/2smain}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Квантовая физика}
+
+
+% \chapter{Фотоны}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Фотоэффект}}]{qu/1photo}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Формулы для фотоэффекта}}]{qu/2pheq}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Давление света}}]{qu/3lpress}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Физика атома}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Постулаты Бора}}]{qu/4bohr}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Спектры}}]{qu/5spec}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \chapter{Физика атомного ядра}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Атомное ядро}}]{qu/6nucl}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Радиоактивность. Ядерные реакции}}]{qu/7rad}
+
+
+% % % не растягивать оставшееся на стр оглавление
+% \addtocontents{toc}{\protect\clearpage}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% % \part{Астрофизика}
+
+
+% % \chapter{Элементы астрофизики}
+
+
+% % \newpage
+% % \section{Солнечная система}
+
+
+% % \newpage
+% % \section{Звезда}
+
+% % \newpage
+% % \section{Звездные характеристики}
+
+
+% % \newpage
+% % \section{Закономерности звездных характеристик}
+
+
+% % \newpage
+% % \section{О происхождении и эволюции звезд}
+
+
+% % \newpage
+% % \section{Схема эволюции звезд}
+
+
+% % \newpage
+% % \section{Масштабы и эволюция Вселенной}
+
+
+% % \newpage
+% % \section{Строение Вселенной}
+
+
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \clearpage
+
+% \ClearShipoutPictureFG
+
+
+% \part{Приложение}
+
+
+% \chapter{Как решать задачи по физике}
+
+
+% \clearpage
+
+% \AddToShipoutPictureFG{%
+% \begin{tikzpicture}[overlay,remember picture]
+% \path (current page.south west) -- (current page.north east)
+% node[midway,scale=1,color=gray,sloped,opacity=0.4] {\textnormal{Кравченко Игорь Игоревич\hspace{1cm} +79010144910\hspace{1cm} super.antig@yandex.ru}};
+% \end{tikzpicture}
+% }
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Как находить ответ к задаче по физике}}]{za/find}
+
+
+% \includepdf[pages=1,pagecommand={\addtocounter{section}{1}\phantomsection
+% \addcontentsline{toc}{section}{\protect\numberline{\thesection}Решение специфических задач по физике}}]{za/mnote}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\thispagestyle{plain}
+
+% \printbibliography
+
+% \addcontentsline{toc}{section}{Литература}
+
+\end{document}
