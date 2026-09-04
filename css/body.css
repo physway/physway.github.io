@@ -209,8 +209,13 @@ ul.lef li {
   text-align: left;
 }
 
-.nobul li::marker {
-  content: "";
+
+ol li {
+  margin-bottom: 6px;  
+}
+
+ol.lef li {
+  text-align: left;
 }
 
 
