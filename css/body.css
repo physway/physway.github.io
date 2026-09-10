@@ -247,3 +247,10 @@ h3 {
 .vert {
   margin-top: 40px;
 }
+
+
+header img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
